@@ -48,10 +48,11 @@ places:
     aliases: [Pevnost Josefov, Josefově]
   - name: Vrchlabí
     aliases: [Vrchlabí, KD Střelnice]
+  - name: Valdštejnská lodžie
+    aliases: [Lodžie, Valdštejnské lodžii, Valdštejnské imaginárium]
 
 # Venue, které se zobrazí vždy bez ohledu na obec (např. jedno konkrétní místo ve vzdálenějším městě).
-venues_allow:
-  - Valdštejnská lodžie
+venues_allow: []
 
 # Kategorie akcí (pevná sada). `keywords` slouží pro fallback klasifikaci podle názvu (regex, bez diakritiky).
 categories:
@@ -177,6 +178,13 @@ sources:
     pages: 4                     # 12 akcí na stránku
     skip_detail_types: [Kino]    # u kina se nedotahuje detail (venue je kino)
     exclude_title: "(?i)zrušeno"
+  - name: valdstejnska-lodzie
+    label: Valdštejnská lodžie Jičín – Program
+    type: lodzie_program
+    url: https://valdstejnskalodzie.cz/program
+    place: Valdštejnská lodžie
+    venue: Jičín
+    priority: 8
   - name: goout
     label: GoOut (vstupenkové akce podle venue)
     type: goout

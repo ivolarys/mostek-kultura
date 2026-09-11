@@ -7,6 +7,7 @@ from .base import Source
 from .drupal_events import DrupalEventsSource
 from .galileo import GalileoSource
 from .goout import GoOutSource
+from .lodzie import LodzieSource
 from .public4u import Public4uSource
 
 REGISTRY: dict[str, type[Source]] = {
@@ -15,6 +16,7 @@ REGISTRY: dict[str, type[Source]] = {
     "public4u": Public4uSource,
     "goout": GoOutSource,
     "drupal_events": DrupalEventsSource,
+    "lodzie_program": LodzieSource,
 }
 
 

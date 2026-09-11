@@ -84,7 +84,7 @@ def test_goout_parse(cfg, root):
     assert fest.all_day
 
 
-@pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi"])
+@pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi", "valdstejnska-lodzie"])
 def test_fixture_manifest_present(root, name):
     assert (root / "tests" / "fixtures" / name / "manifest.json").exists()
 
@@ -101,3 +101,17 @@ def test_drupal_vrchlabi(cfg, root):
     assert kino.venue is None and not kino.all_day
     assert not any("ZRUŠENO" in x.title for x in events) or True  # exclude_title is applied in build, not fetch
     assert len({x.url for x in events}) == len(events)
+
+
+def test_lodzie(cfg, root):
+    events = _fetch(cfg, root, "valdstejnska-lodzie")
+    assert len(events) >= 10
+    e = next(x for x in events if "Beseda S Ježkem" in x.title)
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-13 15:30" and not e.all_day
+    assert e.url.startswith("https://valdstejnskalodzie.cz/program/")
+    assert e.description.startswith("Beseda s Jiřím Ježkem") and e.image
+    assert e.venue == "Jičín"
+    fest = next(x for x in events if x.title.startswith("MALÁ INVENTURA"))
+    assert fest.all_day and fest.start.day == 18
+    nxt = next(x for x in events if x.title.startswith("30 let"))
+    assert nxt.start.year == 2027
