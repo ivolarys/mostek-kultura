@@ -19,6 +19,9 @@ def test_offline_build(root, tmp_path):
     assert 'id="data"' in html and "Kultura kolem Mostku" in html
     assert "color-mix" not in html
     assert "source_labels" in html
+    assert 'rel="manifest"' in html
+    assert (tmp_path / "manifest.webmanifest").exists()
+    assert (tmp_path / "icon.svg").exists()
     zdroje = (tmp_path / "zdroje.html").read_text(encoding="utf-8")
     assert "Vrchlabí" in zdroje and "Město Trutnov" in zdroje and "Regionální zdroje" in zdroje
     assert "Zatím bez vlastního zdroje" in zdroje  # e.g. Hostinné has no source yet

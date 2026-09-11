@@ -28,7 +28,7 @@ build-backend = "setuptools.build_meta"
 include = ["mostek_kultura*"]
 
 [tool.setuptools.package-data]
-mostek_kultura = ["templates/*.j2"]
+mostek_kultura = ["templates/*.j2", "static/*"]
 
 [tool.ruff]
 line-length = 100

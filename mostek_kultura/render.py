@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 from dataclasses import asdict
 from datetime import date, timedelta
 from pathlib import Path
@@ -15,6 +16,7 @@ from .dates import now, today
 from .model import Event, SourceStatus
 
 TEMPLATES = Path(__file__).parent / "templates"
+STATIC = Path(__file__).parent / "static"
 
 
 def _ev_public(e: Event, cfg: Config) -> dict:
@@ -148,3 +150,8 @@ def render_site(events: list[Event], cfg: Config, statuses: list[SourceStatus], 
         generated_at=payload["generated_at"], **build_sources_page(events, cfg, statuses))
     (out_dir / "zdroje.html").write_text(zdroje, encoding="utf-8")
     (out_dir / ".nojekyll").write_text("")
+
+    if STATIC.is_dir():
+        for f in STATIC.iterdir():
+            if f.is_file():
+                shutil.copyfile(f, out_dir / f.name)

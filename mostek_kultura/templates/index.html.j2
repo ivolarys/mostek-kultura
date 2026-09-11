@@ -2,102 +2,116 @@
 <html lang="cs">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kultura kolem Mostku</title>
 <meta name="description" content="Kulturní akce v okolí obce Mostek: dnes, zítra, tento týden.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kultura">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2F2F7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
 <style>
-:root{--bg:#f7f6f2;--card:#fff;--fg:#1d1d1b;--muted:#6b6a64;--line:#e4e2da;--accent:#b4532a;--accent-bg:#fbeee7;--chip:#ecebe5;--chip-on:#1d1d1b;--chip-on-fg:#fff;--ok:#2f7d4f;--warn:#b07a12;--err:#b23a3a}
-@media (prefers-color-scheme:dark){:root{--bg:#161614;--card:#211f1c;--fg:#ecebe5;--muted:#a09e95;--line:#33312c;--accent:#e58a5e;--accent-bg:#3a2519;--chip:#2c2a26;--chip-on:#ecebe5;--chip-on-fg:#161614}}
-*{box-sizing:border-box}
-html{color-scheme:light dark}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:inherit}
-.wrap{max-width:960px;margin:0 auto;padding:16px}
-header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:12px}
-header h1{font-size:1.5rem;margin:0}
-header .sub{color:var(--muted);font-size:.9rem}
-.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:10px}
-.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 12px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer}
-.tabs button .n{font-weight:400;font-size:.8em;margin-left:4px;color:var(--muted)}
-.tabs button.on{color:var(--fg);border-bottom-color:var(--accent)}
-.bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
-.bar .lbl{color:var(--muted);font-size:.8rem;margin-right:2px;min-width:52px}
-.chip{background:var(--chip);border:0;border-radius:999px;padding:4px 11px;font:inherit;font-size:.85rem;cursor:pointer;color:var(--fg)}
-.chip.on{background:var(--chip-on);color:var(--chip-on-fg)}
-.chip .n{opacity:.6;font-size:.8em;margin-left:3px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.seg button{background:none;border:0;padding:4px 10px;font:inherit;font-size:.85rem;cursor:pointer;color:var(--muted)}
-.seg button.on{background:var(--chip-on);color:var(--chip-on-fg)}
-h2.grp{font-size:1rem;margin:18px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-h2.grp:first-child{margin-top:8px}
-.ev{display:grid;grid-template-columns:64px 1fr;gap:4px 12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:6px}
-.ev.img{grid-template-columns:64px 1fr 64px}
-.ev .t{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;white-space:nowrap;grid-column:1}
-.ev .t small{display:block;color:var(--muted);font-weight:400;font-size:.8em}
-.ev .h{font-weight:600;grid-column:2}
-a.ev{text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
-a.ev:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(180,83,42,.25)}
-@media (prefers-color-scheme:dark){a.ev:hover{box-shadow:0 1px 6px rgba(229,138,94,.25)}}
-a.ev:hover .h{text-decoration:underline}
-.ev .m{color:var(--muted);font-size:.85rem;grid-column:2}
-.c-koncert{--c:#c2552b;--cbg:#f6e7e1;--cbg-dark:#4e2e20;--cfg-dark:#da9980}
-.c-divadlo{--c:#7b4fa3;--cbg:#ede6f2;--cbg-dark:#3a2c42;--cfg-dark:#b095c8}
-.c-film{--c:#2f6fb5;--cbg:#e2ebf5;--cbg-dark:#253547;--cfg-dark:#82a9d3}
-.c-vystava{--c:#1f8a80;--cbg:#e0efed;--cbg-dark:#203d38;--cfg-dark:#79b9b3}
-.c-deti{--c:#c2438a;--cbg:#f6e5ef;--cbg-dark:#4e293b;--cfg-dark:#da8eb9}
-.c-trh{--c:#6a8f1f;--cbg:#eaefe0;--cbg-dark:#353e1d;--cfg-dark:#a6bc79}
-.c-sport{--c:#2f7d4f;--cbg:#e2ede6;--cbg-dark:#25392a;--cfg-dark:#82b195}
-.c-prednaska{--c:#4d5fb3;--cbg:#e6e9f4;--cbg-dark:#2d3146;--cfg-dark:#949fd1}
-.c-slavnost{--c:#c0392b;--cbg:#f6e3e1;--cbg-dark:#4e2620;--cfg-dark:#d98880}
-.c-komunita{--c:#8a6d3b;--cbg:#efebe4;--cbg-dark:#3e3525;--cfg-dark:#b9a789}
-.c-jine{--c:#6b6a64;--cbg:#eaeae9;--cbg-dark:#363430;--cfg-dark:#a6a6a2}
-:where(.badge){--c:var(--accent);--cbg:var(--accent-bg)}
-.badge{display:inline-block;background:var(--cbg);color:var(--c);border-radius:6px;padding:0 6px;font-size:.75rem;font-weight:600;margin-right:6px;vertical-align:1px}
-@media (prefers-color-scheme:dark){.badge{background:var(--cbg-dark,rgba(255,255,255,.08));color:var(--cfg-dark,var(--c))}}
-.chip[data-cat]{background:var(--cbg);color:var(--c);border:1px solid var(--c)}
-.chip[data-cat].on{background:var(--c);color:#fff;border-color:var(--c)}
-.chip[data-cat] .n{opacity:.75}
-@media (prefers-color-scheme:dark){.chip[data-cat]{background:var(--cbg-dark);color:var(--cfg-dark);border-color:var(--cfg-dark)}.chip[data-cat].on{background:var(--c);color:#fff}}
-h2.grp[data-cat]{color:var(--c)}
-h2.grp[data-cat]::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:8px;vertical-align:-1px}
-@media (prefers-color-scheme:dark){h2.grp[data-cat]{color:var(--cfg-dark)}}
-.ev .src{color:var(--muted);font-size:.72rem;opacity:.7;grid-column:2}
-.ev img{grid-column:3;grid-row:1/4;width:64px;height:64px;object-fit:cover;border-radius:6px}
-.empty{color:var(--muted);padding:24px 0;text-align:center}
-details.ongoing{margin-top:14px}
-details.ongoing summary{cursor:pointer;color:var(--muted);font-weight:600}
-footer{margin-top:28px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:.8rem}
-footer table{border-collapse:collapse;margin-top:6px}
-footer td{padding:2px 10px 2px 0}
-.s-ok{color:var(--ok)}.s-fallback{color:var(--warn)}.s-error{color:var(--err)}
-body.embed{font-size:13px}
-body.embed .wrap{padding:6px 8px}
-body.embed header,body.embed footer,body.embed .ev img{display:none}
-body.embed .ev,body.embed .ev.img{padding:6px 8px;margin-bottom:4px;grid-template-columns:52px 1fr}
-body.embed .src{display:none}
-@media (max-width:480px){.ev,.ev.img{grid-template-columns:56px 1fr}.ev img{display:none}}
+{% include "_base.css.j2" %}
+/* ==== layout ==== */
+body{padding-bottom:calc(50px + env(safe-area-inset-bottom))}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 24px}
+body{overflow-x:hidden}
+.lg-title{padding:12px 16px 4px}
+.lg-title h1{font-size:34px;font-weight:700;letter-spacing:-.4px;margin:0}
+.lg-title .sub{font-size:15px;color:var(--label2);margin:2px 0 0}
+.filters{position:sticky;top:0;z-index:10;background:rgba(242,242,247,.85);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--sep);padding:8px 0;margin:0 -16px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .filters{background:rgba(0,0,0,.8)}}
+:root[data-theme="dark"] .filters{background:rgba(0,0,0,.8)}
+.chiprow{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding:4px 16px;scrollbar-width:none}
+.chiprow::-webkit-scrollbar{display:none}
+.segrow{display:flex;align-items:center;gap:8px;padding:8px 16px 0}
+.seglabel{font-size:13px;color:var(--label2);margin-right:auto}
+.seg-tabs{display:none;width:100%;height:36px;margin:16px 0}
+.seg-tabs .seg-btn{flex:1 1 0;min-width:0;height:32px;font-size:14px;padding:0 6px;white-space:nowrap;overflow:hidden}
+@media (max-width:480px){.seg-tabs .seg-btn{font-size:13px;padding:0 4px}.seg-tabs .seg-btn .n{display:none}}
+
+/* ==== components: event rows ==== */
+.content-list{margin-top:4px}
+.time{width:52px;flex:0 0 52px;display:flex;flex-direction:column;justify-content:center}
+.time .hm{display:block;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;color:var(--tint)}
+.time .allday{display:block;font-size:12px;color:var(--label2)}
+.time .dd{display:block;font-size:12px;color:var(--label2)}
+.time .do{display:block;font-size:11px;color:var(--label2)}
+.srcline{display:none}
+@media (min-width:700px){.srcline{display:block}}
+.thumb{width:56px;height:56px;border-radius:8px;object-fit:cover;flex:0 0 56px}
+.ongoing summary{list-style:none;cursor:pointer}
+.ongoing summary::-webkit-details-marker{display:none}
+.ongoing summary .chev{transition:transform .2s}
+.ongoing[open] summary .chev{transform:rotate(90deg)}
+footer{margin-top:24px}
+footer .list-card{margin-bottom:8px}
+
+/* ==== bottom tab bar (mobile) ==== */
+.tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;height:calc(50px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:rgba(242,242,247,.85);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:.5px solid var(--sep);z-index:10}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabbar{background:rgba(0,0,0,.8)}}
+:root[data-theme="dark"] .tabbar{background:rgba(0,0,0,.8)}
+.tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--label3);min-height:44px}
+.tab-btn svg{width:24px;height:24px}
+.tab-btn.on{color:var(--tint)}
+.tab-label{font-size:10px}
+.tab-label .n{font-size:9px;opacity:.8;margin-left:2px}
+
+/* ==== responsive (desktop >=700px) ==== */
+@media (min-width:700px){
+body{font-size:15px;padding-bottom:0}
+.wrap{padding:0 24px 24px}
+.chiprow{margin:0 -24px;padding:4px 24px}
+.filters{margin:0 -24px}
+.tabbar{display:none}
+.seg-tabs{display:flex}
+}
+
+/* ==== embed mode ==== */
+body.embed{font-size:15px;padding-bottom:0;overflow-x:hidden}
+body.embed .wrap{padding:8px}
+body.embed .lg-title,body.embed footer,body.embed .tabbar{display:none!important}
+body.embed .seg-tabs{display:flex!important}
+body.embed .filters{margin:0 -8px}
+body.embed .chiprow{padding:4px 8px}
+body.embed .list-card{border-radius:10px}
+body.embed .srcline{display:none!important}
+body.embed .thumb{display:none}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header>
+<header class="lg-title">
   <h1>Kultura kolem Mostku</h1>
-  <span class="sub">Aktualizováno <span id="gen"></span> · <span id="total"></span> akcí v příštích týdnech · <a href="zdroje.html">zdroje</a></span>
+  <p class="sub">Aktualizováno <span id="gen"></span> · <span id="total"></span> akcí</p>
 </header>
-<nav class="tabs" id="tabs"></nav>
-<div class="bar" id="cats"><span class="lbl">Typ</span></div>
-<div class="bar" id="places"><span class="lbl">Místo</span></div>
-<div class="bar"><span class="lbl">Seskupit</span><span class="seg" id="group"></span></div>
-<main id="list"></main>
+
+<div class="filters">
+  <div class="chiprow" id="cats"></div>
+  <div class="chiprow" id="places"></div>
+  <div class="segrow">
+    <span class="seglabel">Seskupit</span>
+    <div class="seg" id="group"></div>
+  </div>
+</div>
+
+<div class="seg seg-tabs" id="tabsTop"></div>
+
+<main id="list" class="content-list"></main>
+
 <footer>
-  <div>Zdroje: automaticky stahováno jednou denně. Časy a místa ověřte u pořadatele. <a href="zdroje.html">Zdroje podle obce →</a></div>
-  <table>
-  {% for s in status.sources %}
-    <tr><td>{{ s.name }}</td><td class="s-{{ s.status }}">{{ {'ok':'OK','fallback':'záložní data','error':'chyba','disabled':'vypnuto'}[s.status] }}</td><td>{{ s.count|akce }}</td><td>{{ (s.fetched_at or '')[:16].replace('T',' ') }}</td></tr>
-  {% endfor %}
-  </table>
+  <div class="list-card">
+    <a class="row" href="zdroje.html">Zdroje podle obce<span class="chev">›</span></a>
+    <div class="row">Stav zdrojů: {{ status.sources|selectattr('status','equalto','ok')|list|length }} OK, {{ status.sources|rejectattr('status','equalto','ok')|list|length }} chyb{% set bad = status.sources|rejectattr('status','equalto','ok')|list %}{% if bad %} ({{ bad|map(attribute='name')|join(', ') }}){% endif %}</div>
+  </div>
+  <p class="disclaimer">Zdroje: automaticky stahováno jednou denně. Časy a místa ověřte u pořadatele.</p>
 </footer>
 </div>
+
+<nav class="tabbar" id="tabbar"></nav>
+
 <script type="application/json" id="data">{{ data_json|safe }}</script>
 <script>
 (function(){
@@ -114,7 +128,14 @@ const wd=dow(today);
 const satOff=5-wd; // negative on Sunday -> this weekend
 const weekend=[addDays(today,satOff),addDays(today,satOff+1)];
 const TABS=[['today','Dnes',[today,today]],['tomorrow','Zítra',[addDays(today,1),addDays(today,1)]],['weekend','Víkend',weekend],['week','Týden',[today,addDays(today,6)]],['all','Vše',[today,'9999']]];
-const GROUPS=[['day','podle dne'],['category','podle typu'],['place','podle místa']];
+const GROUPS=[['day','Den'],['category','Typ'],['place','Místo']];
+const ICONS={
+today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/></svg>',
+tomorrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/><path d="M9 15h6m0 0-2.2-2.2M15 15l-2.2 2.2"/></svg>',
+weekend:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>',
+week:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18M9 13h.01M12 13h.01M15 13h.01M9 17h.01M12 17h.01M15 17h.01"/></svg>',
+all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>'
+};
 const CAT=Object.fromEntries(D.categories.map(c=>[c.slug,c.label]));
 D.events.forEach(e=>{e.sd=fmtDate(new Date(e.start));e.ed=e.end?fmtDate(new Date(e.end)):e.sd;e.time=e.all_day?null:new Date(e.start).toLocaleTimeString('cs-CZ',{timeZone:TZ,hour:'2-digit',minute:'2-digit'})});
 document.getElementById('gen').textContent=new Date(D.generated_at).toLocaleString('cs-CZ',{timeZone:TZ,day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'});
@@ -130,46 +151,51 @@ if(!TABS.some(t=>t[0]===st.tab))st.tab='week';
 function inRange(e,r){if(e.ongoing)return e.sd<=r[1]&&e.ed>=r[0];return e.sd>=r[0]&&e.sd<=r[1]}
 function startsIn(e,r){return e.sd>=r[0]&&e.sd<=r[1]}
 function filt(e){return (!st.cat.size||st.cat.has(e.category))&&(!st.place.size||st.place.has(e.place||'?'))}
+const isDesktop=()=>typeof window.matchMedia==='function'&&window.matchMedia('(min-width:700px)').matches;
 const dayLabel=iso=>{const d=new Date(iso+'T12:00:00Z');const s=d.toLocaleDateString('cs-CZ',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'});return iso===today?'Dnes · '+s:iso===addDays(today,1)?'Zítra · '+s:s};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 function evHtml(e,showDate){
-  const when=e.ongoing?`<span class="t">do<small>${esc(e.ed.split('-').reverse().slice(0,2).join('. '))}.</small></span>`:`<span class="t">${e.time||'celý den'}${showDate?`<small>${esc(e.sd.split('-').reverse().slice(0,2).join('. '))}.</small>`:''}</span>`;
-  const img=!embed&&e.image?`<img src="${esc(e.image)}" alt="" loading="lazy">`:'';
+  const when=e.ongoing?`<div class="time"><span class="do">do</span><span class="dd">${esc(e.ed.split('-').reverse().slice(0,2).join('. '))}.</span></div>`:`<div class="time">${e.time?`<span class="hm">${e.time}</span>`:'<span class="allday">celý den</span>'}${showDate?`<span class="dd">${esc(e.sd.split('-').reverse().slice(0,2).join('. '))}.</span>`:''}</div>`;
+  const img=!embed&&e.image?`<img class="thumb" src="${esc(e.image)}" alt="" loading="lazy">`:'';
   const where=[e.place,e.venue&&e.venue!==e.place?e.venue:null].filter(Boolean).join(' · ');
-  const inner=`${when}<div class="h">${esc(e.title)}</div><div class="m"><span class="badge c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span>${esc(where)}</div><div class="src">zdroj: ${esc((e.source_labels||e.sources).join(', '))}</div>${img}`;
-  const cls=`ev${img?' img':''}`;
-  return e.url?`<a class="${cls}" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="${cls}">${inner}</div>`;
+  const inner=`${when}<div class="content"><div class="title">${esc(e.title)}</div><div class="meta"><span class="pill c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span><span class="where">${esc(where)}</span></div><div class="subline srcline">zdroj: ${esc((e.source_labels||e.sources).join(', '))}</div></div>${img}<span class="chev">›</span>`;
+  return e.url?`<a class="row" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="row">${inner}</div>`;
 }
 function render(){
   const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];
   const all=D.events.filter(filt);
   const main=all.filter(e=>startsIn(e,r)||(e.ongoing&&st.tab==='all'));
   const ongoing=st.tab==='all'?[]:all.filter(e=>e.ongoing&&!startsIn(e,r)&&inRange(e,r));
-  // tabs
-  document.getElementById('tabs').innerHTML=TABS.map(t=>{const n=D.events.filter(filt).filter(e=>startsIn(e,t[2])||(t[0]==='all'&&e.ongoing)).length;return `<button data-tab="${t[0]}" class="${t[0]===st.tab?'on':''}">${t[1]}<span class="n">${n}</span></button>`}).join('');
+  // tabs (shared counts for top segmented control + bottom tab bar)
+  const filtAll=D.events.filter(filt);
+  const tc=TABS.map(t=>filtAll.filter(e=>startsIn(e,t[2])||(t[0]==='all'&&e.ongoing)).length);
+  document.getElementById('tabsTop').innerHTML=TABS.map((t,i)=>`<button data-tab="${t[0]}" class="seg-btn${t[0]===st.tab?' on':''}">${t[1]}<span class="n">${tc[i]}</span></button>`).join('');
+  document.getElementById('tabbar').innerHTML=TABS.map((t,i)=>`<button data-tab="${t[0]}" class="tab-btn${t[0]===st.tab?' on':''}">${ICONS[t[0]]}<span class="tab-label">${t[1]}<span class="n">${tc[i]}</span></span></button>`).join('');
   // chips (counts within current tab, ignoring the chip's own filter)
   const inTab=D.events.filter(e=>startsIn(e,r)||(st.tab==='all'&&e.ongoing));
   const cc={},pc={};inTab.forEach(e=>{if(!st.place.size||st.place.has(e.place||'?'))cc[e.category]=(cc[e.category]||0)+1;if(!st.cat.size||st.cat.has(e.category))pc[e.place||'?']=(pc[e.place||'?']||0)+1});
-  document.getElementById('cats').innerHTML='<span class="lbl">Typ</span>'+D.categories.filter(c=>cc[c.slug]||st.cat.has(c.slug)).map(c=>`<button class="chip c-${c.slug} ${st.cat.has(c.slug)?'on':''}" data-cat="${c.slug}">${c.label}<span class="n">${cc[c.slug]||0}</span></button>`).join('');
+  document.getElementById('cats').innerHTML=`<button class="chip${st.cat.size?'':' on'}" data-clear="cat">Vše</button>`+D.categories.filter(c=>cc[c.slug]||st.cat.has(c.slug)).map(c=>`<button class="chip c-${c.slug} ${st.cat.has(c.slug)?'on':''}" data-cat="${c.slug}">${esc(c.label)}<span class="n">${cc[c.slug]||0}</span></button>`).join('');
   const places=Object.keys(pc).sort((a,b)=>pc[b]-pc[a]);[...st.place].forEach(p=>{if(!places.includes(p))places.push(p)});
-  document.getElementById('places').innerHTML='<span class="lbl">Místo</span>'+places.map(p=>`<button class="chip ${st.place.has(p)?'on':''}" data-place="${esc(p)}">${esc(p==='?'?'neurčeno':p)}<span class="n">${pc[p]||0}</span></button>`).join('');
-  document.getElementById('group').innerHTML=GROUPS.map(g=>`<button data-group="${g[0]}" class="${g[0]===st.group?'on':''}">${g[1]}</button>`).join('');
+  document.getElementById('places').innerHTML=`<button class="chip${st.place.size?'':' on'}" data-clear="place">Vše</button>`+places.map(p=>`<button class="chip ${st.place.has(p)?'on':''}" data-place="${esc(p)}">${esc(p==='?'?'neurčeno':p)}<span class="n">${pc[p]||0}</span></button>`).join('');
+  document.getElementById('group').innerHTML=GROUPS.map(g=>`<button data-group="${g[0]}" class="seg-btn${g[0]===st.group?' on':''}">${g[1]}</button>`).join('');
   // list
   const key=e=>st.group==='day'?e.sd:st.group==='category'?e.category:(e.place||'?');
   const label=k=>st.group==='day'?dayLabel(k):st.group==='category'?(CAT[k]||k):(k==='?'?'Místo neurčeno':k);
   const groups={};main.forEach(e=>{(groups[key(e)]=groups[key(e)]||[]).push(e)});
   let keys=Object.keys(groups);
   if(st.group==='category')keys.sort((a,b)=>D.categories.findIndex(c=>c.slug===a)-D.categories.findIndex(c=>c.slug===b));else if(st.group==='place')keys.sort((a,b)=>groups[b].length-groups[a].length);else keys.sort();
-  let html=keys.map(k=>`<h2 class="grp${st.group==='category'?' c-'+esc(k):''}"${st.group==='category'?' data-cat="'+esc(k)+'"':''}>${esc(label(k))}</h2>`+groups[k].sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,st.group!=='day')).join('')).join('');
-  if(!main.length)html='<div class="empty">Žádné akce.</div>';
-  if(ongoing.length)html+=`<details class="ongoing"${embed?'':' open'}><summary>Probíhající výstavy a vícedenní akce (${ongoing.length})</summary>${ongoing.map(e=>evHtml(e,false)).join('')}</details>`;
+  let html=keys.map(k=>`<h2 class="grp${st.group==='category'?' c-'+esc(k):''}"${st.group==='category'?' data-cat="'+esc(k)+'"':''}>${esc(label(k))}</h2><div class="list-card">${groups[k].sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,st.group!=='day')).join('')}</div>`).join('');
+  if(!main.length)html='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/></svg><div class="empty-title">Žádné akce</div><div class="empty-sub">Zkuste jiný den nebo zrušte filtry.</div></div>';
+  if(ongoing.length){const open=!embed&&isDesktop();html+=`<h2 class="grp">Probíhající výstavy a vícedenní akce</h2><div class="list-card"><details class="ongoing"${open?' open':''}><summary class="row tap">Zobrazit (${ongoing.length})<span class="chev">›</span></summary>${ongoing.map(e=>evHtml(e,false)).join('')}</details></div>`}
   document.getElementById('list').innerHTML=html;
   writeHash();
 }
 document.addEventListener('click',ev=>{
   const b=ev.target.closest('button');if(!b)return;
   if(b.dataset.tab){st.tab=b.dataset.tab}
+  else if(b.dataset.clear==='cat'){st.cat.clear()}
+  else if(b.dataset.clear==='place'){st.place.clear()}
   else if(b.dataset.cat){st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat)}
   else if(b.dataset.place){st.place.has(b.dataset.place)?st.place.delete(b.dataset.place):st.place.add(b.dataset.place)}
   else if(b.dataset.group){st.group=b.dataset.group}
