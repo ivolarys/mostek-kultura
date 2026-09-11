@@ -130,33 +130,42 @@ category_map:
 # place (výchozí obec, když se z akce nedá určit), exclude_title (regex, akce se zahodí), max_events.
 sources:
   - name: mostek
+    label: Obec Mostek – Kam za kulturou
     type: galileo
     url: https://www.mostek.cz/zivot-v-obci/volny-cas/kam-za-kulturou/
     place: Mostek
     priority: 8
     exclude_title: "(?i)svoz|odpad"
   - name: mostek-okoli
+    label: Obec Mostek – Akce v okolí
     type: galileo
     url: https://www.mostek.cz/zivot-v-obci/volny-cas/akce-v-okoli/
     priority: 6
   - name: lazne-belohrad
+    label: Město Lázně Bělohrad – Kalendář akcí
     type: antee_rss
     url: https://www.lazne-belohrad.cz/kalendar-akci?action=atom
+    page: https://www.lazne-belohrad.cz/kalendar-akci
     place: Lázně Bělohrad
     priority: 8
   - name: dvur-kralove
+    label: Město Dvůr Králové nad Labem – Kalendář akcí
     type: public4u
     url: https://www.mudk.cz/redakce/index.php?lanG=cs&subakce=events
+    page: https://www.mudk.cz/redakce/index.php?lanG=cs&subakce=events
     place: Dvůr Králové nad Labem
     priority: 7
     months: 3
   - name: trutnov
+    label: Město Trutnov – Kalendář akcí
     type: public4u
     url: https://www.trutnov.cz/redakce/index.php?lanG=cs&subakce=events
+    page: https://www.trutnov.cz/dre-cs/
     place: Trutnov
     priority: 7
     months: 3
   - name: vrchlabi
+    label: Město Vrchlabí – Kalendář akcí
     type: drupal_events
     url: https://www.mestovrchlabi.cz/kalendar-akci
     place: Vrchlabí
@@ -165,8 +174,10 @@ sources:
     skip_detail_types: [Kino]    # u kina se nedotahuje detail (venue je kino)
     exclude_title: "(?i)zrušeno"
   - name: goout
+    label: GoOut (vstupenkové akce podle venue)
     type: goout
     url: https://goout.net/services/entities/v1
+    page: https://goout.net/cs/
     priority: 4
     venue_queries: [Trutnov, Dvůr Králové, Hostinné, Jaroměř, Kuks, Pecka, Lázně Bělohrad, Mostek, Jičín, Vrchlabí]
     bbox: [50.30, 15.30, 50.75, 16.10]   # lat_min, lon_min, lat_max, lon_max – venue mimo se ignorují

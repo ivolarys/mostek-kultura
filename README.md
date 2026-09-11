@@ -5,6 +5,7 @@ Denní přehled kulturních a společenských akcí v okolí obce Mostek (okres 
 - Veřejná stránka: **https://ivolarys.github.io/mostek-kultura/**
 - JSON pro Home Assistant: `https://ivolarys.github.io/mostek-kultura/summary.json`
 - Kompaktní režim pro iframe: `?embed=1&tab=week`
+- Zdroje podle obce: `https://ivolarys.github.io/mostek-kultura/zdroje.html`
 
 ## Jak to funguje
 

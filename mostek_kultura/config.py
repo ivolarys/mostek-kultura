@@ -31,7 +31,17 @@ class SourceConfig:
     place: str | None = None
     exclude_title: str | None = None
     max_events: int | None = None
+    label: str | None = None      # human-readable name for the sources page
+    page: str | None = None       # human-facing URL (defaults to url)
     extra: dict = field(default_factory=dict)
+
+    @property
+    def title(self) -> str:
+        return self.label or self.name
+
+    @property
+    def page_url(self) -> str:
+        return self.page or self.url
 
 
 @dataclass
@@ -56,7 +66,8 @@ class Config:
         return "Jiné"
 
 
-KNOWN_SOURCE_KEYS = {"name", "type", "url", "enabled", "priority", "place", "exclude_title", "max_events"}
+KNOWN_SOURCE_KEYS = {"name", "type", "url", "enabled", "priority", "place", "exclude_title", "max_events",
+                     "label", "page"}
 
 
 def load_config(path: Path) -> Config:
@@ -78,7 +89,8 @@ def load_config(path: Path) -> Config:
         sources.append(SourceConfig(
             name=s["name"], type=s["type"], url=s.get("url", ""), enabled=s.get("enabled", True),
             priority=int(s.get("priority", 5)), place=s.get("place"),
-            exclude_title=s.get("exclude_title"), max_events=s.get("max_events"), extra=extra,
+            exclude_title=s.get("exclude_title"), max_events=s.get("max_events"),
+            label=s.get("label"), page=s.get("page"), extra=extra,
         ))
     return Config(
         timezone=raw.get("timezone", "Europe/Prague"),

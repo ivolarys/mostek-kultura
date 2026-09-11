@@ -16,5 +16,8 @@ def test_offline_build(root, tmp_path):
     assert (tmp_path / "summary.json").stat().st_size < 16_000
     html = (tmp_path / "index.html").read_text(encoding="utf-8")
     assert 'id="data"' in html and "Kultura kolem Mostku" in html
+    zdroje = (tmp_path / "zdroje.html").read_text(encoding="utf-8")
+    assert "Vrchlabí" in zdroje and "Město Trutnov" in zdroje and "Regionální zdroje" in zdroje
+    assert "Zatím bez vlastního zdroje" in zdroje  # e.g. Hostinné has no source yet
     status = json.loads((tmp_path / "status.json").read_text(encoding="utf-8"))
     assert {s["name"] for s in status["sources"]} >= {"mostek", "lazne-belohrad", "dvur-kralove", "trutnov"}

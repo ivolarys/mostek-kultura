@@ -6,6 +6,7 @@ import json
 from dataclasses import asdict
 from datetime import date, timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -77,6 +78,44 @@ def build_summary(events: list[Event], cfg: Config, statuses: list[SourceStatus]
     return out
 
 
+def plural_akce(n: int) -> str:
+    return f"{n} akce" if n == 1 else f"{n} akce" if 2 <= n <= 4 else f"{n} akcí"
+
+
+STATUS_LABEL = {"ok": "OK", "fallback": "záložní data", "error": "chyba", "disabled": "vypnuto"}
+
+
+def build_sources_page(events: list[Event], cfg: Config, statuses: list[SourceStatus]) -> dict:
+    """Sources grouped by municipality for zdroje.html."""
+    st = {s.name: s for s in statuses}
+    per_place: dict[str | None, int] = {}
+    for e in events:
+        per_place[e.place] = per_place.get(e.place, 0) + 1
+
+    def info(s) -> dict:
+        x = st.get(s.name)
+        covers = []
+        if s.type == "goout":
+            covers = list(s.extra.get("venue_queries", []))
+        return {
+            "name": s.name, "title": s.title, "type": s.type, "page": s.page_url,
+            "host": urlsplit(s.page_url).hostname or "",
+            "status": x.status if x else "disabled",
+            "status_label": STATUS_LABEL.get(x.status if x else "disabled", "?"),
+            "count": x.count if x else 0,
+            "fetched": (x.fetched_at or "")[:16].replace("T", " ") if x else "",
+            "covers": covers,
+        }
+
+    groups = []
+    for p in cfg.places:
+        srcs = [info(s) for s in cfg.sources if s.place == p.name]
+        groups.append({"place": p.name, "aliases": p.aliases[:6], "sources": srcs,
+                       "event_count": per_place.get(p.name, 0)})
+    regional = [info(s) for s in cfg.sources if not s.place]
+    return {"groups": groups, "regional": regional, "venues_allow": cfg.venues_allow}
+
+
 def render_site(events: list[Event], cfg: Config, statuses: list[SourceStatus], out_dir: Path) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     events = sorted(events, key=lambda e: (e.start, e.title))
@@ -95,10 +134,14 @@ def render_site(events: list[Event], cfg: Config, statuses: list[SourceStatus], 
     (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False), encoding="utf-8")
 
     env = Environment(loader=FileSystemLoader(TEMPLATES), autoescape=select_autoescape(["html", "j2"]))
+    env.filters["akce"] = plural_akce
     tpl = env.get_template("index.html.j2")
     html = tpl.render(
         data_json=json.dumps(payload, ensure_ascii=False).replace("</", "<\\/"),
         status=status, generated_at=payload["generated_at"], count=len(events),
     )
     (out_dir / "index.html").write_text(html, encoding="utf-8")
+    zdroje = env.get_template("zdroje.html.j2").render(
+        generated_at=payload["generated_at"], **build_sources_page(events, cfg, statuses))
+    (out_dir / "zdroje.html").write_text(zdroje, encoding="utf-8")
     (out_dir / ".nojekyll").write_text("")
