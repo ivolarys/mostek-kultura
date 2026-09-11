@@ -41,9 +41,18 @@ def test_explicit_place_raw_wins_over_title(cfg):
     assert e.place is None and not in_scope(e, r)
 
 
-def test_venues_allow(cfg):
+def test_lodzie_is_its_own_place(cfg):
     r = PlaceResolver(cfg)
     e = ev("Koncert", venue="Valdštejnská lodžie", place_raw="Jičín")
+    resolve_places([e], r)
+    assert e.place == "Valdštejnská lodžie" and in_scope(e, r)
+
+
+def test_venues_allow(cfg):
+    import dataclasses
+    cfg2 = dataclasses.replace(cfg, venues_allow=["Sokolovna Horka"])
+    r = PlaceResolver(cfg2)
+    e = ev("Koncert", venue="Sokolovna Horka", place_raw="Horka u Staré Paky")
     resolve_places([e], r)
     assert e.place is None and in_scope(e, r)
 

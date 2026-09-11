@@ -28,4 +28,6 @@ Denní agregátor kulturních akcí v okolí obce Mostek. GitHub Actions (cron 0
 - 2026-09-11: Public4u má dva šablonové výpisy: mudk.cz (karty, jen datum) a trutnov.cz (tabulka s místem a časem). Pro mudk se dotahuje detail.
 - 2026-09-11: mostek.cz (Galileo) vrací 503 na RSS, HTML jde s browser User-Agentem. `data-date-start` s časem 00:00:00 = bez času.
 - 2026-09-11: mestovrchlabi.cz (Drupal 9): teaser má `<time datetime>` ISO a typ, detail adresu a konec; stránkování `?page=N` po 12.
+- 2026-09-11: Galileo má dvě šablony výpisu: `.event-action__item` (mostek.cz) a starší `div.event.event-message` (bilatremesna.cz, dolnibrusnice.cz, kuks.cz); parser umí obě.
+- 2026-09-11: hospital-kuks.cz (NPÚ) renderuje jen aktuální okno akcí, měsíční záložky jsou JS. domovsvatehojosefa.cz má akce na homepage (`article.b-article`), bez času.
 - 2026-09-11: hkregion.cz má jinou šablonu než ostatní Public4u weby, zatím nepoužito.

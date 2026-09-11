@@ -84,7 +84,9 @@ def test_goout_parse(cfg, root):
     assert fest.all_day
 
 
-@pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi", "valdstejnska-lodzie"])
+@pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi",
+                                  "valdstejnska-lodzie", "kuks-hospital", "zirec-domov", "bila-tremesna",
+                                  "bila-tremesna-okoli", "kuks-obec", "dolni-brusnice"])
 def test_fixture_manifest_present(root, name):
     assert (root / "tests" / "fixtures" / name / "manifest.json").exists()
 
@@ -115,3 +117,40 @@ def test_lodzie(cfg, root):
     assert fest.all_day and fest.start.day == 18
     nxt = next(x for x in events if x.title.startswith("30 let"))
     assert nxt.start.year == 2027
+
+
+def test_npu_kuks(cfg, root):
+    events = _fetch(cfg, root, "kuks-hospital")
+    assert len(events) >= 1
+    e = next(x for x in events if x.title.startswith("Vinobraní"))
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-12 10:00" and e.end.strftime("%H:%M") == "18:00"
+    assert e.venue == "hospitál Kuks" and e.native_category == "Společenské akce"
+    assert e.url == "https://www.hospital-kuks.cz/cs/akce/1658-vinobrani-na-hospitalu-kuks"
+
+
+def test_josefa_zirec(cfg, root):
+    events = _fetch(cfg, root, "zirec-domov")
+    assert len(events) >= 5
+    e = next(x for x in events if x.title.startswith("Konference"))
+    assert e.start.strftime("%Y-%m-%d") == "2026-10-08" and e.all_day
+    assert e.venue == "Domov sv. Josefa" and "konferenci" in e.description
+    assert e.url.startswith("https://www.domovsvatehojosefa.cz/")
+    assert len({x.native_id for x in events}) == len(events)
+
+
+def test_galileo_old_template(cfg, root):
+    events = _fetch(cfg, root, "bila-tremesna-okoli")
+    assert len(events) >= 5
+    e = next(x for x in events if x.title.startswith("Phobos"))
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-11 17:00" and not e.all_day
+    assert e.venue is None  # empty "Kde:" must not leak into venue
+    assert "Safari" in e.description
+    rng = next(x for x in events if x.title == "Víkend ve fotbalu")
+    assert rng.all_day and rng.start.day == 11 and rng.end.day == 13
+    local = _fetch(cfg, root, "bila-tremesna")
+    assert any("burza" in x.title.lower() for x in local)
+
+
+def test_galileo_old_template_empty(cfg, root):
+    assert _fetch(cfg, root, "dolni-brusnice") == []
+    assert _fetch(cfg, root, "kuks-obec") == []

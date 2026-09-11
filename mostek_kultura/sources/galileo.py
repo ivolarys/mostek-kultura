@@ -1,4 +1,9 @@
-"""Galileo CMS (mostek.cz, jaromer-josefov.cz): event list with full details inline."""
+"""Galileo CMS municipal sites.
+
+Two list templates: the newer one (mostek.cz: `.event-action__item` with `data-date-start`) and the
+older one (bilatremesna.cz, dolnibrusnice.cz, kuks.cz: `div.event.event-message` with `h3.event-name`,
+`.action_date` "11. 9. 2026 začátek od 17:00" / "11. 9. 2026 - 13. 9. 2026", `.venues`, `p.event-perex`).
+"""
 
 from __future__ import annotations
 
@@ -17,6 +22,30 @@ class GalileoSource(Source):
     def parse(self, html: str) -> list[Event]:
         doc = soup(html)
         events: list[Event] = []
+        for item in doc.select("div.event.event-message"):
+            a = item.select_one("a.event-link")
+            name = item.select_one(".event-name")
+            date_el = item.select_one(".action_date")
+            if not a or not name or not date_el:
+                continue
+            parsed = parse_cz(clean(date_el.get_text()))
+            if not parsed:
+                continue
+            start, end, all_day = parsed
+            venue = item.select_one(".venues")
+            if venue:
+                for junk in venue.select(".sr-only, i"):
+                    junk.extract()
+            perex = item.select_one(".event-perex")
+            img = item.select_one("img")
+            events.append(self.event(
+                title=clean(name.get_text()), start=start, end=end, all_day=all_day,
+                url=urljoin(self.cfg.url, a["href"]),
+                venue=clean(venue.get_text()) or None if venue else None,
+                description=clean(perex.get_text())[:500] if perex else "",
+                image=urljoin(self.cfg.url, img["src"]) if img and img.get("src") else None,
+                native_id=item.get("id"),
+            ))
         for item in doc.select(".event-action__item"):
             link = item.select_one("a.event-action__link")
             heading = item.select_one(".event-action__heading")

@@ -178,6 +178,41 @@ sources:
     pages: 4                     # 12 akcí na stránku
     skip_detail_types: [Kino]    # u kina se nedotahuje detail (venue je kino)
     exclude_title: "(?i)zrušeno"
+  - name: kuks-hospital
+    label: Hospitál Kuks (NPÚ) – Akce
+    type: npu_events
+    url: https://www.hospital-kuks.cz/cs/akce
+    place: Kuks
+    priority: 8
+  - name: kuks-obec
+    label: Obec Kuks – Akce v Kuksu a okolí
+    type: galileo
+    url: https://www.kuks.cz/obec-174/akce-v-kuksu-a-okoli/
+    place: Kuks
+    priority: 6
+  - name: zirec-domov
+    label: Domov sv. Josefa Žireč – Akce
+    type: josefa_events
+    url: https://www.domovsvatehojosefa.cz/
+    place: Žireč
+    priority: 8
+  - name: bila-tremesna
+    label: Obec Bílá Třemešná – Kalendář akcí
+    type: galileo
+    url: https://www.bilatremesna.cz/volny-cas/kalendar-akci-v-bile-tremesne/
+    place: Bílá Třemešná
+    priority: 8
+  - name: bila-tremesna-okoli
+    label: Obec Bílá Třemešná – Akce v okolí (Zvičina, Dvůr Králové…)
+    type: galileo
+    url: https://www.bilatremesna.cz/volny-cas/kalendar-akci-v-okoli/
+    priority: 5
+  - name: dolni-brusnice
+    label: Obec Dolní Brusnice – Kalendář akcí
+    type: galileo
+    url: https://www.dolnibrusnice.cz/volny-cas/kalendar-akci/
+    place: Dolní Brusnice
+    priority: 7
   - name: valdstejnska-lodzie
     label: Valdštejnská lodžie Jičín – Program
     type: lodzie_program

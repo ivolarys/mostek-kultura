@@ -28,7 +28,7 @@ python -m http.server -d site 8000                            # http://localhost
 ## Jak přidat obec nebo zdroj
 
 - **Obec / venue:** přidej položku do `places` (název + aliasy, jak se místo objevuje v textech) nebo do `venues_allow` (konkrétní místo bez ohledu na obec).
-- **Zdroj existujícího typu** (`galileo`, `antee_rss`, `public4u`, `goout`, `drupal_events`): přidej záznam do `sources` s `url`, `place` (výchozí obec) a `priority`. Pak `build --record --source <name> --no-llm` nahraje fixture pro testy.
+- **Zdroj existujícího typu** (`galileo`, `antee_rss`, `public4u`, `goout`, `drupal_events`, `lodzie_program`, `npu_events`, `josefa_events`): přidej záznam do `sources` s `url`, `place` (výchozí obec) a `priority`. Pak `build --record --source <name> --no-llm` nahraje fixture pro testy.
 - **Nový typ zdroje:** modul v `mostek_kultura/sources/` s třídou odvozenou od `Source` (metoda `fetch(http) -> list[Event]`), registrace v `sources/__init__.py`, fixture a test v `tests/test_sources.py`.
 
 ## Home Assistant
