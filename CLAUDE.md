@@ -25,4 +25,5 @@ Denní agregátor kulturních akcí v okolí obce Mostek. GitHub Actions (cron 0
 - 2026-09-11: GoOut API ignoruje geo parametry na `/schedules`; funguje `/venues?query=<město>` + `/schedules?venueIds[]=`. Max `limit=48`. `languages[]=cs` je povinné.
 - 2026-09-11: Public4u má dva šablonové výpisy: mudk.cz (karty, jen datum) a trutnov.cz (tabulka s místem a časem). Pro mudk se dotahuje detail.
 - 2026-09-11: mostek.cz (Galileo) vrací 503 na RSS, HTML jde s browser User-Agentem. `data-date-start` s časem 00:00:00 = bez času.
+- 2026-09-11: mestovrchlabi.cz (Drupal 9): teaser má `<time datetime>` ISO a typ, detail adresu a konec; stránkování `?page=N` po 12.
 - 2026-09-11: hkregion.cz má jinou šablonu než ostatní Public4u weby, zatím nepoužito.

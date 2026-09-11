@@ -156,9 +156,17 @@ sources:
     place: Trutnov
     priority: 7
     months: 3
+  - name: vrchlabi
+    type: drupal_events
+    url: https://www.mestovrchlabi.cz/kalendar-akci
+    place: Vrchlabí
+    priority: 7
+    pages: 4                     # 12 akcí na stránku
+    skip_detail_types: [Kino]    # u kina se nedotahuje detail (venue je kino)
+    exclude_title: "(?i)zrušeno"
   - name: goout
     type: goout
     url: https://goout.net/services/entities/v1
     priority: 4
-    venue_queries: [Trutnov, Dvůr Králové, Hostinné, Jaroměř, Kuks, Pecka, Lázně Bělohrad, Mostek, Jičín]
+    venue_queries: [Trutnov, Dvůr Králové, Hostinné, Jaroměř, Kuks, Pecka, Lázně Bělohrad, Mostek, Jičín, Vrchlabí]
     bbox: [50.30, 15.30, 50.75, 16.10]   # lat_min, lon_min, lat_max, lon_max – venue mimo se ignorují

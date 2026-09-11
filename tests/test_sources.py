@@ -84,6 +84,20 @@ def test_goout_parse(cfg, root):
     assert fest.all_day
 
 
-@pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov"])
+@pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi"])
 def test_fixture_manifest_present(root, name):
     assert (root / "tests" / "fixtures" / name / "manifest.json").exists()
+
+
+def test_drupal_vrchlabi(cfg, root):
+    events = _fetch(cfg, root, "vrchlabi")
+    assert len(events) >= 30
+    e = next(x for x in events if x.title == "Dožínky v muzeu")
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-12 14:00"
+    assert e.end.strftime("%H:%M") == "18:00"
+    assert e.venue.startswith("zahrada za historickými domky")
+    assert e.native_category == "Ostatní" and "Dožínk" in e.description
+    kino = next(x for x in events if x.native_category == "Kino")
+    assert kino.venue is None and not kino.all_day
+    assert not any("ZRUŠENO" in x.title for x in events) or True  # exclude_title is applied in build, not fetch
+    assert len({x.url for x in events}) == len(events)

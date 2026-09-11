@@ -9,5 +9,7 @@
  "https://goout.net/services/entities/v1/venues?languages[]=cs&limit=48&query=Mostek": "b19d7fad97f3.json",
  "https://goout.net/services/entities/v1/venues?languages[]=cs&limit=48&query=Ji%C4%8D%C3%ADn": "e2907e86554e.json",
  "https://goout.net/services/entities/v1/schedules?languages[]=cs&limit=48&source=goout&include=events,venues&venueIds[]=28598&venueIds[]=8904&venueIds[]=8781&venueIds[]=63472&venueIds[]=87627&venueIds[]=64441&venueIds[]=70916&venueIds[]=53777&venueIds[]=8772&venueIds[]=63931&venueIds[]=64504&venueIds[]=64498&venueIds[]=63967&venueIds[]=69912&venueIds[]=64501&venueIds[]=54274&venueIds[]=67058&venueIds[]=78622&venueIds[]=38564&venueIds[]=61958": "fdb5fbe09d63.json",
- "https://goout.net/services/entities/v1/schedules?languages[]=cs&limit=48&source=goout&include=events,venues&venueIds[]=53892&venueIds[]=69915&venueIds[]=61765": "349ada6f3522.json"
+ "https://goout.net/services/entities/v1/schedules?languages[]=cs&limit=48&source=goout&include=events,venues&venueIds[]=53892&venueIds[]=69915&venueIds[]=61765": "349ada6f3522.json",
+ "https://goout.net/services/entities/v1/venues?languages[]=cs&limit=48&query=Vrchlab%C3%AD": "e74f75a343f1.json",
+ "https://goout.net/services/entities/v1/schedules?languages[]=cs&limit=48&source=goout&include=events,venues&venueIds[]=53892&venueIds[]=69915&venueIds[]=61765&venueIds[]=65097&venueIds[]=67664&venueIds[]=77556&venueIds[]=68096&venueIds[]=9743": "b80cedd1bebc.json"
 }
