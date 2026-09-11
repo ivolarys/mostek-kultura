@@ -41,9 +41,15 @@ h2.grp:first-child{margin-top:8px}
 .c-koncert{--c:#c2552b}.c-divadlo{--c:#7b4fa3}.c-film{--c:#2f6fb5}.c-vystava{--c:#1f8a80}.c-deti{--c:#c2438a}.c-trh{--c:#6a8f1f}.c-sport{--c:#2f7d4f}.c-prednaska{--c:#4d5fb3}.c-slavnost{--c:#c0392b}.c-komunita{--c:#8a6d3b}.c-jine{--c:#6b6a64}
 .badge{display:inline-block;--c:var(--accent);background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c);border-radius:6px;padding:0 6px;font-size:.75rem;font-weight:600;margin-right:6px;vertical-align:1px}
 @media (prefers-color-scheme:dark){.badge{background:color-mix(in srgb,var(--c) 28%,var(--card));color:color-mix(in srgb,var(--c) 60%,white)}}
-.chip[data-cat]::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c,var(--muted));margin-right:6px;vertical-align:0}
+.chip[data-cat]{background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c);border:1px solid color-mix(in srgb,var(--c) 35%,transparent)}
+.chip[data-cat].on{background:var(--c);color:#fff;border-color:var(--c)}
+.chip[data-cat] .n{opacity:.75}
+@media (prefers-color-scheme:dark){.chip[data-cat]{background:color-mix(in srgb,var(--c) 26%,var(--card));color:color-mix(in srgb,var(--c) 60%,white)}.chip[data-cat].on{background:var(--c);color:#fff}}
+h2.grp[data-cat]{color:var(--c)}
+h2.grp[data-cat]::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:8px;vertical-align:-1px}
+@media (prefers-color-scheme:dark){h2.grp[data-cat]{color:color-mix(in srgb,var(--c) 60%,white)}}
 .ev .src{color:var(--muted);font-size:.72rem;opacity:.7;grid-column:2}
-.ev img{grid-column:3;grid-row:1/4;width:64px;height:64px;object-fit:cover;border-radius:6px;background:var(--chip)}
+.ev img{grid-column:3;grid-row:1/4;width:64px;height:64px;object-fit:cover;border-radius:6px}
 .empty{color:var(--muted);padding:24px 0;text-align:center}
 details.ongoing{margin-top:14px}
 details.ongoing summary{cursor:pointer;color:var(--muted);font-weight:600}
@@ -140,7 +146,7 @@ function render(){
   const groups={};main.forEach(e=>{(groups[key(e)]=groups[key(e)]||[]).push(e)});
   let keys=Object.keys(groups);
   if(st.group==='category')keys.sort((a,b)=>D.categories.findIndex(c=>c.slug===a)-D.categories.findIndex(c=>c.slug===b));else if(st.group==='place')keys.sort((a,b)=>groups[b].length-groups[a].length);else keys.sort();
-  let html=keys.map(k=>`<h2 class="grp">${esc(label(k))}</h2>`+groups[k].sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,st.group!=='day')).join('')).join('');
+  let html=keys.map(k=>`<h2 class="grp${st.group==='category'?' c-'+esc(k):''}"${st.group==='category'?' data-cat="'+esc(k)+'"':''}>${esc(label(k))}</h2>`+groups[k].sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,st.group!=='day')).join('')).join('');
   if(!main.length)html='<div class="empty">Žádné akce.</div>';
   if(ongoing.length)html+=`<details class="ongoing"${embed?'':' open'}><summary>Probíhající výstavy a vícedenní akce (${ongoing.length})</summary>${ongoing.map(e=>evHtml(e,false)).join('')}</details>`;
   document.getElementById('list').innerHTML=html;

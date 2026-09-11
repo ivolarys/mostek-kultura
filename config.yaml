@@ -11,7 +11,7 @@ places:
   - name: Mostek
     aliases: [Mostek u Dvora Králové, Souvrať, Debrné]
   - name: Dvůr Králové nad Labem
-    aliases: [Dvůr Králové, Dvůr Králové n. L., Dvůr Králové n.L., Dvoře Králové, Safari Park, Hankův dům, Kino Svět, Žireč, Lipnice, Verdek]
+    aliases: [Dvůr Králové, Dvůr Králové n. L., Dvůr Králové n.L., Dvoře Králové, Safari Park, Hankův dům, Kino Svět, Lipnice, Verdek]
   - name: Hostinné
     aliases: [Hostinném]
   - name: Bílá Třemešná
@@ -21,7 +21,11 @@ places:
   - name: Lázně Bělohrad
     aliases: [Lázních Bělohradě, Bělohrad]
   - name: Kuks
-    aliases: [Hospitál Kuks, Kuksu]
+    aliases: [Hospitál Kuks, Kuksu, Braunův Betlém, Comoedien-Haus]
+  - name: Žireč
+    aliases: [Žirči, Domov sv. Josefa, Domov svatého Josefa, Barokní areál Žireč]
+  - name: Zvičina
+    aliases: [Zvičině, Zvičiny, Raisova chata]
   - name: Borovnice
     aliases: [Borovnička]
   - name: Horní Brusnice
@@ -179,5 +183,5 @@ sources:
     url: https://goout.net/services/entities/v1
     page: https://goout.net/cs/
     priority: 4
-    venue_queries: [Trutnov, Dvůr Králové, Hostinné, Jaroměř, Kuks, Pecka, Lázně Bělohrad, Mostek, Jičín, Vrchlabí]
+    venue_queries: [Trutnov, Dvůr Králové, Hostinné, Jaroměř, Kuks, Žireč, Zvičina, Pecka, Lázně Bělohrad, Mostek, Jičín, Vrchlabí]
     bbox: [50.30, 15.30, 50.75, 16.10]   # lat_min, lon_min, lat_max, lon_max – venue mimo se ignorují
