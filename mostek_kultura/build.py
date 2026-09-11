@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -43,7 +44,7 @@ def save_last_good(path: Path, events: list[Event]) -> None:
 
 
 def fetch_all(cfg: Config, root: Path, offline: bool, only: set[str] | None,
-              record: bool = False) -> tuple[list[Event], list[SourceStatus]]:
+              record: bool = False, persist: bool = True) -> tuple[list[Event], list[SourceStatus]]:
     events: list[Event] = []
     statuses: list[SourceStatus] = []
     for scfg in cfg.sources:
@@ -58,7 +59,7 @@ def fetch_all(cfg: Config, root: Path, offline: bool, only: set[str] | None,
         try:
             http = FixtureHttp(fixture_dir) if offline else Http(record_dir=fixture_dir if record else None)
             got = apply_source_filters(src.fetch(http), scfg)
-            if not offline:
+            if not offline and persist:
                 save_last_good(last_good, got)
             statuses.append(SourceStatus(scfg.name, "ok", len(got), _utcnow()))
             log.info("%s: %d events", scfg.name, len(got))
@@ -72,9 +73,12 @@ def fetch_all(cfg: Config, root: Path, offline: bool, only: set[str] | None,
 
 
 def build(root: Path, out_dir: Path, offline: bool = False, use_llm: bool = True,
-          only: set[str] | None = None, record: bool = False) -> int:
+          only: set[str] | None = None, record: bool = False, persist: bool | None = None) -> int:
+    """`persist`: write cache/last_good (default: only in CI, to avoid local/CI commit conflicts)."""
     cfg = load_config(root / "config.yaml")
-    events, statuses = fetch_all(cfg, root, offline, only, record)
+    if persist is None:
+        persist = bool(os.environ.get("CI"))
+    events, statuses = fetch_all(cfg, root, offline, only, record, persist)
     log.info("fetched %d raw events", len(events))
 
     resolver = PlaceResolver(cfg)
