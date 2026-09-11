@@ -1,1 +1,306 @@
-{}
+{
+ "dvur-kralove:0096bd6e017d": {
+  "category": "deti",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:103d0974a089": {
+  "category": "film",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:4f187e3c9227": {
+  "category": "film",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:7dfaf1e36ae6": {
+  "category": "deti",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:94f88436ff36": {
+  "category": "trh",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Bílá Třemešná",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:a1dca497eb1a": {
+  "category": "sport",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:ca0309aa0125": {
+  "category": "sport",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:d5120d05bf49": {
+  "category": "film",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:ecbad78fda8d": {
+  "category": "komunita",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:f09c1f8bfd89": {
+  "category": "sport",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:f42d7f1be1f2": {
+  "category": "komunita",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "dvur-kralove:fb953f8ebf92": {
+  "category": "slavnost",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "goout:77883a7eca9f": {
+  "category": "film",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": null,
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "lazne-belohrad:1b70403150ba": {
+  "category": "sport",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "lazne-belohrad:208261bf792e": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "lazne-belohrad:7dba11a94c73": {
+  "category": "divadlo",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "lazne-belohrad:83ff1cfceca1": {
+  "category": "divadlo",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "lazne-belohrad:a7afdacb0626": {
+  "category": "slavnost",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "lazne-belohrad:e1a90c7eaa8f": {
+  "category": "komunita",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "trutnov:0f37ad0235eb": {
+  "category": "komunita",
+  "confidence": 0.6,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": null,
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "trutnov:11674b57d845": {
+  "category": "vystava",
+  "confidence": 0.6,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "trutnov:2a965c98f49e": {
+  "category": "vystava",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "trutnov:414dcd1a822c": {
+  "category": "slavnost",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "trutnov:52ff151bc37d": {
+  "category": "slavnost",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "trutnov:54daec881502": {
+  "category": "vystava",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "trutnov:83672852aa66": {
+  "category": "deti",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "trutnov:8b20ff768041": {
+  "category": "vystava",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "trutnov:a05777221b57": {
+  "category": "slavnost",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "trutnov:a8db6367127f": {
+  "category": "deti",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "trutnov:bd6a8d7f582c": {
+  "category": "vystava",
+  "confidence": 0.7,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "trutnov:c6c3a249b2a8": {
+  "category": "vystava",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "trutnov:d6777e9ca09e": {
+  "category": "vystava",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "trutnov:d750c111a6e9": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-11T18:58:32+00:00"
+ },
+ "vrchlabi:0bc369e03d07": {
+  "category": "komunita",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Vrchlabí",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "vrchlabi:44bb40d35b41": {
+  "category": "deti",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Vrchlabí",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "vrchlabi:6ebfab0ba24d": {
+  "category": "trh",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Vrchlabí",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "vrchlabi:73ce2e96aadf": {
+  "category": "slavnost",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Vrchlabí",
+  "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "vrchlabi:a7a1c454c9e5": {
+  "category": "slavnost",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Vrchlabí",
+  "ts": "2026-09-11T18:59:09+00:00"
+ }
+}
