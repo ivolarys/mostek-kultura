@@ -19,7 +19,8 @@ Denní agregátor kulturních akcí v okolí obce Mostek. GitHub Actions (cron 0
 - Nový zdroj existujícího typu = jen záznam v `config.yaml`. Nový typ = modul v `mostek_kultura/sources/` + registrace v `sources/__init__.py` + fixture (`build --record --source <name> --no-llm`) + test.
 - Fixtures se nahrávají příkazem `build --record` (zapíše `tests/fixtures/<zdroj>/manifest.json` + soubory). Po změně URL v configu nahrát znovu.
 - `cache/last_good/` zapisuje jen CI (env `CI`) nebo `build --persist`; lokální živé buildy ho nemění, aby nevznikaly konflikty s commity z CI. Když konflikt přesto vznikne, vezmi novější verzi souboru.
-- `cache/` je commitovaná (klasifikace z Haiku + poslední dobrý fetch per zdroj). CI ji commituje zpět s `[skip ci]`. Ruční oprava kategorie: editovat `cache/classifications.json`.
+- LLM klasifikace: `OPENAI_API_KEY` (model `OPENAI_MODEL`, výchozí `gpt-5-mini`) nebo `ANTHROPIC_API_KEY` (`claude-haiku-4-5`); `LLM_PROVIDER` vynutí volbu. Bez klíče jen klíčová slova.
+- `cache/` je commitovaná (klasifikace z LLM + poslední dobrý fetch per zdroj). CI ji commituje zpět s `[skip ci]`. Ruční oprava kategorie: editovat `cache/classifications.json`.
 
 ## Poznatky (s datem)
 

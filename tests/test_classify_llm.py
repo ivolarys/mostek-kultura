@@ -13,6 +13,7 @@ def _ev(title, **kw):
 
 def test_llm_results_cached_and_applied(cfg, monkeypatch):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
+    monkeypatch.delenv("LLM_PROVIDER", raising=False)
     a = _ev("Slovanský vampyrismus", native_category="Ostatní", place="Trutnov")
     b = _ev("Něco v Hostinném", native_category=None, place=None, venue="Sokolovna")
     c = _ev("Nejisté", native_category=None, place="Mostek")
@@ -53,8 +54,34 @@ def test_llm_failure_falls_back_to_keywords(cfg, monkeypatch):
     assert e.category == "trh" and cache == {}
 
 
+def test_provider_selection(monkeypatch):
+    for k in ("OPENAI_API_KEY", "ANTHROPIC_API_KEY", "LLM_PROVIDER"):
+        monkeypatch.delenv(k, raising=False)
+    assert C.provider() is None
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "a")
+    assert C.provider() == "anthropic"
+    monkeypatch.setenv("OPENAI_API_KEY", "o")
+    assert C.provider() == "openai"
+    monkeypatch.setenv("LLM_PROVIDER", "anthropic")
+    assert C.provider() == "anthropic"
+
+
+def test_openai_backend_is_dispatched(cfg, monkeypatch):
+    monkeypatch.setenv("OPENAI_API_KEY", "o")
+    monkeypatch.delenv("LLM_PROVIDER", raising=False)
+    e = _ev("Něco", place="Mostek")
+    called = []
+    monkeypatch.setattr(C, "_call_openai", lambda cfg_, items: called.append(items) or [
+        C.Classification(id=e.source_id, category="divadlo", place="Mostek", confidence=0.9)])
+    monkeypatch.setattr(C, "_call_anthropic", lambda *_: (_ for _ in ()).throw(AssertionError("anthropic called")))
+    cache = C.classify([e], cfg, {}, use_llm=True)
+    assert called and e.category == "divadlo" and cache[e.source_id]["model"] == C.OPENAI_MODEL
+
+
 def test_no_key_skips_llm(cfg, monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("LLM_PROVIDER", raising=False)
     e = _ev("Koncert kapely", place="Mostek")
     monkeypatch.setattr(C, "_call_llm", lambda *_: (_ for _ in ()).throw(AssertionError("called")))
     C.classify([e], cfg, {}, use_llm=True)

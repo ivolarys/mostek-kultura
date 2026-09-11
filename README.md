@@ -9,7 +9,7 @@ Denní přehled kulturních a společenských akcí v okolí obce Mostek (okres 
 ## Jak to funguje
 
 1. GitHub Actions každý den ráno stáhne akce ze zdrojů v `config.yaml` (obecní weby, kalendář Lázní Bělohrad, GoOut).
-2. Akce se namapují na obce z whitelistu, sloučí se duplicity napříč zdroji a doplní se kategorie (nativní kategorie zdroje → Claude Haiku → klíčová slova).
+2. Akce se namapují na obce z whitelistu, sloučí se duplicity napříč zdroji a doplní se kategorie (nativní kategorie zdroje → LLM → klíčová slova). LLM je OpenAI (`gpt-5-mini`) nebo Anthropic (Claude Haiku) podle toho, který klíč je nastavený.
 3. Vygeneruje se statický web (`site/`) a nasadí se na GitHub Pages. Klasifikace se ukládá do `cache/` v repu, takže se každá akce klasifikuje jen jednou.
 
 Když nějaký zdroj spadne, použijí se jeho data z posledního úspěšného běhu (`cache/last_good/`), stav je vidět v patičce stránky a v `status.json`.
@@ -20,7 +20,7 @@ Když nějaký zdroj spadne, použijí se jeho data z posledního úspěšného 
 uv venv --python 3.13 .venv && uv pip install --python .venv/bin/python -e .[dev]
 .venv/bin/pytest -q
 .venv/bin/python -m mostek_kultura build --offline --no-llm   # z fixtures, bez sítě
-.venv/bin/python -m mostek_kultura build                      # naživo; ANTHROPIC_API_KEY pro klasifikaci
+.venv/bin/python -m mostek_kultura build                      # naživo; OPENAI_API_KEY nebo ANTHROPIC_API_KEY pro klasifikaci
 python -m http.server -d site 8000                            # http://localhost:8000/?embed=1
 ```
 
@@ -41,7 +41,7 @@ Senzory se obnovují každou hodinu, data na Pages jednou denně ráno. Stránka
 
 ```bash
 gh repo create ivolarys/mostek-kultura --public --source . --push
-gh secret set ANTHROPIC_API_KEY
+gh secret set OPENAI_API_KEY        # nebo ANTHROPIC_API_KEY; oba = přednost má OpenAI, přepíná LLM_PROVIDER
 # Settings → Pages → Source: GitHub Actions
 gh workflow run build.yml && gh run watch
 ```
