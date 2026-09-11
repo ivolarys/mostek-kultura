@@ -31,6 +31,9 @@ class Http:
             headers={"User-Agent": UA, "Accept-Language": "cs,en;q=0.5"},
             timeout=timeout,
             follow_redirects=True,
+            # bind IPv4: GitHub runners have no IPv6 route and httpx does not fall back
+            # from an AAAA record to A ("Network is unreachable" on mestovrchlabi.cz)
+            transport=httpx.HTTPTransport(local_address="0.0.0.0", retries=1),
         )
         self.retries = retries
         self.record_dir = record_dir
