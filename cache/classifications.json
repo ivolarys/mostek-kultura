@@ -1,4 +1,84 @@
 {
+ "bila-tremesna-okoli:086dd75052d8": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna-okoli:2abde28de0d5": {
+  "category": "deti",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna-okoli:2fe10ec843c0": {
+  "category": "koncert",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna-okoli:59ee02d5b504": {
+  "category": "koncert",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna-okoli:8b497648af13": {
+  "category": "sport",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna-okoli:8ba72277c407": {
+  "category": "koncert",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Jaroměř",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna-okoli:98f8f25685ea": {
+  "category": "divadlo",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna-okoli:fabf0bd169c9": {
+  "category": "koncert",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna:84fc89659970": {
+  "category": "trh",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Bílá Třemešná",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "bila-tremesna:ec13f8155fa6": {
+  "category": "sport",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Bílá Třemešná",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
  "dvur-kralove:0096bd6e017d": {
   "category": "deti",
   "confidence": 0.8,
@@ -102,6 +182,22 @@
   "needs_review": false,
   "place": null,
   "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "kuks-hospital:680acff30dcc": {
+  "category": "slavnost",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Kuks",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "kuks-hospital:8d37ff87d8ef": {
+  "category": "prednaska",
+  "confidence": 0.7,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Kuks",
+  "ts": "2026-09-11T20:27:44+00:00"
  },
  "lazne-belohrad:1b70403150ba": {
   "category": "sport",
@@ -263,6 +359,94 @@
   "place": "Trutnov",
   "ts": "2026-09-11T18:58:32+00:00"
  },
+ "valdstejnska-lodzie:03724aa90b35": {
+  "category": "divadlo",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "valdstejnska-lodzie:2525ad479245": {
+  "category": "koncert",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "valdstejnska-lodzie:3598b6d55476": {
+  "category": "divadlo",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "valdstejnska-lodzie:4a4cd18ca5a9": {
+  "category": "film",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:28:00+00:00"
+ },
+ "valdstejnska-lodzie:4c795282c2b4": {
+  "category": "divadlo",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:28:00+00:00"
+ },
+ "valdstejnska-lodzie:590fc6dbf9c8": {
+  "category": "slavnost",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:28:00+00:00"
+ },
+ "valdstejnska-lodzie:60571759f2f5": {
+  "category": "divadlo",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:28:00+00:00"
+ },
+ "valdstejnska-lodzie:7f595ea6eea5": {
+  "category": "divadlo",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "valdstejnska-lodzie:8106882fc166": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "valdstejnska-lodzie:94a0b7472734": {
+  "category": "divadlo",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "valdstejnska-lodzie:d55cefb557ec": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Valdštejnská lodžie",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
  "vrchlabi:0bc369e03d07": {
   "category": "komunita",
   "confidence": 0.8,
@@ -302,5 +486,53 @@
   "needs_review": false,
   "place": "Vrchlabí",
   "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "zirec-domov:0411d77af44f": {
+  "category": "komunita",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Žireč",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "zirec-domov:2d7e499d6a38": {
+  "category": "prednaska",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Žireč",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "zirec-domov:32772d1e6446": {
+  "category": "slavnost",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Žireč",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "zirec-domov:3c00c7dfc0f3": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Žireč",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "zirec-domov:3c62811b3ca1": {
+  "category": "prednaska",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Žireč",
+  "ts": "2026-09-11T20:27:44+00:00"
+ },
+ "zirec-domov:dcd2451acb24": {
+  "category": "prednaska",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Žireč",
+  "ts": "2026-09-11T20:27:44+00:00"
  }
 }
