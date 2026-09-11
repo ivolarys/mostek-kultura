@@ -1,0 +1,36 @@
+# Home Assistant – REST senzory z veřejného summary.json.
+# Vlož do configuration.yaml (nebo do souboru includovaného přes `rest: !include ...`) a restartuj HA.
+rest:
+  - resource: https://ivolarys.github.io/mostek-kultura/summary.json
+    scan_interval: 3600
+    timeout: 30
+    sensor:
+      - name: "Kultura dnes"
+        unique_id: mostek_kultura_today
+        value_template: "{{ value_json.today.count }}"
+        json_attributes_path: "$.today"
+        json_attributes: [events, ongoing_count]
+        icon: mdi:calendar-today
+      - name: "Kultura zítra"
+        unique_id: mostek_kultura_tomorrow
+        value_template: "{{ value_json.tomorrow.count }}"
+        json_attributes_path: "$.tomorrow"
+        json_attributes: [events, ongoing_count]
+        icon: mdi:calendar-arrow-right
+      - name: "Kultura víkend"
+        unique_id: mostek_kultura_weekend
+        value_template: "{{ value_json.weekend.count }}"
+        json_attributes_path: "$.weekend"
+        json_attributes: [events, ongoing_count]
+        icon: mdi:calendar-weekend
+      - name: "Kultura tento týden"
+        unique_id: mostek_kultura_week
+        value_template: "{{ value_json.week.count }}"
+        json_attributes_path: "$.week"
+        json_attributes: [events, ongoing_count]
+        icon: mdi:calendar-week
+      - name: "Kultura aktualizováno"
+        unique_id: mostek_kultura_generated
+        value_template: "{{ value_json.generated_at }}"
+        device_class: timestamp
+        icon: mdi:update

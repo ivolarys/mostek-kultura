@@ -1,0 +1,83 @@
+from datetime import date, datetime
+
+from mostek_kultura.dates import TZ
+from mostek_kultura.model import Event
+from mostek_kultura.normalize import (
+    PlaceResolver,
+    dedupe,
+    flag_time,
+    in_scope,
+    norm_title,
+    resolve_places,
+)
+
+
+def ev(title, day=12, hour=19, source="a", **kw):
+    return Event(title=title, start=datetime(2026, 9, day, hour, tzinfo=TZ), source=source, **kw)
+
+
+def test_place_aliases(cfg):
+    r = PlaceResolver(cfg)
+    assert r.resolve("Dvůr Králové n. L.") == "Dvůr Králové nad Labem"
+    assert r.resolve("Trutnov – Střední Předměstí") == "Trutnov"
+    assert r.resolve("Praha 1") is None
+    assert r.resolve("Hrad Pecka - Rytířský sál") == "Pecka"
+
+
+def test_venue_beats_source_default(cfg):
+    r = PlaceResolver(cfg)
+    e = ev("První třemešenská burza", venue="Bílá Třemešná", source="dvur-kralove")
+    resolve_places([e], r, {"dvur-kralove": "Dvůr Králové nad Labem"})
+    assert e.place == "Bílá Třemešná"
+    e2 = ev("Koncert", venue="Hankův dům - sál", source="dvur-kralove")
+    resolve_places([e2], r, {"dvur-kralove": "Dvůr Králové nad Labem"})
+    assert e2.place == "Dvůr Králové nad Labem"
+
+
+def test_explicit_place_raw_wins_over_title(cfg):
+    r = PlaceResolver(cfg)
+    e = ev("Trutnovský podzim v Praze", place_raw="Praha 1", venue="Rudolfinum")
+    resolve_places([e], r)
+    assert e.place is None and not in_scope(e, r)
+
+
+def test_venues_allow(cfg):
+    r = PlaceResolver(cfg)
+    e = ev("Koncert", venue="Valdštejnská lodžie", place_raw="Jičín")
+    resolve_places([e], r)
+    assert e.place is None and in_scope(e, r)
+
+
+def test_flag_time_and_ongoing():
+    ref = date(2026, 9, 11)
+    past = ev("stará", day=10)
+    today_ev = ev("dnes", day=11)
+    exhibition = ev("výstava", day=1, hour=0, end=datetime(2026, 9, 30, tzinfo=TZ), all_day=True)
+    two_day = ev("víkendovka", day=12, hour=0, end=datetime(2026, 9, 13, 23, 59, tzinfo=TZ))
+    far = Event(title="daleko", start=datetime(2026, 12, 24, tzinfo=TZ), source="a")
+    out = flag_time([past, today_ev, exhibition, two_day, far], horizon_days=60, ref=ref)
+    titles = [e.title for e in out]
+    assert titles == ["dnes", "výstava", "víkendovka"]
+    assert exhibition.ongoing and not two_day.ongoing
+
+
+def test_dedupe_merges_and_prefers_priority():
+    a = ev("Koncert: Jaroslav Hutka", source="dvur-kralove", place="Dvůr Králové nad Labem", all_day=True)
+    b = ev("Jaroslav Hutka", source="goout", place="Dvůr Králové nad Labem", hour=20,
+           image="img", url="https://goout/x")
+    out = dedupe([b, a], {"dvur-kralove": 7, "goout": 4})
+    assert len(out) == 1
+    w = out[0]
+    assert w.source == "dvur-kralove" and w.sources == ["goout"]
+    assert w.start.hour == 20 and not w.all_day and w.image == "img"
+    assert w.urls == ["https://goout/x"]
+
+
+def test_dedupe_keeps_different_days():
+    a = ev("Veřejné bruslení", day=12)
+    b = ev("Veřejné bruslení", day=13)
+    assert len(dedupe([a, b], {})) == 2
+
+
+def test_norm_title_strips_prefix_and_accents():
+    assert norm_title("Koncert: Věra Špinarová!") == "vera spinarova"

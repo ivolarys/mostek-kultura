@@ -1,0 +1,14 @@
+# Lovelace: nativní Markdown karta z atributů REST senzoru (bez iframe).
+type: markdown
+title: Kultura dnes a zítra
+content: >-
+  {% for key, name in [('sensor.kultura_dnes', 'Dnes'), ('sensor.kultura_zitra', 'Zítra')] %}
+  **{{ name }}** ({{ states(key) }})
+
+  {% for e in state_attr(key, 'events') or [] %}
+  - {{ e.time or 'celý den' }} · [{{ e.title }}]({{ e.url }}) — {{ e.place }}{% if e.venue %}, {{ e.venue }}{% endif %} _({{ e.category }})_
+  {% else %}
+  - nic
+  {% endfor %}
+
+  {% endfor %}

@@ -1,0 +1,164 @@
+# Konfigurace mostek-kultura. Rozsah (obce, venue) a zdroje se rozšiřují tady, bez zásahu do kódu.
+
+timezone: Europe/Prague
+horizon_days: 60        # jak daleko dopředu se akce zobrazují
+summary_top_n: 10       # kolik akcí na bucket jde do summary.json pro HA
+
+# Whitelist obcí. Akce se zobrazí jen když se její místo namapuje na jednu z nich
+# (nebo když venue odpovídá položce ve `venues_allow`, nebo ji zdroj má nastavenou jako `place`).
+# `aliases` se hledají bez diakritiky a bez ohledu na velikost písmen v místě, venue i názvu akce.
+places:
+  - name: Mostek
+    aliases: [Mostek u Dvora Králové, Souvrať, Debrné]
+  - name: Dvůr Králové nad Labem
+    aliases: [Dvůr Králové, Dvůr Králové n. L., Dvůr Králové n.L., Dvoře Králové, Safari Park, Hankův dům, Kino Svět, Žireč, Lipnice, Verdek]
+  - name: Hostinné
+    aliases: [Hostinném]
+  - name: Bílá Třemešná
+    aliases: [Bílé Třemešné, Třemešná, třemešenská]
+  - name: Pecka
+    aliases: [Hrad Pecka, Pecce]
+  - name: Lázně Bělohrad
+    aliases: [Lázních Bělohradě, Bělohrad]
+  - name: Kuks
+    aliases: [Hospitál Kuks, Kuksu]
+  - name: Borovnice
+    aliases: [Borovnička]
+  - name: Horní Brusnice
+    aliases: []
+  - name: Dolní Brusnice
+    aliases: []
+  - name: Nemojov
+    aliases: []
+  - name: Vítězná
+    aliases: [Kocléřov, Komárov, Huntířov]
+  - name: Choustníkovo Hradiště
+    aliases: []
+  - name: Nová Paka
+    aliases: [Nové Pace]
+  - name: Trutnov
+    aliases: [Trutnově, UFFO, Uffo, Bojiště]
+  - name: Jaroměř
+    aliases: [Jaroměři]
+  - name: Josefov
+    aliases: [Pevnost Josefov, Josefově]
+  - name: Vrchlabí
+    aliases: [Vrchlabí, KD Střelnice]
+
+# Venue, které se zobrazí vždy bez ohledu na obec (např. jedno konkrétní místo ve vzdálenějším městě).
+venues_allow:
+  - Valdštejnská lodžie
+
+# Kategorie akcí (pevná sada). `keywords` slouží pro fallback klasifikaci podle názvu (regex, bez diakritiky).
+categories:
+  - slug: koncert
+    label: Koncert
+    keywords: [koncert, kapela, band, hudebni, hudba, jazz, rock, folk, festival hudby, zpiva, zpev, sbor, varhan, recital]
+  - slug: divadlo
+    label: Divadlo
+    keywords: [divad, predstaveni, komedie, muzikal, opera, balet, kabaret, improvizac, loutk]
+  - slug: film
+    label: Film
+    keywords: [kino, film, promitani, biograf, letni kino]
+  - slug: vystava
+    label: Výstava
+    keywords: [vystav, vernisaz, galerie, expozice]
+  - slug: deti
+    label: Pro děti
+    keywords: [pro deti, detsk, pohadk, rodin, karneval, drakiada, lampion, mikulas, cert]
+  - slug: trh
+    label: Trhy a jarmarky
+    keywords: [trh, jarmark, burza, bazar, blesi]
+  - slug: sport
+    label: Sport
+    keywords: [beh, zavod, turnaj, hokej, fotbal, brusl, cyklo, pochod, turist, plaván, sportovni, maraton, volejbal, tenis]
+  - slug: prednaska
+    label: Přednáška a beseda
+    keywords: [prednask, beseda, seminar, workshop, kurz, cteni, autorske, diskuse, promluv]
+  - slug: slavnost
+    label: Slavnosti a festivaly
+    keywords: [slavnost, festival, den obce, posviceni, pout, oslav, vinobrani, dozink, masopust, palen, carodejnic, advent, vanocni, silvestr]
+  - slug: komunita
+    label: Obecní a spolkové
+    keywords: [zastupitel, schuze, brigada, sbor dobrovoln, hasic, spolek, klub senior, setkani, plesu, ples, zabava, tancirna, disco, diskoteka]
+  - slug: jine
+    label: Jiné
+    keywords: []
+
+# Mapování nativních kategorií zdrojů na slugy (porovnává se bez diakritiky, podřetězec, první shoda vyhrává).
+category_map:
+  koncert: koncert
+  concert: koncert
+  hudba: koncert
+  music: koncert
+  vazna hudba: koncert
+  divadlo: divadlo
+  theatre: divadlo
+  theater: divadlo
+  kino: film
+  film: film
+  cinema: film
+  vystava: vystava
+  exhibition: vystava
+  galerie: vystava
+  pro deti: deti
+  deti: deti
+  kids: deti
+  family: deti
+  trh: trh
+  jarmark: trh
+  market: trh
+  sport: sport
+  prednaska: prednaska
+  beseda: prednaska
+  lecture: prednaska
+  workshop: prednaska
+  slavnost: slavnost
+  festival: slavnost
+  oslava: slavnost
+  in_city: jine
+  party: komunita
+  ples: komunita
+  tanec: komunita
+  dance: komunita
+  spolek: komunita
+  verejnost: komunita
+  ostatni: jine
+  jiny typ akce: jine
+
+# Zdroje. Společná pole: name (unikátní), type (parser), url, enabled, priority (vyšší vyhrává při dedup),
+# place (výchozí obec, když se z akce nedá určit), exclude_title (regex, akce se zahodí), max_events.
+sources:
+  - name: mostek
+    type: galileo
+    url: https://www.mostek.cz/zivot-v-obci/volny-cas/kam-za-kulturou/
+    place: Mostek
+    priority: 8
+    exclude_title: "(?i)svoz|odpad"
+  - name: mostek-okoli
+    type: galileo
+    url: https://www.mostek.cz/zivot-v-obci/volny-cas/akce-v-okoli/
+    priority: 6
+  - name: lazne-belohrad
+    type: antee_rss
+    url: https://www.lazne-belohrad.cz/kalendar-akci?action=atom
+    place: Lázně Bělohrad
+    priority: 8
+  - name: dvur-kralove
+    type: public4u
+    url: https://www.mudk.cz/redakce/index.php?lanG=cs&subakce=events
+    place: Dvůr Králové nad Labem
+    priority: 7
+    months: 3
+  - name: trutnov
+    type: public4u
+    url: https://www.trutnov.cz/redakce/index.php?lanG=cs&subakce=events
+    place: Trutnov
+    priority: 7
+    months: 3
+  - name: goout
+    type: goout
+    url: https://goout.net/services/entities/v1
+    priority: 4
+    venue_queries: [Trutnov, Dvůr Králové, Hostinné, Jaroměř, Kuks, Pecka, Lázně Bělohrad, Mostek, Jičín]
+    bbox: [50.30, 15.30, 50.75, 16.10]   # lat_min, lon_min, lat_max, lon_max – venue mimo se ignorují

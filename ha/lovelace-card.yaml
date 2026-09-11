@@ -1,0 +1,5 @@
+# Lovelace: celá stránka v iframe (kompaktní režim `embed=1`, výchozí záložka `tab=week|today|tomorrow|weekend|all`).
+type: iframe
+url: https://ivolarys.github.io/mostek-kultura/?embed=1&tab=week
+aspect_ratio: 75%
+title: Kultura v okolí
