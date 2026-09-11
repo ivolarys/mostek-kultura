@@ -9,6 +9,7 @@ def test_offline_build(root, tmp_path):
     events = json.loads((tmp_path / "events.json").read_text(encoding="utf-8"))
     assert events["events"] and all(e["place"] or e["venue"] for e in events["events"])
     assert all(e["category"] for e in events["events"])
+    assert all(e["source_labels"] for e in events["events"])
     summary = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))
     for key in ("today", "tomorrow", "weekend", "week"):
         assert {"count", "ongoing_count", "events"} <= set(summary[key])
@@ -16,6 +17,8 @@ def test_offline_build(root, tmp_path):
     assert (tmp_path / "summary.json").stat().st_size < 16_000
     html = (tmp_path / "index.html").read_text(encoding="utf-8")
     assert 'id="data"' in html and "Kultura kolem Mostku" in html
+    assert "color-mix" not in html
+    assert "source_labels" in html
     zdroje = (tmp_path / "zdroje.html").read_text(encoding="utf-8")
     assert "Vrchlabí" in zdroje and "Město Trutnov" in zdroje and "Regionální zdroje" in zdroje
     assert "Zatím bez vlastního zdroje" in zdroje  # e.g. Hostinné has no source yet

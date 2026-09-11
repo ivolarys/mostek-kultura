@@ -18,6 +18,8 @@ TEMPLATES = Path(__file__).parent / "templates"
 
 
 def _ev_public(e: Event, cfg: Config) -> dict:
+    titles = {s.name: s.title for s in cfg.sources}
+    sources = [e.source, *e.sources]
     return {
         "id": e.source_id,
         "title": e.title,
@@ -32,7 +34,8 @@ def _ev_public(e: Event, cfg: Config) -> dict:
         "url": e.url,
         "image": e.image,
         "description": (e.description or "")[:300],
-        "sources": [e.source, *e.sources],
+        "sources": sources,
+        "source_labels": [titles.get(s, s) for s in sources],
     }
 
 

@@ -93,7 +93,10 @@ def resolve_places(events: list[Event], resolver: PlaceResolver,
     for e in events:
         if e.place in resolver.names:
             continue
-        e.place = resolver.resolve(e.place_raw) or resolver.resolve(e.venue)
+        # A resolvable venue (e.g. "Valdštejnská lodžie") is more specific than a resolvable
+        # place_raw that is just its containing town (e.g. GoOut's venue city "Jičín"), so it
+        # wins; place_raw is still the fallback when the venue doesn't resolve to anything.
+        e.place = resolver.resolve(e.venue) or resolver.resolve(e.place_raw)
         if e.place is None and not e.place_raw:
             e.place = resolver.resolve(e.title, e.description)
         if e.place is None:

@@ -86,7 +86,8 @@ def test_goout_parse(cfg, root):
 
 @pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi",
                                   "valdstejnska-lodzie", "kuks-hospital", "zirec-domov", "bila-tremesna",
-                                  "bila-tremesna-okoli", "kuks-obec", "dolni-brusnice"])
+                                  "bila-tremesna-okoli", "kuks-obec", "dolni-brusnice", "jicin",
+                                  "nova-paka", "kultura-novapaka"])
 def test_fixture_manifest_present(root, name):
     assert (root / "tests" / "fixtures" / name / "manifest.json").exists()
 
@@ -112,7 +113,7 @@ def test_lodzie(cfg, root):
     assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-13 15:30" and not e.all_day
     assert e.url.startswith("https://valdstejnskalodzie.cz/program/")
     assert e.description.startswith("Beseda s Jiřím Ježkem") and e.image
-    assert e.venue == "Jičín"
+    assert e.venue is None
     fest = next(x for x in events if x.title.startswith("MALÁ INVENTURA"))
     assert fest.all_day and fest.start.day == 18
     nxt = next(x for x in events if x.title.startswith("30 let"))
@@ -154,3 +155,36 @@ def test_galileo_old_template(cfg, root):
 def test_galileo_old_template_empty(cfg, root):
     assert _fetch(cfg, root, "dolni-brusnice") == []
     assert _fetch(cfg, root, "kuks-obec") == []
+
+
+def test_vismo_nova_paka(cfg, root):
+    events = _fetch(cfg, root, "nova-paka")
+    assert len(events) >= 10
+    e = next(x for x in events if x.title.startswith("HAVAJSKÉ OSTROVY"))
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-17 18:00" and not e.all_day
+    assert e.venue == "Klenotnice muzea"
+    assert e.native_category == "Kulturní akce"
+    assert e.url.startswith("https://www.munovapaka.cz/")
+    rng = next(x for x in events if "Suchardův dům" in (x.venue or ""))
+    assert rng.start.strftime("%Y-%m-%d %H:%M") == "2026-09-10 09:00"
+    assert rng.end.strftime("%Y-%m-%d %H:%M") == "2026-11-01 16:00" and not rng.all_day
+    assert len({x.native_id for x in events}) == len(events)
+    assert all(x.source == "nova-paka" for x in events)
+
+
+def test_vismo_jicin_empty(cfg, root):
+    # mujicin.cz's Vismo calendar has had no entries since 2022; the parser must not crash on an
+    # empty result and should just yield nothing.
+    assert _fetch(cfg, root, "jicin") == []
+
+
+def test_kultura_novapaka(cfg, root):
+    events = _fetch(cfg, root, "kultura-novapaka")
+    assert len(events) >= 5
+    e = next(x for x in events if x.title == "Pivovarská diskotéka")
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-12 19:00" and not e.all_day
+    assert e.end.strftime("%Y-%m-%d %H:%M") == "2026-09-13 01:00"
+    assert e.venue == "Pivovar Nová Paka a.s."
+    assert e.native_category == "tanec"
+    assert e.url.startswith("http://www.kultura-novapaka.cz/")
+    assert len({x.native_id for x in events}) == len(events)

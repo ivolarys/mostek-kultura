@@ -36,19 +36,31 @@ h2.grp:first-child{margin-top:8px}
 .ev .t small{display:block;color:var(--muted);font-weight:400;font-size:.8em}
 .ev .h{font-weight:600;grid-column:2}
 a.ev{text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
-a.ev:hover{border-color:var(--accent);box-shadow:0 1px 6px color-mix(in srgb,var(--accent) 25%,transparent)}
+a.ev:hover{border-color:var(--accent);box-shadow:0 1px 6px rgba(180,83,42,.25)}
+@media (prefers-color-scheme:dark){a.ev:hover{box-shadow:0 1px 6px rgba(229,138,94,.25)}}
 a.ev:hover .h{text-decoration:underline}
 .ev .m{color:var(--muted);font-size:.85rem;grid-column:2}
-.c-koncert{--c:#c2552b}.c-divadlo{--c:#7b4fa3}.c-film{--c:#2f6fb5}.c-vystava{--c:#1f8a80}.c-deti{--c:#c2438a}.c-trh{--c:#6a8f1f}.c-sport{--c:#2f7d4f}.c-prednaska{--c:#4d5fb3}.c-slavnost{--c:#c0392b}.c-komunita{--c:#8a6d3b}.c-jine{--c:#6b6a64}
-.badge{display:inline-block;--c:var(--accent);background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c);border-radius:6px;padding:0 6px;font-size:.75rem;font-weight:600;margin-right:6px;vertical-align:1px}
-@media (prefers-color-scheme:dark){.badge{background:color-mix(in srgb,var(--c) 28%,var(--card));color:color-mix(in srgb,var(--c) 60%,white)}}
-.chip[data-cat]{background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c);border:1px solid color-mix(in srgb,var(--c) 35%,transparent)}
+.c-koncert{--c:#c2552b;--cbg:#f6e7e1;--cbg-dark:#4e2e20;--cfg-dark:#da9980}
+.c-divadlo{--c:#7b4fa3;--cbg:#ede6f2;--cbg-dark:#3a2c42;--cfg-dark:#b095c8}
+.c-film{--c:#2f6fb5;--cbg:#e2ebf5;--cbg-dark:#253547;--cfg-dark:#82a9d3}
+.c-vystava{--c:#1f8a80;--cbg:#e0efed;--cbg-dark:#203d38;--cfg-dark:#79b9b3}
+.c-deti{--c:#c2438a;--cbg:#f6e5ef;--cbg-dark:#4e293b;--cfg-dark:#da8eb9}
+.c-trh{--c:#6a8f1f;--cbg:#eaefe0;--cbg-dark:#353e1d;--cfg-dark:#a6bc79}
+.c-sport{--c:#2f7d4f;--cbg:#e2ede6;--cbg-dark:#25392a;--cfg-dark:#82b195}
+.c-prednaska{--c:#4d5fb3;--cbg:#e6e9f4;--cbg-dark:#2d3146;--cfg-dark:#949fd1}
+.c-slavnost{--c:#c0392b;--cbg:#f6e3e1;--cbg-dark:#4e2620;--cfg-dark:#d98880}
+.c-komunita{--c:#8a6d3b;--cbg:#efebe4;--cbg-dark:#3e3525;--cfg-dark:#b9a789}
+.c-jine{--c:#6b6a64;--cbg:#eaeae9;--cbg-dark:#363430;--cfg-dark:#a6a6a2}
+:where(.badge){--c:var(--accent);--cbg:var(--accent-bg)}
+.badge{display:inline-block;background:var(--cbg);color:var(--c);border-radius:6px;padding:0 6px;font-size:.75rem;font-weight:600;margin-right:6px;vertical-align:1px}
+@media (prefers-color-scheme:dark){.badge{background:var(--cbg-dark,rgba(255,255,255,.08));color:var(--cfg-dark,var(--c))}}
+.chip[data-cat]{background:var(--cbg);color:var(--c);border:1px solid var(--c)}
 .chip[data-cat].on{background:var(--c);color:#fff;border-color:var(--c)}
 .chip[data-cat] .n{opacity:.75}
-@media (prefers-color-scheme:dark){.chip[data-cat]{background:color-mix(in srgb,var(--c) 26%,var(--card));color:color-mix(in srgb,var(--c) 60%,white)}.chip[data-cat].on{background:var(--c);color:#fff}}
+@media (prefers-color-scheme:dark){.chip[data-cat]{background:var(--cbg-dark);color:var(--cfg-dark);border-color:var(--cfg-dark)}.chip[data-cat].on{background:var(--c);color:#fff}}
 h2.grp[data-cat]{color:var(--c)}
 h2.grp[data-cat]::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:8px;vertical-align:-1px}
-@media (prefers-color-scheme:dark){h2.grp[data-cat]{color:color-mix(in srgb,var(--c) 60%,white)}}
+@media (prefers-color-scheme:dark){h2.grp[data-cat]{color:var(--cfg-dark)}}
 .ev .src{color:var(--muted);font-size:.72rem;opacity:.7;grid-column:2}
 .ev img{grid-column:3;grid-row:1/4;width:64px;height:64px;object-fit:cover;border-radius:6px}
 .empty{color:var(--muted);padding:24px 0;text-align:center}
@@ -125,7 +137,7 @@ function evHtml(e,showDate){
   const when=e.ongoing?`<span class="t">do<small>${esc(e.ed.split('-').reverse().slice(0,2).join('. '))}.</small></span>`:`<span class="t">${e.time||'celý den'}${showDate?`<small>${esc(e.sd.split('-').reverse().slice(0,2).join('. '))}.</small>`:''}</span>`;
   const img=!embed&&e.image?`<img src="${esc(e.image)}" alt="" loading="lazy">`:'';
   const where=[e.place,e.venue&&e.venue!==e.place?e.venue:null].filter(Boolean).join(' · ');
-  const inner=`${when}<div class="h">${esc(e.title)}</div><div class="m"><span class="badge c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span>${esc(where)}</div><div class="src">${esc(e.sources.join(', '))}</div>${img}`;
+  const inner=`${when}<div class="h">${esc(e.title)}</div><div class="m"><span class="badge c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span>${esc(where)}</div><div class="src">zdroj: ${esc((e.source_labels||e.sources).join(', '))}</div>${img}`;
   const cls=`ev${img?' img':''}`;
   return e.url?`<a class="${cls}" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="${cls}">${inner}</div>`;
 }

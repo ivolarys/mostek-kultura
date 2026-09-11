@@ -48,6 +48,8 @@ places:
     aliases: [Pevnost Josefov, Josefově]
   - name: Vrchlabí
     aliases: [Vrchlabí, KD Střelnice]
+  - name: Jičín
+    aliases: [Jičíně, Jičína]
   - name: Valdštejnská lodžie
     aliases: [Lodžie, Valdštejnské lodžii, Valdštejnské imaginárium]
 
@@ -213,12 +215,31 @@ sources:
     url: https://www.dolnibrusnice.cz/volny-cas/kalendar-akci/
     place: Dolní Brusnice
     priority: 7
+  - name: jicin
+    label: Město Jičín – Kalendář akcí
+    type: vismo
+    url: https://www.mujicin.cz/vismo/kalendar-akci.asp
+    page: https://www.mujicin.cz/vismo/kalendar-akci.asp
+    place: Jičín
+    priority: 7
+  - name: nova-paka
+    label: Město Nová Paka – Kalendář akcí
+    type: vismo
+    url: https://www.munovapaka.cz/vismo/kalendar-akci.asp
+    page: https://www.munovapaka.cz/vismo/kalendar-akci.asp
+    place: Nová Paka
+    priority: 7
+  - name: kultura-novapaka
+    label: Kultura Nová Paka – Kulturní portál
+    type: kultura_novapaka
+    url: http://www.kultura-novapaka.cz/
+    place: Nová Paka
+    priority: 6
   - name: valdstejnska-lodzie
     label: Valdštejnská lodžie Jičín – Program
     type: lodzie_program
     url: https://valdstejnskalodzie.cz/program
     place: Valdštejnská lodžie
-    venue: Jičín
     priority: 8
   - name: rucne
     label: Ručně zadané akce (manual_events.yaml)
