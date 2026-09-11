@@ -27,22 +27,25 @@ class Http:
     """Live client. `get_text` returns decoded body, `get_json` parsed JSON."""
 
     def __init__(self, timeout: float = 20.0, retries: int = 3, record_dir: Path | None = None):
-        self.client = httpx.Client(
-            headers={"User-Agent": UA, "Accept-Language": "cs,en;q=0.5"},
-            timeout=timeout,
-            follow_redirects=True,
-            # bind IPv4: GitHub runners have no IPv6 route and httpx does not fall back
-            # from an AAAA record to A ("Network is unreachable" on mestovrchlabi.cz)
-            transport=httpx.HTTPTransport(local_address="0.0.0.0", retries=1),
-        )
+        headers = {"User-Agent": UA, "Accept-Language": "cs,en;q=0.5"}
+        # Two clients: one bound to IPv4 (GitHub runners have no IPv6 route and httpx does not
+        # fall back from AAAA to A -> "Network is unreachable"), one with default resolution
+        # (the IPv4-bound one occasionally fails with EAI_ADDRFAMILY). Attempts alternate.
+        self.clients = [
+            httpx.Client(headers=headers, timeout=timeout, follow_redirects=True,
+                         transport=httpx.HTTPTransport(local_address="0.0.0.0")),
+            httpx.Client(headers=headers, timeout=timeout, follow_redirects=True),
+        ]
+        self.client = self.clients[0]
         self.retries = retries
         self.record_dir = record_dir
 
     def _get(self, url: str) -> httpx.Response:
         last: Exception | None = None
         for attempt in range(self.retries):
+            client = self.clients[attempt % len(self.clients)]
             try:
-                r = self.client.get(url)
+                r = client.get(url)
                 if r.status_code in RETRY_STATUS:
                     raise httpx.HTTPStatusError(f"status {r.status_code}", request=r.request, response=r)
                 r.raise_for_status()
