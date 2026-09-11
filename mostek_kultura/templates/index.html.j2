@@ -31,17 +31,16 @@ header .sub{color:var(--muted);font-size:.9rem}
 h2.grp{font-size:1rem;margin:18px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 h2.grp:first-child{margin-top:8px}
 .ev{display:grid;grid-template-columns:64px 1fr;gap:4px 12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:6px}
-.ev .t{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;white-space:nowrap}
+.ev.img{grid-template-columns:64px 1fr 64px}
+.ev .t{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;white-space:nowrap;grid-column:1}
 .ev .t small{display:block;color:var(--muted);font-weight:400;font-size:.8em}
-.ev .h{font-weight:600}
+.ev .h{font-weight:600;grid-column:2}
 .ev .h a{text-decoration:none}
 .ev .h a:hover{text-decoration:underline}
 .ev .m{color:var(--muted);font-size:.85rem;grid-column:2}
 .badge{display:inline-block;background:var(--accent-bg);color:var(--accent);border-radius:6px;padding:0 6px;font-size:.75rem;font-weight:600;margin-right:6px;vertical-align:1px}
 .ev .src{color:var(--muted);font-size:.72rem;opacity:.7;grid-column:2}
-.ev img{grid-column:1;grid-row:1/4;width:64px;height:64px;object-fit:cover;border-radius:6px}
-.ev.img{grid-template-columns:64px 64px 1fr}
-.ev.img .t{grid-column:2}.ev.img .h{grid-column:3}.ev.img .m,.ev.img .src{grid-column:3}
+.ev img{grid-column:3;grid-row:1/4;width:64px;height:64px;object-fit:cover;border-radius:6px;background:var(--chip)}
 .empty{color:var(--muted);padding:24px 0;text-align:center}
 details.ongoing{margin-top:14px}
 details.ongoing summary{cursor:pointer;color:var(--muted);font-weight:600}
@@ -52,11 +51,9 @@ footer td{padding:2px 10px 2px 0}
 body.embed{font-size:13px}
 body.embed .wrap{padding:6px 8px}
 body.embed header,body.embed footer,body.embed .ev img{display:none}
-body.embed .ev{padding:6px 8px;margin-bottom:4px;grid-template-columns:52px 1fr}
-body.embed .ev.img{grid-template-columns:52px 1fr}
-body.embed .ev.img .t{grid-column:1}body.embed .ev.img .h,body.embed .ev.img .m,body.embed .ev.img .src{grid-column:2}
+body.embed .ev,body.embed .ev.img{padding:6px 8px;margin-bottom:4px;grid-template-columns:52px 1fr}
 body.embed .src{display:none}
-@media (max-width:480px){.ev{grid-template-columns:56px 1fr}.ev img{display:none}.ev.img{grid-template-columns:56px 1fr}.ev.img .t{grid-column:1}.ev.img .h,.ev.img .m,.ev.img .src{grid-column:2}}
+@media (max-width:480px){.ev,.ev.img{grid-template-columns:56px 1fr}.ev img{display:none}}
 </style>
 </head>
 <body>
@@ -117,8 +114,8 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 function evHtml(e,showDate){
   const when=e.ongoing?`<span class="t">do<small>${esc(e.ed.split('-').reverse().slice(0,2).join('. '))}.</small></span>`:`<span class="t">${e.time||'celý den'}${showDate?`<small>${esc(e.sd.split('-').reverse().slice(0,2).join('. '))}.</small>`:''}</span>`;
   const img=!embed&&e.image?`<img src="${esc(e.image)}" alt="" loading="lazy">`:'';
-  const where=[e.place,e.venue].filter(Boolean).join(' · ');
-  return `<div class="ev${img?' img':''}">${img}${when}<div class="h">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>`:esc(e.title)}</div><div class="m"><span class="badge">${esc(CAT[e.category]||e.category)}</span>${esc(where)}</div><div class="src">${esc(e.sources.join(', '))}</div></div>`;
+  const where=[e.place,e.venue&&e.venue!==e.place?e.venue:null].filter(Boolean).join(' · ');
+  return `<div class="ev${img?' img':''}">${when}<div class="h">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>`:esc(e.title)}</div><div class="m"><span class="badge">${esc(CAT[e.category]||e.category)}</span>${esc(where)}</div><div class="src">${esc(e.sources.join(', '))}</div>${img}</div>`;
 }
 function render(){
   const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];
