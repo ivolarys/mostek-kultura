@@ -7,6 +7,7 @@ import json
 import logging
 import time
 from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
 
 import httpx
 
@@ -55,7 +56,37 @@ class Http:
                 wait = 2 ** attempt
                 log.warning("GET %s failed (%s), retry in %ss", url, e, wait)
                 time.sleep(wait)
+        # last resort: the runner's resolver sometimes returns no A record at all
+        # (EAI_ADDRFAMILY / ENETUNREACH); resolve via DNS-over-HTTPS and connect to the IP.
+        try:
+            return self._get_pinned(url)
+        except Exception as e:  # noqa: BLE001
+            log.warning("GET %s pinned-IP fallback failed: %s", url, e)
         raise RuntimeError(f"GET {url} failed after {self.retries} attempts: {last}")
+
+    def _resolve_doh(self, host: str) -> str:
+        r = self.clients[1].get(
+            "https://cloudflare-dns.com/dns-query",
+            params={"name": host, "type": "A"},
+            headers={"Accept": "application/dns-json"},
+        )
+        r.raise_for_status()
+        answers = [a["data"] for a in r.json().get("Answer", []) if a.get("type") == 1]
+        if not answers:
+            raise RuntimeError(f"DoH: no A record for {host}")
+        return answers[0]
+
+    def _get_pinned(self, url: str) -> httpx.Response:
+        parts = urlsplit(url)
+        host = parts.hostname or ""
+        ip = self._resolve_doh(host)
+        pinned = urlunsplit((parts.scheme, ip + (f":{parts.port}" if parts.port else ""),
+                             parts.path, parts.query, parts.fragment))
+        log.info("GET %s via pinned IP %s", url, ip)
+        r = self.clients[1].get(pinned, headers={"Host": host}, extensions={"sni_hostname": host})
+        if r.status_code >= 400:
+            raise RuntimeError(f"GET {url} (pinned {ip}) -> HTTP {r.status_code}")
+        return r
 
     def _record(self, url: str, body: str, ext: str) -> None:
         if not self.record_dir:
