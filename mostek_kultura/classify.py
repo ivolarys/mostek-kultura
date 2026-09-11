@@ -17,8 +17,8 @@ from .normalize import norm
 
 log = logging.getLogger(__name__)
 
-ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5")
-OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5-mini")
+ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL") or "claude-haiku-4-5"
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL") or "gpt-5-mini"   # empty env (CI vars) = default
 BATCH = 25
 
 
