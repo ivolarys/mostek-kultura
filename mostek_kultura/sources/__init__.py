@@ -9,6 +9,7 @@ from .galileo import GalileoSource
 from .goout import GoOutSource
 from .josefa_events import JosefaEventsSource
 from .lodzie import LodzieSource
+from .manual import ManualSource
 from .npu_events import NpuEventsSource
 from .public4u import Public4uSource
 
@@ -21,6 +22,7 @@ REGISTRY: dict[str, type[Source]] = {
     "lodzie_program": LodzieSource,
     "npu_events": NpuEventsSource,
     "josefa_events": JosefaEventsSource,
+    "manual": ManualSource,
 }
 
 

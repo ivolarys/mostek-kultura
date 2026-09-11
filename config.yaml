@@ -11,7 +11,7 @@ places:
   - name: Mostek
     aliases: [Mostek u Dvora Králové, Souvrať, Debrné]
   - name: Dvůr Králové nad Labem
-    aliases: [Dvůr Králové, Dvůr Králové n. L., Dvůr Králové n.L., Dvoře Králové, Safari Park, Hankův dům, Kino Svět, Lipnice, Verdek]
+    aliases: [Dvůr Králové, Dvůr Králové n. L., Dvůr Králové n.L., Dvoře Králové, Safari Park, Hankův dům, Kino Svět, Lipnice, Verdek, L'Art Café, LeArt Café, Dostaveníčko]
   - name: Hostinné
     aliases: [Hostinném]
   - name: Bílá Třemešná
@@ -220,6 +220,12 @@ sources:
     place: Valdštejnská lodžie
     venue: Jičín
     priority: 8
+  - name: rucne
+    label: Ručně zadané akce (manual_events.yaml)
+    type: manual
+    url: manual_events.yaml
+    page: https://github.com/ivolarys/mostek-kultura/blob/main/manual_events.yaml
+    priority: 9
   - name: goout
     label: GoOut (vstupenkové akce podle venue)
     type: goout

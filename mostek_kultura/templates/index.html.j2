@@ -35,8 +35,9 @@ h2.grp:first-child{margin-top:8px}
 .ev .t{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;white-space:nowrap;grid-column:1}
 .ev .t small{display:block;color:var(--muted);font-weight:400;font-size:.8em}
 .ev .h{font-weight:600;grid-column:2}
-.ev .h a{text-decoration:none}
-.ev .h a:hover{text-decoration:underline}
+a.ev{text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+a.ev:hover{border-color:var(--accent);box-shadow:0 1px 6px color-mix(in srgb,var(--accent) 25%,transparent)}
+a.ev:hover .h{text-decoration:underline}
 .ev .m{color:var(--muted);font-size:.85rem;grid-column:2}
 .c-koncert{--c:#c2552b}.c-divadlo{--c:#7b4fa3}.c-film{--c:#2f6fb5}.c-vystava{--c:#1f8a80}.c-deti{--c:#c2438a}.c-trh{--c:#6a8f1f}.c-sport{--c:#2f7d4f}.c-prednaska{--c:#4d5fb3}.c-slavnost{--c:#c0392b}.c-komunita{--c:#8a6d3b}.c-jine{--c:#6b6a64}
 .badge{display:inline-block;--c:var(--accent);background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c);border-radius:6px;padding:0 6px;font-size:.75rem;font-weight:600;margin-right:6px;vertical-align:1px}
@@ -124,7 +125,9 @@ function evHtml(e,showDate){
   const when=e.ongoing?`<span class="t">do<small>${esc(e.ed.split('-').reverse().slice(0,2).join('. '))}.</small></span>`:`<span class="t">${e.time||'celý den'}${showDate?`<small>${esc(e.sd.split('-').reverse().slice(0,2).join('. '))}.</small>`:''}</span>`;
   const img=!embed&&e.image?`<img src="${esc(e.image)}" alt="" loading="lazy">`:'';
   const where=[e.place,e.venue&&e.venue!==e.place?e.venue:null].filter(Boolean).join(' · ');
-  return `<div class="ev${img?' img':''}">${when}<div class="h">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>`:esc(e.title)}</div><div class="m"><span class="badge c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span>${esc(where)}</div><div class="src">${esc(e.sources.join(', '))}</div>${img}</div>`;
+  const inner=`${when}<div class="h">${esc(e.title)}</div><div class="m"><span class="badge c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span>${esc(where)}</div><div class="src">${esc(e.sources.join(', '))}</div>${img}`;
+  const cls=`ev${img?' img':''}`;
+  return e.url?`<a class="${cls}" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="${cls}">${inner}</div>`;
 }
 function render(){
   const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];

@@ -1,0 +1,20 @@
+# Ručně zadané akce – hlavně z Facebooku, odkud se akce nedají stahovat automaticky.
+# Po přidání položky a pushnutí do repa je vyzvedne další denní build (typ zdroje `manual`,
+# viz config.yaml -> sources -> rucne).
+#
+# Formát jedné položky:
+#
+#   events:
+#     - title: Koncert v zahradě – Pavel Čadek      # povinné
+#       date: 2026-09-25                            # povinné, YYYY-MM-DD
+#       time: "19:00"                               # volitelné; bez času = celý den
+#       end: "21:00"                                # volitelné, čas konce téhož dne
+#       place: Dvůr Králové nad Labem               # volitelné, název obce z config.yaml (jinak se odvodí z venue/názvu)
+#       venue: L'Art Café (Kafé Dostaveníčko)       # volitelné
+#       category: koncert                           # volitelné, slug z config.yaml (viz sekce `categories`)
+#       url: https://www.facebook.com/kafedostavenicko/  # volitelné
+#       description: ...                            # volitelné
+#
+# Položky s proběhlým datem se v buildu automaticky přestanou zobrazovat, není třeba je mazat.
+
+events: []
