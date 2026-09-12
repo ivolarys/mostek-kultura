@@ -1,0 +1,29 @@
+{
+ "fetched_at": "2026-09-12T11:31:40+00:00",
+ "events": [
+  {
+   "title": "Podzimní snění 2026",
+   "start": "2026-11-06T00:00:00+01:00",
+   "source": "podzimni-sneni",
+   "url": "https://podzimnisneni.cz/",
+   "end": "2026-11-08T23:59:59+01:00",
+   "all_day": true,
+   "place": null,
+   "place_raw": "Hradec Králové",
+   "venue": "Tábor Jana Ámose Komenského, Běleč nad Orlicí",
+   "category": null,
+   "native_category": "festival",
+   "description": "Podzimní snění rozfouká podzimní depku jako vítr hromadu spadaného listí. Ze stagí hraje hudba, mlha nad rybníkem se míchá s kouřem od ohně. Je to multižánrový mišmaš bez hranic, co vás udrží vzhůru až do rána.",
+   "image": "https://podzimnisneni.cz/uploads/2026/hero-hero-hero-homepage-6a67c2e70d935-6a8b53318cf9b.webp",
+   "native_id": "podzimni-sneni-2026",
+   "ongoing": false,
+   "sources": [],
+   "urls": [],
+   "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
+   "id": "podzimni-sneni:e301080294be"
+  }
+ ]
+}

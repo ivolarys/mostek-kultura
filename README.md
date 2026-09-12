@@ -20,11 +20,16 @@ Divadlo DRAK, Náplavku, Nábleší a saunu NUUK. Kina, divadla a Náplavka
 se načítají z vlastních programů; Nábleší a NUUK z městského kalendáře HKinfo
 filtrovaného podle názvu nebo místa. Různé časy projekcí a různá kina zůstávají
 samostatnými akcemi. Divadelní zájezdy, uzavřená a školní představení se vynechávají.
+Podzimní snění načítá z aktuální homepage jeden vícedenní festivalový záznam.
 
 Výběr „Další kultura v Hradci – HKinfo“ doplňuje zveřejněné akce PETROF Gallery,
 filharmonie, Galerie moderního umění, Muzea východních Čech, hvězdárny a planetária,
 Galerie Artičok, AC klubu a Adalbertina. Zrušené akce a běžné lekce tanečních kurzů
 se do tohoto výběru nezařazují. Nabídka se aktualizuje při každém denním stažení.
+
+Bajkazyl HK má samostatný zdroj z veřejného datového rozhraní svého programu
+`bajkazylhk.cz/akce`. Načítají se začátky i konce akcí, popisy a dostupné obrázky.
+Časy v UTC se převádějí na český čas; staré akce vyřazuje společný časový filtr.
 
 ## Lokální spuštění
 
@@ -39,7 +44,7 @@ python -m http.server -d site 8000                            # http://localhost
 ## Jak přidat obec nebo zdroj
 
 - **Obec / venue:** přidej položku do `places` (název + aliasy, jak se místo objevuje v textech) nebo do `venues_allow` (konkrétní místo bez ohledu na obec).
-- **Zdroj existujícího typu** (`galileo`, `antee_rss`, `public4u`, `goout`, `drupal_events`, `lodzie_program`, `npu_events`, `josefa_events`, `vismo`, `vismo6`, `kultura_novapaka`, `uffo`, `mojekino`, `epo1_calendar`, `epo1_exhibitions`, `webnode_program`, `koruna_program`, `simcal_calendar`, `klaster_hostinne`, `manual`): přidej záznam do `sources` s `url`, `place` (výchozí obec) a `priority`. Pak `build --record --source <name> --no-llm` nahraje fixture pro testy (u `manual` fixture není potřeba, čte se přímo `manual_events.yaml`).
+- **Zdroj existujícího typu** (`galileo`, `antee_rss`, `public4u`, `goout`, `drupal_events`, `lodzie_program`, `npu_events`, `josefa_events`, `vismo`, `vismo6`, `kultura_novapaka`, `uffo`, `mojekino`, `epo1_calendar`, `epo1_exhibitions`, `webnode_program`, `koruna_program`, `simcal_calendar`, `klaster_hostinne`, `podzimni_sneni`, `manual`): přidej záznam do `sources` s `url`, `place` (výchozí obec) a `priority`. Pak `build --record --source <name> --no-llm` nahraje fixture pro testy (u `manual` fixture není potřeba, čte se přímo `manual_events.yaml`).
 - **Nový typ zdroje:** modul v `mostek_kultura/sources/` s třídou odvozenou od `Source` (metoda `fetch(http) -> list[Event]`), registrace v `sources/__init__.py`, fixture a test v `tests/test_sources.py`.
 
 ## Ruční akce (Facebook apod.)

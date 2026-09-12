@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .antee_rss import AnteeRssSource
+from .bajkazyl_program import BajkazylProgramSource
 from .base import Source
 from .bio_central import BioCentralSource
 from .cinestar import CineStarSource
@@ -23,6 +24,7 @@ from .manual import ManualSource
 from .mojekino import MojekinoSource
 from .naplavka_program import NaplavkaProgramSource
 from .npu_events import NpuEventsSource
+from .podzimni_sneni import PodzimniSneniSource
 from .public4u import Public4uSource
 from .simcal_calendar import SimcalCalendarSource
 from .uffo import UffoSource
@@ -34,8 +36,10 @@ REGISTRY: dict[str, type[Source]] = {
     "galileo": GalileoSource,
     "antee_rss": AnteeRssSource,
     "bio_central": BioCentralSource,
+    "bajkazyl_program": BajkazylProgramSource,
     "cinestar": CineStarSource,
     "public4u": Public4uSource,
+    "podzimni_sneni": PodzimniSneniSource,
     "goout": GoOutSource,
     "hkinfo_program": HkinfoProgramSource,
     "drupal_events": DrupalEventsSource,

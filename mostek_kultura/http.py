@@ -9,6 +9,7 @@ import logging
 import re
 import time
 from pathlib import Path
+from typing import Self
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import httpx
@@ -39,6 +40,7 @@ UA = (
     "Chrome/128.0 Safari/537.36"
 )
 RETRY_STATUS = {429, 500, 502, 503, 504}
+_CACHED_RESPONSE_HEADERS = {"content-encoding", "content-length", "transfer-encoding"}
 
 
 def _key(url: str) -> str:
@@ -55,9 +57,10 @@ def _post_key(url: str, data: dict[str, object]) -> str:
 
 
 class Http:
-    """Live client. `get_text` returns decoded body, `get_json` parsed JSON."""
+    """Live client with optional instance-scoped GET response caching."""
 
-    def __init__(self, timeout: float = 20.0, retries: int = 3, record_dir: Path | None = None):
+    def __init__(self, timeout: float = 20.0, retries: int = 3, record_dir: Path | None = None,
+                 cache_gets: bool = False):
         headers = {"User-Agent": UA, "Accept-Language": "cs,en;q=0.5"}
         # Two clients: one bound to IPv4 (GitHub runners have no IPv6 route and httpx does not
         # fall back from AAAA to A -> "Network is unreachable"), one with default resolution
@@ -70,6 +73,39 @@ class Http:
         self.client = self.clients[0]
         self.retries = retries
         self.record_dir = record_dir
+        self.cache_gets = cache_gets
+        # Keep immutable response material so a caller's requested encoding cannot affect a
+        # later cache hit. The full, unnormalised URL is deliberately the cache key.
+        self._get_cache: dict[str, tuple[bytes, dict[str, str]]] = {}
+
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(self, exc_type: object, exc: object, traceback: object) -> None:
+        self.close()
+
+    def close(self) -> None:
+        """Close all underlying clients. Safe to call more than once."""
+        for client in self.clients:
+            client.close()
+
+    def _cached_get(self, url: str) -> httpx.Response:
+        if not self.cache_gets:
+            return self._get(url)
+        cached = self._get_cache.get(url)
+        if cached is not None:
+            content, headers = cached
+            return httpx.Response(200, headers=headers, content=content)
+
+        response = self._get(url)
+        # Save bytes and copied headers before `get_text(..., encoding=...)` can change the
+        # response object's encoding. Only `_get` successes reach this point.
+        headers = {
+            key: value for key, value in response.headers.items()
+            if key.lower() not in _CACHED_RESPONSE_HEADERS
+        }
+        self._get_cache[url] = (bytes(response.content), headers)
+        return response
 
     def _get(self, url: str) -> httpx.Response:
         last: Exception | None = None
@@ -146,7 +182,7 @@ class Http:
         manifest.write_text(json.dumps(data, indent=1, ensure_ascii=False))
 
     def get_text(self, url: str, encoding: str | None = None) -> str:
-        r = self._get(url)
+        r = self._cached_get(url)
         if encoding:
             r.encoding = encoding
         body = r.text
@@ -154,11 +190,13 @@ class Http:
         return body
 
     def get_json(self, url: str) -> dict:
-        r = self._get(url)
+        r = self._cached_get(url)
         self._record(url, r.text, "json")
         return r.json()
 
     def post_text(self, url: str, data: dict[str, object], encoding: str | None = None) -> str:
+        # A form POST may alter server-side session state, so no earlier GET stays valid.
+        self._get_cache.clear()
         r = self._post(url, data)
         if encoding:
             r.encoding = encoding

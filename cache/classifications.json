@@ -1,4 +1,20 @@
 {
+ "bajkazyl-hk:05e4080258d6": {
+  "category": "prednaska",
+  "confidence": 0.95,
+  "model": "manual-review",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T11:22:28+00:00"
+ },
+ "bajkazyl-hk:ce1bce3187d6": {
+  "category": "koncert",
+  "confidence": 0.95,
+  "model": "manual-review",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T11:22:28+00:00"
+ },
  "belohradska-sypka:5fece1555e69": {
   "category": "komunita",
   "confidence": 0.8,

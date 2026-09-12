@@ -20,6 +20,13 @@
   "q": "Areál autokempu, Mostek, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
  },
+ "bajkazyl hradec kralove|hradec kralove": {
+  "lat": 50.212324,
+  "lon": 15.8335962,
+  "precision": "venue",
+  "q": "Bajkazyl Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T11:23:25+00:00"
+ },
  "beat brtewski|lazne belohrad": {
   "lat": null,
   "lon": null,
@@ -712,6 +719,13 @@
   "precision": "venue",
   "q": "Suchardův dům, Nová Paka, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "tabor jana amose komenskeho, belec nad orlici|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Tábor Jana Ámose Komenského, Běleč nad Orlicí, Hradec Králové, Česko",
+  "ts": "2026-09-12T11:31:40+00:00"
  },
  "terapeuticka zahrada, ul. chelcickeho, vrchlabi|vrchlabi": {
   "lat": 50.619854,

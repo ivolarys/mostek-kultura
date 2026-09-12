@@ -340,6 +340,13 @@ sources:
     page: https://naplavkahk.cz/program
     place: Hradec Králové
     priority: 8
+  - name: podzimni-sneni
+    label: Podzimní snění – Festival
+    type: podzimni_sneni
+    url: https://podzimnisneni.cz/
+    page: https://podzimnisneni.cz/
+    place: Hradec Králové
+    priority: 8
   - name: nablesi
     label: Nábleší – Kalendář HKinfo
     type: hkinfo_program
@@ -396,6 +403,13 @@ sources:
     type: cinestar
     url: https://cinestar.cz/cz/hradec
     page: https://cinestar.cz/cz/hradec/program
+    place: Hradec Králové
+    priority: 9
+  - name: bajkazyl-hk
+    label: Bajkazyl HK – Program
+    type: bajkazyl_program
+    url: https://bajkazylhk.cz/.netlify/functions/events
+    page: https://bajkazylhk.cz/akce
     place: Hradec Králové
     priority: 9
   - name: goout

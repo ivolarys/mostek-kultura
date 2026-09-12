@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+from contextlib import nullcontext
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -49,28 +50,37 @@ def fetch_all(cfg: Config, root: Path, offline: bool, only: set[str] | None,
               record: bool = False, persist: bool = True) -> tuple[list[Event], list[SourceStatus]]:
     events: list[Event] = []
     statuses: list[SourceStatus] = []
-    for scfg in cfg.sources:
-        if only and scfg.name not in only:
-            continue
-        if not scfg.enabled:
-            statuses.append(SourceStatus(scfg.name, "disabled"))
-            continue
-        fixture_dir = root / "tests" / "fixtures" / scfg.name
-        last_good = root / "cache" / "last_good" / f"{scfg.name}.json"
-        src = make_source(scfg)
-        try:
-            http = FixtureHttp(fixture_dir) if offline else Http(record_dir=fixture_dir if record else None)
-            got = apply_source_filters(src.fetch(http), scfg)
-            if not offline and persist:
-                save_last_good(last_good, got)
-            statuses.append(SourceStatus(scfg.name, "ok", len(got), _utcnow()))
-            log.info("%s: %d events", scfg.name, len(got))
-        except Exception as e:
-            log.exception("%s: fetch failed", scfg.name)
-            got, fetched_at = load_last_good(last_good)
-            status = "fallback" if got else "error"
-            statuses.append(SourceStatus(scfg.name, status, len(got), fetched_at, str(e)[:300]))
-        events.extend(got)
+    # Živý transport i jeho GET cache platí jen pro tento jeden sekvenční běh. Při nahrávání
+    # fixtures se cílový adresář přepíná pro každý zdroj a vždy se ve finally vrátí na None.
+    transport = nullcontext(None) if offline else Http(cache_gets=True)
+    with transport as live_http:
+        for scfg in cfg.sources:
+            if only and scfg.name not in only:
+                continue
+            if not scfg.enabled:
+                statuses.append(SourceStatus(scfg.name, "disabled"))
+                continue
+            fixture_dir = root / "tests" / "fixtures" / scfg.name
+            last_good = root / "cache" / "last_good" / f"{scfg.name}.json"
+            src = make_source(scfg)
+            http = FixtureHttp(fixture_dir) if offline else live_http
+            if live_http:
+                live_http.record_dir = fixture_dir if record else None
+            try:
+                got = apply_source_filters(src.fetch(http), scfg)
+                if not offline and persist:
+                    save_last_good(last_good, got)
+                statuses.append(SourceStatus(scfg.name, "ok", len(got), _utcnow()))
+                log.info("%s: %d events", scfg.name, len(got))
+            except Exception as e:
+                log.exception("%s: fetch failed", scfg.name)
+                got, fetched_at = load_last_good(last_good)
+                status = "fallback" if got else "error"
+                statuses.append(SourceStatus(scfg.name, status, len(got), fetched_at, str(e)[:300]))
+            finally:
+                if live_http:
+                    live_http.record_dir = None
+            events.extend(got)
     return events, statuses
 
 
