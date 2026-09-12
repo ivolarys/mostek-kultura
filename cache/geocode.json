@@ -307,6 +307,13 @@
   "q": "Hrad Pecka, Pecka, Pecka, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
  },
+ "hradecka sypka|hradec kralove": {
+  "lat": 50.2193287,
+  "lon": 15.8098971,
+  "precision": "venue",
+  "q": "Hradecká sýpka, Hradec Králové, Česko",
+  "ts": "2026-09-12T15:02:36+00:00"
+ },
  "hudebni divadlo karlin|nova paka": {
   "lat": null,
   "lon": null,

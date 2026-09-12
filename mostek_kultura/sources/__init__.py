@@ -21,6 +21,7 @@ from .koruna_program import KorunaProgramSource
 from .kultura_novapaka import KulturaNovaPakaSource
 from .lodzie import LodzieSource
 from .manual import ManualSource
+from .menu_music import MenuMusicSource
 from .mojekino import MojekinoSource
 from .naplavka_program import NaplavkaProgramSource
 from .npu_events import NpuEventsSource
@@ -53,6 +54,7 @@ REGISTRY: dict[str, type[Source]] = {
     "kultura_novapaka": KulturaNovaPakaSource,
     "uffo": UffoSource,
     "manual": ManualSource,
+    "menu_music": MenuMusicSource,
     "mojekino": MojekinoSource,
     "naplavka_program": NaplavkaProgramSource,
     "epo1_calendar": Epo1CalendarSource,

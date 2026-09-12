@@ -118,6 +118,7 @@ category_map:
   kino: film
   film: film
   cinema: film
+  projekce: film
   vystava: vystava
   exhibition: vystava
   galerie: vystava
@@ -409,6 +410,13 @@ sources:
     type: bajkazyl_program
     url: https://bajkazylhk.cz/.netlify/functions/events
     page: https://bajkazylhk.cz/akce
+    place: Hradec Králové
+    priority: 9
+  - name: menumusic-hk
+    label: MENU music – Program
+    type: menu_music
+    url: https://menumusic.cz/rss
+    page: https://menumusic.cz/
     place: Hradec Králové
     priority: 9
   - name: goout
