@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import unicodedata
 from dataclasses import asdict
 from datetime import date, timedelta
 from pathlib import Path
@@ -93,6 +94,35 @@ def plural_akce(n: int) -> str:
 STATUS_LABEL = {"ok": "OK", "fallback": "záložní data", "error": "chyba", "disabled": "vypnuto"}
 
 
+_CZECH_ORDER = {char: index for index, char in enumerate(
+    "aáäbcčdďeéěfghijklmnňoópqrřsštťuúůvwxyzž"
+)}
+_CZECH_ORDER["ch"] = _CZECH_ORDER["h"] + 0.5
+
+
+def _czech_sort_key(value: str) -> tuple:
+    """Return a deterministic Czech collation key without locale state."""
+    folded = unicodedata.normalize("NFC", value).casefold()
+    primary = []
+    index = 0
+    while index < len(folded):
+        pair = folded[index:index + 2]
+        if pair == "ch":
+            primary.append(_CZECH_ORDER["ch"])
+            index += 2
+            continue
+        char = folded[index]
+        decomposed = unicodedata.normalize("NFD", char)
+        base = decomposed[0]
+        # Vowel accents sort as their unaccented base; Czech consonant accents
+        # retain their distinct alphabet positions.
+        if base in "aeiouy" and all(unicodedata.combining(c) for c in decomposed[1:]):
+            char = base
+        primary.append(_CZECH_ORDER.get(char, len(_CZECH_ORDER) + ord(char)))
+        index += 1
+    return (tuple(primary), folded)
+
+
 def build_sources_page(events: list[Event], cfg: Config, statuses: list[SourceStatus]) -> dict:
     """Sources grouped by municipality for zdroje.html."""
     st = {s.name: s for s in statuses}
@@ -116,7 +146,7 @@ def build_sources_page(events: list[Event], cfg: Config, statuses: list[SourceSt
         }
 
     groups = []
-    for p in cfg.places:
+    for p in sorted(cfg.places, key=lambda place: _czech_sort_key(place.name)):
         srcs = [info(s) for s in cfg.sources if s.place == p.name]
         groups.append({"place": p.name, "aliases": p.aliases[:6], "sources": srcs,
                        "event_count": per_place.get(p.name, 0)})

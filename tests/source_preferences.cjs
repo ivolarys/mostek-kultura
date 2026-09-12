@@ -14,12 +14,16 @@ vm.runInContext(fs.readFileSync('mostek_kultura/static/source-preferences.js', '
 const prefs = sandbox.MostkulturaSources;
 const plain = value => JSON.parse(JSON.stringify(value));
 const all = {disabledSources: [], disabledPlaces: []};
-assert.deepEqual(plain(prefs.read()), all);
+const defaults = {disabledSources: [], disabledPlaces: ['Hradec Králové']};
+assert.deepEqual(plain(prefs.read()), defaults);
+assert.equal(values.has(prefs.KEY), false);
+const temporary = prefs.read();temporary.disabledPlaces.push('Trutnov');
+assert.deepEqual(plain(prefs.read()), defaults);
 assert.equal(prefs.KEY, 'mostkultura.sourcePreferences.v1');
 
-for (const malformed of ['{oops', 'null', '42', '[]', '"string"']) {
+for (const malformed of ['{oops', 'null', '42', '[]', '"string"', '{}', '{"disabledPlaces":"Hradec Králové","disabledSources":[]}']) {
   values.set(prefs.KEY, malformed);
-  assert.deepEqual(plain(prefs.read()), all);
+  assert.deepEqual(plain(prefs.read()), defaults);
 }
 assert.deepEqual(plain(prefs.normalize({disabledSources:['a','a',42,null,''], disabledPlaces:'HK'})),
   {disabledSources:['a'], disabledPlaces:[]});
@@ -47,8 +51,11 @@ assert.equal(prefs.save(all), true);
 assert.equal(values.get('unrelated-setting'), 'preserve');
 assert.deepEqual(plain(prefs.read()), all);
 
+values.set(prefs.KEY, JSON.stringify({disabledSources:['direct'],disabledPlaces:['Trutnov']}));
+assert.deepEqual(plain(prefs.read()), {disabledSources:['direct'],disabledPlaces:['Trutnov']});
+
 Object.defineProperty(sandbox, 'localStorage', {configurable:true, get(){throw new Error('blocked storage');}});
-assert.deepEqual(plain(prefs.read()), all);
+assert.deepEqual(plain(prefs.read()), defaults);
 assert.equal(prefs.save(selected), false);
 Object.defineProperty(sandbox, 'localStorage', {value:{getItem:()=>null,setItem(){throw new Error('quota');}},configurable:true});
 assert.equal(prefs.save(selected), false);

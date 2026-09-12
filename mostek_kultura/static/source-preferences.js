@@ -2,6 +2,7 @@
 (function (global) {
   'use strict';
   const KEY = 'mostkultura.sourcePreferences.v1';
+  const DEFAULT_DISABLED_PLACES = ['Hradec Králové'];
   const list = value => Array.isArray(value)
     ? [...new Set(value.filter(item => typeof item === 'string').map(item => item.trim()).filter(Boolean))]
     : [];
@@ -11,9 +12,20 @@
       disabledPlaces: list(value && value.disabledPlaces),
     };
   }
+  function defaults() {
+    return { disabledSources: [], disabledPlaces: [...DEFAULT_DISABLED_PLACES] };
+  }
   function read() {
-    try { return normalize(JSON.parse(global.localStorage.getItem(KEY) || 'null')); }
-    catch (_) { return normalize(null); }
+    try {
+      const raw = global.localStorage.getItem(KEY);
+      if (raw === null) return defaults();
+      const value = JSON.parse(raw);
+      if (!value || Array.isArray(value) || typeof value !== 'object'
+          || !Array.isArray(value.disabledSources) || !Array.isArray(value.disabledPlaces)) {
+        return defaults();
+      }
+      return normalize(value);
+    } catch (_) { return defaults(); }
   }
   function save(prefs) {
     try { global.localStorage.setItem(KEY, JSON.stringify(normalize(prefs))); return true; }
@@ -33,5 +45,5 @@
   function eventAllowed(event, prefs) {
     return compile(prefs)(event);
   }
-  global.MostkulturaSources = { KEY, normalize, read, save, compile, eventAllowed };
+  global.MostkulturaSources = { KEY, normalize, defaults, read, save, compile, eventAllowed };
 })(typeof window !== 'undefined' ? window : globalThis);
