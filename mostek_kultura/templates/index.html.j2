@@ -142,9 +142,9 @@ document.getElementById('gen').textContent=new Date(D.generated_at).toLocaleStri
 document.getElementById('total').textContent=D.events.length;
 
 // state from hash
-const st={tab:qs.get('tab')||'week',cat:new Set(),place:new Set(),group:qs.get('group')||'day'};
+const st={tab:qs.get('tab')||'week',cat:new Set(),place:new Set(),group:qs.get('group')||'category'};
 function readHash(){const h=new URLSearchParams(location.hash.replace(/^#/,''));if(h.get('tab'))st.tab=h.get('tab');if(h.get('group'))st.group=h.get('group');st.cat=new Set((h.get('cat')||'').split(',').filter(Boolean));st.place=new Set((h.get('place')||'').split(',').filter(Boolean))}
-function writeHash(){const h=new URLSearchParams();h.set('tab',st.tab);if(st.group!=='day')h.set('group',st.group);if(st.cat.size)h.set('cat',[...st.cat].join(','));if(st.place.size)h.set('place',[...st.place].join(','));if(embed)h.set('embed','1');history.replaceState(null,'','#'+h.toString())}
+function writeHash(){const h=new URLSearchParams();h.set('tab',st.tab);if(st.group!=='category')h.set('group',st.group);if(st.cat.size)h.set('cat',[...st.cat].join(','));if(st.place.size)h.set('place',[...st.place].join(','));if(embed)h.set('embed','1');history.replaceState(null,'','#'+h.toString())}
 readHash();
 if(!TABS.some(t=>t[0]===st.tab))st.tab='week';
 
