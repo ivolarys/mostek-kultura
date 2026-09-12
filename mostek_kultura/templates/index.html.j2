@@ -24,6 +24,9 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .brand-logo{width:36px;height:32px;display:block;object-fit:contain;flex:0 0 36px}
 .hero-locality{display:block;color:var(--label3);font-size:12px;margin:7px 0 0 44px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hero-meta{min-width:0;max-width:150px;color:var(--label3);font-size:11.5px;line-height:1.3;margin:0;text-align:right;overflow-wrap:anywhere}
+.source-link{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;min-height:44px;padding:7px 8px 0;color:var(--label2);font-size:13px;font-weight:650;white-space:nowrap;border-radius:8px}
+.source-link:focus-visible{outline-offset:-3px}
+.source-link .icon{width:18px;height:18px}
 
 .filters{position:sticky;top:0;z-index:20;margin:0 -20px;padding:9px 20px 8px;background:rgba(251,247,241,.92);border-top:1px solid transparent;border-bottom:1px solid var(--sep);-webkit-backdrop-filter:saturate(170%) blur(18px);backdrop-filter:saturate(170%) blur(18px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .filters{background:rgba(22,16,29,.91)}}
@@ -76,7 +79,6 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .category-ongoing-title{margin:0 0 8px;padding:0 16px;color:var(--label2);font-size:13px;line-height:1.3;font-weight:750}
 .site-footer{margin-top:28px}
 .footer-row{min-height:58px;font-size:14px}
-.footer-row .chev{margin-left:auto}
 
 @media (max-width:359px){
   .hero-grid{gap:8px}
@@ -153,7 +155,7 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
         <h1 class="brand"><img class="brand-logo" src="logo.svg?v=mostkultura-1" alt=""><span>Mostkultura</span></h1>
         <span class="hero-locality">Kultura okolo Mostku</span>
       </div>
-      <div class="hero-meta">Aktualizováno <span id="gen"></span> · <span id="total"></span></div>
+      <div class="hero-meta"><div>Aktualizováno <span id="gen"></span> · <span id="total"></span></div><a class="source-link" href="zdroje.html" aria-label="Zdroje podle obce"><span id="sourceIcon" aria-hidden="true"></span><span>Zdroje</span></a></div>
     </div>
   </header>
 
@@ -186,7 +188,6 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
 
   <footer class="site-footer">
     <div class="list-card">
-      <a class="row footer-row" href="zdroje.html"><span id="sourceIcon" aria-hidden="true"></span><span>Zdroje podle obce</span><span class="chev" id="footerChev" aria-hidden="true"></span></a>
       <div class="row footer-row"><span class="content">Stav zdrojů: {{ status.sources|selectattr('status','equalto','ok')|list|length }} OK, {{ status.sources|rejectattr('status','equalto','ok')|list|length }} chyb{% set bad = status.sources|rejectattr('status','equalto','ok')|list %}{% if bad %} ({{ bad|map(attribute='name')|join(', ') }}){% endif %}</span></div>
     </div>
     <p class="disclaimer">Akce stahujeme jednou denně. Čas a místo si před cestou ověřte u pořadatele.</p>
@@ -407,7 +408,7 @@ function showMap(events){
 }
 function openEventDialog(title,events){const dialog=document.getElementById('eventDialog');if(dialog.open)return;document.getElementById('eventTitle').innerHTML=`${esc(title)}<div class="sheet-subtitle">${akceLabel(events.length)}</div>`;document.getElementById('eventBody').innerHTML=`<div class="list-card">${events.slice().sort((a,b)=>a.start.localeCompare(b.start)).map(e=>eventHtml(e,true)).join('')}</div>`;openDialog(dialog)}
 
-document.getElementById('searchIcon').innerHTML=ICON.search;document.getElementById('searchClear').innerHTML=ICON.close;document.getElementById('filterIcon').innerHTML=ICON.filter;document.getElementById('filterClose').innerHTML=ICON.close;document.getElementById('eventClose').innerHTML=ICON.close;document.getElementById('sourceIcon').innerHTML=ICON.source;document.getElementById('footerChev').outerHTML=ICON.chev;
+document.getElementById('searchIcon').innerHTML=ICON.search;document.getElementById('searchClear').innerHTML=ICON.close;document.getElementById('filterIcon').innerHTML=ICON.filter;document.getElementById('filterClose').innerHTML=ICON.close;document.getElementById('eventClose').innerHTML=ICON.close;document.getElementById('sourceIcon').innerHTML=ICON.source;
 document.getElementById('gen').textContent=new Date(D.generated_at).toLocaleString('cs-CZ',{timeZone:TZ,day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'});
 document.getElementById('total').textContent=akceLabel(EVENTS.length);
 document.getElementById('search').addEventListener('input',e=>update(()=>st.q=e.target.value.trimStart().slice(0,120),true));
