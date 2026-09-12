@@ -24,8 +24,9 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .brand{grid-column:2;grid-row:1}
 .brand-logo{grid-column:1;grid-row:1 / span 2;width:46px;height:42px;display:block;object-fit:contain;flex:0 0 46px}
 .hero-locality{grid-column:2;grid-row:2;display:block;color:var(--label3);font-size:12px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hero-meta{min-width:0;color:var(--label3);font-size:11.5px;line-height:1.3;margin:0;text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:10px;white-space:nowrap}
+.hero-meta{min-width:0;color:var(--label3);font-size:11.5px;line-height:1.3;margin:0;text-align:right;display:grid;grid-template-columns:auto auto;align-items:center;justify-content:end;gap:0 10px;white-space:nowrap}
 .hero-update{white-space:nowrap}
+.hero-source-status{grid-column:1 / -1;color:var(--label3);font-size:12px;line-height:1.25;white-space:nowrap}
 .source-link{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;min-height:44px;padding:0 8px;color:var(--label2);font-size:13px;font-weight:650;white-space:nowrap;border-radius:8px}
 .source-link:focus-visible{outline-offset:-3px}
 .source-link .icon{width:18px;height:18px}
@@ -52,13 +53,12 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .reset-btn{color:var(--tint);border-color:transparent;background:transparent}
 
 .list-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0 2px}
-.result-summary{min-width:0}
-.result-count{font-size:16px;font-weight:750}
-.range-label{font-size:13px;color:var(--label3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.result-summary{min-width:0;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.result-count{font-size:12px;font-weight:500;color:var(--label3)}
+.range-label{font-size:16px;font-weight:750;color:var(--label);white-space:nowrap}
 .view-toggle{flex:0 0 auto}
-.view-toggle .seg-btn{min-width:44px;padding:0 10px}
-.view-toggle .view-label{display:inline}
-.view-toggle .seg-btn{padding:0 8px;font-size:13px}
+.view-toggle .seg-btn{width:44px;height:44px;min-width:44px;padding:0;font-size:13px}
+.view-toggle .seg-btn .icon{width:20px;height:20px}
 .period-desktop{display:none;margin:12px 0 0}
 .period-desktop .seg-btn{flex:1;min-width:0}
 .period-desktop .n{font-size:11px;color:var(--label3)}
@@ -78,8 +78,10 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .ongoing summary::-webkit-details-marker{display:none}
 .ongoing summary .chev{margin-left:auto;transition:transform .18s ease}
 .ongoing[open] summary .chev{transform:rotate(90deg)}
-.category-ongoing{margin-top:14px;padding-top:12px;border-top:1px solid var(--sep)}
-.category-ongoing-title{margin:0 0 8px;padding:0 16px;color:var(--label2);font-size:13px;line-height:1.3;font-weight:750}
+.category-ongoing{margin-top:6px}
+.category-ongoing-title{display:flex;align-items:center;gap:10px;margin:0 0 6px;padding:0;color:var(--label2);font-size:12px;line-height:1.35;font-weight:600;text-align:center}
+.category-ongoing-title::before,.category-ongoing-title::after{content:"";flex:1 0 16px;height:1px;background:var(--sep)}
+.category-ongoing-title span{min-width:0}
 .site-footer{margin-top:28px}
 .footer-row{min-height:58px;font-size:14px}
 
@@ -98,11 +100,15 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
   .brand{font-size:24px}
   .brand-logo{width:38px;height:36px;flex-basis:38px}
   .hero-meta{font-size:11px}
+  .hero-source-status{font-size:11px}
 }
 @media (max-width:699px){
   .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"identity" "meta";gap:2px 0}
   .hero-identity{grid-area:identity}
   .hero-meta{grid-area:meta}
+  .result-summary{gap:6px}
+  .range-label{font-size:14px}
+  .list-head{gap:8px}
 }
 
 .tabbar{position:fixed;left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));z-index:25;display:flex;height:64px;padding:5px;background:rgba(255,255,255,.86);border:1px solid rgba(45,33,54,.13);border-radius:21px;box-shadow:0 12px 35px rgba(48,32,42,.18);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px)}
@@ -166,6 +172,9 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
 </head>
 <body>
 <div class="wrap">
+  {% set source_ok_count = status.sources|selectattr('status','equalto','ok')|list|length %}
+  {% set bad_sources = status.sources|rejectattr('status','equalto','ok')|list %}
+  {% set source_bad_count = bad_sources|length %}
   <header class="hero">
     <div class="hero-grid">
       <div class="hero-identity">
@@ -173,7 +182,7 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
         <h1 class="brand"><span>Mostkultura</span></h1>
         <span class="hero-locality">Kultura okolo Mostku</span>
       </div>
-      <div class="hero-meta"><div class="hero-update">Aktualizováno <span id="gen"></span> · <span id="total"></span></div><a class="source-link" href="zdroje.html" aria-label="Zdroje podle obce"><span id="sourceIcon" aria-hidden="true"></span><span>Zdroje</span></a></div>
+      <div class="hero-meta"><div class="hero-update">Aktualizováno <span id="gen"></span> · <span id="total"></span></div><a class="source-link" href="zdroje.html" aria-label="Zdroje podle obce"><span id="sourceIcon" aria-hidden="true"></span><span>Zdroje</span></a><div class="hero-source-status" role="status" aria-label="Stav zdrojů: {{ source_ok_count }} OK · {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}{% if bad_sources %}. Chybné zdroje: {{ bad_sources|map(attribute='name')|join(', ') }}{% endif %}"{% if bad_sources %} title="{{ bad_sources|map(attribute='name')|join(', ') }}"{% endif %}>Stav zdrojů: {{ source_ok_count }} OK · {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}</div></div>
     </div>
   </header>
 
@@ -208,7 +217,7 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
 
   <div class="period-desktop seg" id="periodDesktop" aria-label="Období"></div>
   <div class="list-head">
-    <div class="result-summary"><div class="result-count" id="resultCount" aria-live="polite"></div><div class="range-label" id="rangeLabel"></div></div>
+    <div class="result-summary"><div class="range-label" id="rangeLabel"></div><div class="result-count" id="resultCount" aria-live="polite"></div></div>
     <div class="view-toggle seg" id="viewToggle" aria-label="Zobrazení"></div>
   </div>
 
@@ -220,9 +229,6 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
   </div>
 
   <footer class="site-footer">
-    <div class="list-card">
-      <div class="row footer-row"><span class="content">Stav zdrojů: {{ status.sources|selectattr('status','equalto','ok')|list|length }} OK, {{ status.sources|rejectattr('status','equalto','ok')|list|length }} chyb{% set bad = status.sources|rejectattr('status','equalto','ok')|list %}{% if bad %} ({{ bad|map(attribute='name')|join(', ') }}){% endif %}</span></div>
-    </div>
     <p class="disclaimer">Akce stahujeme jednou denně. Čas a místo si před cestou ověřte u pořadatele.</p>
     <button class="install-reopen" id="installReopen" type="button" hidden>Přidat aplikaci</button>
   </footer>
@@ -334,7 +340,7 @@ function visibleEvents(places=st.place){
 const akceLabel=n=>n===1?n+' akce':n>=2&&n<=4?n+' akce':n+' akcí';
 const shortDate=iso=>{const [y,m,d]=iso.split('-');return `${Number(d)}. ${Number(m)}.`};
 const dayLabel=iso=>{const d=new Date(iso+'T12:00:00Z');const s=d.toLocaleDateString('cs-CZ',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'});return iso===today?'Dnes · '+s:iso===addDays(today,1)?'Zítra · '+s:s};
-function rangeLabel(){const t=TABS.find(x=>x[0]===st.tab);if(st.tab==='all')return 'Od dneška dál';if(t[2][0]===t[2][1])return dayLabel(t[2][0]);return `${shortDate(t[2][0])}–${shortDate(t[2][1])}`}
+function rangeLabel(){const t=TABS.find(x=>x[0]===st.tab);if(st.tab==='all')return 'Od dneška dál';if(st.tab==='today'||st.tab==='tomorrow')return `${t[1]} · ${shortDate(t[2][0])}`;if(t[2][0]===t[2][1])return dayLabel(t[2][0]);return `${shortDate(t[2][0])}–${shortDate(t[2][1])}`}
 
 function eventHtml(e,showDate){
   const current=e.ongoing&&e.sd<today;
@@ -387,7 +393,7 @@ function renderList(main,ongoing){
         ? `<div class="list-card">${regular.map(e=>eventHtml(e,true)).join('')}</div>`
         : '';
       const ongoingHtml=live.length
-        ? `<div class="category-ongoing"><h3 class="category-ongoing-title">Právě probíhá · ${akceLabel(live.length)}</h3><div class="list-card">${live.map(e=>eventHtml(e,true)).join('')}</div></div>`
+        ? `<div class="category-ongoing"><h3 class="category-ongoing-title"><span>Dlouhodobé akce, které právě probíhají</span></h3><div class="list-card">${live.map(e=>eventHtml(e,true)).join('')}</div></div>`
         : '';
       return `<section aria-labelledby="grp-${esc(k)}"><h2 class="grp grp-title c-${esc(k)}" id="grp-${esc(k)}">${catIcon(k)}<span>${esc(label)}</span></h2>${ordinaryHtml}${ongoingHtml}</section>`;
     }).join('');
@@ -406,7 +412,7 @@ function render(){
   document.body.classList.toggle('view-map',st.view==='map');renderPeriods();renderCategories();renderActiveFilters();renderList(main,ongoing);
   const search=document.getElementById('search');if(search.value!==st.q)search.value=st.q;document.getElementById('searchClear').hidden=!st.q;
   document.getElementById('resultCount').textContent=akceLabel(count);document.getElementById('rangeLabel').textContent=rangeLabel();
-  document.getElementById('viewToggle').innerHTML=`<button type="button" data-view="list" class="seg-btn${st.view==='list'?' on':''}" aria-label="Zobrazit seznam" aria-pressed="${st.view==='list'}">${ICON.list}<span class="view-label">Seznam</span></button><button type="button" data-view="map" class="seg-btn${st.view==='map'?' on':''}" aria-label="Zobrazit mapu" aria-pressed="${st.view==='map'}">${ICON.map}<span class="view-label">Mapa</span></button>`;
+  document.getElementById('viewToggle').innerHTML=`<button type="button" data-view="list" class="seg-btn${st.view==='list'?' on':''}" aria-label="Zobrazit seznam" title="Seznam" aria-pressed="${st.view==='list'}">${ICON.list}</button><button type="button" data-view="map" class="seg-btn${st.view==='map'?' on':''}" aria-label="Zobrazit mapu" title="Mapa" aria-pressed="${st.view==='map'}">${ICON.map}</button>`;
   if(st.view==='map')showMap([...main,...ongoing]);else mapRequest++;
   restoreFocus();
 }

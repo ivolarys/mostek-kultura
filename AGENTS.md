@@ -31,6 +31,9 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - Kategorie se posouvají vodorovně a vybraná kategorie zůstává přímo v liště.
 - V hlavičce jsou metadata a odkaz „Zdroje“ vedle sebe.
 - Respektuj safe area nahoře i po stranách; sticky prvky musí zohlednit horní inset.
+- Oddělení dlouhodobých akcí používá tenkou linku se středovým textem a kompaktní mezery.
+- Souhrn období zobrazuje datum před počtem; přepínač seznam/mapa používá pouze ikony.
+- Stav zdrojů patří do pravé části hlavičky pod aktualizaci a odkaz Zdroje.
 - Výchozí období filtrů je „Dnes“ a výchozí kategorie „Vše“.
 - Značka je výraznější; aktualizace a počet akcí se v hlavičce nikdy nezalamují.
 - Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
