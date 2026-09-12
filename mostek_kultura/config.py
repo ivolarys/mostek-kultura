@@ -19,6 +19,7 @@ class Category:
     slug: str
     label: str
     keywords: list[str] = field(default_factory=list)
+    icon: str = ""
 
 
 @dataclass
@@ -73,7 +74,7 @@ KNOWN_SOURCE_KEYS = {"name", "type", "url", "enabled", "priority", "place", "exc
 def load_config(path: Path) -> Config:
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
     places = [Place(p["name"], p.get("aliases") or []) for p in raw.get("places", [])]
-    cats = [Category(c["slug"], c["label"], c.get("keywords") or []) for c in raw["categories"]]
+    cats = [Category(c["slug"], c["label"], c.get("keywords") or [], c.get("icon") or "") for c in raw["categories"]]
     slugs = {c.slug for c in cats}
     cmap = {str(k).lower(): v for k, v in (raw.get("category_map") or {}).items()}
     for k, v in cmap.items():

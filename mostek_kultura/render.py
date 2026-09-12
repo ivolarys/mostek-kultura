@@ -130,7 +130,7 @@ def render_site(events: list[Event], cfg: Config, statuses: list[SourceStatus], 
     payload = {
         "generated_at": now().isoformat(timespec="seconds"),
         "tz": cfg.timezone,
-        "categories": [{"slug": c.slug, "label": c.label} for c in cfg.categories],
+        "categories": [{"slug": c.slug, "label": c.label, "icon": c.icon} for c in cfg.categories],
         "places": [p.name for p in cfg.places],
         "events": [_ev_public(e, cfg) for e in events],
     }

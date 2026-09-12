@@ -8,8 +8,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Zadní Mostek">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2F2F7">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FBF7F1">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0B2A">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -19,25 +19,37 @@
 body{padding-bottom:calc(50px + env(safe-area-inset-bottom))}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px 24px}
 body{overflow-x:hidden}
-.lg-title{padding:12px 16px 4px}
-.lg-title h1{font-size:34px;font-weight:700;letter-spacing:-.4px;margin:0}
-.lg-title .sub{font-size:15px;color:var(--label2);margin:2px 0 0}
-.filters{position:sticky;top:0;z-index:10;background:rgba(242,242,247,.85);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--sep);padding:8px 0;margin:0 -16px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .filters{background:rgba(0,0,0,.8)}}
-:root[data-theme="dark"] .filters{background:rgba(0,0,0,.8)}
-.chiprow{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding:4px 16px;scrollbar-width:none}
+.lg-title{position:relative;overflow:hidden;padding:12px 16px 4px}
+.lg-title h1 small{display:block;font-size:.62em;font-weight:700;letter-spacing:0;line-height:1.1;margin-top:2px}
+.lg-title h1{font-size:34px;font-weight:800;line-height:1.05;letter-spacing:-.4px;margin:0;position:relative;z-index:1;color:var(--accent);background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lg-title .sub{font-size:15px;color:var(--label2);margin:2px 0 0;position:relative;z-index:1}
+.orbit{position:absolute;top:-14px;right:-16px;width:150px;height:150px;color:var(--accent2);opacity:.08;pointer-events:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .orbit{opacity:.12}}
+:root[data-theme="dark"] .orbit{opacity:.12}
+body.embed .orbit{display:none}
+
+.filters{position:sticky;top:0;z-index:10;background:rgba(251,247,241,.85);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--sep);padding:8px 0;margin:0 -16px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .filters{background:rgba(14,11,42,.85)}}
+:root[data-theme="dark"] .filters{background:rgba(14,11,42,.85)}
+.chiprow{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding:4px 60px 4px 16px;scrollbar-width:none}
 .chiprow::-webkit-scrollbar{display:none}
-.segrow{display:flex;align-items:center;gap:8px;padding:8px 16px 0}
-.seglabel{font-size:13px;color:var(--label2);margin-right:auto}
+.bar-end{position:absolute;right:16px;top:0;bottom:0;display:flex;align-items:center;pointer-events:none}
+.bar-fade{position:absolute;right:100%;top:0;bottom:0;width:22px;background:linear-gradient(to right,transparent,rgba(251,247,241,.92));pointer-events:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bar-fade{background:linear-gradient(to right,transparent,rgba(14,11,42,.92))}}
+:root[data-theme="dark"] .bar-fade{background:linear-gradient(to right,transparent,rgba(14,11,42,.92))}
+.map-toggle{pointer-events:auto;flex:0 0 auto;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--fill);color:var(--label2)}
+.map-toggle svg{width:19px;height:19px;display:block}
+.map-toggle.on{background:var(--tint);color:var(--tint-ink)}
 .seg-tabs{display:none;width:100%;height:36px;margin:16px 0}
 .seg-tabs .seg-btn{flex:1 1 0;min-width:0;height:32px;font-size:14px;padding:0 6px;white-space:nowrap;overflow:hidden}
 @media (max-width:480px){.seg-tabs .seg-btn{font-size:13px;padding:0 4px}.seg-tabs .seg-btn .n{display:none}}
-@media (max-width:380px){.segrow{gap:4px}.segrow .seg-btn{padding:0 6px;font-size:12px}.seglabel{font-size:12px}}
 
 /* ==== components: event rows ==== */
 .content-list{margin-top:4px}
 .time{width:52px;flex:0 0 52px;display:flex;flex-direction:column;justify-content:center}
-.time .hm{display:block;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;color:var(--tint)}
+.time .hm{display:block;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;color:var(--c,var(--tint))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .time .hm{color:var(--cfg-dark,var(--tint))}}
+:root[data-theme="dark"] .time .hm{color:var(--cfg-dark,var(--tint))}
 .time .allday{display:block;font-size:12px;color:var(--label2)}
 .time .dd{display:block;font-size:12px;color:var(--label2)}
 .time .do{display:block;font-size:11px;color:var(--label2)}
@@ -52,9 +64,9 @@ footer{margin-top:24px}
 footer .list-card{margin-bottom:8px}
 
 /* ==== bottom tab bar (mobile) ==== */
-.tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;height:calc(50px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:rgba(242,242,247,.85);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:.5px solid var(--sep);z-index:10}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabbar{background:rgba(0,0,0,.8)}}
-:root[data-theme="dark"] .tabbar{background:rgba(0,0,0,.8)}
+.tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;height:calc(50px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:rgba(251,247,241,.85);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:.5px solid var(--sep);z-index:10}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabbar{background:rgba(14,11,42,.85)}}
+:root[data-theme="dark"] .tabbar{background:rgba(14,11,42,.85)}
 .tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--label3);min-height:44px}
 .tab-btn svg{width:24px;height:24px}
 .tab-btn.on{color:var(--tint)}
@@ -63,7 +75,6 @@ footer .list-card{margin-bottom:8px}
 
 /* ==== map view ==== */
 .view-map #list,.view-map footer{display:none}
-.view-map .seglabel,.view-map #group{display:none}
 #map{width:100%;background:var(--fill)}
 .map-wrap{display:none;position:relative;z-index:0;margin:0 -16px}
 @media (max-width:699px){.view-map .lg-title{display:none}}
@@ -75,24 +86,25 @@ footer .list-card{margin-bottom:8px}
 .mk-approx{opacity:.72;border-style:dashed}
 .leaflet-control-zoom a{background:var(--card)!important;color:var(--label)!important;border-color:var(--sep)!important}
 .leaflet-control-attribution{background:rgba(255,255,255,.75)!important;color:var(--label2)!important}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.6) invert(1) contrast(3) hue-rotate(200deg) saturate(.3) brightness(.7)}:root:not([data-theme="light"]) .leaflet-control-attribution{background:rgba(28,28,30,.75)!important}}
-:root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.6) invert(1) contrast(3) hue-rotate(200deg) saturate(.3) brightness(.7)}
-:root[data-theme="dark"] .leaflet-control-attribution{background:rgba(28,28,30,.75)!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.6) invert(1) contrast(3) hue-rotate(220deg) saturate(.35) brightness(.7)}:root:not([data-theme="light"]) .leaflet-control-attribution{background:rgba(26,22,64,.75)!important}}
+:root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.6) invert(1) contrast(3) hue-rotate(220deg) saturate(.35) brightness(.7)}
+:root[data-theme="dark"] .leaflet-control-attribution{background:rgba(26,22,64,.75)!important}
 .sheet-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:20}
-.sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:16px 16px 0 0;max-height:60vh;overflow-y:auto;z-index:21;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 20px rgba(0,0,0,.25)}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:var(--elevated,var(--card));border-radius:16px 16px 0 0;max-height:70vh;overflow-y:auto;z-index:21;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 20px rgba(0,0,0,.25)}
 .sheet-grabber{width:36px;height:5px;border-radius:3px;background:var(--sep);margin:8px auto}
 .sheet-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 16px 8px}
 .sheet-place{font-size:17px;font-weight:700}
 .sheet-count{font-size:13px;color:var(--label2);margin-top:1px}
-.sheet-close{flex:0 0 auto;font-size:15px;color:var(--tint);padding:6px 4px}
-.sheet-body{padding:0 16px 16px}
+.sheet-close{flex:0 0 auto;font-size:15px;font-weight:600;color:var(--tint);padding:6px 4px}
+.sheet-body{padding:0 0 16px}
 
 /* ==== responsive (desktop >=700px) ==== */
 @media (min-width:700px){
 body{font-size:15px;padding-bottom:0}
 .wrap{padding:0 24px 24px}
-.chiprow{margin:0 -24px;padding:4px 24px}
+.chiprow{padding:4px 68px 4px 24px}
 .filters{margin:0 -24px}
+.bar-end{right:24px}
 .tabbar{display:none}
 .seg-tabs{display:flex}
 .map-wrap{margin:0}
@@ -105,7 +117,8 @@ body.embed .wrap{padding:8px}
 body.embed .lg-title,body.embed footer,body.embed .tabbar{display:none!important}
 body.embed .seg-tabs{display:flex!important}
 body.embed .filters{margin:0 -8px}
-body.embed .chiprow{padding:4px 8px}
+body.embed .chiprow{padding:4px 52px 4px 8px}
+body.embed .bar-end{right:8px}
 body.embed .list-card{border-radius:10px}
 body.embed .srcline{display:none!important}
 body.embed .thumb{display:none}
@@ -115,18 +128,18 @@ body.embed .map-wrap{margin:0}
 <body>
 <div class="wrap">
 <header class="lg-title">
-  <h1>Zadní Mostek · střed vesmíru</h1>
+  <svg class="orbit" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <ellipse cx="100" cy="95" rx="92" ry="40" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(-16 100 95)"/>
+    <ellipse cx="100" cy="95" rx="60" ry="25" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(-16 100 95)"/>
+    <circle cx="170" cy="70" r="4.5" fill="currentColor"/>
+  </svg>
+  <h1>Zadní Mostek<small>střed vesmíru</small></h1>
   <p class="sub">Aktualizováno <span id="gen"></span> · <span id="total"></span> akcí</p>
 </header>
 
 <div class="filters">
   <div class="chiprow" id="cats"></div>
-  <div class="chiprow" id="places"></div>
-  <div class="segrow">
-    <div class="seg" id="viewSeg"></div>
-    <span class="seglabel">Seskupit</span>
-    <div class="seg" id="group"></div>
-  </div>
+  <div class="bar-end"><div class="bar-fade"></div><button class="map-toggle" id="mapToggle" aria-label="Mapa"></button></div>
 </div>
 
 <div class="seg seg-tabs" id="tabsTop"></div>
@@ -178,7 +191,6 @@ const wd=dow(today);
 const satOff=5-wd; // negative on Sunday -> this weekend
 const weekend=[addDays(today,satOff),addDays(today,satOff+1)];
 const TABS=[['today','Dnes',[today,today]],['tomorrow','Zítra',[addDays(today,1),addDays(today,1)]],['weekend','Víkend',weekend],['week','Týden',[today,addDays(today,6)]],['all','Vše',[today,'9999']]];
-const GROUPS=[['day','Den'],['category','Typ'],['place','Místo']];
 const ICONS={
 today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/></svg>',
 tomorrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/><path d="M9 15h6m0 0-2.2-2.2M15 15l-2.2 2.2"/></svg>',
@@ -186,14 +198,18 @@ weekend:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width
 week:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18M9 13h.01M12 13h.01M15 13h.01M9 17h.01M12 17h.01M15 17h.01"/></svg>',
 all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>'
 };
-const CAT=Object.fromEntries(D.categories.map(c=>[c.slug,c.label]));
+const FUNNEL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>';
+const MAP_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>';
+const LIST_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>';
+const CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+const CAT=Object.fromEntries(D.categories.map(c=>[c.slug,{label:c.label,icon:c.icon||''}]));
 D.events.forEach(e=>{e.sd=fmtDate(new Date(e.start));e.ed=e.end?fmtDate(new Date(e.end)):e.sd;e.time=e.all_day?null:new Date(e.start).toLocaleTimeString('cs-CZ',{timeZone:TZ,hour:'2-digit',minute:'2-digit'})});
 document.getElementById('gen').textContent=new Date(D.generated_at).toLocaleString('cs-CZ',{timeZone:TZ,day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'});
 document.getElementById('total').textContent=D.events.length;
 
 // state from hash
 const st={tab:qs.get('tab')||'week',cat:new Set(),place:new Set(),group:qs.get('group')||'category',view:qs.get('view')||'list'};
-function readHash(){const h=new URLSearchParams(location.hash.replace(/^#/,''));if(h.get('tab'))st.tab=h.get('tab');if(h.get('group'))st.group=h.get('group');if(h.get('view'))st.view=h.get('view');st.cat=new Set((h.get('cat')||'').split(',').filter(Boolean));st.place=new Set((h.get('place')||'').split(',').filter(Boolean))}
+function readHash(){const h=new URLSearchParams(location.hash.replace(/^#/,''));if(h.get('tab'))st.tab=h.get('tab');if(h.get('group'))st.group=h.get('group');if(h.get('view'))st.view=h.get('view');st.cat=new Set((h.get('cat')||'').split(',').filter(Boolean));st.place=new Set((h.get('place')||'').split(',').filter(Boolean));if(st.group==='place')st.group='category'}
 function writeHash(){const h=new URLSearchParams();h.set('tab',st.tab);if(st.group!=='category')h.set('group',st.group);if(st.view!=='list')h.set('view',st.view);if(st.cat.size)h.set('cat',[...st.cat].join(','));if(st.place.size)h.set('place',[...st.place].join(','));if(embed)h.set('embed','1');history.replaceState(null,'','#'+h.toString())}
 readHash();
 if(!TABS.some(t=>t[0]===st.tab))st.tab='week';
@@ -210,8 +226,9 @@ function evHtml(e,showDate){
   const when=e.ongoing?`<div class="time"><span class="do">do</span><span class="dd">${esc(e.ed.split('-').reverse().slice(0,2).join('. '))}.</span></div>`:`<div class="time">${e.time?`<span class="hm">${e.time}</span>`:'<span class="allday">celý den</span>'}${showDate?`<span class="dd">${esc(e.sd.split('-').reverse().slice(0,2).join('. '))}.</span>`:''}</div>`;
   const img=!embed&&e.image?`<img class="thumb" src="${esc(e.image)}" alt="" loading="lazy">`:'';
   const where=[e.place,e.venue&&e.venue!==e.place?e.venue:null].filter(Boolean).join(' · ');
-  const inner=`${when}<div class="content"><div class="title">${esc(e.title)}</div><div class="meta"><span class="pill c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span><span class="where">${esc(where)}</span></div><div class="subline srcline">zdroj: ${esc((e.source_labels||e.sources).join(', '))}</div></div>${img}<span class="chev">›</span>`;
-  return e.url?`<a class="row" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="row">${inner}</div>`;
+  const inner=`${when}<div class="content"><div class="title">${esc(e.title)}</div><div class="meta"><span class="pill c-${esc(e.category)}">${esc((CAT[e.category]||{}).label||e.category)}</span><span class="where">${esc(where)}</span></div><div class="subline srcline">zdroj: ${esc((e.source_labels||e.sources).join(', '))}</div></div>${img}<span class="chev">›</span>`;
+  const rowClass=`row c-${esc(e.category)}`;
+  return e.url?`<a class="${rowClass}" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="${rowClass}">${inner}</div>`;
 }
 function visibleEvents(){
   const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];
@@ -221,6 +238,19 @@ function visibleEvents(){
   return {main,ongoing};
 }
 function akceLabel(n){return n===1?n+' akce':(n>=2&&n<=4?n+' akce':n+' akcí')}
+function placeCounts(){
+  const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];
+  const inTab=D.events.filter(e=>startsIn(e,r)||(st.tab==='all'&&e.ongoing));
+  const pc={};inTab.forEach(e=>{if(!st.cat.size||st.cat.has(e.category))pc[e.place||'?']=(pc[e.place||'?']||0)+1});
+  const places=Object.keys(pc).sort((a,b)=>pc[b]-pc[a]);
+  [...st.place].forEach(p=>{if(!places.includes(p))places.push(p)});
+  return {pc,places};
+}
+function placeSummaryLabel(){
+  const arr=[...st.place];
+  const first=arr[0]==='?'?'neurčeno':arr[0];
+  return arr.length>1?`${first} +${arr.length-1}`:first;
+}
 function render(){
   const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];
   const {main,ongoing}=visibleEvents();
@@ -230,26 +260,53 @@ function render(){
   const tc=TABS.map(t=>filtAll.filter(e=>startsIn(e,t[2])||(t[0]==='all'&&e.ongoing)).length);
   document.getElementById('tabsTop').innerHTML=TABS.map((t,i)=>`<button data-tab="${t[0]}" class="seg-btn${t[0]===st.tab?' on':''}">${t[1]}<span class="n">${tc[i]}</span></button>`).join('');
   document.getElementById('tabbar').innerHTML=TABS.map((t,i)=>`<button data-tab="${t[0]}" class="tab-btn${t[0]===st.tab?' on':''}">${ICONS[t[0]]}<span class="tab-label">${t[1]}<span class="n">${tc[i]}</span></span></button>`).join('');
-  // chips (counts within current tab, ignoring the chip's own filter)
+  // category chips (counts within current tab + active place filters)
   const inTab=D.events.filter(e=>startsIn(e,r)||(st.tab==='all'&&e.ongoing));
-  const cc={},pc={};inTab.forEach(e=>{if(!st.place.size||st.place.has(e.place||'?'))cc[e.category]=(cc[e.category]||0)+1;if(!st.cat.size||st.cat.has(e.category))pc[e.place||'?']=(pc[e.place||'?']||0)+1});
-  document.getElementById('cats').innerHTML=`<button class="chip${st.cat.size?'':' on'}" data-clear="cat">Vše</button>`+D.categories.filter(c=>cc[c.slug]||st.cat.has(c.slug)).map(c=>`<button class="chip c-${c.slug} ${st.cat.has(c.slug)?'on':''}" data-cat="${c.slug}">${esc(c.label)}<span class="n">${cc[c.slug]||0}</span></button>`).join('');
-  const places=Object.keys(pc).sort((a,b)=>pc[b]-pc[a]);[...st.place].forEach(p=>{if(!places.includes(p))places.push(p)});
-  document.getElementById('places').innerHTML=`<button class="chip${st.place.size?'':' on'}" data-clear="place">Vše</button>`+places.map(p=>`<button class="chip ${st.place.has(p)?'on':''}" data-place="${esc(p)}">${esc(p==='?'?'neurčeno':p)}<span class="n">${pc[p]||0}</span></button>`).join('');
-  document.getElementById('group').innerHTML=GROUPS.map(g=>`<button data-group="${g[0]}" class="seg-btn${g[0]===st.group?' on':''}">${g[1]}</button>`).join('');
-  document.getElementById('viewSeg').innerHTML=`<button data-view="list" class="seg-btn${st.view==='list'?' on':''}">Seznam</button><button data-view="map" class="seg-btn${st.view==='map'?' on':''}">Mapa</button>`;
+  const cc={};inTab.forEach(e=>{if(!st.place.size||st.place.has(e.place||'?'))cc[e.category]=(cc[e.category]||0)+1});
+  const filtrHtml=`<button class="chip chip-filtr" id="filtrBtn" aria-haspopup="dialog" aria-label="Filtr">${FUNNEL}${st.place.size?`<span class="badge">${st.place.size}</span>`:''}</button>`;
+  const placeChipHtml=st.place.size?`<button class="chip on chip-place" data-clear="place">${esc(placeSummaryLabel())} <span class="x">×</span></button>`:'';
+  const catChipsHtml=`<button class="chip${st.cat.size?'':' on'}" data-clear="cat">Vše</button>`+D.categories.filter(c=>cc[c.slug]||st.cat.has(c.slug)).map(c=>`<button class="chip c-${c.slug} ${st.cat.has(c.slug)?'on':''}" data-cat="${c.slug}">${c.icon?`<span class="cico">${esc(c.icon)}</span>`:''}${esc(c.label)}<span class="n">${cc[c.slug]||0}</span></button>`).join('');
+  document.getElementById('cats').innerHTML=filtrHtml+placeChipHtml+catChipsHtml;
+  const mapBtn=document.getElementById('mapToggle');
+  mapBtn.classList.toggle('on',st.view==='map');
+  mapBtn.innerHTML=st.view==='map'?LIST_ICON:MAP_ICON;
+  mapBtn.setAttribute('aria-label',st.view==='map'?'Seznam':'Mapa');
   // list
-  const key=e=>st.group==='day'?e.sd:st.group==='category'?e.category:(e.place||'?');
-  const label=k=>st.group==='day'?dayLabel(k):st.group==='category'?(CAT[k]||k):(k==='?'?'Místo neurčeno':k);
+  const key=e=>st.group==='day'?e.sd:e.category;
+  const label=k=>st.group==='day'?dayLabel(k):(CAT[k]?(CAT[k].icon?CAT[k].icon+' ':'')+CAT[k].label:k);
   const groups={};main.forEach(e=>{(groups[key(e)]=groups[key(e)]||[]).push(e)});
   let keys=Object.keys(groups);
-  if(st.group==='category')keys.sort((a,b)=>D.categories.findIndex(c=>c.slug===a)-D.categories.findIndex(c=>c.slug===b));else if(st.group==='place')keys.sort((a,b)=>groups[b].length-groups[a].length);else keys.sort();
-  let html=keys.map(k=>`<h2 class="grp${st.group==='category'?' c-'+esc(k):''}"${st.group==='category'?' data-cat="'+esc(k)+'"':''}>${esc(label(k))}</h2><div class="list-card">${groups[k].sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,st.group!=='day')).join('')}</div>`).join('');
+  if(st.group==='category')keys.sort((a,b)=>D.categories.findIndex(c=>c.slug===a)-D.categories.findIndex(c=>c.slug===b));else keys.sort();
+  let html=keys.map(k=>`<h2 class="grp${st.group==='category'?' c-'+esc(k):''}">${esc(label(k))}</h2><div class="list-card">${groups[k].sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,st.group!=='day')).join('')}</div>`).join('');
   if(!main.length)html='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/></svg><div class="empty-title">Žádné akce</div><div class="empty-sub">Zkuste jiný den nebo zrušte filtry.</div></div>';
   if(ongoing.length){const open=!embed&&isDesktop();html+=`<h2 class="grp">Probíhající výstavy a vícedenní akce</h2><div class="list-card"><details class="ongoing"${open?' open':''}><summary class="row tap">Zobrazit (${ongoing.length})<span class="chev">›</span></summary>${ongoing.map(e=>evHtml(e,false)).join('')}</details></div>`}
   document.getElementById('list').innerHTML=html;
   if(st.view==='map'){showMap(main,ongoing)}
   writeHash();
+}
+
+// ==== filter sheet (place + grouping) ====
+function buildFilterSheetHtml(){
+  const {pc,places}=placeCounts();
+  const allOn=!st.place.size;
+  let html='<h2 class="grp">Místo</h2><div class="list-card">';
+  html+=`<button class="list-row tap" data-allplaces="1"><span class="lr-name">Všechna místa</span><span class="lr-check">${allOn?CHECK:''}</span></button>`;
+  html+=places.map(p=>{
+    const on=st.place.has(p);
+    const name=p==='?'?'neurčeno':p;
+    return `<button class="list-row tap" data-sheetplace="${esc(p)}"><span class="lr-name">${esc(name)}</span><span class="lr-count">${pc[p]||0}</span><span class="lr-check">${on?CHECK:''}</span></button>`;
+  }).join('');
+  html+='</div>';
+  html+='<h2 class="grp">Seskupit</h2><div class="list-card" style="background:transparent"><div class="seg" style="margin:4px 16px 12px">';
+  html+=`<button class="seg-btn${st.group==='day'?' on':''}" data-sheetgroup="day">Den</button><button class="seg-btn${st.group==='category'?' on':''}" data-sheetgroup="category">Typ</button>`;
+  html+='</div></div>';
+  return html;
+}
+function refreshFilterSheet(){
+  if(!document.getElementById('sheet').hidden){document.getElementById('sheetBody').innerHTML=buildFilterSheetHtml()}
+}
+function openFilterSheet(){
+  openSheet('Filtr',buildFilterSheetHtml(),{done:true});
 }
 
 // ==== map view ====
@@ -303,14 +360,14 @@ function renderMarkers(events){
     const html=`<div class="mk c-${esc(topCat)}${approx?' mk-approx':''}" style="width:${size}px;height:${size}px">${n>1?n:''}</div>`;
     const icon=L.divIcon({html,className:'mk-wrap',iconSize:[size,size]});
     const marker=L.marker([g.lat,g.lon],{icon}).addTo(markersLayer);
-    marker.on('click',()=>openSheet(g.geo==='venue'?(g.venue||g.place):(g.place?g.place+' (přibližně)':'Místo'),g.events));
+    marker.on('click',()=>openEventSheet(g.geo==='venue'?(g.venue||g.place):(g.place?g.place+' (přibližně)':'Místo'),g.events));
     bounds.push([g.lat,g.lon]);
   });
   const nopBtn=document.getElementById('mapNopos');
   if(noPos.length){
     nopBtn.hidden=false;
     nopBtn.textContent=`Bez polohy (${noPos.length})`;
-    nopBtn.onclick=()=>openSheet('Bez polohy',noPos);
+    nopBtn.onclick=()=>openEventSheet('Bez polohy',noPos);
   }else{nopBtn.hidden=true}
   return bounds;
 }
@@ -327,12 +384,18 @@ function showMap(main,ongoing){
     mapOpened=true;lastMapTab=st.tab;
   }).catch(()=>{});
 }
-function openSheet(title,events){
-  document.getElementById('sheetTitle').textContent=title||'Místo';
-  document.getElementById('sheetCount').textContent=akceLabel(events.length);
-  document.getElementById('sheetBody').innerHTML=`<div class="list-card">${events.slice().sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,true)).join('')}</div>`;
+function openSheet(title,html,opts){
+  opts=opts||{};
+  document.getElementById('sheetTitle').textContent=title||'';
+  document.getElementById('sheetCount').textContent=opts.subtitle||'';
+  document.getElementById('sheetClose').textContent=opts.done?'Hotovo':'Zavřít';
+  document.getElementById('sheetBody').innerHTML=html;
   document.getElementById('sheet').hidden=false;
   document.getElementById('sheetBackdrop').hidden=false;
+}
+function openEventSheet(title,events){
+  const html=`<div class="list-card">${events.slice().sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,true)).join('')}</div>`;
+  openSheet(title||'Místo',html,{subtitle:akceLabel(events.length)});
 }
 function closeSheet(){
   document.getElementById('sheet').hidden=true;
@@ -354,13 +417,15 @@ document.addEventListener('click',ev=>{
   if(ev.target.id==='sheetBackdrop'){closeSheet();return}
   if(ev.target.id==='sheetClose'){closeSheet();return}
   const b=ev.target.closest('button');if(!b)return;
+  if(b.id==='filtrBtn'){openFilterSheet();return}
+  if(b.id==='mapToggle'){st.view=st.view==='map'?'list':'map';render();return}
+  if(b.dataset.allplaces){st.place.clear();render();refreshFilterSheet();return}
+  if(b.dataset.sheetplace){const p=b.dataset.sheetplace;st.place.has(p)?st.place.delete(p):st.place.add(p);render();refreshFilterSheet();return}
+  if(b.dataset.sheetgroup){st.group=b.dataset.sheetgroup;render();refreshFilterSheet();return}
   if(b.dataset.tab){st.tab=b.dataset.tab}
   else if(b.dataset.clear==='cat'){st.cat.clear()}
   else if(b.dataset.clear==='place'){st.place.clear()}
   else if(b.dataset.cat){st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat)}
-  else if(b.dataset.place){st.place.has(b.dataset.place)?st.place.delete(b.dataset.place):st.place.add(b.dataset.place)}
-  else if(b.dataset.group){st.group=b.dataset.group}
-  else if(b.dataset.view){st.view=b.dataset.view}
   else return;
   render();
 });

@@ -62,36 +62,47 @@ venues_allow: []
 categories:
   - slug: koncert
     label: Koncert
+    icon: "🎵"
     keywords: [koncert, kapela, band, hudebni, hudba, jazz, rock, folk, festival hudby, zpiva, zpev, sbor, varhan, recital]
   - slug: divadlo
     label: Divadlo
+    icon: "🎭"
     keywords: [divad, predstaveni, komedie, muzikal, opera, balet, kabaret, improvizac, loutk]
   - slug: film
     label: Film
+    icon: "🎬"
     keywords: [kino, film, promitani, biograf, letni kino]
   - slug: vystava
     label: Výstava
+    icon: "🖼️"
     keywords: [vystav, vernisaz, galerie, expozice]
   - slug: deti
     label: Pro děti
+    icon: "🧒"
     keywords: [pro deti, detsk, pohadk, rodin, karneval, drakiada, lampion, mikulas, cert]
   - slug: trh
     label: Trhy a jarmarky
+    icon: "🛍️"
     keywords: [trh, jarmark, burza, bazar, blesi]
   - slug: sport
     label: Sport
+    icon: "⚽"
     keywords: [beh, zavod, turnaj, hokej, fotbal, brusl, cyklo, pochod, turist, plaván, sportovni, maraton, volejbal, tenis]
   - slug: prednaska
     label: Přednáška a beseda
+    icon: "🎓"
     keywords: [prednask, beseda, seminar, workshop, kurz, cteni, autorske, diskuse, promluv]
   - slug: slavnost
     label: Slavnosti a festivaly
+    icon: "🎉"
     keywords: [slavnost, festival, den obce, posviceni, pout, oslav, vinobrani, dozink, masopust, palen, carodejnic, advent, vanocni, silvestr]
   - slug: komunita
     label: Obecní a spolkové
+    icon: "🏘️"
     keywords: [zastupitel, schuze, brigada, sbor dobrovoln, hasic, spolek, klub senior, setkani, plesu, ples, zabava, tancirna, disco, diskoteka]
   - slug: jine
     label: Jiné
+    icon: "✨"
     keywords: []
 
 # Mapování nativních kategorií zdrojů na slugy (porovnává se bez diakritiky, podřetězec, první shoda vyhrává).

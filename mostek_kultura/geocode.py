@@ -55,6 +55,17 @@ def _place_query(place: str) -> str:
     return f"{place}, okres Trutnov, Česko"
 
 
+MAX_VENUE_KM = 12.0  # a "venue" hit farther than this from its town is a mis-geocode
+
+
+def _km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Great-circle distance in km (haversine)."""
+    from math import asin, cos, radians, sin, sqrt
+    p1, p2 = radians(lat1), radians(lat2)
+    a = sin((p2 - p1) / 2) ** 2 + cos(p1) * cos(p2) * sin(radians(lon2 - lon1) / 2) ** 2
+    return 2 * 6371.0 * asin(sqrt(a))
+
+
 def _in_bbox(lat: float, lon: float) -> bool:
     lat_min, lat_max, lon_min, lon_max = BBOX
     return lat_min <= lat <= lat_max and lon_min <= lon <= lon_max
@@ -220,8 +231,15 @@ def geocode_events(events: list[Event], cfg: Config, cache_path: Path, online: b
             entry = _resolve(cache, vkey, venue_queries(e.venue, e.place), e.place, "venue",
                              online, budget, max_new, now_iso)
             if entry and entry.get("precision") == "venue":
-                e.lat, e.lon, e.geo = entry["lat"], entry["lon"], "venue"
-                continue
+                centroid = cache.get(cache_key(None, e.place))
+                if centroid and centroid.get("lat") is not None and _km(
+                        entry["lat"], entry["lon"], centroid["lat"], centroid["lon"]) > MAX_VENUE_KM:
+                    log.info("geocode: %r is %.0f km from %s, using the town centroid instead",
+                             e.venue, _km(entry["lat"], entry["lon"], centroid["lat"], centroid["lon"]),
+                             e.place)
+                else:
+                    e.lat, e.lon, e.geo = entry["lat"], entry["lon"], "venue"
+                    continue
 
         pkey = cache_key(None, e.place)
         entry = _resolve(cache, pkey, _place_query(e.place), e.place, "place",
