@@ -359,6 +359,86 @@
   "place": "Hořice",
   "ts": "2026-09-12T06:13:04+00:00"
  },
+ "hradec-vyber:0ffa0cc0cde5": {
+  "category": "koncert",
+  "confidence": 0.7,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:1b22bc528de5": {
+  "category": "vystava",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:22e2d3bd0e33": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:55656b7cb42a": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:73f6ab851604": {
+  "category": "trh",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:a69e12701c55": {
+  "category": "koncert",
+  "confidence": 0.99,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:ab73635b7ad2": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:d7a74c2ebba0": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:dd8f76f98f5b": {
+  "category": "koncert",
+  "confidence": 0.99,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:debc19806231": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:49:18+00:00"
+ },
  "josefov-kolonie:54d7d1bf8a41": {
   "category": "vystava",
   "confidence": 0.6,
