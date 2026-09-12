@@ -23,6 +23,7 @@
 .eyebrow .icon{width:19px;height:19px}
 .page-head h2{font-size:34px;line-height:1.04;letter-spacing:-.035em;margin:13px 0 8px}
 .sub{font-size:12px;color:var(--label3);margin:0}
+.page-head>.sub{margin-bottom:8px}
 .intro{color:var(--label2);font-size:15px;max-width:680px;margin:0 0 8px}
 .src-row{align-items:flex-start}
 .src-row .subline{display:flex;gap:5px;flex-wrap:wrap}
@@ -39,12 +40,19 @@
 .source-toggle input:checked + .source-toggle-ui{background:var(--ok)}
 .source-toggle input:checked + .source-toggle-ui::after{transform:translateX(14px)}
 .source-toggle input:focus-visible + .source-toggle-ui{outline:3px solid var(--focus);outline-offset:3px}
-.source-toggle input:disabled + .source-toggle-ui{opacity:.48}
-.source-settings{margin:4px 0 14px;color:var(--label2);font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.source-reset{min-height:44px;padding:0 8px;color:var(--tint);font-weight:700}
+.source-toggle input:disabled + .source-toggle-ui{opacity:1;background:var(--label3)}
+.source-toggle input:disabled:checked + .source-toggle-ui::after{transform:none}
+.source-settings{margin:12px 0 14px;padding:10px 12px;color:var(--label2);font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--active);border:1px solid var(--sep);border-radius:14px}
+.source-settings span{font-weight:700;line-height:1.35;flex:1 1 220px}
+.source-reset{min-height:44px;padding:0 12px;color:var(--tint);font-weight:750;background:var(--card);border:1px solid var(--sep);border-radius:10px;white-space:nowrap}
+.source-reset:hover{background:var(--active)}
 .storage-warning{margin:10px 0 0;color:var(--warn);font-size:13px}
-.disclaimer a{color:var(--tint);text-decoration:underline;text-underline-offset:2px}
-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
+.source-group{margin-bottom:14px}
+.source-group.is-disabled>.source-group-head,.source-group.is-disabled>.list-card,.source-group.is-disabled .row,.src-row.is-disabled{background:var(--fill)}
+.source-group-head.is-disabled{border-radius:12px}
+.source-status-badge{display:inline-flex;align-items:center;min-height:22px;padding:1px 8px;border-radius:999px;background:var(--card);border:1px solid var(--sep);color:var(--label2);font-size:11px;font-weight:750;letter-spacing:.01em;white-space:nowrap}
+.source-group-head h2 .source-status-badge{margin-left:7px;vertical-align:middle}
+.src-row.is-disabled .subline{color:var(--label2)}
 @media (min-width:700px){.wrap{padding:0 28px 42px}.navbar{margin:0 -28px}.page-head{padding-top:38px}.page-head h2{font-size:44px}.grp .aliases{display:inline;margin-left:7px}}
 </style>
 </head>
@@ -54,22 +62,22 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
 <header class="page-head">
   <div class="eyebrow"><img class="eyebrow-logo" src="logo.svg?v=mostkultura-1" alt="">Mostkultura</div>
   <h2>Odkud akce bereme</h2>
-  <p class="intro">U každé obce vidíte pokryté weby, výsledek posledního stažení a počet aktuálních akcí. Volby se ukládají jen v tomto prohlížeči. Vypnutí obce skryje i regionální akce v ní a zachová stav jejích zdrojů; akce z více zdrojů zůstane vidět, když je zapnutý alespoň jeden.</p>
   <p class="sub">Aktualizováno {{ generated_at[:16].replace('T',' ') }}</p>
+  <p class="intro">U každé obce vidíte pokryté weby, výsledek posledního stažení a počet aktuálních akcí. Volby se ukládají jen v tomto prohlížeči. Vypnutí obce skryje i regionální akce v ní a zachová stav jejích zdrojů; akce z více zdrojů zůstane vidět, když je zapnutý alespoň jeden.</p>
   <div class="source-settings"><span id="sourceSettingsNote">Vyberte, které zdroje chcete v přehledu vidět.</span><button class="source-reset" id="sourceReset" type="button" hidden>Zapnout vše</button></div>
   <p class="storage-warning" id="storageWarning" role="status" hidden>Nastavení se nepodařilo uložit. Pro zapamatování voleb povolte ukládání dat pro tento web.</p>
 </header>
 
 {% for g in groups %}
-<div class="source-group-head grp"><h2>{{ g.place }}<span class="n"> · {{ g.event_count|akce }} v přehledu</span>{% if g.aliases %}<span class="aliases">také: {{ g.aliases|join(', ') }}</span>{% endif %}</h2><label class="source-toggle" title="Zapnout nebo vypnout obec {{ g.place }}"><input type="checkbox" data-place="{{ g.place }}" aria-label="Zobrazovat obec {{ g.place }}"><span class="source-toggle-ui" aria-hidden="true"></span></label></div>
+<div class="source-group" data-place-group="{{ g.place }}"><div class="source-group-head grp"><h2>{{ g.place }}<span class="n"> · {{ g.event_count|akce }} v přehledu</span><span class="source-status-badge" data-place-status hidden>Vypnuto</span>{% if g.aliases %}<span class="aliases">také: {{ g.aliases|join(', ') }}</span>{% endif %}</h2><label class="source-toggle" title="Zapnout nebo vypnout obec {{ g.place }}"><input type="checkbox" data-place="{{ g.place }}" aria-label="Zobrazovat obec {{ g.place }}"><span class="source-toggle-ui" aria-hidden="true"></span></label></div>
 <div class="list-card">
 {% for s in g.sources %}
-<div class="row src-row">
+<div class="row src-row" data-source-row="{{ s.name }}" data-source-place="{{ g.place }}">
   <span class="src-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></svg></span>
   <div class="content">
     <div class="title"><a href="{{ s.page }}" target="_blank" rel="noopener">{{ s.title }}</a></div>
     <div class="meta">{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>
-    <div class="subline">{{ s.count|akce }} · {{ s.fetched }} · {{ s.status_label }}</div>
+    <div class="subline">{{ s.count|akce }} · {{ s.fetched }} · {{ s.status_label }} <span class="source-status-badge" data-source-status hidden></span></div>
   </div>
   <label class="source-toggle" title="Zapnout nebo vypnout zdroj {{ s.title }}"><input type="checkbox" data-source="{{ s.name }}" data-source-place="{{ g.place }}" aria-label="Zobrazovat zdroj {{ s.title }}"><span class="source-toggle-ui" aria-hidden="true"></span></label>
 </div>
@@ -77,17 +85,18 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
 <div class="row none-row">Zatím bez vlastního zdroje – akce jen z regionálních zdrojů níže.</div>
 {% endfor %}
 </div>
+</div>
 {% endfor %}
 
 <h2 class="grp">Regionální zdroje<span class="n"> · více obcí</span></h2>
 <div class="list-card">
 {% for s in regional %}
-<div class="row src-row">
+<div class="row src-row" data-source-row="{{ s.name }}">
   <span class="src-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></svg></span>
   <div class="content">
     <div class="title"><a href="{{ s.page }}" target="_blank" rel="noopener">{{ s.title }}</a></div>
     <div class="meta">{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>
-    <div class="subline">{{ s.count|akce }} · {{ s.fetched }} · {{ s.status_label }}</div>
+    <div class="subline">{{ s.count|akce }} · {{ s.fetched }} · {{ s.status_label }} <span class="source-status-badge" data-source-status hidden></span></div>
   </div>
   <label class="source-toggle" title="Zapnout nebo vypnout zdroj {{ s.title }}"><input type="checkbox" data-source="{{ s.name }}" aria-label="Zobrazovat zdroj {{ s.title }}"><span class="source-toggle-ui" aria-hidden="true"></span></label>
 </div>
@@ -99,7 +108,6 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
 <div class="list-card"><div class="row none-row">Vždy zobrazená venue: {{ venues_allow|join(', ') }}</div></div>
 {% endif %}
 
-<p class="disclaimer">Chceš přidat obec nebo zdroj? Stačí upravit <code>config.yaml</code> v repozitáři <a href="https://github.com/ivolarys/mostkultura">ivolarys/mostkultura</a>.</p>
 </div>
 <script src="source-preferences.js?v=mostkultura-3"></script>
 <script>
@@ -107,13 +115,34 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
   'use strict';
   let prefs = MostkulturaSources.read(), storageWarning = false, storageUnavailable = false;
   const controls = [...document.querySelectorAll('input[data-source], input[data-place]')];
+  const sourceRows = [...document.querySelectorAll('[data-source-row]')];
   const render = () => {
     controls.forEach(input => {
       const key = input.dataset.source || input.dataset.place;
-      input.checked = input.dataset.source ? !prefs.disabledSources.includes(key) : !prefs.disabledPlaces.includes(key);
+      const personalSourceEnabled = input.dataset.source ? !prefs.disabledSources.includes(key) : null;
+      input.checked = input.dataset.source ? personalSourceEnabled : !prefs.disabledPlaces.includes(key);
       const placeDisabled = !!(input.dataset.source && input.dataset.sourcePlace && prefs.disabledPlaces.includes(input.dataset.sourcePlace));
       input.disabled = placeDisabled;
       input.closest('.source-toggle').setAttribute('aria-disabled', String(placeDisabled));
+      if (input.dataset.source) {
+        const row = sourceRows.find(candidate => candidate.dataset.sourceRow === key);
+        if (!row) return;
+        const disabled = !personalSourceEnabled || placeDisabled;
+        row.classList.toggle('is-disabled', disabled);
+        const badge = row.querySelector('[data-source-status]');
+        badge.hidden = !disabled;
+        badge.textContent = !personalSourceEnabled ? 'Vypnuto' : 'Vypnuto městem';
+        const badgeId = `source-status-${sourceRows.indexOf(row)}`;
+        badge.id = badgeId;
+        if (disabled) input.setAttribute('aria-describedby', badgeId);
+        else input.removeAttribute('aria-describedby');
+      }
+    });
+    document.querySelectorAll('[data-place-group]').forEach(group => {
+      const disabled = prefs.disabledPlaces.includes(group.dataset.placeGroup);
+      group.classList.toggle('is-disabled', disabled);
+      group.querySelector('.source-group-head').classList.toggle('is-disabled', disabled);
+      group.querySelector('[data-place-status]').hidden = !disabled;
     });
     const excluded = prefs.disabledSources.length + prefs.disabledPlaces.length;
     document.getElementById('sourceReset').hidden = !excluded;
