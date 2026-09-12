@@ -2,39 +2,55 @@
 <html lang="cs">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=mostkultura-1">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Zdroje podle obce · Zadní Mostek · střed vesmíru</title>
-<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Zdroje podle obce · Mostkultura</title>
+<link rel="icon" href="icon.svg?v=mostkultura-1" type="image/svg+xml">
 <style>
 {% include "_base.css.j2" %}
 /* ==== layout ==== */
-.wrap{max-width:720px;margin:0 auto;padding:0 16px 32px}
-.navbar{display:flex;align-items:center;height:44px;padding:0 12px;position:sticky;top:0;z-index:10;background:rgba(251,247,241,.85);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--sep);margin:0 -16px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .navbar{background:rgba(14,11,42,.85)}}
-:root[data-theme="dark"] .navbar{background:rgba(14,11,42,.85)}
-.navbar .back{color:var(--tint);font-size:17px;flex:0 0 auto;padding:8px 6px 8px 0}
-.navbar .back:active{opacity:.6}
-.navbar h1{font-size:17px;font-weight:600;margin:0;flex:1;text-align:center;padding-right:52px}
-.sub{font-size:13px;color:var(--label3);padding:8px 16px 0}
-.intro{color:var(--label2);font-size:15px;padding:6px 16px 0;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 38px}
+.navbar{display:flex;align-items:center;min-height:56px;padding:0 12px;position:sticky;top:0;z-index:10;background:rgba(251,247,241,.92);-webkit-backdrop-filter:saturate(170%) blur(18px);backdrop-filter:saturate(170%) blur(18px);border-bottom:1px solid var(--sep);margin:0 -20px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .navbar{background:rgba(22,16,29,.91)}}
+:root[data-theme="dark"] .navbar{background:rgba(22,16,29,.91)}
+.navbar .back{color:var(--tint);font-size:15px;font-weight:700;flex:0 0 auto;min-height:44px;display:flex;align-items:center;gap:4px;padding:0 6px;border-radius:10px}
+.navbar .back:hover{background:var(--active)}
+.navbar .back .icon{width:19px;height:19px}
+.navbar h1{font-size:17px;font-weight:750;margin:0;flex:1;text-align:center;padding-right:76px}
+.page-head{padding:28px 2px 8px}
+.eyebrow{display:flex;align-items:center;gap:7px;color:var(--label);font-size:16px;text-transform:none;letter-spacing:0;font-weight:800}
+.eyebrow-logo{width:24px;height:22px;display:block;object-fit:contain}
+.eyebrow .icon{width:19px;height:19px}
+.page-head h2{font-size:34px;line-height:1.04;letter-spacing:-.035em;margin:13px 0 8px}
+.sub{font-size:12px;color:var(--label3);margin:0}
+.intro{color:var(--label2);font-size:15px;max-width:680px;margin:0 0 8px}
 .src-row{align-items:flex-start}
 .src-row .status-pill{margin-top:2px}
-@media (min-width:700px){.wrap{padding:0 24px 32px}.navbar{margin:0 -24px}}
+.src-icon{width:36px;height:36px;flex:0 0 36px;border-radius:10px;background:var(--fill);color:var(--label2);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.src-icon .icon{width:19px;height:19px}
+.src-row .meta{flex-wrap:wrap;white-space:normal}
+.src-row .title a:hover{color:var(--tint)}
+.disclaimer a{color:var(--tint);text-decoration:underline;text-underline-offset:2px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
+@media (min-width:700px){.wrap{padding:0 28px 42px}.navbar{margin:0 -28px}.page-head{padding-top:38px}.page-head h2{font-size:44px}.grp .aliases{display:inline;margin-left:7px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav class="navbar"><a class="back" href="./">‹ Přehled</a><h1>Zdroje podle obce</h1></nav>
-<p class="sub">aktualizováno {{ generated_at[:16].replace('T',' ') }}</p>
-<p class="intro">Odkud se akce berou. U každé obce je vidět, které weby ji pokrývají, jak dopadlo poslední stažení a kolik akcí z ní je aktuálně v přehledu. Obce bez vlastního zdroje dostávají akce jen z regionálních zdrojů (GoOut, „Akce v okolí“ na webu Mostku).</p>
+<nav class="navbar"><a class="back" href="./"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Přehled</a><h1>Zdroje</h1></nav>
+<header class="page-head">
+  <div class="eyebrow"><img class="eyebrow-logo" src="logo.svg?v=mostkultura-1" alt="">Mostkultura</div>
+  <h2>Odkud akce bereme</h2>
+  <p class="intro">U každé obce vidíte pokryté weby, výsledek posledního stažení a počet aktuálních akcí. Obce bez vlastního zdroje doplňují regionální kalendáře.</p>
+  <p class="sub">Aktualizováno {{ generated_at[:16].replace('T',' ') }}</p>
+</header>
 
 {% for g in groups %}
 <h2 class="grp">{{ g.place }}<span class="n"> · {{ g.event_count|akce }} v přehledu</span>{% if g.aliases %}<span class="aliases">také: {{ g.aliases|join(', ') }}</span>{% endif %}</h2>
 <div class="list-card">
 {% for s in g.sources %}
 <div class="row src-row">
+  <span class="src-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></svg></span>
   <div class="content">
     <div class="title"><a href="{{ s.page }}" target="_blank" rel="noopener">{{ s.title }}</a></div>
     <div class="meta"><span class="pill pill-neutral">{{ s.type }}</span>{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>
@@ -52,6 +68,7 @@
 <div class="list-card">
 {% for s in regional %}
 <div class="row src-row">
+  <span class="src-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></svg></span>
   <div class="content">
     <div class="title"><a href="{{ s.page }}" target="_blank" rel="noopener">{{ s.title }}</a></div>
     <div class="meta"><span class="pill pill-neutral">{{ s.type }}</span>{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>

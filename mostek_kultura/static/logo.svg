@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<rect width="512" height="512" rx="112" fill="#E45E3D"/>
-<g transform="translate(64 80) scale(3)" fill="#fff">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 112">
+<g fill="#E45E3D">
 <path d="M18 96V65C18 45 29 33 46 33C54 33 60 36 64 41C69 36 75 33 83 33C101 33 112 45 112 65V96H94V65C94 56 90 51 83 51C76 51 73 56 73 65V96H55V65C55 56 51 51 46 51C39 51 36 56 36 65V96Z"/>
 <path d="M102 5C104 13 106 15 114 17C106 19 104 21 102 29C100 21 98 19 90 17C98 15 100 13 102 5Z"/>
 </g>

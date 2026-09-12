@@ -16,11 +16,17 @@ def test_offline_build(root, tmp_path):
         assert len(summary[key]["events"]) <= 10
     assert (tmp_path / "summary.json").stat().st_size < 16_000
     html = (tmp_path / "index.html").read_text(encoding="utf-8")
-    assert 'id="data"' in html and "Zadní Mostek · střed vesmíru" in html
+    assert 'id="data"' in html and "Mostkultura · Kam vyrazíme?" in html
+    assert "Malý Mostek. Velký dění." in html
     assert "color-mix" not in html
     assert "source_labels" in html
     assert 'rel="manifest"' in html
     assert (tmp_path / "manifest.webmanifest").exists()
+    manifest = json.loads((tmp_path / "manifest.webmanifest").read_text(encoding="utf-8"))
+    assert manifest["name"] == manifest["short_name"] == "Mostkultura"
+    for icon in manifest["icons"]:
+        assert (tmp_path / icon["src"].split("?")[0]).is_file()
+    assert (tmp_path / "logo.svg").is_file()
     assert (tmp_path / "icon.svg").exists()
     assert (tmp_path / "apple-touch-icon.png").exists() and (tmp_path / "icon-512.png").exists()
     assert 'rel="apple-touch-icon"' in html

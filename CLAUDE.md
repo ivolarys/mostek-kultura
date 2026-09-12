@@ -8,8 +8,8 @@ Denní agregátor kulturních akcí v okolí obce Mostek. GitHub Actions (cron 0
 
 ## Delegování práce na subagenty (modely)
 
-- **Fable** (fallback Opus 5): návrhy, plány, review, testy, kontroly, orchestrace.
-- **Sonnet / Haiku**: implementace, rutinní kód, mechanické editace.
+- **GPT-6 Astra (`gpt-6-astra`)**: hlavní model pro návrhy, analýzy, přípravu zadání, review, testy, kontroly a orchestraci (preference uživatele pro celý projekt, 2026-09-12).
+- **Levnější modely**: samotné kódování delegovat na GPT-5.6 Luna, u složitější implementace na GPT-5.6 Terra nebo Sol. Výsledek kontroluje Astra. Použít všude, kde prostředí umožňuje volbu modelu; změnu modelu běžícího tahu nepředstírat.
 
 ## Jak pracovat
 

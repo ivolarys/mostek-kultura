@@ -1,6 +1,6 @@
-# Zadní Mostek · střed vesmíru
+# Mostkultura
 
-Zadní Mostek je střed vesmíru a všechno ostatní kolem něj obíhá. Denní přehled kulturních a společenských akcí v okolí obce Mostek (okres Trutnov): dnes, zítra, víkend, tento týden. Členěno podle typu akce a podle obce, k dispozici i jako mapa.
+Mostkultura je denní přehled kulturních a společenských akcí v okolí obce Mostek (okres Trutnov): dnes, zítra, víkend i celý týden. Akce jsou členěné podle typu a obce a k dispozici jsou také na mapě.
 
 - Veřejná stránka: **https://ivolarys.github.io/mostek-kultura/**
 - JSON pro Home Assistant: `https://ivolarys.github.io/mostek-kultura/summary.json`
