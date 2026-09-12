@@ -82,6 +82,16 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .site-footer{margin-top:28px}
 .footer-row{min-height:58px;font-size:14px}
 
+/* Inline install offer: it intentionally stays part of the page, never a modal. */
+.install-offer{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr) 44px;gap:12px;align-items:start;margin:0 0 12px;padding:14px;background:var(--card);border:1px solid var(--sep);border-radius:18px;box-shadow:var(--shadow)}
+.install-offer-icon{width:48px;height:48px;border-radius:13px;object-fit:cover;background:var(--fill)}
+.install-offer-copy{min-width:0;padding:1px 0}.install-offer-title{margin:0;color:var(--label);font-size:16px;line-height:1.25;font-weight:780}.install-offer-text{margin:4px 0 0;color:var(--label2);font-size:13px;line-height:1.42}
+.install-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.install-primary,.install-guide-toggle{min-height:44px;border-radius:12px;padding:0 13px;font-size:14px;font-weight:750}.install-primary{background:var(--tint);color:var(--tint-ink)}.install-primary:hover{background:var(--tint-hover)}.install-guide-toggle{color:var(--tint);border:1px solid var(--sep);background:var(--card)}
+.install-dismiss{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--label2)}.install-dismiss:hover{background:var(--fill)}.install-dismiss svg{width:20px;height:20px}
+.install-guide{grid-column:2 / -1;margin:0;padding:12px 13px;background:var(--fill);border-radius:13px;color:var(--label2);font-size:13px;line-height:1.48}.install-guide-title{margin:0 0 5px;color:var(--label);font-size:14px;font-weight:750}.install-guide ol{margin:0;padding-left:19px}.install-error{grid-column:2 / -1;margin:0;color:var(--err);font-size:13px;line-height:1.4}
+.install-reopen{min-height:44px;margin:10px 0 0;color:var(--tint);font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:359px){.install-offer{grid-template-columns:42px minmax(0,1fr) 44px;gap:9px;padding:12px}.install-offer-icon{width:42px;height:42px}.install-actions{gap:6px}.install-primary,.install-guide-toggle{padding:0 10px;font-size:13px}.install-guide{grid-column:1 / -1}}
+
 @media (max-width:359px){
   .hero-grid{gap:8px}
   .brand{font-size:24px}
@@ -168,6 +178,21 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
     </div>
   </header>
 
+  <aside class="install-offer" id="installOffer" aria-labelledby="installOfferTitle" hidden>
+    <img class="install-offer-icon" src="icon-192.png?v=mostkultura-1" width="48" height="48" alt="" aria-hidden="true">
+    <div class="install-offer-copy">
+      <h2 class="install-offer-title" id="installOfferTitle" tabindex="-1">Mostkultura na dosah</h2>
+      <p class="install-offer-text">Přidejte si ji na plochu a příště otevřete jedním klepnutím.</p>
+      <div class="install-actions">
+        <button class="install-primary" id="installAction" type="button" aria-controls="installGuide" aria-expanded="false"></button>
+        <button class="install-guide-toggle" id="installGuideToggle" type="button" aria-controls="installGuide" aria-expanded="false">Jak na to</button>
+      </div>
+    </div>
+    <button class="install-dismiss" id="installDismiss" type="button" aria-label="Zavřít nabídku"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <section class="install-guide" id="installGuide" aria-live="polite" hidden></section>
+    <p class="install-error" id="installError" role="status" hidden></p>
+  </aside>
+
   <section class="filters" aria-label="Vyhledávání a kategorie">
     <div class="search-row">
       <div class="searchbox">
@@ -200,6 +225,7 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
       <div class="row footer-row"><span class="content">Stav zdrojů: {{ status.sources|selectattr('status','equalto','ok')|list|length }} OK, {{ status.sources|rejectattr('status','equalto','ok')|list|length }} chyb{% set bad = status.sources|rejectattr('status','equalto','ok')|list %}{% if bad %} ({{ bad|map(attribute='name')|join(', ') }}){% endif %}</span></div>
     </div>
     <p class="disclaimer">Akce stahujeme jednou denně. Čas a místo si před cestou ověřte u pořadatele.</p>
+    <button class="install-reopen" id="installReopen" type="button" hidden>Přidat aplikaci</button>
   </footer>
 </div>
 
@@ -451,5 +477,6 @@ window.addEventListener('resize',()=>{if(st.view==='map'&&map){sizeMap();map.inv
 parseState();canonicalize();render();
 })();
 </script>
+<script src="install.js?v=mostkultura-1" defer></script>
 </body>
 </html>

@@ -39,6 +39,10 @@ Akce, které se propagují jen přes Facebook (nedají se automaticky stahovat),
 
 Přepínač „Seznam / Mapa“ nad výpisem zobrazí stejné (filtrované) akce na mapě okolí Mostku (Leaflet, vendorovaný v `mostek_kultura/static/leaflet/`, žádná JS závislost stahovaná za běhu). Akce se geokódují při buildu (`mostek_kultura/geocode.py`) na úroveň konkrétního místa konání (venue) nebo aspoň obce (centroid), výsledek se cachuje do `cache/geocode.json` (commitovaná, stejně jako `cache/classifications.json`) – při běžném denním buildu se tak dotazuje jen pár nových venue navíc, ne celá databáze znovu. Jediná externí síťová závislost za běhu stránky jsou dlaždice `tile.openstreetmap.org`; samotné vyhledávání (Nominatim) běží jen při buildu.
 
+## Instalace na plochu
+
+Při první návštěvě na telefonu se ukáže nenápadná nabídka přidání na plochu. Na iPhonu a iPadu vede na návod přes nabídku Sdílet, v Androidu použije nativní výběr instalace, když ho prohlížeč zpřístupní. Desktopovou nabídku zobrazí jen prohlížeč, který skutečně poskytne nativní instalaci. Stav první nabídky se ukládá lokálně v prohlížeči; v instalované aplikaci, iframe a nepodporovaných vestavěných prohlížečích se nezobrazuje.
+
 ## Home Assistant
 
 - REST senzory: `ha/configuration.yaml` (stav = počet akcí, atribut `events` = seznam).

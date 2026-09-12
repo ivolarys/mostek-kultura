@@ -15,6 +15,7 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 
 ## UX/UI
 
+- Nabídku přidání aplikace ukaž jen jednou na prohlížeč; nezobrazuj ji v iframe ani v samostatně spuštěné aplikaci. Na desktopu ji nabízej jen po skutečném nativním instalačním eventu prohlížeče.
 - Schválená značka (2026-09-12): **Mostkultura**. Repo a veřejná URL používají
   název `mostkultura` (`https://ivolarys.github.io/mostkultura/`). Logo propojuje malé m,
   mostní oblouky a čtyřcípou jiskru;

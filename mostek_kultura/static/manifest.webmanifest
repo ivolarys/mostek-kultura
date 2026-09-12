@@ -1,6 +1,8 @@
 {
   "name": "Mostkultura",
   "short_name": "Mostkultura",
+  "id": "./",
+  "description": "Kulturní akce v Mostku a okolí.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
