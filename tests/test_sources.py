@@ -256,6 +256,41 @@ def test_epo1_calendar(cfg, root):
     assert len({x.native_id for x in events}) == len(events)
 
 
+def test_epo1_exhibitions(cfg, root):
+    events = _fetch(cfg, root, "epo1-vystavy")
+    assert len(events) == 3
+    assert {x.title for x in events} == {
+        "Neokosmos — Pavel Holeček",
+        "Vzpomeň sobě, že není všechno štěstí — Vladimír 518",
+        "Rekreace — Ondřej Mestek",
+    }
+    assert all(x.all_day and x.native_category == "Výstava" and x.venue == "EPO1, Trutnov" for x in events)
+    assert all(x.start.strftime("%Y-%m-%d") == "2026-05-22" for x in events)
+    assert all(x.end and x.end.strftime("%Y-%m-%d") == "2026-11-01" for x in events)
+    assert all("show-card" not in x.description for x in events)
+    assert any("Turbínová hala" in x.description for x in events)
+    assert all("webflow.io" not in x.url for x in events)
+
+
+def test_epo1_exhibitions_skip_malformed_and_keep_explicit_future_year(cfg):
+    src = _src(cfg, "epo1-vystavy")
+    html = '''
+      <a class="show-card" href="/vystavy/future"><h3>Future</h3>
+        <div class="show-card_artist">Artist</div><div class="show-card_meta"><span>Sál</span><span>2. 5. — 1. 11. 2099</span></div>
+      </a>
+      <a class="show-card" href="/vystavy/broken"><h3>Broken</h3>
+        <div class="show-card_meta"><span>Sál</span><span>not a date</span></div>
+      </a>
+      <div class="archive-card"><h3>Archive</h3><span>2. 5. — 1. 11. 2026</span></div>
+    '''
+    events = src.parse(html)
+    assert len(events) == 1 and events[0].start.year == 2099
+    cross = src.parse('''<a class="show-card" href="/cross"><h3>Cross</h3>
+      <div class="show-card_meta"><span>Sál</span><span>22. 12. — 4. 1. 2027</span></div></a>''')[0]
+    assert cross.start.strftime("%Y-%m-%d") == "2026-12-22"
+    assert cross.end.strftime("%Y-%m-%d") == "2027-01-04"
+
+
 def test_webnode_belohradska_sypka(cfg, root):
     events = _fetch(cfg, root, "belohradska-sypka")
     assert len(events) == 11

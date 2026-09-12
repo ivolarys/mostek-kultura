@@ -9,6 +9,7 @@ from .cinestar import CineStarSource
 from .drak_program import DrakProgramSource
 from .drupal_events import DrupalEventsSource
 from .epo1_calendar import Epo1CalendarSource
+from .epo1_exhibitions import Epo1ExhibitionsSource
 from .galileo import GalileoSource
 from .goout import GoOutSource
 from .hkinfo_program import HkinfoProgramSource
@@ -51,6 +52,7 @@ REGISTRY: dict[str, type[Source]] = {
     "mojekino": MojekinoSource,
     "naplavka_program": NaplavkaProgramSource,
     "epo1_calendar": Epo1CalendarSource,
+    "epo1_exhibitions": Epo1ExhibitionsSource,
     "webnode_program": WebnodeProgramSource,
     "koruna_program": KorunaProgramSource,
     "simcal_calendar": SimcalCalendarSource,

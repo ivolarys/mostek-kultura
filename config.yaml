@@ -298,6 +298,13 @@ sources:
     page: https://www.epo1.cz/doprovodny-program
     place: Trutnov
     priority: 9
+  - name: epo1-vystavy
+    label: Galerie EPO1 Trutnov – Výstavy
+    type: epo1_exhibitions
+    url: https://www.epo1.cz/program-vystavy
+    page: https://www.epo1.cz/program-vystavy
+    place: Trutnov
+    priority: 9
   - name: belohradska-sypka
     label: Bělohradská sýpka – Program
     type: webnode_program
