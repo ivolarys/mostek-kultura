@@ -741,6 +741,13 @@
   "q": "UFFO Trutnov, Trutnov, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
  },
+ "valdstejnska lodzie|jicin": {
+  "lat": 50.449501,
+  "lon": 15.3784696,
+  "precision": "venue",
+  "q": "Valdštejnská lodžie, Jičín, Česko",
+  "ts": "2026-09-12T12:52:17+00:00"
+ },
  "vinarstvi bysicky - novy dvur|lazne belohrad": {
   "lat": null,
   "lon": null,

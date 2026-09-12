@@ -3,13 +3,20 @@
   'use strict';
   const KEY = 'mostkultura.sourcePreferences.v1';
   const DEFAULT_DISABLED_PLACES = ['Hradec Králové'];
+  const DEPRECATED_PLACE_SOURCES = new Map([['Valdštejnská lodžie', 'valdstejnska-lodzie']]);
   const list = value => Array.isArray(value)
     ? [...new Set(value.filter(item => typeof item === 'string').map(item => item.trim()).filter(Boolean))]
     : [];
   function normalize(value) {
+    const disabledSources = new Set(list(value && value.disabledSources));
+    const disabledPlaces = list(value && value.disabledPlaces).filter(place => {
+      const source = DEPRECATED_PLACE_SOURCES.get(place);
+      if (source) disabledSources.add(source);
+      return !source;
+    });
     return {
-      disabledSources: list(value && value.disabledSources),
-      disabledPlaces: list(value && value.disabledPlaces),
+      disabledSources: [...disabledSources],
+      disabledPlaces,
     };
   }
   function defaults() {

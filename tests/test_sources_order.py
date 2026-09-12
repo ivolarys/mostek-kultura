@@ -11,7 +11,7 @@ def test_sources_czech_city_order_does_not_change_config(cfg):
         'Bílá Třemešná', 'Borovnice', 'Dolní Brusnice', 'Dvůr Králové nad Labem',
         'Horní Brusnice', 'Hořice', 'Hostinné', 'Hradec Králové', 'Choustníkovo Hradiště',
         'Jaroměř', 'Jičín', 'Josefov', 'Kuks', 'Lázně Bělohrad', 'Mostek', 'Nemojov',
-        'Nová Paka', 'Pecka', 'Trutnov', 'Valdštejnská lodžie', 'Vítězná', 'Vrchlabí',
+        'Nová Paka', 'Pecka', 'Trutnov', 'Vítězná', 'Vrchlabí',
         'Zvičina', 'Žireč',
     ]
     assert [p.name for p in cfg.places] == before
@@ -25,3 +25,10 @@ def test_czech_digraph_and_accented_letters(cfg):
         'Ábelov', 'Adamov', 'Cvikov', 'Čáslav', 'Hradec', 'Chrudim', 'Ivančice',
         'Rakovník', 'Říčany', 'Svitavy', 'Šumperk', 'Zlín', 'Žatec',
     ]
+
+
+def test_lodzie_source_is_in_jicin_group(cfg):
+    data = build_sources_page([], cfg, [])
+    jicin = next(g for g in data['groups'] if g['place'] == 'Jičín')
+    assert {'jicin', 'valdstejnska-lodzie'} <= {s['name'] for s in jicin['sources']}
+    assert all(g['place'] != 'Valdštejnská lodžie' for g in data['groups'])

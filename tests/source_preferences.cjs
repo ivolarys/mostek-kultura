@@ -28,6 +28,15 @@ for (const malformed of ['{oops', 'null', '42', '[]', '"string"', '{}', '{"disab
 assert.deepEqual(plain(prefs.normalize({disabledSources:['a','a',42,null,''], disabledPlaces:'HK'})),
   {disabledSources:['a'], disabledPlaces:[]});
 
+const legacy = {disabledSources:['existing'], disabledPlaces:['Valdštejnská lodžie','Hradec Králové']};
+const migrated = {disabledSources:['existing','valdstejnska-lodzie'], disabledPlaces:['Hradec Králové']};
+values.set(prefs.KEY, JSON.stringify(legacy));
+assert.deepEqual(plain(prefs.read()), migrated);
+assert.equal(prefs.eventAllowed({place:'Jičín',sources:['valdstejnska-lodzie']},prefs.read()),false);
+assert.equal(prefs.eventAllowed({place:'Jičín',sources:['jicin']},prefs.read()),true);
+assert.equal(prefs.save(prefs.read()),true);
+assert.deepEqual(plain(prefs.read()),migrated);
+
 const selected = {disabledSources:['direct'], disabledPlaces:[]};
 const direct = {place:'Hradec Králové', sources:['direct']};
 const shared = {...direct, sources:['direct','regional']};

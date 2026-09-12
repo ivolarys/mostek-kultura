@@ -41,11 +41,15 @@ def test_explicit_place_raw_wins_over_title(cfg):
     assert e.place is None and not in_scope(e, r)
 
 
-def test_lodzie_is_its_own_place(cfg):
+def test_lodzie_belongs_to_jicin(cfg):
     r = PlaceResolver(cfg)
     e = ev("Koncert", venue="Valdštejnská lodžie", place_raw="Jičín")
     resolve_places([e], r)
-    assert e.place == "Valdštejnská lodžie" and in_scope(e, r)
+    assert e.place == "Jičín" and in_scope(e, r)
+    assert e.venue == "Valdštejnská lodžie"
+    cached = ev("Koncert", place="Valdštejnská lodžie", place_raw="Valdštejnské imaginárium")
+    resolve_places([cached], r)
+    assert cached.place == "Jičín" and in_scope(cached, r)
 
 
 def test_venues_allow(cfg):

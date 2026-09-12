@@ -256,7 +256,7 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
 </dialog>
 
 <script type="application/json" id="data">{{ data_json|safe }}</script>
-<script src="source-preferences.js?v=mostkultura-2"></script>
+<script src="source-preferences.js?v=mostkultura-3"></script>
 <script>
 (function(){
 'use strict';
@@ -317,6 +317,7 @@ const EVENTS=D.events.filter(e=>!e.ongoing||e.ed>=today);
 const VALID={tab:new Set(TABS.map(t=>t[0])),cat:new Set(D.categories.map(c=>c.slug)),group:new Set(['day','category']),view:new Set(['list','map'])};
 const eventPlaces=new Set(EVENTS.map(e=>e.place||'?'));
 const validPlaces=new Set([...D.places,...eventPlaces]);
+const LEGACY_PLACE_MAP={'Valdštejnská lodžie':'Jičín'};
 const st={tab:'today',cat:new Set(),place:new Set(),group:'category',view:'list',q:''};
 
 function parseState(){
@@ -325,7 +326,7 @@ function parseState(){
   st.group=VALID.group.has(h.get('group'))?h.get('group'):(VALID.group.has(qs.get('group'))?qs.get('group'):'category');
   st.view=VALID.view.has(h.get('view'))?h.get('view'):(VALID.view.has(qs.get('view'))?qs.get('view'):'list');
   st.cat=new Set((h.get('cat')||'').split(',').filter(x=>VALID.cat.has(x)));
-  st.place=new Set((h.get('place')||'').split(',').filter(x=>validPlaces.has(x)));
+  st.place=new Set((h.get('place')||'').split(',').map(x=>LEGACY_PLACE_MAP[x]||x).filter(x=>validPlaces.has(x)));
   st.q=(h.get('q')||'').trim().slice(0,120);
 }
 function stateHash(){

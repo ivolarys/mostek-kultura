@@ -51,11 +51,9 @@ places:
   - name: Vrchlabí
     aliases: [Vrchlabí, KD Střelnice]
   - name: Jičín
-    aliases: [Jičíně, Jičína]
+    aliases: [Jičíně, Jičína, Valdštejnská lodžie, Lodžie, Valdštejnské lodžii, Valdštejnské imaginárium]
   - name: Hradec Králové
     aliases: [Hradci Králové, Hradce Králové]
-  - name: Valdštejnská lodžie
-    aliases: [Lodžie, Valdštejnské lodžii, Valdštejnské imaginárium]
 
 # Venue, které se zobrazí vždy bez ohledu na obec (např. jedno konkrétní místo ve vzdálenějším městě).
 venues_allow: []
@@ -254,7 +252,8 @@ sources:
     label: Valdštejnská lodžie Jičín – Program
     type: lodzie_program
     url: https://valdstejnskalodzie.cz/program
-    place: Valdštejnská lodžie
+    place: Jičín
+    venue: Valdštejnská lodžie
     priority: 8
   - name: rucne
     label: Ručně zadané akce (manual_events.yaml)

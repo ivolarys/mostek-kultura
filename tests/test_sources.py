@@ -115,7 +115,7 @@ def test_lodzie(cfg, root):
     assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-13 15:30" and not e.all_day
     assert e.url.startswith("https://valdstejnskalodzie.cz/program/")
     assert e.description.startswith("Beseda s Jiřím Ježkem") and e.image
-    assert e.venue is None
+    assert e.venue == "Valdštejnská lodžie"
     fest = next(x for x in events if x.title.startswith("MALÁ INVENTURA"))
     assert fest.all_day and fest.start.day == 18
     nxt = next(x for x in events if x.title.startswith("30 let"))
