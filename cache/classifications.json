@@ -479,6 +479,22 @@
   "place": "Lázně Bělohrad",
   "ts": "2026-09-11T18:58:32+00:00"
  },
+ "naplavka-hk:3d6c02b3fa8a": {
+  "category": "koncert",
+  "confidence": 0.75,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:33:26+00:00"
+ },
+ "naplavka-hk:8f48c5742cb5": {
+  "category": "koncert",
+  "confidence": 0.75,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T10:33:26+00:00"
+ },
  "nova-paka:0080f8eb7b45": {
   "category": "film",
   "confidence": 0.9,
