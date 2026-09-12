@@ -1,4 +1,6 @@
-# Kultura kolem Mostku
+# Zadní Mostek · střed vesmíru
+
+Denní přehled kulturních akcí kolem obce Mostek (Zadní Mostek je střed vesmíru a všechno ostatní kolem něj obíhá).
 
 Denní přehled kulturních a společenských akcí v okolí obce Mostek (okres Trutnov): dnes, zítra, víkend, tento týden. Členěno podle typu akce a podle obce.
 
