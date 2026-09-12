@@ -25,11 +25,24 @@
 .sub{font-size:12px;color:var(--label3);margin:0}
 .intro{color:var(--label2);font-size:15px;max-width:680px;margin:0 0 8px}
 .src-row{align-items:flex-start}
-.src-row .status-pill{margin-top:2px}
+.src-row .subline{display:flex;gap:5px;flex-wrap:wrap}
 .src-icon{width:36px;height:36px;flex:0 0 36px;border-radius:10px;background:var(--fill);color:var(--label2);display:flex;align-items:center;justify-content:center;margin-top:1px}
 .src-icon .icon{width:19px;height:19px}
 .src-row .meta{flex-wrap:wrap;white-space:normal}
 .src-row .title a:hover{color:var(--tint)}
+.source-group-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.source-group-head.grp{margin-bottom:9px}.source-group-head h2{margin:0;font-size:16px;line-height:1.25;font-weight:750;letter-spacing:0;text-transform:none}.source-group-head h2 .n{font-size:12px}
+.source-toggle{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;min-width:44px;min-height:44px;cursor:pointer}
+.source-toggle input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;z-index:1;cursor:pointer}
+.source-toggle input:disabled{cursor:not-allowed}.source-toggle-ui{width:38px;height:24px;border-radius:999px;background:var(--label3);position:relative;z-index:0;pointer-events:none;transition:background .16s ease}
+.source-toggle-ui::after{content:"";position:absolute;width:18px;height:18px;top:3px;left:3px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .16s ease}
+.source-toggle input:checked + .source-toggle-ui{background:var(--ok)}
+.source-toggle input:checked + .source-toggle-ui::after{transform:translateX(14px)}
+.source-toggle input:focus-visible + .source-toggle-ui{outline:3px solid var(--focus);outline-offset:3px}
+.source-toggle input:disabled + .source-toggle-ui{opacity:.48}
+.source-settings{margin:4px 0 14px;color:var(--label2);font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.source-reset{min-height:44px;padding:0 8px;color:var(--tint);font-weight:700}
+.storage-warning{margin:10px 0 0;color:var(--warn);font-size:13px}
 .disclaimer a{color:var(--tint);text-decoration:underline;text-underline-offset:2px}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
 @media (min-width:700px){.wrap{padding:0 28px 42px}.navbar{margin:0 -28px}.page-head{padding-top:38px}.page-head h2{font-size:44px}.grp .aliases{display:inline;margin-left:7px}}
@@ -37,26 +50,28 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
 </head>
 <body>
 <div class="wrap">
-<nav class="navbar"><a class="back" href="./"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Přehled</a><h1>Zdroje</h1></nav>
+<nav class="navbar"><a class="back" id="backLink" href="./"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Přehled</a><h1>Zdroje</h1></nav>
 <header class="page-head">
   <div class="eyebrow"><img class="eyebrow-logo" src="logo.svg?v=mostkultura-1" alt="">Mostkultura</div>
   <h2>Odkud akce bereme</h2>
-  <p class="intro">U každé obce vidíte pokryté weby, výsledek posledního stažení a počet aktuálních akcí. Obce bez vlastního zdroje doplňují regionální kalendáře.</p>
+  <p class="intro">U každé obce vidíte pokryté weby, výsledek posledního stažení a počet aktuálních akcí. Volby se ukládají jen v tomto prohlížeči. Vypnutí obce skryje i regionální akce v ní a zachová stav jejích zdrojů; akce z více zdrojů zůstane vidět, když je zapnutý alespoň jeden.</p>
   <p class="sub">Aktualizováno {{ generated_at[:16].replace('T',' ') }}</p>
+  <div class="source-settings"><span id="sourceSettingsNote">Vyberte, které zdroje chcete v přehledu vidět.</span><button class="source-reset" id="sourceReset" type="button" hidden>Zapnout vše</button></div>
+  <p class="storage-warning" id="storageWarning" role="status" hidden>Nastavení se nepodařilo uložit. Pro zapamatování voleb povolte ukládání dat pro tento web.</p>
 </header>
 
 {% for g in groups %}
-<h2 class="grp">{{ g.place }}<span class="n"> · {{ g.event_count|akce }} v přehledu</span>{% if g.aliases %}<span class="aliases">také: {{ g.aliases|join(', ') }}</span>{% endif %}</h2>
+<div class="source-group-head grp"><h2>{{ g.place }}<span class="n"> · {{ g.event_count|akce }} v přehledu</span>{% if g.aliases %}<span class="aliases">také: {{ g.aliases|join(', ') }}</span>{% endif %}</h2><label class="source-toggle" title="Zapnout nebo vypnout obec {{ g.place }}"><input type="checkbox" data-place="{{ g.place }}" aria-label="Zobrazovat obec {{ g.place }}"><span class="source-toggle-ui" aria-hidden="true"></span></label></div>
 <div class="list-card">
 {% for s in g.sources %}
 <div class="row src-row">
   <span class="src-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></svg></span>
   <div class="content">
     <div class="title"><a href="{{ s.page }}" target="_blank" rel="noopener">{{ s.title }}</a></div>
-    <div class="meta"><span class="pill pill-neutral">{{ s.type }}</span>{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>
-    <div class="subline">{{ s.count|akce }} · {{ s.fetched }}</div>
+    <div class="meta">{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>
+    <div class="subline">{{ s.count|akce }} · {{ s.fetched }} · {{ s.status_label }}</div>
   </div>
-  <span class="status-pill s-{{ s.status }}">{{ s.status_label }}</span>
+  <label class="source-toggle" title="Zapnout nebo vypnout zdroj {{ s.title }}"><input type="checkbox" data-source="{{ s.name }}" data-source-place="{{ g.place }}" aria-label="Zobrazovat zdroj {{ s.title }}"><span class="source-toggle-ui" aria-hidden="true"></span></label>
 </div>
 {% else %}
 <div class="row none-row">Zatím bez vlastního zdroje – akce jen z regionálních zdrojů níže.</div>
@@ -71,10 +86,10 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
   <span class="src-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></svg></span>
   <div class="content">
     <div class="title"><a href="{{ s.page }}" target="_blank" rel="noopener">{{ s.title }}</a></div>
-    <div class="meta"><span class="pill pill-neutral">{{ s.type }}</span>{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>
-    <div class="subline">{{ s.count|akce }} · {{ s.fetched }}</div>
+    <div class="meta">{{ s.host }}{% if s.covers %} · pokrývá: {{ s.covers|join(', ') }}{% endif %}</div>
+    <div class="subline">{{ s.count|akce }} · {{ s.fetched }} · {{ s.status_label }}</div>
   </div>
-  <span class="status-pill s-{{ s.status }}">{{ s.status_label }}</span>
+  <label class="source-toggle" title="Zapnout nebo vypnout zdroj {{ s.title }}"><input type="checkbox" data-source="{{ s.name }}" aria-label="Zobrazovat zdroj {{ s.title }}"><span class="source-toggle-ui" aria-hidden="true"></span></label>
 </div>
 {% endfor %}
 </div>
@@ -86,5 +101,47 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
 
 <p class="disclaimer">Chceš přidat obec nebo zdroj? Stačí upravit <code>config.yaml</code> v repozitáři <a href="https://github.com/ivolarys/mostkultura">ivolarys/mostkultura</a>.</p>
 </div>
+<script src="source-preferences.js?v=mostkultura-1"></script>
+<script>
+(() => {
+  'use strict';
+  let prefs = MostkulturaSources.read(), storageWarning = false, storageUnavailable = false;
+  const controls = [...document.querySelectorAll('input[data-source], input[data-place]')];
+  const render = () => {
+    controls.forEach(input => {
+      const key = input.dataset.source || input.dataset.place;
+      input.checked = input.dataset.source ? !prefs.disabledSources.includes(key) : !prefs.disabledPlaces.includes(key);
+      const placeDisabled = !!(input.dataset.source && input.dataset.sourcePlace && prefs.disabledPlaces.includes(input.dataset.sourcePlace));
+      input.disabled = placeDisabled;
+      input.closest('.source-toggle').setAttribute('aria-disabled', String(placeDisabled));
+    });
+    const excluded = prefs.disabledSources.length + prefs.disabledPlaces.length;
+    document.getElementById('sourceReset').hidden = !excluded;
+    document.getElementById('sourceSettingsNote').textContent = excluded ? `Vypnutá města: ${prefs.disabledPlaces.length} · zdroje: ${prefs.disabledSources.length}` : 'Vyberte, které zdroje chcete v přehledu vidět.';
+    document.getElementById('storageWarning').hidden = !storageWarning;
+  };
+  const save = () => { storageWarning = !MostkulturaSources.save(prefs); storageUnavailable = storageWarning; render(); };
+  document.addEventListener('change', event => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement)) return;
+    const list = input.dataset.source ? 'disabledSources' : input.dataset.place ? 'disabledPlaces' : null;
+    if (!list) return;
+    const key = input.dataset.source || input.dataset.place;
+    const values = new Set(prefs[list]);
+    if (input.checked) values.delete(key); else values.add(key);
+    prefs = MostkulturaSources.normalize({...prefs, [list]: [...values]});
+    save();
+  });
+  document.getElementById('sourceReset').addEventListener('click', () => { prefs = MostkulturaSources.normalize({}); save(); });
+  try {
+    const hash = sessionStorage.getItem('mostkultura.sourceReturnHash');
+    if (typeof hash === 'string' && hash.startsWith('#')) document.getElementById('backLink').href = `./${hash}`;
+  } catch (_) {}
+  const reload = () => { if (!storageUnavailable) prefs = MostkulturaSources.read(); render(); };
+  window.addEventListener('storage', event => { if (event.key === MostkulturaSources.KEY || event.key === null) reload(); });
+  window.addEventListener('pageshow', reload);
+  render();
+})();
+</script>
 </body>
 </html>

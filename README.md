@@ -15,6 +15,8 @@ Mostkultura je denní přehled kulturních a společenských akcí v okolí obce
 
 Když nějaký zdroj spadne, použijí se jeho data z posledního úspěšného běhu (`cache/last_good/`), stav je vidět v hlavičce stránky a v `status.json`.
 
+Na stránce **Zdroje** lze v každém prohlížeči samostatně skrýt celé obce i jednotlivé zdroje. Volba se ukládá jen lokálně do prohlížeče; neovlivní společná data ani Home Assistant.
+
 Základní hradecký výběr tvoří Bio Central, CineStar, Klicperovo divadlo,
 Divadlo DRAK, Náplavku, Nábleší a saunu NUUK. Kina, divadla a Náplavka
 se načítají z vlastních programů; Nábleší a NUUK z městského kalendáře HKinfo
