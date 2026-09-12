@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "ruff>=0.5"]
+dev = ["pytest>=8.0", "ruff>=0.5", "pillow>=10"]
 
 [project.scripts]
 mostek-kultura = "mostek_kultura.__main__:main"

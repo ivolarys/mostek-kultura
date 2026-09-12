@@ -22,6 +22,8 @@ def test_offline_build(root, tmp_path):
     assert 'rel="manifest"' in html
     assert (tmp_path / "manifest.webmanifest").exists()
     assert (tmp_path / "icon.svg").exists()
+    assert (tmp_path / "apple-touch-icon.png").exists() and (tmp_path / "icon-512.png").exists()
+    assert 'rel="apple-touch-icon"' in html
     zdroje = (tmp_path / "zdroje.html").read_text(encoding="utf-8")
     assert "Vrchlabí" in zdroje and "Město Trutnov" in zdroje and "Regionální zdroje" in zdroje
     assert "Zatím bez vlastního zdroje" in zdroje  # e.g. Hostinné has no source yet
