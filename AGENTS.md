@@ -33,7 +33,7 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - Respektuj safe area nahoře i po stranách; sticky prvky musí zohlednit horní inset.
 - Oddělení dlouhodobých akcí používá tenkou linku se středovým textem a kompaktní mezery.
 - Souhrn období zobrazuje datum před počtem; přepínač seznam/mapa používá pouze ikony.
-- Stav zdrojů patří do pravé části hlavičky pod aktualizaci a odkaz Zdroje.
+- Stav zdrojů je kompaktní odznak vedle odkazu „Zdroje“ v hlavičce; uvádí počet zdravých zdrojů z celkového počtu a při chybách použije jantarové zvýraznění.
 - Výchozí období filtrů je „Dnes“ a výchozí kategorie „Vše“.
 - Značka je výraznější; aktualizace a počet akcí se v hlavičce nikdy nezalamují.
 - Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
