@@ -27,6 +27,9 @@ class Event:
     sources: list[str] = field(default_factory=list)
     urls: list[str] = field(default_factory=list)
     needs_review: bool = False
+    lat: float | None = None
+    lon: float | None = None
+    geo: str | None = None            # "venue" | "place" | None (precision of lat/lon)
 
     @property
     def source_id(self) -> str:

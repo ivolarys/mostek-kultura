@@ -31,6 +31,9 @@ def _ev_public(e: Event, cfg: Config) -> dict:
         "ongoing": e.ongoing,
         "place": e.place,
         "venue": e.venue,
+        "lat": e.lat,
+        "lon": e.lon,
+        "geo": e.geo,
         "category": e.category or "jine",
         "category_label": cfg.category_label(e.category),
         "url": e.url,
@@ -155,3 +158,5 @@ def render_site(events: list[Event], cfg: Config, statuses: list[SourceStatus], 
         for f in STATIC.iterdir():
             if f.is_file():
                 shutil.copyfile(f, out_dir / f.name)
+            elif f.is_dir():
+                shutil.copytree(f, out_dir / f.name, dirs_exist_ok=True)

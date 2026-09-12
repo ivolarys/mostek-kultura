@@ -10,6 +10,8 @@ from pathlib import Path
 
 from .classify import classify, load_cache, save_cache
 from .config import Config, load_config
+from .geocode import geocode_events
+from .geocode import save_cache as save_geo_cache
 from .http import FixtureHttp, Http
 from .model import Event, SourceStatus
 from .normalize import (
@@ -72,8 +74,15 @@ def fetch_all(cfg: Config, root: Path, offline: bool, only: set[str] | None,
     return events, statuses
 
 
+def _geo_stats(events: list[Event]) -> tuple[int, int, int]:
+    venue = sum(1 for e in events if e.geo == "venue")
+    place = sum(1 for e in events if e.geo == "place")
+    return venue, place, len(events) - venue - place
+
+
 def build(root: Path, out_dir: Path, offline: bool = False, use_llm: bool = True,
-          only: set[str] | None = None, record: bool = False, persist: bool | None = None) -> int:
+          only: set[str] | None = None, record: bool = False, persist: bool | None = None,
+          geocode: bool = True, geocode_max: int = 40) -> int:
     """`persist`: write cache/last_good (default: only in CI, to avoid local/CI commit conflicts)."""
     cfg = load_config(root / "config.yaml")
     if persist is None:
@@ -96,6 +105,12 @@ def build(root: Path, out_dir: Path, offline: bool = False, use_llm: bool = True
     priorities = {s.name: s.priority for s in cfg.sources}
     events = dedupe(events, priorities)
     log.info("after dedup: %d", len(events))
+
+    online = not offline and geocode
+    geo_cache_path = root / "cache" / "geocode.json"
+    geo_cache = geocode_events(events, cfg, geo_cache_path, online=online, max_new=geocode_max)
+    save_geo_cache(geo_cache_path, geo_cache)
+    log.info("geocoded: %d venue, %d place, %d none", *_geo_stats(events))
 
     if not events and not only:
         raise SystemExit("no events at all – refusing to publish an empty site")

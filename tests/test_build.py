@@ -27,3 +27,11 @@ def test_offline_build(root, tmp_path):
     assert "Zatím bez vlastního zdroje" in zdroje  # e.g. Hostinné has no source yet
     status = json.loads((tmp_path / "status.json").read_text(encoding="utf-8"))
     assert {s["name"] for s in status["sources"]} >= {"mostek", "lazne-belohrad", "dvur-kralove", "trutnov"}
+
+    # Map view: every event carries geocoding fields, the committed cache resolves at least one
+    # to venue precision offline, and Leaflet is vendored alongside the rendered site.
+    assert all({"lat", "lon", "geo"} <= set(e) for e in events["events"])
+    assert any(e["geo"] == "venue" for e in events["events"])
+    assert (tmp_path / "leaflet" / "leaflet.js").exists()
+    assert (tmp_path / "leaflet" / "leaflet.css").exists()
+    assert "Mapa" in html

@@ -20,6 +20,10 @@ def main(argv: list[str] | None = None) -> int:
     b.add_argument("--record", action="store_true", help="save live responses as fixtures")
     b.add_argument("--persist", action="store_true",
                    help="write cache/last_good even outside CI (CI does it automatically)")
+    b.add_argument("--no-geocode", action="store_true",
+                   help="skip online Nominatim lookups, only apply cache/geocode.json")
+    b.add_argument("--geocode-max", type=int, default=40,
+                   help="max new Nominatim lookups per run (default: 40)")
     b.add_argument("--out", default="site", help="output directory (default: site)")
     b.add_argument("--root", default=".", help="project root with config.yaml")
     b.add_argument("-v", "--verbose", action="store_true")
@@ -31,7 +35,8 @@ def main(argv: list[str] | None = None) -> int:
     root = Path(a.root).resolve()
     n = build(root, Path(a.out), offline=a.offline, use_llm=not a.no_llm,
               only=set(a.source) if a.source else None, record=a.record,
-              persist=True if a.persist else None)
+              persist=True if a.persist else None,
+              geocode=not a.no_geocode, geocode_max=a.geocode_max)
     print(f"OK: {n} events")
     return 0
 

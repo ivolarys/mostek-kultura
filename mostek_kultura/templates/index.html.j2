@@ -31,6 +31,7 @@ body{overflow-x:hidden}
 .seg-tabs{display:none;width:100%;height:36px;margin:16px 0}
 .seg-tabs .seg-btn{flex:1 1 0;min-width:0;height:32px;font-size:14px;padding:0 6px;white-space:nowrap;overflow:hidden}
 @media (max-width:480px){.seg-tabs .seg-btn{font-size:13px;padding:0 4px}.seg-tabs .seg-btn .n{display:none}}
+@media (max-width:380px){.segrow{gap:4px}.segrow .seg-btn{padding:0 6px;font-size:12px}.seglabel{font-size:12px}}
 
 /* ==== components: event rows ==== */
 .content-list{margin-top:4px}
@@ -59,6 +60,32 @@ footer .list-card{margin-bottom:8px}
 .tab-label{font-size:10px}
 .tab-label .n{font-size:9px;opacity:.8;margin-left:2px}
 
+/* ==== map view ==== */
+.view-map #list,.view-map footer{display:none}
+.view-map .seglabel,.view-map #group{display:none}
+#map{width:100%;background:var(--fill)}
+.map-wrap{display:none;position:relative;z-index:0;margin:0 -16px}
+@media (max-width:699px){.view-map .lg-title{display:none}}
+.view-map .map-wrap{display:block}
+.map-nopos[hidden]{display:none}
+.map-nopos{position:absolute;left:12px;bottom:12px;z-index:15;background:var(--card);color:var(--label);border-radius:16px;padding:0 12px;height:32px;font-size:13px;display:flex;align-items:center;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+.mk-wrap{background:transparent;border:0}
+.mk{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;background:var(--c,var(--label3))}
+.mk-approx{opacity:.72;border-style:dashed}
+.leaflet-control-zoom a{background:var(--card)!important;color:var(--label)!important;border-color:var(--sep)!important}
+.leaflet-control-attribution{background:rgba(255,255,255,.75)!important;color:var(--label2)!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.6) invert(1) contrast(3) hue-rotate(200deg) saturate(.3) brightness(.7)}:root:not([data-theme="light"]) .leaflet-control-attribution{background:rgba(28,28,30,.75)!important}}
+:root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.6) invert(1) contrast(3) hue-rotate(200deg) saturate(.3) brightness(.7)}
+:root[data-theme="dark"] .leaflet-control-attribution{background:rgba(28,28,30,.75)!important}
+.sheet-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:20}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:16px 16px 0 0;max-height:60vh;overflow-y:auto;z-index:21;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 20px rgba(0,0,0,.25)}
+.sheet-grabber{width:36px;height:5px;border-radius:3px;background:var(--sep);margin:8px auto}
+.sheet-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 16px 8px}
+.sheet-place{font-size:17px;font-weight:700}
+.sheet-count{font-size:13px;color:var(--label2);margin-top:1px}
+.sheet-close{flex:0 0 auto;font-size:15px;color:var(--tint);padding:6px 4px}
+.sheet-body{padding:0 16px 16px}
+
 /* ==== responsive (desktop >=700px) ==== */
 @media (min-width:700px){
 body{font-size:15px;padding-bottom:0}
@@ -67,6 +94,8 @@ body{font-size:15px;padding-bottom:0}
 .filters{margin:0 -24px}
 .tabbar{display:none}
 .seg-tabs{display:flex}
+.map-wrap{margin:0}
+#map{border-radius:12px;height:70vh;min-height:420px}
 }
 
 /* ==== embed mode ==== */
@@ -79,6 +108,7 @@ body.embed .chiprow{padding:4px 8px}
 body.embed .list-card{border-radius:10px}
 body.embed .srcline{display:none!important}
 body.embed .thumb{display:none}
+body.embed .map-wrap{margin:0}
 </style>
 </head>
 <body>
@@ -92,6 +122,7 @@ body.embed .thumb{display:none}
   <div class="chiprow" id="cats"></div>
   <div class="chiprow" id="places"></div>
   <div class="segrow">
+    <div class="seg" id="viewSeg"></div>
     <span class="seglabel">Seskupit</span>
     <div class="seg" id="group"></div>
   </div>
@@ -100,6 +131,11 @@ body.embed .thumb{display:none}
 <div class="seg seg-tabs" id="tabsTop"></div>
 
 <main id="list" class="content-list"></main>
+
+<div class="map-wrap" id="mapWrap">
+  <div id="map"></div>
+  <button class="map-nopos" id="mapNopos" hidden></button>
+</div>
 
 <footer>
   <div class="list-card">
@@ -111,6 +147,19 @@ body.embed .thumb{display:none}
 </div>
 
 <nav class="tabbar" id="tabbar"></nav>
+
+<div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-grabber"></div>
+  <div class="sheet-header">
+    <div>
+      <div class="sheet-place" id="sheetTitle"></div>
+      <div class="sheet-count" id="sheetCount"></div>
+    </div>
+    <button class="sheet-close" id="sheetClose">Zavřít</button>
+  </div>
+  <div class="sheet-body" id="sheetBody"></div>
+</div>
 
 <script type="application/json" id="data">{{ data_json|safe }}</script>
 <script>
@@ -142,11 +191,12 @@ document.getElementById('gen').textContent=new Date(D.generated_at).toLocaleStri
 document.getElementById('total').textContent=D.events.length;
 
 // state from hash
-const st={tab:qs.get('tab')||'week',cat:new Set(),place:new Set(),group:qs.get('group')||'category'};
-function readHash(){const h=new URLSearchParams(location.hash.replace(/^#/,''));if(h.get('tab'))st.tab=h.get('tab');if(h.get('group'))st.group=h.get('group');st.cat=new Set((h.get('cat')||'').split(',').filter(Boolean));st.place=new Set((h.get('place')||'').split(',').filter(Boolean))}
-function writeHash(){const h=new URLSearchParams();h.set('tab',st.tab);if(st.group!=='category')h.set('group',st.group);if(st.cat.size)h.set('cat',[...st.cat].join(','));if(st.place.size)h.set('place',[...st.place].join(','));if(embed)h.set('embed','1');history.replaceState(null,'','#'+h.toString())}
+const st={tab:qs.get('tab')||'week',cat:new Set(),place:new Set(),group:qs.get('group')||'category',view:qs.get('view')||'list'};
+function readHash(){const h=new URLSearchParams(location.hash.replace(/^#/,''));if(h.get('tab'))st.tab=h.get('tab');if(h.get('group'))st.group=h.get('group');if(h.get('view'))st.view=h.get('view');st.cat=new Set((h.get('cat')||'').split(',').filter(Boolean));st.place=new Set((h.get('place')||'').split(',').filter(Boolean))}
+function writeHash(){const h=new URLSearchParams();h.set('tab',st.tab);if(st.group!=='category')h.set('group',st.group);if(st.view!=='list')h.set('view',st.view);if(st.cat.size)h.set('cat',[...st.cat].join(','));if(st.place.size)h.set('place',[...st.place].join(','));if(embed)h.set('embed','1');history.replaceState(null,'','#'+h.toString())}
 readHash();
 if(!TABS.some(t=>t[0]===st.tab))st.tab='week';
+if(st.view!=='list'&&st.view!=='map')st.view='list';
 
 function inRange(e,r){if(e.ongoing)return e.sd<=r[1]&&e.ed>=r[0];return e.sd>=r[0]&&e.sd<=r[1]}
 function startsIn(e,r){return e.sd>=r[0]&&e.sd<=r[1]}
@@ -162,11 +212,18 @@ function evHtml(e,showDate){
   const inner=`${when}<div class="content"><div class="title">${esc(e.title)}</div><div class="meta"><span class="pill c-${esc(e.category)}">${esc(CAT[e.category]||e.category)}</span><span class="where">${esc(where)}</span></div><div class="subline srcline">zdroj: ${esc((e.source_labels||e.sources).join(', '))}</div></div>${img}<span class="chev">›</span>`;
   return e.url?`<a class="row" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="row">${inner}</div>`;
 }
-function render(){
+function visibleEvents(){
   const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];
   const all=D.events.filter(filt);
   const main=all.filter(e=>startsIn(e,r)||(e.ongoing&&st.tab==='all'));
   const ongoing=st.tab==='all'?[]:all.filter(e=>e.ongoing&&!startsIn(e,r)&&inRange(e,r));
+  return {main,ongoing};
+}
+function akceLabel(n){return n===1?n+' akce':(n>=2&&n<=4?n+' akce':n+' akcí')}
+function render(){
+  const tab=TABS.find(t=>t[0]===st.tab);const r=tab[2];
+  const {main,ongoing}=visibleEvents();
+  document.body.classList.toggle('view-map',st.view==='map');
   // tabs (shared counts for top segmented control + bottom tab bar)
   const filtAll=D.events.filter(filt);
   const tc=TABS.map(t=>filtAll.filter(e=>startsIn(e,t[2])||(t[0]==='all'&&e.ongoing)).length);
@@ -179,6 +236,7 @@ function render(){
   const places=Object.keys(pc).sort((a,b)=>pc[b]-pc[a]);[...st.place].forEach(p=>{if(!places.includes(p))places.push(p)});
   document.getElementById('places').innerHTML=`<button class="chip${st.place.size?'':' on'}" data-clear="place">Vše</button>`+places.map(p=>`<button class="chip ${st.place.has(p)?'on':''}" data-place="${esc(p)}">${esc(p==='?'?'neurčeno':p)}<span class="n">${pc[p]||0}</span></button>`).join('');
   document.getElementById('group').innerHTML=GROUPS.map(g=>`<button data-group="${g[0]}" class="seg-btn${g[0]===st.group?' on':''}">${g[1]}</button>`).join('');
+  document.getElementById('viewSeg').innerHTML=`<button data-view="list" class="seg-btn${st.view==='list'?' on':''}">Seznam</button><button data-view="map" class="seg-btn${st.view==='map'?' on':''}">Mapa</button>`;
   // list
   const key=e=>st.group==='day'?e.sd:st.group==='category'?e.category:(e.place||'?');
   const label=k=>st.group==='day'?dayLabel(k):st.group==='category'?(CAT[k]||k):(k==='?'?'Místo neurčeno':k);
@@ -189,9 +247,111 @@ function render(){
   if(!main.length)html='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/></svg><div class="empty-title">Žádné akce</div><div class="empty-sub">Zkuste jiný den nebo zrušte filtry.</div></div>';
   if(ongoing.length){const open=!embed&&isDesktop();html+=`<h2 class="grp">Probíhající výstavy a vícedenní akce</h2><div class="list-card"><details class="ongoing"${open?' open':''}><summary class="row tap">Zobrazit (${ongoing.length})<span class="chev">›</span></summary>${ongoing.map(e=>evHtml(e,false)).join('')}</details></div>`}
   document.getElementById('list').innerHTML=html;
+  if(st.view==='map'){showMap(main,ongoing)}
   writeHash();
 }
+
+// ==== map view ====
+let leafletReady=null;
+function loadLeaflet(){
+  if(leafletReady)return leafletReady;
+  leafletReady=new Promise((resolve,reject)=>{
+    const link=document.createElement('link');link.rel='stylesheet';link.href='leaflet/leaflet.css';
+    document.head.appendChild(link);
+    const script=document.createElement('script');script.src='leaflet/leaflet.js';
+    script.onload=resolve;script.onerror=reject;
+    document.head.appendChild(script);
+  });
+  return leafletReady;
+}
+let map=null,markersLayer=null,mapOpened=false,lastMapTab=null;
+function initMap(){
+  if(map)return;
+  map=L.map('map',{zoomControl:true}).setView([50.5083,15.6975],10);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:18,attribution:'&copy; OpenStreetMap'
+  }).addTo(map);
+  markersLayer=L.layerGroup().addTo(map);
+}
+function sizeMap(){
+  const mapEl=document.getElementById('map');
+  const filtersEl=document.querySelector('.filters');
+  if(!mapEl||!filtersEl)return;
+  if(isDesktop()&&!embed){mapEl.style.height='';return}
+  const top=mapEl.getBoundingClientRect().top;
+  const bar=document.querySelector('.tabbar');
+  const barH=(!embed&&bar&&getComputedStyle(bar).display!=='none')?bar.getBoundingClientRect().height:0;
+  mapEl.style.height=Math.max(240,window.innerHeight-top-barH)+'px';
+}
+function renderMarkers(events){
+  markersLayer.clearLayers();
+  const groups={},noPos=[];
+  events.forEach(e=>{
+    if(e.lat==null||e.lon==null){noPos.push(e);return}
+    const key=e.lat.toFixed(5)+','+e.lon.toFixed(5);
+    if(!groups[key])groups[key]={lat:e.lat,lon:e.lon,geo:e.geo,place:e.place,venue:e.geo==='venue'?e.venue:null,events:[]};
+    groups[key].events.push(e);
+  });
+  const bounds=[];
+  Object.values(groups).forEach(g=>{
+    const cc={};g.events.forEach(e=>cc[e.category]=(cc[e.category]||0)+1);
+    const topCat=Object.keys(cc).sort((a,b)=>cc[b]-cc[a])[0]||'jine';
+    const n=g.events.length;
+    const size=n>1?34:28;
+    const approx=g.geo==='place';
+    const html=`<div class="mk c-${esc(topCat)}${approx?' mk-approx':''}" style="width:${size}px;height:${size}px">${n>1?n:''}</div>`;
+    const icon=L.divIcon({html,className:'mk-wrap',iconSize:[size,size]});
+    const marker=L.marker([g.lat,g.lon],{icon}).addTo(markersLayer);
+    marker.on('click',()=>openSheet(g.geo==='venue'?(g.venue||g.place):(g.place?g.place+' (přibližně)':'Místo'),g.events));
+    bounds.push([g.lat,g.lon]);
+  });
+  const nopBtn=document.getElementById('mapNopos');
+  if(noPos.length){
+    nopBtn.hidden=false;
+    nopBtn.textContent=`Bez polohy (${noPos.length})`;
+    nopBtn.onclick=()=>openSheet('Bez polohy',noPos);
+  }else{nopBtn.hidden=true}
+  return bounds;
+}
+function showMap(main,ongoing){
+  loadLeaflet().then(()=>{
+    initMap();
+    sizeMap();
+    map.invalidateSize();
+    setTimeout(()=>{sizeMap();map.invalidateSize()},250);
+    const bounds=renderMarkers([...main,...ongoing]);
+    if((!mapOpened||lastMapTab!==st.tab)&&bounds.length){
+      map.fitBounds(bounds,{padding:[30,30],maxZoom:13});
+    }
+    mapOpened=true;lastMapTab=st.tab;
+  }).catch(()=>{});
+}
+function openSheet(title,events){
+  document.getElementById('sheetTitle').textContent=title||'Místo';
+  document.getElementById('sheetCount').textContent=akceLabel(events.length);
+  document.getElementById('sheetBody').innerHTML=`<div class="list-card">${events.slice().sort((a,b)=>a.start<b.start?-1:1).map(e=>evHtml(e,true)).join('')}</div>`;
+  document.getElementById('sheet').hidden=false;
+  document.getElementById('sheetBackdrop').hidden=false;
+}
+function closeSheet(){
+  document.getElementById('sheet').hidden=true;
+  document.getElementById('sheetBackdrop').hidden=true;
+}
+(function(){
+  const sheet=document.getElementById('sheet');
+  let startY=null;
+  sheet.addEventListener('touchstart',ev=>{startY=ev.touches[0].clientY},{passive:true});
+  sheet.addEventListener('touchmove',ev=>{
+    if(startY==null)return;
+    if(ev.touches[0].clientY-startY>60){startY=null;closeSheet()}
+  },{passive:true});
+  sheet.addEventListener('touchend',()=>{startY=null});
+})();
+window.addEventListener('resize',()=>{if(st.view==='map'&&map){sizeMap();map.invalidateSize()}});
+
 document.addEventListener('click',ev=>{
+  if(ev.target.id==='sheetBackdrop'){closeSheet();return}
+  if(ev.target.id==='sheetClose'){closeSheet();return}
   const b=ev.target.closest('button');if(!b)return;
   if(b.dataset.tab){st.tab=b.dataset.tab}
   else if(b.dataset.clear==='cat'){st.cat.clear()}
@@ -199,6 +359,7 @@ document.addEventListener('click',ev=>{
   else if(b.dataset.cat){st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat)}
   else if(b.dataset.place){st.place.has(b.dataset.place)?st.place.delete(b.dataset.place):st.place.add(b.dataset.place)}
   else if(b.dataset.group){st.group=b.dataset.group}
+  else if(b.dataset.view){st.view=b.dataset.view}
   else return;
   render();
 });

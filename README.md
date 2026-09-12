@@ -35,6 +35,10 @@ python -m http.server -d site 8000                            # http://localhost
 
 Akce, které se propagují jen přes Facebook (nedají se automaticky stahovat), se doplňují ručně do `manual_events.yaml` v kořeni repa – formát a příklad položky jsou v komentáři na začátku souboru. Po commitu a pushi je vyzvedne nejbližší denní build (zdroj `rucne`, typ `manual`), není potřeba nic dalšího spouštět.
 
+## Mapa
+
+Přepínač „Seznam / Mapa“ nad výpisem zobrazí stejné (filtrované) akce na mapě okolí Mostku (Leaflet, vendorovaný v `mostek_kultura/static/leaflet/`, žádná JS závislost stahovaná za běhu). Akce se geokódují při buildu (`mostek_kultura/geocode.py`) na úroveň konkrétního místa konání (venue) nebo aspoň obce (centroid), výsledek se cachuje do `cache/geocode.json` (commitovaná, stejně jako `cache/classifications.json`) – při běžném denním buildu se tak dotazuje jen pár nových venue navíc, ne celá databáze znovu. Jediná externí síťová závislost za běhu stránky jsou dlaždice `tile.openstreetmap.org`; samotné vyhledávání (Nominatim) běží jen při buildu.
+
 ## Home Assistant
 
 - REST senzory: `ha/configuration.yaml` (stav = počet akcí, atribut `events` = seznam).

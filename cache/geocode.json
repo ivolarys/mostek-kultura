@@ -1,0 +1,709 @@
+{
+ "areal autokempu|mostek": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Areál autokempu, Mostek, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "beat brtewski|lazne belohrad": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Beat Brtewski, Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "belohradska sypka|lazne belohrad": {
+  "lat": 50.430939,
+  "lon": 15.5796954,
+  "precision": "venue",
+  "q": "Bělohradská sýpka, Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "bila tremesna|bila tremesna": {
+  "lat": 50.4519102,
+  "lon": 15.7330781,
+  "precision": "venue",
+  "q": "Bílá Třemešná, Bílá Třemešná, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "biograf cesky raj|jicin": {
+  "lat": 50.4346414,
+  "lon": 15.3514579,
+  "precision": "venue",
+  "q": "Biograf Český ráj, Jičín, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "biograf na spici|horice": {
+  "lat": 50.3637132,
+  "lon": 15.6316165,
+  "precision": "venue",
+  "q": "Biograf Na Špici, Hořice, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "cafe epo1, trutnov|trutnov": {
+  "lat": 50.57752,
+  "lon": 15.9582609,
+  "precision": "venue",
+  "q": "Café EPO1, Trutnov, Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "domov sv. josefa|zirec": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Domov sv. Josefa, Žireč, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "dukelske namesti|nova paka": {
+  "lat": 50.4940405,
+  "lon": 15.5144864,
+  "precision": "venue",
+  "q": "Dukelské náměstí, Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "dum kultury koruna|horice": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Dům kultury Koruna, Hořice, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "dum pod jasanem, voletiny 22|trutnov": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Dům pod jasanem, Voletiny 22, Trutnov, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "epo1, trutnov|trutnov": {
+  "lat": 50.5772687,
+  "lon": 15.9584493,
+  "precision": "venue",
+  "q": "EPO1, Trutnov, Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "epo1, z. s.|trutnov": {
+  "lat": 50.4361851,
+  "lon": 15.7043183,
+  "precision": "venue",
+  "q": "z. s., Trutnov, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "galerie mesta trutnova|trutnov": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Galerie města Trutnova, Trutnov, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hankuv dum - sal|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hankův dům - sál, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hankuv dum|dvur kralove nad labem": {
+  "lat": 50.4309307,
+  "lon": 15.8119324,
+  "precision": "venue",
+  "q": "Hankův dům, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "hc stadion, fugnerova 1288, vrchlabi|vrchlabi": {
+  "lat": 50.6234506,
+  "lon": 15.6110706,
+  "precision": "venue",
+  "q": "Fügnerova 1288, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hlavni sal belohradske sypky|lazne belohrad": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hlavní sál Bělohradské sýpky, Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hospital kuks|kuks": {
+  "lat": 50.3977711,
+  "lon": 15.8903094,
+  "precision": "venue",
+  "q": "hospitál Kuks, Kuks, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "hostinec u speka, mostek|mostek": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hostinec U Špeka, Mostek, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hotel central|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hotel Centrál, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hrad pecka, pecka|pecka": {
+  "lat": 50.4789852,
+  "lon": 15.6044434,
+  "precision": "venue",
+  "q": "Hrad Pecka, Pecka, Pecka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "hudebni divadlo karlin|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hudební divadlo Karlín, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hudebni klub top ten rock|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hudební klub Top Ten Rock, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "kavarna belohradske sypky|lazne belohrad": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Kavárna Bělohradské sýpky, Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "kavarna saky paky, mikulasska 209, nova paka|nova paka": {
+  "lat": 50.49463,
+  "lon": 15.5176813,
+  "precision": "venue",
+  "q": "Mikulášská 209, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "kd strelnice, vancurova 378, vrchlabi|vrchlabi": {
+  "lat": 50.6309963,
+  "lon": 15.6106488,
+  "precision": "venue",
+  "q": "Vančurova 378, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "kino nova paka|nova paka": {
+  "lat": 50.4962597,
+  "lon": 15.5137138,
+  "precision": "venue",
+  "q": "Kino Nová Paka, Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "kino svet|dvur kralove nad labem": {
+  "lat": 50.4306293,
+  "lon": 15.8125257,
+  "precision": "venue",
+  "q": "Kino Svět, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "kino vesmir|trutnov": {
+  "lat": 50.5623109,
+  "lon": 15.9169597,
+  "precision": "venue",
+  "q": "Kino Vesmír, Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "klenotnice muzea nova paka|nova paka": {
+  "lat": 50.4955243,
+  "lon": 15.5136253,
+  "precision": "venue",
+  "q": "Klenotnice muzea Nová Paka, Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "klenotnice muzea|nova paka": {
+  "lat": 50.4955243,
+  "lon": 15.5136253,
+  "precision": "venue",
+  "q": "Klenotnice muzea, Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "knihovna krystofa haranta|pecka": {
+  "lat": 50.4811752,
+  "lon": 15.6084019,
+  "precision": "venue",
+  "q": "Knihovna Kryštofa Haranta, Pecka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "knihovna slavoj|dvur kralove nad labem": {
+  "lat": 50.4343025,
+  "lon": 15.815223,
+  "precision": "venue",
+  "q": "Knihovna Slavoj, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "kostel cirkve ceskoslovenske husitske|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "kostel Církve československé husitské, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "kulturni dum strelnice, vancurova 378|vrchlabi": {
+  "lat": 50.6309963,
+  "lon": 15.6106488,
+  "precision": "venue",
+  "q": "Vančurova 378, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "letiste vrchlabi|vrchlabi": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Letiště Vrchlabí, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "materska skola pecka|pecka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Mateřská škola Pecka, Pecka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "mestska knihovna nova paka|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Městská knihovna Nová Paka, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "mestska knihovna trutnov - pobocka hsm|trutnov": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Městská knihovna Trutnov - pobočka HSM, Trutnov, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "mestska knihovna trutnov|trutnov": {
+  "lat": 50.5607197,
+  "lon": 15.914045,
+  "precision": "venue",
+  "q": "Městská knihovna Trutnov, Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "mestske divadlo jaromer|jaromer": {
+  "lat": 50.3527607,
+  "lon": 15.9185329,
+  "precision": "venue",
+  "q": "Městské divadlo Jaroměř, Jaroměř, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "mestske informacni centrum|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Městské informační centrum, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "mestske muzeum|dvur kralove nad labem": {
+  "lat": 50.4350231,
+  "lon": 15.8161382,
+  "precision": "venue",
+  "q": "Městské muzeum, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "mks lazne belohrad|lazne belohrad": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "MKS Lázně Bělohrad, Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "muzeum podkrkonosi v trutnove|trutnov": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Muzeum Podkrkonoší v Trutnově, Trutnov, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "namesti tgm, vrchlabi|vrchlabi": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Náměstí TGM, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "novopacky klaster - barokni sal, opolskeho 144, 509 01 nova paka|nova paka": {
+  "lat": 50.4976138,
+  "lon": 15.5152075,
+  "precision": "venue",
+  "q": "Opolského 144, 509 01 Nová Paka, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "park schulzovy sady|dvur kralove nad labem": {
+  "lat": 50.4333999,
+  "lon": 15.8203229,
+  "precision": "venue",
+  "q": "park Schulzovy sady, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "pecka - namesti|pecka": {
+  "lat": 50.4802923,
+  "lon": 15.6081792,
+  "precision": "venue",
+  "q": "Pecka - náměstí, Pecka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "pecka|pecka": {
+  "lat": 50.4843879,
+  "lon": 15.5989421,
+  "precision": "venue",
+  "q": "Pecka, Pecka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "pivovar nova paka a.s.|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Pivovar Nová Paka a.s., Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "refektar klastera (severni vchod)|horice": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Refektář kláštera (severní vchod), Hořice, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "refektar klastera (severni vchod)|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Refektář kláštera (severní vchod), Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "refektar klastera|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Refektář kláštera, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "regionalni turisticke informacni centrum krkonose, nam. miru 210, vrchlabi|vrchlabi": {
+  "lat": 50.6294327,
+  "lon": 15.6086194,
+  "precision": "venue",
+  "q": "nám. Míru 210, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "restaurace novopacke sklepy - puda|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "restaurace Novopacké sklepy - půda, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "rodinne centrum kopretina, komenskeho 1248, vrchlabi|vrchlabi": {
+  "lat": 50.6182463,
+  "lon": 15.6091238,
+  "precision": "venue",
+  "q": "Komenského 1248, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "sal hasicske zbrojnice v pecce|pecka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "hasičské zbrojnice v Pecce, Pecka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "shantea – cajovna a kavarna zamecka 1456, vrchlabi|vrchlabi": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "ShanTea – čajovna a kavárna Zámecká 1456, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "sloupovy sal klastera|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Sloupový sál kláštera, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "sokol lazne belohrad|lazne belohrad": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Sokol Lázně Bělohrad, Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "spolkova mistnost mks cp. 325|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Spolková místnost MKS čp. 325, Nová Paka, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "sportovni stadion|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Sportovní stadion, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "sraz – parkoviste kd strelnice, vancurova 378, vrchlabi|vrchlabi": {
+  "lat": 50.6309963,
+  "lon": 15.6106488,
+  "precision": "venue",
+  "q": "Vančurova 378, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "stara radnice (krakonosovo namesti 72, trutnov)|trutnov": {
+  "lat": 50.5650371,
+  "lon": 15.9169614,
+  "precision": "venue",
+  "q": "Trutnov), Trutnov, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "stara radnice|dvur kralove nad labem": {
+  "lat": 50.4322054,
+  "lon": 15.8137268,
+  "precision": "venue",
+  "q": "Stará radnice, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "sterbova vila na prehrade les kralovstvi|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Štěrbova vila na přehradě Les Království, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "studio boutique yoga, prazska 859, vrchlabi|vrchlabi": {
+  "lat": 50.6202451,
+  "lon": 15.61025,
+  "precision": "venue",
+  "q": "Pražská 859, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "sucharduv dum|nova paka": {
+  "lat": 50.4956386,
+  "lon": 15.5140518,
+  "precision": "venue",
+  "q": "Suchardův dům, Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "terapeuticka zahrada, ul. chelcickeho, vrchlabi|vrchlabi": {
+  "lat": 50.619854,
+  "lon": 15.6154533,
+  "precision": "venue",
+  "q": "Chelčického, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "uffo trutnov|trutnov": {
+  "lat": 50.5633347,
+  "lon": 15.9103561,
+  "precision": "venue",
+  "q": "UFFO Trutnov, Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "vinarstvi bysicky - novy dvur|lazne belohrad": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Vinařství Byšičky - Nový Dvůr, Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "zahrada za historickymi domky, vstup na akci z husovy ulice|vrchlabi": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "zahrada za historickými domky, vstup na akci z Husovy ulice, Vrchlabí, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "zakladni umelecka skola|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Základní umělecká škola, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "zimni stadion nova paka|nova paka": {
+  "lat": 50.4933497,
+  "lon": 15.5075294,
+  "precision": "venue",
+  "q": "Zimní stadion Nová Paka, Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "zimni stadion|dvur kralove nad labem": {
+  "lat": 50.4314426,
+  "lon": 15.8115964,
+  "precision": "venue",
+  "q": "Zimní stadion, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "zs husitska|nova paka": {
+  "lat": 50.4867862,
+  "lon": 15.5126138,
+  "precision": "venue",
+  "q": "ZŠ Husitská, Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|bila tremesna": {
+  "lat": 50.4446505,
+  "lon": 15.7410136,
+  "precision": "place",
+  "q": "Bílá Třemešná, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|borovnice": {
+  "lat": 50.5091569,
+  "lon": 15.6171877,
+  "precision": "place",
+  "q": "Borovnice, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|choustnikovo hradiste": {
+  "lat": 50.4266565,
+  "lon": 15.87832,
+  "precision": "place",
+  "q": "Choustníkovo Hradiště, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|dolni brusnice": {
+  "lat": 50.4565834,
+  "lon": 15.7299931,
+  "precision": "place",
+  "q": "Dolní Brusnice, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|dvur kralove nad labem": {
+  "lat": 50.4319053,
+  "lon": 15.8139947,
+  "precision": "place",
+  "q": "Dvůr Králové nad Labem, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|horice": {
+  "lat": 50.3665337,
+  "lon": 15.6321735,
+  "precision": "place",
+  "q": "Hořice, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|horni brusnice": {
+  "lat": 50.4689158,
+  "lon": 15.6813994,
+  "precision": "place",
+  "q": "Horní Brusnice, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|hostinne": {
+  "lat": 50.5409308,
+  "lon": 15.723285,
+  "precision": "place",
+  "q": "Hostinné, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|jaromer": {
+  "lat": 50.3555139,
+  "lon": 15.9189129,
+  "precision": "place",
+  "q": "Jaroměř, Česko",
+  "ts": "2026-09-12T06:25:27+00:00"
+ },
+ "|jicin": {
+  "lat": 50.4370452,
+  "lon": 15.3516528,
+  "precision": "place",
+  "q": "Jičín, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|josefov": {
+  "lat": 50.3389353,
+  "lon": 15.930361,
+  "precision": "place",
+  "q": "Josefov, Jaroměř, Česko",
+  "ts": "2026-09-12T06:25:27+00:00"
+ },
+ "|kuks": {
+  "lat": 50.4011836,
+  "lon": 15.8898865,
+  "precision": "place",
+  "q": "Kuks, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|lazne belohrad": {
+  "lat": 50.4290274,
+  "lon": 15.5827632,
+  "precision": "place",
+  "q": "Lázně Bělohrad, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|mostek": {
+  "lat": 50.4861348,
+  "lon": 15.6962248,
+  "precision": "place",
+  "q": "Mostek, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|nemojov": {
+  "lat": 50.4729614,
+  "lon": 15.7584875,
+  "precision": "place",
+  "q": "Nemojov, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|nova paka": {
+  "lat": 50.4947616,
+  "lon": 15.5149801,
+  "precision": "place",
+  "q": "Nová Paka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|pecka": {
+  "lat": 50.4800296,
+  "lon": 15.6082101,
+  "precision": "place",
+  "q": "Pecka, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|trutnov": {
+  "lat": 50.5608165,
+  "lon": 15.912897,
+  "precision": "place",
+  "q": "Trutnov, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|valdstejnska lodzie": {
+  "lat": 50.449501,
+  "lon": 15.3784696,
+  "precision": "place",
+  "q": "Valdštejnská lodžie, Česko",
+  "ts": "2026-09-12T06:25:27+00:00"
+ },
+ "|vitezna": {
+  "lat": 50.4878327,
+  "lon": 15.7999716,
+  "precision": "place",
+  "q": "Vítězná, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|vrchlabi": {
+  "lat": 50.6271452,
+  "lon": 15.6095779,
+  "precision": "place",
+  "q": "Vrchlabí, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|zirec": {
+  "lat": 50.41392,
+  "lon": 15.8499116,
+  "precision": "place",
+  "q": "Žireč, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|zvicina": {
+  "lat": 50.4547326,
+  "lon": 15.6957494,
+  "precision": "place",
+  "q": "Zvičina, okres Trutnov, Česko",
+  "ts": "2026-09-12T06:19:21+00:00"
+ }
+}
