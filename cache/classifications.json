@@ -431,6 +431,14 @@
   "place": "Hradec Králové",
   "ts": "2026-09-12T11:02:41+00:00"
  },
+ "hradec-vyber:3e96b5f122e9": {
+  "category": "vystava",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T16:42:13+00:00"
+ },
  "hradec-vyber:55656b7cb42a": {
   "category": "divadlo",
   "confidence": 0.95,
@@ -470,6 +478,14 @@
   "needs_review": false,
   "place": "Hradec Králové",
   "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:83866e5464b0": {
+  "category": "prednaska",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T16:42:13+00:00"
  },
  "hradec-vyber:a3f88a3f0101": {
   "category": "divadlo",
@@ -511,6 +527,14 @@
   "place": "Hradec Králové",
   "ts": "2026-09-12T14:53:43+00:00"
  },
+ "hradec-vyber:bc4e9685e94c": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T16:42:13+00:00"
+ },
  "hradec-vyber:c0b57feddd53": {
   "category": "divadlo",
   "confidence": 0.95,
@@ -534,6 +558,14 @@
   "needs_review": false,
   "place": "Hradec Králové",
   "ts": "2026-09-12T11:02:41+00:00"
+ },
+ "hradec-vyber:cf8f081ddcb5": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T16:42:13+00:00"
  },
  "hradec-vyber:d4a41be70a49": {
   "category": "prednaska",
