@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T14:50:11+00:00",
+ "fetched_at": "2026-09-12T15:07:24+00:00",
  "events": [
   {
    "title": "RYBIČKY 48",
@@ -1085,16 +1085,16 @@
    "title": "Toy Story 5: Příběh hraček",
    "start": "2026-09-12T17:00:00+02:00",
    "source": "uffo",
-   "url": "https://uffo.cz/toy-story-5-pribeh-hracek-p6446/",
+   "url": "https://uffo.cz/program/",
    "end": "2026-09-12T19:00:00+02:00",
    "all_day": false,
    "place": null,
    "place_raw": null,
    "venue": "Kino Vesmír",
    "category": null,
-   "native_category": "Film",
-   "description": "Oblíbená parta hraček se vrací v novém dobrodružství, které je postaví před výzvu odpovídající dnešní době. Woody, Buzz ...",
-   "image": "https://cdn.uffo.cz/images/0/ad9f2b8676c47b11/3/toy-story-5-pribeh-hracek.jpg?hash=320733603",
+   "native_category": null,
+   "description": "",
+   "image": null,
    "native_id": "1789219259136-f942fd",
    "ongoing": false,
    "sources": [],

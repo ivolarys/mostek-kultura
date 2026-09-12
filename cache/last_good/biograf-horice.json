@@ -1,30 +1,6 @@
 {
- "fetched_at": "2026-09-12T14:50:15+00:00",
+ "fetched_at": "2026-09-12T15:07:28+00:00",
  "events": [
-  {
-   "title": "Tom a Jerry: Kouzelný kompas",
-   "start": "2026-09-12T17:00:00+02:00",
-   "source": "biograf-horice",
-   "url": "https://www.biografnaspici.cz/klient-101/kino-30/stranka-176/film-837442",
-   "end": null,
-   "all_day": false,
-   "place": null,
-   "place_raw": null,
-   "venue": "Biograf Na Špici",
-   "category": null,
-   "native_category": "Film",
-   "description": "Tom a Jerry tentokrát se svými věčnými naschvály překročí všechny dosavadní hranice! Mazaný myšák Jerry se tajně vplíží do manhattanského muzea na výstavu kouzelného kompasu – bájného artefaktu opředeného tajemstvím. V patách je mu neúnavný kocour Tom, nejnovější člen muzejní ostrahy, který udělá cokoli, aby svého malého soupeře konečně velkolepě dopadl. Jenže jejich tradiční hra na kočku a myš se brzy pořádně zamotá. Stačí okamžik nepozornosti a magický kompas je vtáhne do světa, kde ožívají dá",
-   "image": "https://storage.cinemaware.eu/katalogy/images/6/0/6079acd2-955b-11f1-9bbd-9e966f951e90.jpg",
-   "native_id": "5571580",
-   "ongoing": false,
-   "sources": [],
-   "urls": [],
-   "needs_review": false,
-   "lat": null,
-   "lon": null,
-   "geo": null,
-   "id": "biograf-horice:32ec8780bae1"
-  },
   {
    "title": "Dokonalý den",
    "start": "2026-09-12T19:00:00+02:00",
