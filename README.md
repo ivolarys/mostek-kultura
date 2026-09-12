@@ -2,10 +2,10 @@
 
 Mostkultura je denní přehled kulturních a společenských akcí v okolí obce Mostek (okres Trutnov): dnes, zítra, víkend i celý týden. Akce jsou členěné podle typu a obce a k dispozici jsou také na mapě.
 
-- Veřejná stránka: **https://ivolarys.github.io/mostek-kultura/**
-- JSON pro Home Assistant: `https://ivolarys.github.io/mostek-kultura/summary.json`
+- Veřejná stránka: **https://ivolarys.github.io/mostkultura/**
+- JSON pro Home Assistant: `https://ivolarys.github.io/mostkultura/summary.json`
 - Kompaktní režim pro iframe: `?embed=1&tab=week`
-- Zdroje podle obce: `https://ivolarys.github.io/mostek-kultura/zdroje.html`
+- Zdroje podle obce: `https://ivolarys.github.io/mostkultura/zdroje.html`
 
 ## Jak to funguje
 
@@ -49,7 +49,7 @@ Senzory se obnovují každou hodinu, data na Pages jednou denně ráno. Stránka
 ## Nasazení
 
 ```bash
-gh repo create ivolarys/mostek-kultura --public --source . --push
+gh repo create ivolarys/mostkultura --public --source . --push
 gh secret set OPENAI_API_KEY        # nebo ANTHROPIC_API_KEY; oba = přednost má OpenAI, přepíná LLM_PROVIDER
 # Settings → Pages → Source: GitHub Actions
 gh workflow run build.yml && gh run watch

@@ -58,7 +58,7 @@ Ověření implementace: 86 testů prošlo, Ruff a `git diff --check` bez chyb.
 Mobilní náhled byl zkontrolovaný v šířkách 320, 390, 768 a 1440 px,
 včetně tmavého režimu, nové hlavičky a stránky zdrojů. U všech PNG ikon
 je bílá kresba uvnitř bezpečného kruhu s poloměrem 40 % šířky ikony.
-Veřejná verze používá původní adresu https://ivolarys.github.io/mostek-kultura/.
+Veřejná verze používá adresu https://ivolarys.github.io/mostkultura/.
 Změny se publikují existujícím workflow `Build & deploy` po pushi do `main`.
 
 Původní a opravný prompt jsou v [prompts.md](prompts.md).

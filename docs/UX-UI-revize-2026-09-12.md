@@ -73,7 +73,7 @@ Explicitní výběr seskupení podle dne v URL nebo panelu filtrů zůstává za
 ## Náhled a změněné soubory
 
 Při revizi sloužil soukromý náhled přes Tailscale. Veřejná verze používá
-původní adresu https://ivolarys.github.io/mostek-kultura/ a workflow
+adresu https://ivolarys.github.io/mostkultura/ a workflow
 `Build & deploy`: push do `main` spustí testy, aktuální sběr akcí,
 sestavení složky `site/` a nasazení na GitHub Pages. Denní aktualizace
 akcí zůstává zachovaná.

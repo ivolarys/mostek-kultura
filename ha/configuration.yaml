@@ -1,7 +1,7 @@
 # Home Assistant – REST senzory z veřejného summary.json.
 # Vlož do configuration.yaml (nebo do souboru includovaného přes `rest: !include ...`) a restartuj HA.
 rest:
-  - resource: https://ivolarys.github.io/mostek-kultura/summary.json
+  - resource: https://ivolarys.github.io/mostkultura/summary.json
     scan_interval: 3600
     timeout: 30
     sensor:

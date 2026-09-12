@@ -1,8 +1,8 @@
 ---
-tags: [projekt, mostek-kultura, home-assistant, python]
+tags: [projekt, mostkultura, home-assistant, python]
 stav: běží
-web: https://ivolarys.github.io/mostek-kultura/
-repo: https://github.com/ivolarys/mostek-kultura
+web: https://ivolarys.github.io/mostkultura/
+repo: https://github.com/ivolarys/mostkultura
 aktualizováno: 2026-09-12
 ---
 
@@ -14,11 +14,11 @@ Denní agregátor kulturních akcí kolem Mostku. Každé ráno GitHub Actions s
 
 | Co | Kde |
 |---|---|
-| Veřejný web | https://ivolarys.github.io/mostek-kultura/ (mapa: `?view=map`, kompaktně pro HA: `?embed=1&tab=week`) |
-| Zdroje podle obce | https://ivolarys.github.io/mostek-kultura/zdroje.html |
+| Veřejný web | https://ivolarys.github.io/mostkultura/ (mapa: `?view=map`, kompaktně pro HA: `?embed=1&tab=week`) |
+| Zdroje podle obce | https://ivolarys.github.io/mostkultura/zdroje.html |
 | JSON pro HA | `…/summary.json` (počty + top 10 na bucket), `…/events.json` (vše), `…/status.json` (stav zdrojů) |
-| Repo | github.com/ivolarys/mostek-kultura, lokálně `~/_projects/mostek-kultura` |
-| Běhy CI | github.com/ivolarys/mostek-kultura/actions (cron 04:30 UTC, tj. 6:30 léto / 5:30 zima) |
+| Repo | github.com/ivolarys/mostkultura, lokálně `~/_projects/mostek-kultura` |
+| Běhy CI | github.com/ivolarys/mostkultura/actions (cron 04:30 UTC, tj. 6:30 léto / 5:30 zima) |
 | HA konfigurace | `ha/configuration.yaml` (REST senzory), `ha/lovelace-card.yaml` (iframe), `ha/lovelace-markdown-card.yaml` |
 | Pravidla pro Claude | `CLAUDE.md` (česky; sekce „Poznatky“ = hard-won detaily o každém webu) |
 | Plán z návrhu | `~/.claude/plans/cht-l-bych-ud-lat-aplikaci-validated-quasar.md` |

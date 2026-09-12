@@ -1,4 +1,4 @@
-# Konfigurace mostek-kultura. Rozsah (obce, venue) a zdroje se rozšiřují tady, bez zásahu do kódu.
+# Konfigurace mostkultura. Rozsah (obce, venue) a zdroje se rozšiřují tady, bez zásahu do kódu.
 
 timezone: Europe/Prague
 horizon_days: 60        # jak daleko dopředu se akce zobrazují
@@ -258,7 +258,7 @@ sources:
     label: Ručně zadané akce (manual_events.yaml)
     type: manual
     url: manual_events.yaml
-    page: https://github.com/ivolarys/mostek-kultura/blob/main/manual_events.yaml
+    page: https://github.com/ivolarys/mostkultura/blob/main/manual_events.yaml
     priority: 9
   - name: uffo
     label: UFFO Trutnov – Program

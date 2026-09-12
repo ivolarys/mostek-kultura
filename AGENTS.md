@@ -15,7 +15,8 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 
 ## UX/UI
 
-- Schválená značka (2026-09-12): **Mostkultura**. Logo propojuje malé m,
+- Schválená značka (2026-09-12): **Mostkultura**. Repo a veřejná URL používají
+  název `mostkultura` (`https://ivolarys.github.io/mostkultura/`). Logo propojuje malé m,
   mostní oblouky a čtyřcípou jiskru;
   hlavní barva je korálová. Zachovej název repozitáře a existující URL.
 - Web navrhuj primárně pro mobilní telefony, ve svěžím moderním stylu

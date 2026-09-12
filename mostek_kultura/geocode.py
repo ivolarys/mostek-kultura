@@ -24,7 +24,7 @@ from .normalize import norm
 log = logging.getLogger(__name__)
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
-USER_AGENT = "mostek-kultura/0.1 (+https://github.com/ivolarys/mostek-kultura)"
+USER_AGENT = "mostek-kultura/0.1 (+https://github.com/ivolarys/mostkultura)"
 SLEEP_S = 1.1                       # Nominatim usage policy: max 1 request/second
 STALE_DAYS = 30
 BBOX = (50.2, 50.9, 15.2, 16.3)     # lat_min, lat_max, lon_min, lon_max (sanity check on results)
