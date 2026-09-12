@@ -15,14 +15,17 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 
 ## UX/UI
 
-- Schválená značka (2026-09-12): **Mostkultura**, slogan **„Malý Mostek.
-  Velký dění.“** Logo propojuje malé m, mostní oblouky a čtyřcípou jiskru;
+- Schválená značka (2026-09-12): **Mostkultura**. Logo propojuje malé m,
+  mostní oblouky a čtyřcípou jiskru;
   hlavní barva je korálová. Zachovej název repozitáře a existující URL.
 - Web navrhuj primárně pro mobilní telefony, ve svěžím moderním stylu
   inspirovaném iOS. Zachovej přístupnost, tmavý režim a kompaktní iframe režim.
 - Používej jednotné jednoduché obrysové ikony a dostatečně velké dotykové prvky.
 - Výchozí seskupení akcí je podle **kategorie** (preference uživatele,
   2026-09-12). Zachovej možnost ručního seskupení podle dne a nastavení v URL.
+- Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
+  vpravo nahoře. Nevracej „Kam vyrazíme?“ ani původní slogan. U akcí bez
+  barevné svislé čárky; zdroj na desktopu napravo od štítku kategorie.
 
 ## Sdílení náhledů
 

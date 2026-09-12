@@ -4,7 +4,10 @@ Návrhový list: [Tři směry značky](navrhy-log-a-nazvu.png).
 
 ## Schválená značka: Mostkultura
 
-**Malý Mostek. Velký dění.**
+Původní návrhový slogan: **Malý Mostek. Velký dění.**
+
+Podle následné připomínky uživatele se na webu nepoužívá. Kompaktní hlavička
+nese název **Mostkultura** a podtitulek **Kultura okolo Mostku**.
 
 Název spojuje Mostek a kulturu. Logo tvoří dvojice mostních oblouků,
 která současně připomíná malé m; jiskra odkazuje na zážitky a dění v okolí.

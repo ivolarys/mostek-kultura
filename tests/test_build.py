@@ -16,8 +16,8 @@ def test_offline_build(root, tmp_path):
         assert len(summary[key]["events"]) <= 10
     assert (tmp_path / "summary.json").stat().st_size < 16_000
     html = (tmp_path / "index.html").read_text(encoding="utf-8")
-    assert 'id="data"' in html and "Mostkultura · Kam vyrazíme?" in html
-    assert "Malý Mostek. Velký dění." in html
+    assert 'id="data"' in html and "Mostkultura · Kultura okolo Mostku" in html
+    assert "Malý Mostek. Velký dění." not in html
     assert "color-mix" not in html
     assert "source_labels" in html
     assert 'rel="manifest"' in html
