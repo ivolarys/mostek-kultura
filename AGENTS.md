@@ -23,6 +23,8 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - Používej jednotné jednoduché obrysové ikony a dostatečně velké dotykové prvky.
 - Výchozí seskupení akcí je podle **kategorie** (preference uživatele,
   2026-09-12). Zachovej možnost ručního seskupení podle dne a nastavení v URL.
+- V kategorii zobraz běžné akce nejdřív a dlouhodobé právě probíhající akce
+  až v oddělené, výchozím způsobem rozbalené podsekci.
 - Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
   vpravo nahoře. Nevracej „Kam vyrazíme?“ ani původní slogan. U akcí bez
   barevné svislé čárky; zdroj na desktopu napravo od štítku kategorie.

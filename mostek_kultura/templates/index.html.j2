@@ -72,6 +72,8 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .ongoing summary::-webkit-details-marker{display:none}
 .ongoing summary .chev{margin-left:auto;transition:transform .18s ease}
 .ongoing[open] summary .chev{transform:rotate(90deg)}
+.category-ongoing{margin-top:14px;padding-top:12px;border-top:1px solid var(--sep)}
+.category-ongoing-title{margin:0 0 8px;padding:0 16px;color:var(--label2);font-size:13px;line-height:1.3;font-weight:750}
 .site-footer{margin-top:28px}
 .footer-row{min-height:58px;font-size:14px}
 .footer-row .chev{margin-left:auto}
@@ -332,10 +334,31 @@ function renderActiveFilters(){
   const n=st.cat.size+st.place.size+(st.q?1:0);document.getElementById('filterBadge').hidden=!n;document.getElementById('filterBadge').textContent=n;document.getElementById('filterBtn').classList.toggle('on',!!n);
 }
 function renderList(main,ongoing){
-  const key=e=>st.group==='day'?e.sd:e.category;
-  const groups={};main.forEach(e=>(groups[key(e)]=groups[key(e)]||[]).push(e));
-  let keys=Object.keys(groups);if(st.group==='category')keys.sort((a,b)=>D.categories.findIndex(c=>c.slug===a)-D.categories.findIndex(c=>c.slug===b));else keys.sort();
-  let html=keys.map(k=>{const label=st.group==='day'?dayLabel(k):((CAT[k]||{}).label||k);const ico=st.group==='category'?catIcon(k):ICON.today;return `<section aria-labelledby="grp-${esc(k)}"><h2 class="grp grp-title${st.group==='category'?' c-'+esc(k):''}" id="grp-${esc(k)}">${ico}<span>${esc(label)}</span></h2><div class="list-card">${groups[k].sort((a,b)=>a.start.localeCompare(b.start)).map(e=>eventHtml(e,st.group!=='day')).join('')}</div></section>`}).join('');
+  if(st.group==='category'){
+    const groups={};
+    [...main,...ongoing].forEach(e=>{
+      const g=groups[e.category]||(groups[e.category]={main:[],ongoing:[]});
+      g[e.ongoing?'ongoing':'main'].push(e);
+    });
+    let keys=Object.keys(groups);keys.sort((a,b)=>D.categories.findIndex(c=>c.slug===a)-D.categories.findIndex(c=>c.slug===b));
+    let html=keys.map(k=>{
+      const label=(CAT[k]||{}).label||k;
+      const regular=groups[k].main.sort((a,b)=>a.start.localeCompare(b.start));
+      const live=groups[k].ongoing.sort((a,b)=>a.ed.localeCompare(b.ed)||a.start.localeCompare(b.start));
+      const ordinaryHtml=regular.length
+        ? `<div class="list-card">${regular.map(e=>eventHtml(e,true)).join('')}</div>`
+        : '';
+      const ongoingHtml=live.length
+        ? `<div class="category-ongoing"><h3 class="category-ongoing-title">Právě probíhá · ${akceLabel(live.length)}</h3><div class="list-card">${live.map(e=>eventHtml(e,true)).join('')}</div></div>`
+        : '';
+      return `<section aria-labelledby="grp-${esc(k)}"><h2 class="grp grp-title c-${esc(k)}" id="grp-${esc(k)}">${catIcon(k)}<span>${esc(label)}</span></h2>${ordinaryHtml}${ongoingHtml}</section>`;
+    }).join('');
+    if(!keys.length)html=`<div class="empty">${ICON.search}<div class="empty-title">Nic jsme nenašli</div><div class="empty-sub">Zkuste jiné období nebo upravte filtry.</div></div>`;
+    document.getElementById('list').innerHTML=html;return;
+  }
+  const groups={};main.forEach(e=>(groups[e.sd]=groups[e.sd]||[]).push(e));
+  const keys=Object.keys(groups).sort();
+  let html=keys.map(k=>{const label=dayLabel(k);return `<section aria-labelledby="grp-${esc(k)}"><h2 class="grp grp-title" id="grp-${esc(k)}">${ICON.today}<span>${esc(label)}</span></h2><div class="list-card">${groups[k].sort((a,b)=>a.start.localeCompare(b.start)).map(e=>eventHtml(e,false)).join('')}</div></section>`}).join('');
   if(!main.length&&!ongoing.length)html=`<div class="empty">${ICON.search}<div class="empty-title">Nic jsme nenašli</div><div class="empty-sub">Zkuste jiné období nebo upravte filtry.</div></div>`;
   if(ongoing.length)html+=`<details class="ongoing"><summary>Právě probíhá · ${akceLabel(ongoing.length)}${ICON.chev}</summary><div class="list-card">${ongoing.sort((a,b)=>a.ed.localeCompare(b.ed)).map(e=>eventHtml(e,false)).join('')}</div></details>`;
   document.getElementById('list').innerHTML=html;
