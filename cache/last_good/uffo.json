@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T17:11:37+00:00",
+ "fetched_at": "2026-09-12T18:11:56+00:00",
  "events": [
   {
    "title": "RYBIČKY 48",
@@ -1133,16 +1133,16 @@
    "title": "Tony",
    "start": "2026-09-12T19:30:00+02:00",
    "source": "uffo",
-   "url": "https://uffo.cz/tony-p6448/",
+   "url": "https://uffo.cz/program/",
    "end": "2026-09-12T21:30:00+02:00",
    "all_day": false,
    "place": null,
    "place_raw": null,
    "venue": "Kino Vesmír",
    "category": null,
-   "native_category": "Film",
-   "description": "Je mu devatenáct let, chce se stát spisovatelem a zatím vůbec netuší, jakým směrem se bude jeho život ubírat. Když neusp...",
-   "image": "https://cdn.uffo.cz/images/0/72abd8a667402e91/3/tony.jpg?hash=320733603",
+   "native_category": null,
+   "description": "",
+   "image": null,
    "native_id": "1789219259136-309ded",
    "ongoing": false,
    "sources": [],

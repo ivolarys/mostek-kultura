@@ -423,6 +423,14 @@
   "place": "Hradec Králové",
   "ts": "2026-09-12T11:02:41+00:00"
  },
+ "hradec-vyber:26449034af6d": {
+  "category": "prednaska",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T18:14:17+00:00"
+ },
  "hradec-vyber:2b41cc3f21b3": {
   "category": "prednaska",
   "confidence": 0.95,
@@ -502,6 +510,14 @@
   "needs_review": false,
   "place": "Hradec Králové",
   "ts": "2026-09-12T16:42:13+00:00"
+ },
+ "hradec-vyber:8e00a430bfeb": {
+  "category": "vystava",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T18:14:17+00:00"
  },
  "hradec-vyber:99c1c3cf1a6d": {
   "category": "prednaska",
@@ -630,6 +646,22 @@
   "needs_review": false,
   "place": "Hradec Králové",
   "ts": "2026-09-12T10:49:18+00:00"
+ },
+ "hradec-vyber:f4609f79f1db": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T18:14:17+00:00"
+ },
+ "hradec-vyber:f5f29e21ec88": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-12T18:14:17+00:00"
  },
  "josefov-kolonie:54d7d1bf8a41": {
   "category": "vystava",
@@ -1838,6 +1870,14 @@
   "needs_review": false,
   "place": "Trutnov",
   "ts": "2026-09-12T05:37:37+00:00"
+ },
+ "uffo:75f901252cb5": {
+  "category": "film",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Dvůr Králové nad Labem",
+  "ts": "2026-09-12T18:14:17+00:00"
  },
  "uffo:76d60cd05f9a": {
   "category": "koncert",
