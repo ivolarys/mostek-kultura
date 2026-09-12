@@ -85,7 +85,7 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .ongoing[open] summary .chev{transform:rotate(90deg)}
 .category-ongoing{margin-top:6px}
 .category-ongoing-title{display:flex;align-items:center;gap:10px;margin:0 0 6px;padding:0;color:var(--label2);font-size:12px;line-height:1.35;font-weight:600;text-align:center}
-.category-ongoing-title::before,.category-ongoing-title::after{content:"";flex:1 0 16px;height:1px;background:var(--sep)}
+.category-ongoing-title::before,.category-ongoing-title::after{content:"";flex:1 0 16px;height:6px;background:var(--label2);opacity:.35;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpolyline points='0,3 3,1 9,5 12,3' fill='none' stroke='black' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");-webkit-mask-repeat:repeat-x;-webkit-mask-size:12px 6px;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpolyline points='0,3 3,1 9,5 12,3' fill='none' stroke='black' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");mask-repeat:repeat-x;mask-size:12px 6px}
 .category-ongoing-title span{min-width:0}
 .site-footer{margin-top:28px}
 .footer-row{min-height:58px;font-size:14px}
@@ -439,7 +439,7 @@ function renderList(main,ongoing){
         ? `<div class="list-card">${regular.map(e=>eventHtml(e,true)).join('')}</div>`
         : '';
       const ongoingHtml=live.length
-        ? `<div class="category-ongoing"><h3 class="category-ongoing-title"><span>Dlouhodobé akce, které právě probíhají</span></h3><div class="list-card">${live.map(e=>eventHtml(e,true)).join('')}</div></div>`
+        ? `<div class="category-ongoing"><h3 class="category-ongoing-title"><span>Několikadenní akce, které právě probíhají</span></h3><div class="list-card">${live.map(e=>eventHtml(e,true)).join('')}</div></div>`
         : '';
       return `<section aria-labelledby="grp-${esc(k)}"><h2 class="grp grp-title c-${esc(k)}" id="grp-${esc(k)}">${catIcon(k)}<span>${esc(label)}</span></h2>${ordinaryHtml}${ongoingHtml}</section>`;
     }).join('');

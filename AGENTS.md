@@ -25,13 +25,13 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - Používej jednotné jednoduché obrysové ikony a dostatečně velké dotykové prvky.
 - Výchozí seskupení akcí je podle **kategorie** (preference uživatele,
   2026-09-12). Zachovej možnost ručního seskupení podle dne a nastavení v URL.
-- V kategorii zobraz běžné akce nejdřív a dlouhodobé právě probíhající akce
+- V kategorii zobraz běžné akce nejdřív a několikadenní právě probíhající akce
   až v oddělené, výchozím způsobem rozbalené podsekci.
 - Odkaz „Zdroje“ patří do hlavičky.
 - Kategorie se posouvají vodorovně a vybraná kategorie zůstává přímo v liště.
 - V hlavičce jsou metadata a odkaz „Zdroje“ vedle sebe.
 - Respektuj safe area nahoře i po stranách; sticky prvky musí zohlednit horní inset.
-- Oddělení dlouhodobých akcí používá tenkou linku se středovým textem a kompaktní mezery.
+- Oddělení několikadenních akcí používá tenký cikcak se středovým textem a kompaktní mezery.
 - Souhrn období zobrazuje datum před počtem; přepínač seznam/mapa používá pouze ikony.
 - Stav zdrojů je kompaktní odznak vedle odkazu „Zdroje“ v hlavičce; uvádí počet zdravých zdrojů z celkového počtu a při chybách použije jantarové zvýraznění.
 - Výchozí období filtrů je „Dnes“ a výchozí kategorie „Vše“.
