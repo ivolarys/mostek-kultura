@@ -1,4 +1,60 @@
 {
+ "belohradska-sypka:5fece1555e69": {
+  "category": "komunita",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "belohradska-sypka:69ebffe41fad": {
+  "category": "komunita",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "belohradska-sypka:9fa0b35dd2d9": {
+  "category": "komunita",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "belohradska-sypka:b8bd1e173459": {
+  "category": "sport",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "belohradska-sypka:baf557aa3dee": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "belohradska-sypka:e27ab6170bc3": {
+  "category": "slavnost",
+  "confidence": 0.75,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": null,
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "belohradska-sypka:fcaff541e2e8": {
+  "category": "divadlo",
+  "confidence": 0.75,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Lázně Bělohrad",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
  "bila-tremesna-okoli:086dd75052d8": {
   "category": "prednaska",
   "confidence": 0.9,
@@ -191,6 +247,22 @@
   "place": "Dvůr Králové nad Labem",
   "ts": "2026-09-11T18:58:32+00:00"
  },
+ "epo1:09add3077bab": {
+  "category": "vystava",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "epo1:7856978e633a": {
+  "category": "vystava",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Trutnov",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
  "goout:77883a7eca9f": {
   "category": "film",
   "confidence": 0.85,
@@ -198,6 +270,134 @@
   "needs_review": false,
   "place": null,
   "ts": "2026-09-11T18:59:09+00:00"
+ },
+ "horice-koruna:17ceb0266f7d": {
+  "category": "deti",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:2de79962722a": {
+  "category": "koncert",
+  "confidence": 0.98,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:408c4d5e1c35": {
+  "category": "divadlo",
+  "confidence": 0.98,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:41a038d98751": {
+  "category": "divadlo",
+  "confidence": 0.98,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:475db0d7bc4c": {
+  "category": "koncert",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:900b46d2daff": {
+  "category": "koncert",
+  "confidence": 0.98,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:9a1ba795a7d4": {
+  "category": "divadlo",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:9bfcf1cdc6bf": {
+  "category": "slavnost",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:c2e45d753032": {
+  "category": "koncert",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:e90ca3137fca": {
+  "category": "koncert",
+  "confidence": 0.98,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "horice-koruna:f6ccaef07075": {
+  "category": "koncert",
+  "confidence": 0.98,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hořice",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "josefov-kolonie:54d7d1bf8a41": {
+  "category": "vystava",
+  "confidence": 0.6,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Josefov",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "josefov-kolonie:65f49b81302e": {
+  "category": "vystava",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Josefov",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "josefov-kolonie:b0839b8b0c50": {
+  "category": "prednaska",
+  "confidence": 0.8,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Josefov",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "josefov-kolonie:b63033ce395b": {
+  "category": "koncert",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Josefov",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "josefov-kolonie:c552033ae444": {
+  "category": "film",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Josefov",
+  "ts": "2026-09-12T06:13:23+00:00"
  },
  "kuks-hospital:680acff30dcc": {
   "category": "slavnost",
@@ -470,6 +670,78 @@
   "needs_review": false,
   "place": "Nová Paka",
   "ts": "2026-09-11T20:57:25+00:00"
+ },
+ "pecka:4b9edacbdfb5": {
+  "category": "sport",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "pecka:731dea59f7d2": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "pecka:88e492cb0026": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "pecka:89bfafaf4bf5": {
+  "category": "deti",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "pecka:9ea59bcc2b83": {
+  "category": "deti",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "pecka:a120344b506c": {
+  "category": "deti",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "pecka:a8da6dc1efa8": {
+  "category": "sport",
+  "confidence": 0.98,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:04+00:00"
+ },
+ "pecka:b41dd722a9a8": {
+  "category": "sport",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:23+00:00"
+ },
+ "pecka:beb8d883b54f": {
+  "category": "slavnost",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Pecka",
+  "ts": "2026-09-12T06:13:04+00:00"
  },
  "trutnov:0f37ad0235eb": {
   "category": "komunita",
