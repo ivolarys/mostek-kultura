@@ -302,11 +302,11 @@ const EVENTS=D.events.filter(e=>!e.ongoing||e.ed>=today);
 const VALID={tab:new Set(TABS.map(t=>t[0])),cat:new Set(D.categories.map(c=>c.slug)),group:new Set(['day','category']),view:new Set(['list','map'])};
 const eventPlaces=new Set(EVENTS.map(e=>e.place||'?'));
 const validPlaces=new Set([...D.places,...eventPlaces]);
-const st={tab:'week',cat:new Set(),place:new Set(),group:'category',view:'list',q:''};
+const st={tab:'today',cat:new Set(),place:new Set(),group:'category',view:'list',q:''};
 
 function parseState(){
   const h=new URLSearchParams(location.hash.replace(/^#/,''));
-  st.tab=VALID.tab.has(h.get('tab'))?h.get('tab'):(VALID.tab.has(qs.get('tab'))?qs.get('tab'):'week');
+  st.tab=VALID.tab.has(h.get('tab'))?h.get('tab'):(VALID.tab.has(qs.get('tab'))?qs.get('tab'):'today');
   st.group=VALID.group.has(h.get('group'))?h.get('group'):(VALID.group.has(qs.get('group'))?qs.get('group'):'category');
   st.view=VALID.view.has(h.get('view'))?h.get('view'):(VALID.view.has(qs.get('view'))?qs.get('view'):'list');
   st.cat=new Set((h.get('cat')||'').split(',').filter(x=>VALID.cat.has(x)));
