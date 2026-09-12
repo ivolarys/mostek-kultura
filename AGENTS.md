@@ -35,7 +35,7 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - Souhrn období zobrazuje datum před počtem; přepínač seznam/mapa používá pouze ikony.
 - Stav zdrojů je kompaktní odznak vedle odkazu „Zdroje“ v hlavičce; uvádí počet zdravých zdrojů z celkového počtu a při chybách použije jantarové zvýraznění.
 - Výchozí období filtrů je „Dnes“ a výchozí kategorie „Vše“.
-- Období Dnes/Zítra/Víkend/Týden/Vše zůstává jako spodní ikonová lišta na všech běžných šířkách.
+- Období Dnes/Zítra/Víkend/Týden/Vše zůstává jako spodní ikonová lišta na všech běžných šířkách s výrazným oranžovým pozadím.
 - Značka je výraznější; aktualizace a počet akcí se v hlavičce nikdy nezalamují.
 - Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
   vpravo nahoře. Nevracej „Kam vyrazíme?“ ani původní slogan. U akcí bez
