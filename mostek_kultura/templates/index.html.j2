@@ -46,6 +46,7 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .category-row,.active-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:8px 0 1px}
 .category-row::-webkit-scrollbar,.active-row::-webkit-scrollbar{display:none}
 .category-row .chip,.active-row .chip{min-height:44px}
+.category-row .chip .n{display:inline-flex;min-width:3ch;justify-content:center}
 .active-row{padding-top:7px}
 .reset-btn{color:var(--tint);border-color:transparent;background:transparent}
 
@@ -294,7 +295,7 @@ function stateHash(){
 }
 function canonicalize(){const hash=stateHash();if(location.hash.slice(1)!==hash)history.replaceState(null,'','#'+hash)}
 let pendingFocus='';
-function focusKey(el){if(!el||el===document.body)return '';const parent=el.closest('[id]');if(el.dataset.tab)return `#${parent.id} [data-tab="${el.dataset.tab}"]`;if(el.dataset.view)return `#viewToggle [data-view="${el.dataset.view}"]`;if(el.dataset.cat)return `#categories [data-cat="${el.dataset.cat}"]`;if(el.hasAttribute('data-clear-cats'))return '#categories [data-clear-cats]';if(el.id==='searchClear'||el.hasAttribute('data-clear-q'))return '#search';if(el.matches('[data-remove-cat],[data-remove-place],[data-reset]'))return '#filterBtn';return ''}
+function focusKey(el){if(!el||el===document.body)return '';const parent=el.closest('[id]');if(el.dataset.tab)return `#${parent.id} [data-tab="${el.dataset.tab}"]`;if(el.dataset.view)return `#viewToggle [data-view="${el.dataset.view}"]`;if(el.dataset.cat)return `#categories [data-cat="${el.dataset.cat}"]`;if(el.hasAttribute('data-clear-cats'))return '#categories [data-clear-cats]';if(el.id==='searchClear'||el.hasAttribute('data-clear-q'))return '#search';if(el.matches('[data-remove-place],[data-reset]'))return '#filterBtn';return ''}
 function restoreFocus(){if(!pendingFocus)return;const target=document.querySelector(pendingFocus)||document.getElementById('search');pendingFocus='';if(target)target.focus({preventScroll:true})}
 function update(mutator,replace){pendingFocus=focusKey(document.activeElement);mutator();const hash=stateHash();if(location.hash.slice(1)===hash){render();return}if(replace)history.replaceState(null,'','#'+hash),render();else location.hash=hash}
 
@@ -331,12 +332,15 @@ function renderPeriods(){
 }
 function renderCategories(){
   const cc=categoryCounts();
-  document.getElementById('categories').innerHTML=`<button type="button" class="chip${st.cat.size?'':' on'}" data-clear-cats aria-pressed="${!st.cat.size}">Vše <span class="n">${EVENTS.filter(e=>relevant(e)&&(!st.place.size||st.place.has(e.place||'?'))&&(!st.q||e.search.includes(norm(st.q)))).length}</span></button>`+D.categories.map(c=>`<button type="button" class="chip c-${esc(c.slug)}${st.cat.has(c.slug)?' on':''}" data-cat="${esc(c.slug)}" aria-pressed="${st.cat.has(c.slug)}">${catIcon(c.slug)}${esc(c.label)} <span class="n">${cc[c.slug]||0}</span></button>`).join('');
+  const el=document.getElementById('categories');
+  const scroll=el.scrollLeft;
+  const allCount=EVENTS.filter(e=>relevant(e)&&(!st.place.size||st.place.has(e.place||'?'))&&(!st.q||e.search.includes(norm(st.q)))).length;
+  el.innerHTML=`<button type="button" class="chip${st.cat.size?'':' on'}" data-clear-cats aria-pressed="${!st.cat.size}" aria-label="Vše, ${akceLabel(allCount)}">Vše <span class="n">${allCount}</span></button>`+D.categories.map(c=>{const selected=st.cat.has(c.slug);const count=cc[c.slug]||0;const label=selected?`${c.label}, ${akceLabel(count)}, zrušit výběr`:`${c.label}, ${akceLabel(count)}`;return `<button type="button" class="chip c-${esc(c.slug)}${selected?' on':''}" data-cat="${esc(c.slug)}" aria-pressed="${selected}" aria-label="${esc(label)}">${catIcon(c.slug)}${esc(c.label)} <span class="n"${selected?' aria-hidden="true"':''}>${selected?'×':count}</span></button>`}).join('');
+  el.scrollLeft=scroll;
 }
 function renderActiveFilters(){
   const bits=[];
   if(st.q)bits.push(`<button type="button" class="chip chip-remove on" data-clear-q>Hledání: ${esc(st.q)} <span class="x" aria-hidden="true">×</span></button>`);
-  [...st.cat].sort().forEach(slug=>bits.push(`<button type="button" class="chip chip-remove on c-${esc(slug)}" data-remove-cat="${esc(slug)}">${esc((CAT[slug]||{}).label||slug)} <span class="x" aria-hidden="true">×</span></button>`));
   [...st.place].sort(collator.compare).forEach(p=>bits.push(`<button type="button" class="chip chip-remove on" data-remove-place="${esc(p)}">${esc(p==='?'?'Místo neuvedeno':p)} <span class="x" aria-hidden="true">×</span></button>`));
   if(bits.length)bits.push('<button type="button" class="chip reset-btn" data-reset>Resetovat vše</button>');
   const el=document.getElementById('activeFilters');el.innerHTML=bits.join('');el.hidden=!bits.length;
@@ -432,7 +436,16 @@ document.getElementById('eventDialog').addEventListener('close',()=>document.bod
 [document.getElementById('filterDialog'),document.getElementById('eventDialog')].forEach(d=>d.addEventListener('click',e=>{if(e.target===d){if(d.id==='filterDialog')cancelFilter();else closeDialog(d)}}));
 [document.getElementById('filterDialog'),document.getElementById('eventDialog')].forEach(d=>d.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...d.querySelectorAll('button:not([disabled]),a[href],input:not([disabled])')].filter(x=>x.offsetParent!==null);if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}));
 document.getElementById('filterBody').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const body=document.getElementById('filterBody'),scroll=body.scrollTop;let selector='';if(b.hasAttribute('data-all-places')){draftPlaces.clear();selector='[data-all-places]'}else if(b.dataset.draftPlace){const p=b.dataset.draftPlace;draftPlaces.has(p)?draftPlaces.delete(p):draftPlaces.add(p);selector=`[data-draft-place="${CSS.escape(p)}"]`}else if(b.dataset.draftGroup){draftGroup=b.dataset.draftGroup;selector=`[data-draft-group="${b.dataset.draftGroup}"]`}else return;renderFilterDialog();body.scrollTop=scroll;const next=body.querySelector(selector);if(next)next.focus({preventScroll:true})});
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.closest('#filterDialog'))return;if(b.dataset.tab)update(()=>st.tab=b.dataset.tab);else if(b.dataset.view)update(()=>st.view=b.dataset.view);else if(b.dataset.cat)update(()=>st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat));else if(b.hasAttribute('data-clear-cats'))update(()=>st.cat.clear());else if(b.hasAttribute('data-clear-q'))update(()=>st.q='');else if(b.dataset.removeCat)update(()=>st.cat.delete(b.dataset.removeCat));else if(b.dataset.removePlace)update(()=>st.place.delete(b.dataset.removePlace));else if(b.hasAttribute('data-reset'))update(()=>{st.cat.clear();st.place.clear();st.q=''})});
+document.getElementById('categories').addEventListener('wheel',e=>{
+  if(e.ctrlKey||Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
+  const el=e.currentTarget,max=el.scrollWidth-el.clientWidth;
+  if(max<=0)return;
+  const unit=e.deltaMode===1?16:e.deltaMode===2?el.clientWidth:1;
+  const before=el.scrollLeft,next=Math.max(0,Math.min(max,before+e.deltaY*unit));
+  el.scrollLeft=next;
+  if(el.scrollLeft!==before)e.preventDefault();
+},{passive:false});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.closest('#filterDialog'))return;if(b.dataset.tab)update(()=>st.tab=b.dataset.tab);else if(b.dataset.view)update(()=>st.view=b.dataset.view);else if(b.dataset.cat)update(()=>st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat));else if(b.hasAttribute('data-clear-cats'))update(()=>st.cat.clear());else if(b.hasAttribute('data-clear-q'))update(()=>st.q='');else if(b.dataset.removePlace)update(()=>st.place.delete(b.dataset.removePlace));else if(b.hasAttribute('data-reset'))update(()=>{st.cat.clear();st.place.clear();st.q=''})});
 window.addEventListener('hashchange',()=>{parseState();canonicalize();render()});
 window.addEventListener('resize',()=>{if(st.view==='map'&&map){sizeMap();map.invalidateSize()}});
 parseState();canonicalize();render();

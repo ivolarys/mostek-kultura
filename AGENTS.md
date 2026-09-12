@@ -27,6 +27,7 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - V kategorii zobraz běžné akce nejdřív a dlouhodobé právě probíhající akce
   až v oddělené, výchozím způsobem rozbalené podsekci.
 - Odkaz „Zdroje“ patří do hlavičky.
+- Kategorie se posouvají vodorovně a vybraná kategorie zůstává přímo v liště.
 - Značka je výraznější; aktualizace a počet akcí se v hlavičce nikdy nezalamují.
 - Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
   vpravo nahoře. Nevracej „Kam vyrazíme?“ ani původní slogan. U akcí bez
