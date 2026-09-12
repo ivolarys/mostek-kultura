@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:31+00:00",
+ "fetched_at": "2026-09-12T06:39:19+00:00",
  "events": [
   {
    "title": "První třemešenská burza v parku",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna:84fc89659970"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna:ec13f8155fa6"
   }
  ]

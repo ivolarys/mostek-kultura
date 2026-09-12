@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:11:01+00:00",
+ "fetched_at": "2026-09-12T06:39:42+00:00",
  "events": [
   {
    "title": "Filmy po pevností – Architekt",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:db8bcae3c591"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:e0dddcd6d888"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:4090b5cd6eb3"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:54d7d1bf8a41"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:65f49b81302e"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:b0839b8b0c50"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:b63033ce395b"
   },
   {
@@ -167,6 +188,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "josefov-kolonie:c552033ae444"
   }
  ]

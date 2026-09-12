@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:36+00:00",
+ "fetched_at": "2026-09-12T06:39:22+00:00",
  "events": [
   {
    "title": "HAVAJSKÉ OSTROVY – Cestopisná přednáška PaedDr.Libora Turka",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:09edeccb187c"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:c1f93f33b36b"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:e57f9f72b99a"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:c490e5018ea0"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:cfce55556bae"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:52b95fb1edb3"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:0ce9099022d6"
   },
   {
@@ -167,6 +188,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:621a619e6a18"
   },
   {
@@ -188,6 +212,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:9f24866868c9"
   },
   {
@@ -209,6 +236,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:3ef89140ae9e"
   },
   {
@@ -230,6 +260,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:9d416c086237"
   },
   {
@@ -251,6 +284,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:f936e42d9a5c"
   },
   {
@@ -272,6 +308,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:c5a1dcbe9e58"
   },
   {
@@ -293,6 +332,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:d3f00f7aaddc"
   },
   {
@@ -314,6 +356,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:0b1dbfbeee76"
   },
   {
@@ -335,6 +380,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:ba2851a0c4a4"
   },
   {
@@ -356,6 +404,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:99cc48f85ad2"
   },
   {
@@ -377,6 +428,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:53b4a0c09189"
   },
   {
@@ -398,6 +452,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:1b0547d7b19f"
   },
   {
@@ -419,6 +476,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:932a58391192"
   },
   {
@@ -440,6 +500,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:e53d3740a2c5"
   },
   {
@@ -461,6 +524,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:41b299188ff5"
   },
   {
@@ -482,6 +548,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:c2d1533d6e51"
   },
   {
@@ -503,6 +572,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:a9662db6bfe2"
   },
   {
@@ -524,6 +596,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:6f9ee7f02288"
   },
   {
@@ -545,6 +620,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:c91cc1b8eacc"
   },
   {
@@ -566,6 +644,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "nova-paka:0080f8eb7b45"
   }
  ]

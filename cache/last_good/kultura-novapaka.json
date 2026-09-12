@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:37+00:00",
+ "fetched_at": "2026-09-12T06:39:23+00:00",
  "events": [
   {
    "title": "Pivovarská diskotéka",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:591619418a7d"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:b22a755fdb85"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:3a08aaf9420c"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:2fa10c7947d3"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:00bbaa36fd42"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:06b142c4c603"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:121767670e9a"
   },
   {
@@ -167,6 +188,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kultura-novapaka:e4773161d1a0"
   }
  ]

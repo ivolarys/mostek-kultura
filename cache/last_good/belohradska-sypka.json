@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:48+00:00",
+ "fetched_at": "2026-09-12T06:39:34+00:00",
  "events": [
   {
    "title": "Jemná Hatha Jóga s Yvetou Rücklovou",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:b8bd1e173459"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:61fb53c724aa"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:aa1e49a0fb1e"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:bb944d27cc88"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:69ebffe41fad"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:e27ab6170bc3"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:5fece1555e69"
   },
   {
@@ -167,6 +188,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:fcaff541e2e8"
   },
   {
@@ -188,6 +212,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:9fa0b35dd2d9"
   },
   {
@@ -209,6 +236,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:baf557aa3dee"
   },
   {
@@ -230,6 +260,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "belohradska-sypka:45adf92960cf"
   }
  ]

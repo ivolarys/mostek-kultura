@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:32+00:00",
+ "fetched_at": "2026-09-12T06:39:19+00:00",
  "events": [
   {
    "title": "Pohádková mozaika",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna-okoli:98f8f25685ea"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna-okoli:8b497648af13"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna-okoli:2abde28de0d5"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna-okoli:fabf0bd169c9"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna-okoli:59ee02d5b504"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna-okoli:086dd75052d8"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "bila-tremesna-okoli:8ba72277c407"
   }
  ]

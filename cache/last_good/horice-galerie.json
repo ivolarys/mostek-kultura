@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:46+00:00",
+ "fetched_at": "2026-09-12T06:39:32+00:00",
  "events": [
   {
    "title": "Nová událost v kalendáři",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "horice-galerie:fdc22dcd0ffc"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "horice-galerie:1e0d6dd26bcb"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "horice-galerie:67e37c696917"
   }
  ]

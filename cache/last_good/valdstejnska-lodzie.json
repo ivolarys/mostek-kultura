@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:38+00:00",
+ "fetched_at": "2026-09-12T06:39:24+00:00",
  "events": [
   {
    "title": "JIČÍN MĚSTO POHÁDKY 2026: Beseda S Ježkem v háji",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:8106882fc166"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:2525ad479245"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:7f595ea6eea5"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:d55cefb557ec"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:94a0b7472734"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:03724aa90b35"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:3598b6d55476"
   },
   {
@@ -167,6 +188,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:4c795282c2b4"
   },
   {
@@ -188,6 +212,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:60571759f2f5"
   },
   {
@@ -209,6 +236,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:4a4cd18ca5a9"
   },
   {
@@ -230,6 +260,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:590fc6dbf9c8"
   },
   {
@@ -251,6 +284,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:c8b4046605b7"
   },
   {
@@ -272,6 +308,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:e16019677644"
   },
   {
@@ -293,6 +332,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:ad53703deb94"
   },
   {
@@ -314,6 +356,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:da1d3a0d8273"
   },
   {
@@ -335,6 +380,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:721b155553b9"
   },
   {
@@ -356,6 +404,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "valdstejnska-lodzie:3fa36192218c"
   }
  ]

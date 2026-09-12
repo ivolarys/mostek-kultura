@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:08:22+00:00",
+ "fetched_at": "2026-09-12T06:37:16+00:00",
  "events": [
   {
    "title": "Den obce Mostek 2026 - představení nové hasičské cisterny",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "mostek:5d596a8e0eb0"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "mostek:d7ddc42c016f"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "mostek:e4e6c6645724"
   }
  ]

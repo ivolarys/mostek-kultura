@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:28+00:00",
+ "fetched_at": "2026-09-12T06:39:16+00:00",
  "events": [
   {
    "title": "Vinobraní na hospitálu Kuks",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kuks-hospital:680acff30dcc"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "kuks-hospital:8d37ff87d8ef"
   }
  ]

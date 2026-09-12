@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T06:10:39+00:00",
+ "fetched_at": "2026-09-12T06:39:26+00:00",
  "events": [
   {
    "title": "RYBIČKY 48",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:1012045b7af7"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:7da84ed7eebe"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:cb6ace840b8c"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:654099c21a9b"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:3b2024a273ef"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:cf823e4c61ab"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:d15edef25199"
   },
   {
@@ -167,6 +188,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:7a13c2b3f45e"
   },
   {
@@ -188,6 +212,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:9a0d8e699d86"
   },
   {
@@ -209,6 +236,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:35e05c4c9764"
   },
   {
@@ -230,6 +260,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:94a42d50e820"
   },
   {
@@ -251,6 +284,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:6ce4bf4b0b82"
   },
   {
@@ -272,6 +308,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:836b211f0c4c"
   },
   {
@@ -293,6 +332,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:747caa6f76ee"
   },
   {
@@ -314,6 +356,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:03567f417785"
   },
   {
@@ -335,6 +380,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:131cd0de02ca"
   },
   {
@@ -356,6 +404,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:5c0bbb0bc0bc"
   },
   {
@@ -377,6 +428,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:1cf5b1edf6d8"
   },
   {
@@ -398,6 +452,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:2bb4b111edaf"
   },
   {
@@ -419,6 +476,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:ee4de4806a93"
   },
   {
@@ -440,6 +500,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:c644e7882561"
   },
   {
@@ -461,6 +524,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:014d37f452f0"
   },
   {
@@ -482,6 +548,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:4352d0005c67"
   },
   {
@@ -503,6 +572,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:67caf8b3d6f7"
   },
   {
@@ -524,6 +596,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:b6f02988fd9b"
   },
   {
@@ -545,6 +620,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:751d24bdd1fa"
   },
   {
@@ -566,6 +644,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:170642f73895"
   },
   {
@@ -587,6 +668,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:75f6aa73d6f4"
   },
   {
@@ -608,6 +692,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:50f717b40320"
   },
   {
@@ -629,6 +716,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:c581cec1416b"
   },
   {
@@ -650,6 +740,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:a67a7a4c604b"
   },
   {
@@ -671,6 +764,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:e17d4dea900b"
   },
   {
@@ -692,6 +788,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:d5414c84499c"
   },
   {
@@ -713,6 +812,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:8b51ee5502bb"
   },
   {
@@ -734,6 +836,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:6072f354f24b"
   },
   {
@@ -755,6 +860,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:70cb767d17b4"
   },
   {
@@ -776,6 +884,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:d6d37f104693"
   },
   {
@@ -797,6 +908,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:df0695deaa78"
   },
   {
@@ -818,6 +932,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:9b0c489d904a"
   },
   {
@@ -839,6 +956,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:8e5e68ce3ad1"
   },
   {
@@ -860,6 +980,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:a56ff675f3c2"
   },
   {
@@ -881,6 +1004,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:9a0d69483419"
   },
   {
@@ -902,6 +1028,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:9cb66a7bf4b9"
   },
   {
@@ -923,6 +1052,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:fa483d46d4ac"
   },
   {
@@ -944,6 +1076,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:9e54c3ac6fd8"
   },
   {
@@ -965,6 +1100,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:853f3db9d418"
   },
   {
@@ -986,6 +1124,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:7b0556f0e175"
   },
   {
@@ -1007,6 +1148,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:56ab61792d88"
   },
   {
@@ -1028,6 +1172,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:1bc43ee8b006"
   },
   {
@@ -1049,6 +1196,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:ec8e45145477"
   },
   {
@@ -1070,6 +1220,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:0c6e36689b30"
   },
   {
@@ -1091,6 +1244,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:31fa07cafd7f"
   },
   {
@@ -1112,6 +1268,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:04d6a06d9806"
   },
   {
@@ -1133,6 +1292,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:eb224b146fa4"
   },
   {
@@ -1154,6 +1316,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:1b9fe0e6e90d"
   },
   {
@@ -1175,6 +1340,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:5ef10815d924"
   },
   {
@@ -1196,6 +1364,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:03f437faf661"
   },
   {
@@ -1217,6 +1388,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:39bd2a44b44e"
   },
   {
@@ -1238,6 +1412,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:3448d7585023"
   },
   {
@@ -1259,6 +1436,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:9e141bece457"
   },
   {
@@ -1280,6 +1460,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:d8198b9d3db7"
   },
   {
@@ -1301,6 +1484,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:2e82bd5995b3"
   },
   {
@@ -1322,6 +1508,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:c75fae53fa6f"
   },
   {
@@ -1343,6 +1532,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:eaf794a8ae8b"
   },
   {
@@ -1364,6 +1556,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:ae5a9056f676"
   },
   {
@@ -1385,6 +1580,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:8ecc4cf1160b"
   },
   {
@@ -1406,6 +1604,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:2f4ebc93035d"
   },
   {
@@ -1427,6 +1628,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:76d60cd05f9a"
   },
   {
@@ -1448,6 +1652,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:11dbf531744b"
   },
   {
@@ -1469,6 +1676,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:5f55678e2565"
   },
   {
@@ -1490,6 +1700,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:e4c2a5f570a4"
   },
   {
@@ -1511,6 +1724,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:48a000fc8cf7"
   },
   {
@@ -1532,6 +1748,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:5089256db456"
   },
   {
@@ -1553,6 +1772,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:ae5ee6baca41"
   },
   {
@@ -1574,6 +1796,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:0009bf8f0d8c"
   },
   {
@@ -1595,6 +1820,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:feed92ea3694"
   },
   {
@@ -1616,6 +1844,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:cc4e7eb1aa7f"
   },
   {
@@ -1637,6 +1868,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:7729d1567a9d"
   },
   {
@@ -1658,6 +1892,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:557824985ac3"
   },
   {
@@ -1679,6 +1916,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:8c8ef63de5ef"
   },
   {
@@ -1700,6 +1940,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:223d7db0f974"
   },
   {
@@ -1721,6 +1964,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:a7ef1ea38478"
   },
   {
@@ -1742,6 +1988,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:28dd7cc4dc88"
   },
   {
@@ -1763,6 +2012,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:462b7f192dbc"
   },
   {
@@ -1784,6 +2036,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:d8c486b5f854"
   },
   {
@@ -1805,6 +2060,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:26026075952c"
   },
   {
@@ -1826,6 +2084,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:a9055f1e64ab"
   },
   {
@@ -1847,6 +2108,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:cab2f7b93819"
   },
   {
@@ -1868,6 +2132,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:91d25a4ca305"
   },
   {
@@ -1889,6 +2156,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:dd2de28aaf82"
   },
   {
@@ -1910,6 +2180,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:2d2dfe4e3b4b"
   },
   {
@@ -1931,6 +2204,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:74e7f3871653"
   },
   {
@@ -1952,6 +2228,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:b7456194890a"
   },
   {
@@ -1973,6 +2252,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:5406c61409e0"
   },
   {
@@ -1994,6 +2276,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:cf137e6ec7b9"
   },
   {
@@ -2015,6 +2300,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:dcb8bd30cb6e"
   },
   {
@@ -2036,6 +2324,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:47d426326b3d"
   },
   {
@@ -2057,6 +2348,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:1a8c44c93d23"
   },
   {
@@ -2078,6 +2372,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:e246a2b27392"
   },
   {
@@ -2099,6 +2396,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:061b8f9ff726"
   },
   {
@@ -2120,6 +2420,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:8feae72beb9c"
   },
   {
@@ -2141,6 +2444,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:c9f6ae09fec3"
   },
   {
@@ -2162,6 +2468,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:206450095f76"
   },
   {
@@ -2183,6 +2492,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:76244432d7d6"
   },
   {
@@ -2204,6 +2516,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:f5a431c88dea"
   },
   {
@@ -2225,6 +2540,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:748f0b8720cc"
   },
   {
@@ -2246,6 +2564,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:5be83b0a0d78"
   },
   {
@@ -2267,6 +2588,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:ebdac0b13a50"
   },
   {
@@ -2288,6 +2612,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:52c7068a7969"
   },
   {
@@ -2309,6 +2636,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:93c42e440fc6"
   },
   {
@@ -2330,6 +2660,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:984d3a77314d"
   },
   {
@@ -2351,6 +2684,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:946ef3b02039"
   },
   {
@@ -2372,6 +2708,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:e9eb2c8a13be"
   },
   {
@@ -2393,6 +2732,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:61400c5ac305"
   },
   {
@@ -2414,6 +2756,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:215215123834"
   },
   {
@@ -2435,6 +2780,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:e890efff5e5a"
   },
   {
@@ -2456,6 +2804,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:1cf2d21510fc"
   },
   {
@@ -2477,6 +2828,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:46725ad085d5"
   },
   {
@@ -2498,6 +2852,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:f74a19eff289"
   },
   {
@@ -2519,6 +2876,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:e787fc2a7df5"
   },
   {
@@ -2540,6 +2900,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:a3f5c9a9296c"
   },
   {
@@ -2561,6 +2924,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:7cb543f64190"
   },
   {
@@ -2582,6 +2948,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "uffo:51a5a2138fab"
   }
  ]
