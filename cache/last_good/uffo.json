@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T16:53:32+00:00",
+ "fetched_at": "2026-09-12T17:11:37+00:00",
  "events": [
   {
    "title": "RYBIČKY 48",
@@ -1109,16 +1109,16 @@
    "title": "Dokonalý den",
    "start": "2026-09-12T19:00:00+02:00",
    "source": "uffo",
-   "url": "https://uffo.cz/dokonaly-den-p6447/",
+   "url": "https://uffo.cz/program/",
    "end": "2026-09-12T21:00:00+02:00",
    "all_day": false,
    "place": null,
    "place_raw": null,
    "venue": "Kino Vesmír",
    "category": null,
-   "native_category": "Film",
+   "native_category": null,
    "description": "",
-   "image": "https://cdn.uffo.cz/images/0/fadf412128daccbf/3/dokonaly-den.jpg?hash=320733603",
+   "image": null,
    "native_id": "1789219259136-c7ad1d",
    "ongoing": false,
    "sources": [],
