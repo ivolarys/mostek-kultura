@@ -87,7 +87,9 @@ def test_goout_parse(cfg, root):
 @pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi",
                                   "valdstejnska-lodzie", "kuks-hospital", "zirec-domov", "bila-tremesna",
                                   "bila-tremesna-okoli", "kuks-obec", "dolni-brusnice", "jicin",
-                                  "nova-paka", "kultura-novapaka", "uffo"])
+                                  "nova-paka", "kultura-novapaka", "uffo", "biograf-horice",
+                                  "horice-galerie", "horice-koruna", "epo1", "belohradska-sypka",
+                                  "pecka", "josefov-kolonie", "klaster-hostinne"])
 def test_fixture_manifest_present(root, name):
     assert (root / "tests" / "fixtures" / name / "manifest.json").exists()
 
@@ -204,3 +206,97 @@ def test_kultura_novapaka(cfg, root):
     assert e.native_category == "tanec"
     assert e.url.startswith("http://www.kultura-novapaka.cz/")
     assert len({x.native_id for x in events}) == len(events)
+
+
+def test_mojekino_biograf_horice(cfg, root):
+    events = _fetch(cfg, root, "biograf-horice")
+    assert len(events) == 19
+    e = next(x for x in events if x.title.startswith("Tom a Jerry: Kouzelný kompas"))
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-12 17:00" and not e.all_day
+    assert e.venue == "Biograf Na Špici"
+    assert e.native_category == "Film"
+    assert e.url.startswith("https://www.biografnaspici.cz/")
+    dups = [x for x in events if x.title == "Dokonalý den"]
+    assert len(dups) == 2 and dups[0].native_id != dups[1].native_id
+    assert all(x.url.startswith("https://www.biografnaspici.cz/") for x in events)
+    assert len({x.native_id for x in events}) == len(events)
+
+
+def test_vismo6_horice_galerie_only_placeholders(cfg, root):
+    # the gallery's Vismo6 "Wecal" calendar has never had a real event: fetch() (a static, wide
+    # From/To window, see module docstring) only turns up leftover CMS-setup test entries ("Nová
+    # událost v kalendáři" placeholders) dated in 2026-04, which fall outside the build's horizon
+    # and so contribute 0 events to an actual build.
+    events = _fetch(cfg, root, "horice-galerie")
+    assert len(events) == 3
+    assert all(x.title.startswith("Nová událost v kalendáři") for x in events)
+    assert len({x.native_id for x in events}) == 3
+
+
+def test_koruna_program(cfg, root):
+    events = _fetch(cfg, root, "horice-koruna")
+    assert len(events) == 14
+    e = next(x for x in events if x.title == "Antonín Dvořák - Lužanská mše D dur")
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-13 09:00" and not e.all_day
+    assert e.venue == "Dům kultury Koruna"
+    assert e.url == "https://www.dum-kultury-koruna.cz/antonin-dvorak-luzanska-mse-d-dur"
+    assert len({x.native_id for x in events}) == len(events)
+
+
+def test_epo1_calendar(cfg, root):
+    events = _fetch(cfg, root, "epo1")
+    assert len(events) == 8
+    e = next(x for x in events if x.title == "Workshop: Scratch Art")
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-09 16:00"
+    assert e.end.strftime("%H:%M") == "18:00" and not e.all_day
+    assert e.venue == "EPO1, Trutnov" and e.native_category == "Workshop"
+    assert e.url.startswith("https://goout.net/")
+    internal = next(x for x in events if x.title.startswith("Proč civilizace"))
+    assert internal.url.startswith("https://www.epo1.cz/")
+    assert len({x.native_id for x in events}) == len(events)
+
+
+def test_webnode_belohradska_sypka(cfg, root):
+    events = _fetch(cfg, root, "belohradska-sypka")
+    assert len(events) == 11
+    e = next(x for x in events if x.title == "Degustace francouzských vín")
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-11 18:00" and not e.all_day
+    assert e.venue == "Kavárna Bělohradské sýpky"
+    assert e.url.startswith("https://www.belohradskasypka.cz/")
+    joga = next(x for x in events if x.title.startswith("Jemná Hatha"))
+    assert joga.all_day
+    quiz = [x for x in events if x.title == "Kavárenský kvíz"]
+    assert len(quiz) == 3
+    assert len({x.native_id for x in events}) == len(events)
+
+
+def test_galileo_pecka(cfg, root):
+    events = _fetch(cfg, root, "pecka")
+    assert len(events) >= 15
+    e = next(x for x in events if x.title == "Pecka kros")
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-17 15:00" and not e.all_day
+    assert e.venue == "Hrad Pecka, Pecka"
+    assert e.url.startswith("https://www.mestys-pecka.cz/")
+    assert all(x.source == "pecka" for x in events)
+
+
+def test_simcal_josefov(cfg, root):
+    events = _fetch(cfg, root, "josefov-kolonie")
+    assert len(events) == 8
+    e = next(x for x in events if x.title.startswith("psychokroužek"))
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-07 18:00"
+    assert e.end.strftime("%H:%M") == "20:00" and not e.all_day
+    assert e.url == "https://umeleckakoloniejosefov.cz/kalendar-akci/"
+    multi = next(x for x in events if x.title.startswith("letokruhy"))
+    assert multi.all_day and multi.start.day == 12 and multi.end.day == 13
+    assert len({x.native_id for x in events}) == len(events)
+
+
+def test_klaster_hostinne(cfg, root):
+    events = _fetch(cfg, root, "klaster-hostinne")
+    assert len(events) == 1
+    e = events[0]
+    assert e.title.startswith("Křest knihy")
+    assert e.start.strftime("%Y-%m-%d") == "2026-09-25" and e.all_day
+    assert e.native_category == "Muzeum"
+    assert e.url.startswith("https://www.klasterhostinne.cz/")

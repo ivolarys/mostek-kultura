@@ -40,6 +40,8 @@ places:
     aliases: []
   - name: Nová Paka
     aliases: [Nové Pace]
+  - name: Hořice
+    aliases: [Hořicích, Hořic]
   - name: Trutnov
     aliases: [Trutnově, UFFO, Uffo, Bojiště]
   - name: Jaroměř
@@ -253,6 +255,63 @@ sources:
     url: https://uffo.cz/program/
     page: https://uffo.cz/program/
     place: Trutnov
+    priority: 9
+  - name: biograf-horice
+    label: Biograf Na Špici Hořice – Program
+    type: mojekino
+    url: https://www.biografnaspici.cz/klient-101/kino-30
+    page: https://www.biografnaspici.cz/klient-101/kino-30
+    place: Hořice
+    priority: 9
+    max_events: 60
+  - name: horice-galerie
+    label: Galerie plastik Hořice – Kalendář událostí
+    type: vismo6
+    url: https://galerie.horice.org/kalendar-udalosti
+    page: https://galerie.horice.org/kalendar-udalosti
+    place: Hořice
+    priority: 9
+  - name: horice-koruna
+    label: Dům kultury Koruna Hořice – Program
+    type: koruna_program
+    url: https://www.dum-kultury-koruna.cz/program
+    page: https://www.dum-kultury-koruna.cz/program
+    place: Hořice
+    priority: 9
+  - name: epo1
+    label: Galerie EPO1 Trutnov – Doprovodný program
+    type: epo1_calendar
+    url: https://www.epo1.cz/doprovodny-program
+    page: https://www.epo1.cz/doprovodny-program
+    place: Trutnov
+    priority: 9
+  - name: belohradska-sypka
+    label: Bělohradská sýpka – Program
+    type: webnode_program
+    url: https://www.belohradskasypka.cz/program/
+    page: https://www.belohradskasypka.cz/program/
+    place: Lázně Bělohrad
+    priority: 9
+  - name: pecka
+    label: Městys Pecka – Kalendář akcí
+    type: galileo
+    url: https://www.mestys-pecka.cz/volny-cas/kalendar-akci-1/
+    page: https://www.mestys-pecka.cz/volny-cas/kalendar-akci-1/
+    place: Pecka
+    priority: 7
+  - name: josefov-kolonie
+    label: Umělecká kolonie Bastion IV Josefov – Kalendář akcí
+    type: simcal_calendar
+    url: https://umeleckakoloniejosefov.cz/kalendar-akci/
+    page: https://umeleckakoloniejosefov.cz/kalendar-akci/
+    place: Josefov
+    priority: 9
+  - name: klaster-hostinne
+    label: Klášter Hostinné – Aktuality
+    type: klaster_hostinne
+    url: https://www.klasterhostinne.cz/
+    page: https://www.klasterhostinne.cz/
+    place: Hostinné
     priority: 9
   - name: goout
     label: GoOut (vstupenkové akce podle venue)

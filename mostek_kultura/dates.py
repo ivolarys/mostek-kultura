@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import re
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -21,7 +22,18 @@ _DATE_WORDS = re.compile(r"(\d{1,2})\.\s*([a-zěščřžýáíéúůň]+)\s*(\d{
 
 
 def now() -> datetime:
-    return datetime.now(TZ)
+    """Current instant in `TZ`, or `MOSTEK_NOW` (ISO 8601 date/datetime) when set.
+
+    Used to reproduce a fixture day offline, e.g.
+    `MOSTEK_NOW=2026-09-11 python -m mostek_kultura build --offline --no-llm`.
+    """
+    override = os.environ.get("MOSTEK_NOW")
+    if not override:
+        return datetime.now(TZ)
+    dt = datetime.fromisoformat(override)
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=TZ)
+    return dt.astimezone(TZ)
 
 
 def today() -> date:

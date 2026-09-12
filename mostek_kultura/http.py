@@ -2,16 +2,37 @@
 
 from __future__ import annotations
 
+import difflib
 import hashlib
 import json
 import logging
+import re
 import time
 from pathlib import Path
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlsplit, urlunsplit
 
 import httpx
 
 log = logging.getLogger(__name__)
+
+# Query keys/values that encode "today" or a page offset, so they must be ignored when matching
+# a request against recorded fixtures on a different day (public4u's rok=/mesic=, vismo's
+# datum_od=/datum_do=, drupal's page=, and any bare integer or D.M.YYYY date value).
+_DYNAMIC_KEYS = {"rok", "mesic", "datum_od", "datum_do", "page"}
+_DATE_VALUE = re.compile(r"^\d{1,2}\.\d{1,2}\.\d{4}$")
+
+
+def _is_dynamic_param(key: str, value: str) -> bool:
+    return key in _DYNAMIC_KEYS or bool(_DATE_VALUE.match(value)) or value.isdigit()
+
+
+def _normalized_key(url: str) -> tuple[str, str, str, frozenset[str], tuple[tuple[str, str], ...]]:
+    """scheme/host/path + the set of query keys + the value of non-dynamic query params."""
+    parts = urlsplit(url)
+    pairs = parse_qsl(parts.query, keep_blank_values=True)
+    keys = frozenset(k for k, _ in pairs)
+    static = tuple(sorted((k, v) for k, v in pairs if not _is_dynamic_param(k, v)))
+    return (parts.scheme, parts.netloc, parts.path, keys, static)
 
 UA = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -120,10 +141,31 @@ class FixtureHttp:
         manifest = fixture_dir / "manifest.json"
         self.manifest: dict[str, str] = json.loads(manifest.read_text()) if manifest.exists() else {}
 
+    def _find_fallback(self, url: str) -> str:
+        """Match `url` against the manifest ignoring day-dependent query values.
+
+        Same scheme/host/path and the same set of query keys, but values are compared only for
+        keys that don't look like a date/page/year/month. Exactly one match wins outright;
+        several are broken by the lexicographically closest full query string; none -> raise.
+        """
+        target = _normalized_key(url)
+        candidates = [u for u in self.manifest if _normalized_key(u) == target]
+        if not candidates:
+            raise FileNotFoundError(f"no fixture for {url} in {self.dir} (no normalized match either)")
+        if len(candidates) == 1:
+            log.debug("no exact fixture for %s, using normalized match %s", url, candidates[0])
+            return self.manifest[candidates[0]]
+        target_query = urlsplit(url).query
+        candidates.sort(
+            key=lambda u: difflib.SequenceMatcher(None, target_query, urlsplit(u).query).ratio(),
+            reverse=True,
+        )
+        log.debug("no exact fixture for %s, %d normalized matches, using closest %s",
+                  url, len(candidates), candidates[0])
+        return self.manifest[candidates[0]]
+
     def _read(self, url: str) -> str:
-        name = self.manifest.get(url)
-        if not name:
-            raise FileNotFoundError(f"no fixture for {url} in {self.dir}")
+        name = self.manifest.get(url) or self._find_fallback(url)
         return (self.dir / name).read_text(encoding="utf-8")
 
     def get_text(self, url: str, encoding: str | None = None) -> str:
