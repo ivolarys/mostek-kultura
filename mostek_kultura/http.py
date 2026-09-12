@@ -9,7 +9,7 @@ import logging
 import re
 import time
 from pathlib import Path
-from urllib.parse import parse_qsl, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import httpx
 
@@ -43,6 +43,15 @@ RETRY_STATUS = {429, 500, 502, 503, 504}
 
 def _key(url: str) -> str:
     return hashlib.sha1(url.encode("utf-8")).hexdigest()[:12]
+
+
+def _post_key(url: str, data: dict[str, object]) -> str:
+    """Stable fixture key for a form POST, including its method and submitted fields."""
+    parts: list[tuple[str, str]] = []
+    for key, value in data.items():
+        values = value if isinstance(value, list) else [value]
+        parts.extend((key, str(item)) for item in values)
+    return f"POST {url}?{urlencode(sorted(parts), doseq=True)}"
 
 
 class Http:
@@ -84,6 +93,23 @@ class Http:
         except Exception as e:  # noqa: BLE001
             log.warning("GET %s pinned-IP fallback failed: %s", url, e)
         raise RuntimeError(f"GET {url} failed after {self.retries} attempts: {last}")
+
+    def _post(self, url: str, data: dict[str, object]) -> httpx.Response:
+        last: Exception | None = None
+        for attempt in range(self.retries):
+            client = self.clients[attempt % len(self.clients)]
+            try:
+                r = client.post(url, data=data, headers={"Referer": url})
+                if r.status_code in RETRY_STATUS:
+                    raise httpx.HTTPStatusError(f"status {r.status_code}", request=r.request, response=r)
+                r.raise_for_status()
+                return r
+            except (httpx.HTTPError, httpx.TransportError) as e:
+                last = e
+                wait = 2 ** attempt
+                log.warning("POST %s failed (%s), retry in %ss", url, e, wait)
+                time.sleep(wait)
+        raise RuntimeError(f"POST {url} failed after {self.retries} attempts: {last}")
 
     def _resolve_doh(self, host: str) -> str:
         r = self.clients[1].get(
@@ -132,6 +158,14 @@ class Http:
         self._record(url, r.text, "json")
         return r.json()
 
+    def post_text(self, url: str, data: dict[str, object], encoding: str | None = None) -> str:
+        r = self._post(url, data)
+        if encoding:
+            r.encoding = encoding
+        body = r.text
+        self._record(_post_key(url, data), body, "html")
+        return body
+
 
 class FixtureHttp:
     """Offline client: serves recorded responses from `tests/fixtures/<source>/`."""
@@ -173,3 +207,11 @@ class FixtureHttp:
 
     def get_json(self, url: str) -> dict:
         return json.loads(self._read(url))
+
+    def post_text(self, url: str, data: dict[str, object], encoding: str | None = None) -> str:
+        key = _post_key(url, data)
+        try:
+            name = self.manifest[key]
+        except KeyError as exc:
+            raise FileNotFoundError(f"no exact POST fixture for {key} in {self.dir}") from exc
+        return (self.dir / name).read_text(encoding="utf-8")

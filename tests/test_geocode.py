@@ -3,7 +3,14 @@ from datetime import UTC, datetime
 
 from mostek_kultura.config import Config, Place
 from mostek_kultura.dates import TZ
-from mostek_kultura.geocode import cache_key, geocode_events, load_cache, save_cache
+from mostek_kultura.geocode import (
+    _place_query,
+    cache_key,
+    geocode_events,
+    load_cache,
+    save_cache,
+    venue_queries,
+)
 from mostek_kultura.model import Event
 
 
@@ -99,3 +106,47 @@ def test_online_new_lookup_writes_cache_and_respects_bbox(tmp_path, monkeypatch)
     save_cache(cache_path, cache)
     reloaded = json.loads(cache_path.read_text(encoding="utf-8"))
     assert reloaded[cache_key("Zámek Kuks", "Kuks")]["lat"] == 50.45
+
+
+def test_hradec_query_and_cinestar_inside_extended_bbox(tmp_path, monkeypatch):
+    cache_path = tmp_path / "geocode.json"
+    mycfg = _cfg([Place("Hradec Králové", [])])
+
+    def fake_nominatim_get(q):
+        if q == "Hradec Králové, Česko":
+            return [{"lat": "50.209", "lon": "15.832", "display_name": "Hradec Králové, Česko"}]
+        if q == "CineStar, Hradec Králové, Česko":
+            return [{"lat": "50.1969228", "lon": "15.8477146", "type": "cinema",
+                     "display_name": "CineStar, Hradec Králové, Česko"}]
+        if q == "Mimo rozsah, Hradec Králové, Česko":
+            return [{"lat": "50.14", "lon": "15.84", "type": "cinema",
+                     "display_name": "Mimo rozsah, Hradec Králové, Česko"}]
+        return []
+
+    monkeypatch.setattr("mostek_kultura.geocode._nominatim_get", fake_nominatim_get)
+    monkeypatch.setattr("mostek_kultura.geocode.time.sleep", lambda s: None)
+
+    cinestar = _ev("Film", "Hradec Králové", venue="CineStar")
+    outside = _ev("Jinde", "Hradec Králové", venue="Mimo rozsah")
+    geocode_events([cinestar, outside], mycfg, cache_path, online=True, max_new=10)
+
+    assert _place_query("Hradec Králové") == "Hradec Králové, Česko"
+    assert cinestar.geo == "venue"
+    assert (cinestar.lat, cinestar.lon) == (50.1969228, 15.8477146)
+    assert outside.geo == "place"
+    assert (outside.lat, outside.lon) == (50.209, 15.832)
+
+
+def test_venue_queries_try_institution_before_address_fallbacks():
+    assert venue_queries("Divadlo DRAK – Hlavní scéna, ul. Dlouhá", "Hradec Králové") == [
+        "Divadlo DRAK – Hlavní scéna, Dlouhá, Hradec Králové, Česko",
+        "Dlouhá, Hradec Králové, Česko",
+        "Divadlo DRAK, Hradec Králové, Česko",
+    ]
+    assert venue_queries("Galerie / kavárna", "Hradec Králové") == [
+        "Galerie / kavárna, Hradec Králové, Česko",
+    ]
+    assert venue_queries("Studio Beseda, Mýtská 126", "Hradec Králové")[:2] == [
+        "Studio Beseda, Mýtská 126, Hradec Králové, Česko",
+        "Mýtská 126, Hradec Králové, Česko",
+    ]

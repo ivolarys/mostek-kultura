@@ -13,7 +13,13 @@ Mostkultura je denní přehled kulturních a společenských akcí v okolí obce
 2. Akce se namapují na obce z whitelistu, sloučí se duplicity napříč zdroji a doplní se kategorie (nativní kategorie zdroje → LLM → klíčová slova). LLM je OpenAI (`gpt-5-mini`) nebo Anthropic (Claude Haiku) podle toho, který klíč je nastavený.
 3. Vygeneruje se statický web (`site/`) a nasadí se na GitHub Pages. Klasifikace se ukládá do `cache/` v repu, takže se každá akce klasifikuje jen jednou.
 
-Když nějaký zdroj spadne, použijí se jeho data z posledního úspěšného běhu (`cache/last_good/`), stav je vidět v patičce stránky a v `status.json`.
+Když nějaký zdroj spadne, použijí se jeho data z posledního úspěšného běhu (`cache/last_good/`), stav je vidět v hlavičce stránky a v `status.json`.
+
+Hradec Králové má sedm zdrojů: Bio Central, CineStar, Klicperovo divadlo,
+Divadlo DRAK, Náplavku, Nábleší a saunu NUUK. Kina, divadla a Náplavka
+se načítají z vlastních programů; Nábleší a NUUK z městského kalendáře HKinfo
+filtrovaného podle názvu nebo místa. Různé časy projekcí a různá kina zůstávají
+samostatnými akcemi. Divadelní zájezdy, uzavřená a školní představení se vynechávají.
 
 ## Lokální spuštění
 

@@ -27,6 +27,13 @@
   "q": "Bílá Třemešná, Bílá Třemešná, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
  },
+ "bio central|hradec kralove": {
+  "lat": 50.2142377,
+  "lon": 15.822787,
+  "precision": "venue",
+  "q": "Bio Central, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
  "biograf cesky raj|jicin": {
   "lat": 50.4346414,
   "lon": 15.3514579,
@@ -47,6 +54,97 @@
   "precision": "venue",
   "q": "Café EPO1, Trutnov, Trutnov, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "cinestar hradec kralove — sal 1|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "cinestar hradec kralove — sal 2|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "cinestar hradec kralove — sal 3|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "cinestar hradec kralove — sal 4|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "cinestar hradec kralove — sal 5|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "cinestar hradec kralove — sal 6|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "cinestar hradec kralove — sal 7|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "cinestar hradec kralove — sal 8|hradec kralove": {
+  "lat": 50.1969228,
+  "lon": 15.8477146,
+  "precision": "venue",
+  "q": "CineStar Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:24:08+00:00"
+ },
+ "divadlo drak – hlavni scena|hradec kralove": {
+  "lat": 50.2077064,
+  "lon": 15.8384837,
+  "precision": "venue",
+  "q": "Divadlo DRAK, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
+ },
+ "divadlo drak – labyrint|hradec kralove": {
+  "lat": 50.2077064,
+  "lon": 15.8384837,
+  "precision": "venue",
+  "q": "Divadlo DRAK, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
+ },
+ "divadlo drak – muzeum loutek a galerie|hradec kralove": {
+  "lat": 50.2077064,
+  "lon": 15.8384837,
+  "precision": "venue",
+  "q": "Divadlo DRAK, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
+ },
+ "divadlo drak – studio divadla drak|hradec kralove": {
+  "lat": 50.2077064,
+  "lon": 15.8384837,
+  "precision": "venue",
+  "q": "Divadlo DRAK, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
+ },
+ "divadlo drak – studio|hradec kralove": {
+  "lat": 50.2077064,
+  "lon": 15.8384837,
+  "precision": "venue",
+  "q": "Divadlo DRAK, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
  },
  "domov sv. josefa|zirec": {
   "lat": null,
@@ -89,6 +187,13 @@
   "precision": "venue",
   "q": "z. s., Trutnov, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "foyer hlavni sceny, dlouha 99/9|hradec kralove": {
+  "lat": 50.2108702,
+  "lon": 15.8341573,
+  "precision": "venue",
+  "q": "Dlouhá 99/9, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:25:41+00:00"
  },
  "galerie mesta trutnova|trutnov": {
   "lat": null,
@@ -223,6 +328,13 @@
   "q": "Klenotnice muzea, Nová Paka, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
  },
+ "klicperovo divadlo, dlouha 99/9|hradec kralove": {
+  "lat": 50.2108702,
+  "lon": 15.8341573,
+  "precision": "venue",
+  "q": "Dlouhá 99/9, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:25:41+00:00"
+ },
  "knihovna krystofa haranta|pecka": {
   "lat": 50.4811752,
   "lon": 15.6084019,
@@ -328,12 +440,33 @@
   "q": "Náměstí TGM, Vrchlabí, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
  },
+ "naplavka kulturni klub|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Náplavka kulturní klub, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
+ },
+ "naplavka labe, hradec kralove|hradec kralove": {
+  "lat": 50.2097411,
+  "lon": 15.8274363,
+  "precision": "venue",
+  "q": "Náplavka Labe, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
+ },
  "novopacky klaster - barokni sal, opolskeho 144, 509 01 nova paka|nova paka": {
   "lat": 50.4976138,
   "lon": 15.5152075,
   "precision": "venue",
   "q": "Opolského 144, 509 01 Nová Paka, Nová Paka, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "nuuk - sauna a osvezovna, hradec kralove|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "NUUK - sauna a osvěžovna, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
  },
  "park schulzovy sady|dvur kralove nad labem": {
   "lat": 50.4333999,
@@ -412,6 +545,13 @@
   "q": "hasičské zbrojnice v Pecce, Pecka, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
  },
+ "sal soni cervene, filharmonie hradec kralove|hradec kralove": {
+  "lat": 50.2138168,
+  "lon": 15.8292378,
+  "precision": "venue",
+  "q": "Filharmonie Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:20:25+00:00"
+ },
  "shantea – cajovna a kavarna zamecka 1456, vrchlabi|vrchlabi": {
   "lat": null,
   "lon": null,
@@ -474,6 +614,13 @@
   "precision": "none",
   "q": "Štěrbova vila na přehradě Les Království, Dvůr Králové nad Labem, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "studio beseda, mytska 126|hradec kralove": {
+  "lat": 50.2104075,
+  "lon": 15.8372418,
+  "precision": "venue",
+  "q": "Mýtská 126, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:25:41+00:00"
  },
  "studio boutique yoga, prazska 859, vrchlabi|vrchlabi": {
   "lat": 50.6202451,
@@ -600,6 +747,13 @@
   "precision": "place",
   "q": "Hostinné, okres Trutnov, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|hradec kralove": {
+  "lat": 50.2092113,
+  "lon": 15.8327512,
+  "precision": "place",
+  "q": "Hradec Králové, Česko",
+  "ts": "2026-09-12T10:16:58+00:00"
  },
  "|jaromer": {
   "lat": 50.3555139,

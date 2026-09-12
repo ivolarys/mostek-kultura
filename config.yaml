@@ -52,6 +52,8 @@ places:
     aliases: [Vrchlabí, KD Střelnice]
   - name: Jičín
     aliases: [Jičíně, Jičína]
+  - name: Hradec Králové
+    aliases: [Hradci Králové, Hradce Králové]
   - name: Valdštejnská lodžie
     aliases: [Lodžie, Valdštejnské lodžii, Valdštejnské imaginárium]
 
@@ -323,6 +325,59 @@ sources:
     url: https://www.klasterhostinne.cz/
     page: https://www.klasterhostinne.cz/
     place: Hostinné
+    priority: 9
+  - name: naplavka-hk
+    label: Náplavka – Program
+    type: naplavka_program
+    url: https://naplavkahk.cz/program
+    page: https://naplavkahk.cz/program
+    place: Hradec Králové
+    priority: 8
+  - name: nablesi
+    label: Nábleší – Kalendář HKinfo
+    type: hkinfo_program
+    url: https://www.hkinfo.cz/cs/program
+    page: https://www.hkinfo.cz/cs/program
+    place: Hradec Králové
+    priority: 8
+    include_title: "(?i)^nábleší"
+    native_category: Trhy a jarmarky
+  - name: sauna-nuuk
+    label: Sauna NUUK – Kalendář HKinfo
+    type: hkinfo_program
+    url: https://www.hkinfo.cz/cs/program
+    page: https://www.hkinfo.cz/cs/program
+    place: Hradec Králové
+    priority: 8
+    include_venue: "(?i)nuuk"
+  - name: klicperovo-divadlo
+    label: Klicperovo divadlo – Program
+    type: klicperovo_program
+    url: https://www.klicperovodivadlo.cz/program/
+    page: https://www.klicperovodivadlo.cz/program/
+    place: Hradec Králové
+    priority: 8
+    months: 3
+  - name: divadlo-drak
+    label: Divadlo DRAK – Program
+    type: drak_program
+    url: https://draktheatre.cz/program-3/
+    page: https://draktheatre.cz/program-3/
+    place: Hradec Králové
+    priority: 8
+  - name: bio-central
+    label: Bio Central Hradec Králové – Program
+    type: bio_central
+    url: https://biocentral.cz/
+    page: https://biocentral.cz/
+    place: Hradec Králové
+    priority: 9
+  - name: cinestar-hradec
+    label: CineStar Hradec Králové – Program
+    type: cinestar
+    url: https://cinestar.cz/cz/hradec
+    page: https://cinestar.cz/cz/hradec/program
+    place: Hradec Králové
     priority: 9
   - name: goout
     label: GoOut (vstupenkové akce podle venue)

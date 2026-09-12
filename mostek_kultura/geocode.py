@@ -27,7 +27,7 @@ NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 USER_AGENT = "mostek-kultura/0.1 (+https://github.com/ivolarys/mostkultura)"
 SLEEP_S = 1.1                       # Nominatim usage policy: max 1 request/second
 STALE_DAYS = 30
-BBOX = (50.2, 50.9, 15.2, 16.3)     # lat_min, lat_max, lon_min, lon_max (sanity check on results)
+BBOX = (50.15, 50.9, 15.2, 16.3)    # lat_min, lat_max, lon_min, lon_max (sanity check on results)
 
 # Most whitelisted places are in okres Trutnov, so appending it disambiguates them from
 # same-named settlements elsewhere in Czechia (e.g. there's an unrelated "Mostek" near Ústí nad
@@ -35,7 +35,7 @@ BBOX = (50.2, 50.9, 15.2, 16.3)     # lat_min, lat_max, lon_min, lon_max (sanity
 # "<place>, Česko" is used instead, verified against the result's display_name (Jičín/Hořice/Nová
 # Paka/Lázně Bělohrad/Pecka: okres Jičín; Jaroměř: okres Náchod; Valdštejnská lodžie: a landmark
 # building, not a settlement, but the only OSM match for that name).
-_PLAIN_QUERY = {"Jičín", "Hořice", "Nová Paka", "Lázně Bělohrad", "Pecka", "Jaroměř",
+_PLAIN_QUERY = {"Hradec Králové", "Jičín", "Hořice", "Nová Paka", "Lázně Bělohrad", "Pecka", "Jaroměř",
                 "Valdštejnská lodžie"}
 # Josefov is a village within Jaroměř (okres Náchod); a bare "Josefov, Česko" resolves to an
 # unrelated same-named village in okres Hodonín, so it needs its containing town spelled out.
@@ -145,6 +145,7 @@ def save_cache(path: Path, cache: dict) -> None:
 
 
 _PREFIX = re.compile(r"^(ul\.|ulice|sál|sal|kde:?)\s+", re.IGNORECASE)
+_VENUE_PART = re.compile(r"\s[–—]\s")
 
 
 def venue_queries(venue: str, place: str) -> list[str]:
@@ -162,6 +163,12 @@ def venue_queries(venue: str, place: str) -> list[str]:
     if len(parts) > 1:
         cands.append(", ".join(parts[1:]))
         cands.append(parts[-1])
+    if parts:
+        # Nominatim commonly knows the institution but not an individual hall or foyer. An
+        # explicit address is more precise, so keep existing address fallbacks ahead of it.
+        institution = _VENUE_PART.split(parts[0], maxsplit=1)[0].strip()
+        if institution and institution != parts[0]:
+            cands.append(institution)
     out: list[str] = []
     for c in cands:
         q = f"{c}, {place}, Česko"

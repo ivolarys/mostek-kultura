@@ -1,8 +1,9 @@
 import json
 
+import httpx
 import pytest
 
-from mostek_kultura.http import FixtureHttp
+from mostek_kultura.http import FixtureHttp, Http
 
 
 def _make(tmp_path, manifest: dict[str, str], contents: dict[str, str]):
@@ -84,3 +85,24 @@ def test_get_json_uses_fallback_too(tmp_path):
         {"a.json": '{"ok": true}'},
     )
     assert http.get_json("https://example.cz/api?page=7") == {"ok": True}
+
+
+def test_post_fixture_uses_exact_form_body_and_records_repeated_values(tmp_path):
+    seen = []
+
+    def handler(request):
+        seen.append(request)
+        return httpx.Response(200, text="<p>programme</p>")
+
+    live = Http(record_dir=tmp_path, retries=1)
+    live.clients = [httpx.Client(transport=httpx.MockTransport(handler))]
+    live.post_text("https://example.cz/program", {"cinema[]": "6", "hall[]": ["7", "8"]})
+    assert seen[0].method == "POST"
+    assert seen[0].content.decode() == "cinema%5B%5D=6&hall%5B%5D=7&hall%5B%5D=8"
+
+    replay = FixtureHttp(tmp_path)
+    assert replay.post_text("https://example.cz/program", {"hall[]": ["8", "7"], "cinema[]": "6"}) == "<p>programme</p>"
+    with pytest.raises(FileNotFoundError):
+        replay.post_text("https://example.cz/program", {"cinema[]": "6", "hall[]": ["7", "20"]})
+    with pytest.raises(FileNotFoundError):
+        replay.get_text("https://example.cz/program")

@@ -145,7 +145,16 @@ def dedupe(events: list[Event], priorities: dict[str, int]) -> list[Event]:
         nt = norm_title(e.title)
         found = None
         for cand in buckets.get(key, []):
-            if _similar(nt, norm_title(cand.title)):
+            timed_different = not e.all_day and not cand.all_day and e.start != cand.start
+            actual_venues = (
+                e.venue and cand.venue and norm(e.venue) != norm(e.place)
+                and norm(cand.venue) != norm(cand.place)
+            )
+            venue_incompatible = (
+                actual_venues and norm(e.venue) not in norm(cand.venue)
+                and norm(cand.venue) not in norm(e.venue)
+            )
+            if not timed_different and not venue_incompatible and _similar(nt, norm_title(cand.title)):
                 found = cand
                 break
         if found:

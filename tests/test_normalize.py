@@ -88,5 +88,19 @@ def test_dedupe_keeps_different_days():
     assert len(dedupe([a, b], {})) == 2
 
 
+def test_dedupe_keeps_separate_screenings_and_cinemas():
+    early = ev("Auta", hour=15, venue="Bio Central", place="Hradec Králové")
+    late = ev("Auta", hour=18, venue="Bio Central", place="Hradec Králové")
+    cinestar = ev("Auta", hour=15, venue="CineStar Hradec Králové — Sál 1", place="Hradec Králové")
+    assert len(dedupe([early, late, cinestar], {})) == 3
+
+
+def test_dedupe_merges_same_time_same_venue_across_sources():
+    a = ev("Auta", source="bio-central", venue="Bio Central — Velký sál", place="Hradec Králové")
+    b = ev("Film: Auta", source="goout", venue="Bio Central", place="Hradec Králové")
+    out = dedupe([a, b], {"bio-central": 7, "goout": 4})
+    assert len(out) == 1 and out[0].sources == ["goout"]
+
+
 def test_norm_title_strips_prefix_and_accents():
     assert norm_title("Koncert: Věra Špinarová!") == "vera spinarova"
