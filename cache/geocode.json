@@ -1,4 +1,18 @@
 {
+ "ac klub, hradec kralove|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "AC klub, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
+ },
+ "adalbertinum, hradec kralove|hradec kralove": {
+  "lat": 50.2109175,
+  "lon": 15.8307079,
+  "precision": "venue",
+  "q": "Adalbertinum, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
+ },
  "areal autokempu|mostek": {
   "lat": null,
   "lon": null,
@@ -188,6 +202,13 @@
   "q": "z. s., Trutnov, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
  },
+ "filharmonie hradec kralove , hradec kralove|hradec kralove": {
+  "lat": 50.2138168,
+  "lon": 15.8292378,
+  "precision": "venue",
+  "q": "Filharmonie Hradec Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
+ },
  "foyer hlavni sceny, dlouha 99/9|hradec kralove": {
   "lat": 50.2108702,
   "lon": 15.8341573,
@@ -195,12 +216,26 @@
   "q": "Dlouhá 99/9, Hradec Králové, Česko",
   "ts": "2026-09-12T10:25:41+00:00"
  },
+ "galerie articok, hradec kralove|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Galerie Artičok, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
+ },
  "galerie mesta trutnova|trutnov": {
   "lat": null,
   "lon": null,
   "precision": "none",
   "q": "Galerie města Trutnova, Trutnov, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "galerie moderniho umeni v hradci kralove, hradec kralove|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Galerie moderního umění v Hradci Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
  },
  "hankuv dum - sal|dvur kralove nad labem": {
   "lat": null,
@@ -222,6 +257,13 @@
   "precision": "venue",
   "q": "Fügnerova 1288, Vrchlabí, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hlavni odborne pracoviste gayerova kasarna, hradec kralove|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hlavní odborné pracoviště Gayerova kasárna, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
  },
  "hlavni sal belohradske sypky|lazne belohrad": {
   "lat": null,
@@ -271,6 +313,13 @@
   "precision": "none",
   "q": "Hudební klub Top Ten Rock, Dvůr Králové nad Labem, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "hvezdarna a planetarium v hradci kralove, hradec kralove|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hvězdárna a planetárium v Hradci Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
  },
  "kavarna belohradske sypky|lazne belohrad": {
   "lat": null,
@@ -433,6 +482,20 @@
   "q": "Muzeum Podkrkonoší v Trutnově, Trutnov, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
  },
+ "muzeum vychodnich cech - budova archa, hradec kralove|hradec kralove": {
+  "lat": 50.2124534,
+  "lon": 15.8314021,
+  "precision": "venue",
+  "q": "Muzeum východních Čech - budova ARCHA, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
+ },
+ "muzeum vychodnich cech v hradci kralove, hradec kralove|hradec kralove": {
+  "lat": 50.2117004,
+  "lon": 15.8290109,
+  "precision": "venue",
+  "q": "Muzeum východních Čech v Hradci Králové, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
+ },
  "namesti tgm, vrchlabi|vrchlabi": {
   "lat": null,
   "lon": null,
@@ -488,6 +551,13 @@
   "precision": "venue",
   "q": "Pecka, Pecka, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "petrof gallery, hradec kralove|hradec kralove": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Petrof Gallery, Hradec Králové, Česko",
+  "ts": "2026-09-12T10:40:45+00:00"
  },
  "pivovar nova paka a.s.|nova paka": {
   "lat": null,

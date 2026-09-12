@@ -15,11 +15,16 @@ Mostkultura je denní přehled kulturních a společenských akcí v okolí obce
 
 Když nějaký zdroj spadne, použijí se jeho data z posledního úspěšného běhu (`cache/last_good/`), stav je vidět v hlavičce stránky a v `status.json`.
 
-Hradec Králové má sedm zdrojů: Bio Central, CineStar, Klicperovo divadlo,
+Základní hradecký výběr tvoří Bio Central, CineStar, Klicperovo divadlo,
 Divadlo DRAK, Náplavku, Nábleší a saunu NUUK. Kina, divadla a Náplavka
 se načítají z vlastních programů; Nábleší a NUUK z městského kalendáře HKinfo
 filtrovaného podle názvu nebo místa. Různé časy projekcí a různá kina zůstávají
 samostatnými akcemi. Divadelní zájezdy, uzavřená a školní představení se vynechávají.
+
+Výběr „Další kultura v Hradci – HKinfo“ doplňuje zveřejněné akce PETROF Gallery,
+filharmonie, Galerie moderního umění, Muzea východních Čech, hvězdárny a planetária,
+Galerie Artičok, AC klubu a Adalbertina. Zrušené akce a běžné lekce tanečních kurzů
+se do tohoto výběru nezařazují. Nabídka se aktualizuje při každém denním stažení.
 
 ## Lokální spuštění
 

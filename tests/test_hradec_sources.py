@@ -1,3 +1,4 @@
+import re
 from datetime import date
 from pathlib import Path
 
@@ -5,6 +6,7 @@ import pytest
 
 from mostek_kultura.config import SourceConfig
 from mostek_kultura.http import FixtureHttp
+from mostek_kultura.normalize import apply_source_filters
 from mostek_kultura.sources.hkinfo_program import HkinfoProgramSource
 from mostek_kultura.sources.naplavka_program import NaplavkaProgramSource
 
@@ -58,6 +60,56 @@ def test_record_fixtures_fetch_all_hradec_sources(monkeypatch):
         else:
             assert len(events) == 1 and events[0].url.endswith("#textdet3661")
         assert all(event.image and event.image.startswith("https://") for event in events)
+
+
+def test_hradec_vyber_fixture_keeps_only_selected_venues(monkeypatch, cfg):
+    monkeypatch.setenv("MOSTEK_NOW", "2026-09-11T12:00:00+02:00")
+    source_cfg = next(source for source in cfg.sources if source.name == "hradec-vyber")
+    raw_cfg = SourceConfig(
+        source_cfg.name,
+        source_cfg.type,
+        url=source_cfg.url,
+        place=source_cfg.place,
+        extra={**source_cfg.extra, "venue_map": {}},
+    )
+    raw_events = HkinfoProgramSource(raw_cfg).fetch(FixtureHttp(ROOT / "hradec-vyber"))
+    events = HkinfoProgramSource(source_cfg).fetch(FixtureHttp(ROOT / "hradec-vyber"))
+
+    # The anchored configuration filter admits each selected institution (with
+    # museum sub-sites), but none of the rest of the city-wide calendar.
+    original_venues = {event.venue for event in raw_events}
+    assert len(raw_events) == len(events) == 109
+    assert all(event.venue and re.search(source_cfg.extra["include_venue"], event.venue, re.IGNORECASE) for event in raw_events)
+    for venue in (
+        "Petrof Gallery, Hradec Králové",
+        "Filharmonie Hradec Králové , Hradec Králové",
+        "Sál Soni Červené, Hradec Králové",
+        "Galerie moderního umění v Hradci Králové, Hradec Králové",
+        "Muzeum východních Čech v Hradci Králové, Hradec Králové",
+        "Muzeum východních Čech - budova ARCHA, Hradec Králové",
+        "Hlavní odborné pracoviště Gayerova kasárna, Hradec Králové",
+        "Hvězdárna a planetárium v Hradci Králové, Hradec Králové",
+        "Galerie Artičok, Hradec Králové",
+        "AC klub, Hradec Králové",
+        "Adalbertinum, Hradec Králové",
+    ):
+        assert venue in original_venues
+    assert all("Nábleší" not in (event.venue or "") and "NUUK" not in (event.venue or "") for event in raw_events)
+
+    by_title = {event.title: event for event in events}
+    assert by_title["ODPOLEDNÍ PROGRAM PRO DĚTI"].native_category == "Pro děti"
+    assert by_title["Architóny | Jaroslav Svěcený - Vivaldi u Kotěry"].native_category == "Koncert"
+    assert by_title["Zářijový SWAP"].native_category is None  # HKinfo type 18 = Ostatní
+    assert all(event.venue != "Sál Soni Červené, Hradec Králové" for event in events)
+    assert any(event.venue == "Sál Soni Červené, Filharmonie Hradec Králové" for event in events)
+
+    kept = apply_source_filters(events, source_cfg)
+    assert len(kept) == 92
+    filtered_titles = {event.title for event in kept}
+    assert "Štěpán Rak & Miloš Dvořáček - KONCERT ZRUŠEN!" not in filtered_titles
+    assert not any(title.startswith(("Taneční 2026", "Zahájení kurzů tance")) for title in filtered_titles)
+    exclusion = re.compile(source_cfg.exclude_title or "")
+    assert all(exclusion.search(title) for title in ("ZRUŠENO", "ZRUŠENÝ koncert", "ZRUŠENÁ akce", "Zrusene vystoupení"))
 
 
 def test_hkinfo_year_boundary_and_empty_selection():

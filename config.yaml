@@ -350,6 +350,18 @@ sources:
     place: Hradec Králové
     priority: 8
     include_venue: "(?i)nuuk"
+  - name: hradec-vyber
+    label: Další kultura v Hradci – HKinfo
+    type: hkinfo_program
+    url: https://www.hkinfo.cz/cs/program
+    page: https://www.hkinfo.cz/cs/program
+    place: Hradec Králové
+    priority: 6
+    include_venue: "(?i)^(?:Petrof Gallery|Filharmonie Hradec Králové|Sál Soni Červené|Galerie moderního umění v Hradci Králové|Muzeum východních Čech(?: v Hradci Králové| - budova ARCHA)|Hlavní odborné pracoviště Gayerova kasárna|Hvězdárna a planetárium v Hradci Králové|Galerie Artičok|AC klub|Adalbertinum)\\s*,?\\s*Hradec Králové$"
+    exclude_title: "(?i)\\bzrušen|\\bzrusen|^Taneční\\s+20\\d{2}|^Zahájení kurzů tance"
+    venue_map:
+      "Sál Soni Červené, Hradec": "Sál Soni Červené, Filharmonie Hradec Králové"
+      "Sál Soni Červené, Hradec Králové": "Sál Soni Červené, Filharmonie Hradec Králové"
   - name: klicperovo-divadlo
     label: Klicperovo divadlo – Program
     type: klicperovo_program

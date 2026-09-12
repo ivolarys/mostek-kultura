@@ -25,7 +25,22 @@ _MONTH = {
     "červenec": 7, "cervenec": 7, "srpen": 8, "říjen": 10, "rijen": 10,
     "listopad": 11, "prosinec": 12,
 }
-_NATIVE_BY_TYPE = {18: "Trhy a jarmarky", 19: "Festival"}
+# HKinfo's numeric types are public taxonomy labels, not an ordering of our
+# categories.  In particular 18 is "Ostatní", so leaving it unset is safer
+# than presenting arbitrary events as markets.
+_NATIVE_BY_TYPE = {
+    2: "Výstava",
+    3: "Divadlo",
+    4: "Film",
+    5: "Koncert",
+    8: "Trhy a jarmarky",
+    10: "Sport",
+    12: "Workshop",
+    16: "Přednáška a beseda",
+    19: "Festival",
+    21: "Pro děti",
+    22: "Sport",
+}
 log = logging.getLogger(__name__)
 
 
@@ -62,14 +77,23 @@ class HkinfoProgramSource(Source):
         out: list[Event] = []
         title_re = self.cfg.extra.get("include_title")
         venue_re = self.cfg.extra.get("include_venue")
+        venue_map = {
+            clean(source_venue).casefold(): mapped_venue
+            for source_venue, mapped_venue in (self.cfg.extra.get("venue_map") or {}).items()
+        }
         for card in cards:
             try:
                 event = self._parse_item(card, year, month, page_url or self.cfg.page_url)
             except Exception as exc:  # noqa: BLE001
                 log.warning("%s: skipping malformed item: %s", self.name, exc)
                 continue
-            if not event or (title_re and not re.search(title_re, event.title, re.IGNORECASE)) or (venue_re and not re.search(venue_re, event.venue or "", re.IGNORECASE)):
+            # Filter on HKinfo's original spelling.  A mapped canonical venue
+            # must not widen an intentionally narrow source selection.
+            raw_venue = event.venue if event else None
+            if not event or (title_re and not re.search(title_re, event.title, re.IGNORECASE)) or (venue_re and not re.search(venue_re, raw_venue or "", re.IGNORECASE)):
                 continue
+            if raw_venue:
+                event.venue = venue_map.get(clean(raw_venue).casefold(), raw_venue)
             out.append(event)
         return out
 
@@ -124,13 +148,24 @@ class HkinfoProgramSource(Source):
         event_url = urljoin(page_url, f"#{target_id.lstrip('#')}") if target_id else page_url
         body = card.select_one(".panel-body")
         image = body.select_one("img[src]") if body else None
-        native_category = self.cfg.extra.get("native_category") or _NATIVE_BY_TYPE.get(int(card.get("data-typ", "-1")))
+        try:
+            event_type = int(card.get("data-typ", "-1"))
+        except (TypeError, ValueError):
+            event_type = -1
+        native_category = self.cfg.extra.get("native_category") or _NATIVE_BY_TYPE.get(event_type)
         if not native_category:
             lowered = title.casefold()
             if "hiki joki" in lowered:
                 native_category = "Festival"
             elif "quiet music" in lowered:
                 native_category = "Koncert"
+        # HKinfo currently labels the children's planetarium programme as a
+        # concert (type 5).  This intentionally narrow correction avoids
+        # changing unrelated HKinfo concerts.
+        if venue and "hvězdárna a planetárium" in venue.casefold() and (
+            "pro děti" in title.casefold() or "pro nejmenší" in title.casefold()
+        ):
+            native_category = "Pro děti"
         return self.event(
             title=title, start=start, end=end, all_day=not times, url=event_url,
             place_raw=self.cfg.place, venue=venue, native_category=native_category,
