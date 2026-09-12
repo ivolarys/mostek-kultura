@@ -247,6 +247,13 @@ sources:
     url: manual_events.yaml
     page: https://github.com/ivolarys/mostek-kultura/blob/main/manual_events.yaml
     priority: 9
+  - name: uffo
+    label: UFFO Trutnov – Program
+    type: uffo
+    url: https://uffo.cz/program/
+    page: https://uffo.cz/program/
+    place: Trutnov
+    priority: 9
   - name: goout
     label: GoOut (vstupenkové akce podle venue)
     type: goout

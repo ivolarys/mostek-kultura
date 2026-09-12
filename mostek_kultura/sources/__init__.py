@@ -13,6 +13,7 @@ from .lodzie import LodzieSource
 from .manual import ManualSource
 from .npu_events import NpuEventsSource
 from .public4u import Public4uSource
+from .uffo import UffoSource
 from .vismo import VismoSource
 
 REGISTRY: dict[str, type[Source]] = {
@@ -26,6 +27,7 @@ REGISTRY: dict[str, type[Source]] = {
     "josefa_events": JosefaEventsSource,
     "vismo": VismoSource,
     "kultura_novapaka": KulturaNovaPakaSource,
+    "uffo": UffoSource,
     "manual": ManualSource,
 }
 

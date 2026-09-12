@@ -87,7 +87,7 @@ def test_goout_parse(cfg, root):
 @pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi",
                                   "valdstejnska-lodzie", "kuks-hospital", "zirec-domov", "bila-tremesna",
                                   "bila-tremesna-okoli", "kuks-obec", "dolni-brusnice", "jicin",
-                                  "nova-paka", "kultura-novapaka"])
+                                  "nova-paka", "kultura-novapaka", "uffo"])
 def test_fixture_manifest_present(root, name):
     assert (root / "tests" / "fixtures" / name / "manifest.json").exists()
 
@@ -176,6 +176,22 @@ def test_vismo_jicin_empty(cfg, root):
     # mujicin.cz's Vismo calendar has had no entries since 2022; the parser must not crash on an
     # empty result and should just yield nothing.
     assert _fetch(cfg, root, "jicin") == []
+
+
+def test_uffo(cfg, root):
+    events = _fetch(cfg, root, "uffo")
+    assert len(events) > 0
+    e = next(x for x in events if "ZMOŽEK" in x.title)
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-22 19:00" and not e.all_day
+    assert e.venue == "UFFO Trutnov"
+    assert e.native_category == "Koncert"
+    assert e.url == "https://uffo.cz/jiri-zmozek-p5037/"
+    assert e.image and e.image.startswith("https://")
+    kino = next(x for x in events if x.venue == "Kino Vesmír")
+    assert kino.native_category == "Film"
+    assert kino.url.startswith("https://uffo.cz/")
+    assert all(x.url.startswith("https://uffo.cz/") for x in events)
+    assert len({x.native_id for x in events}) == len(events)
 
 
 def test_kultura_novapaka(cfg, root):
