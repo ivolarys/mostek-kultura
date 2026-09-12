@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T05:36:31+00:00",
+ "fetched_at": "2026-09-12T06:44:13+00:00",
  "events": [
   {
    "title": "Nábor chlapců - oddíl sportovní gymnastiky",
@@ -20,6 +20,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:e6886c4a0415"
   },
   {
@@ -41,6 +44,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:44bb40d35b41"
   },
   {
@@ -62,6 +68,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:1755c3b7d88a"
   },
   {
@@ -83,6 +92,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:01bbeb2e9a66"
   },
   {
@@ -104,6 +116,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:67aa90669164"
   },
   {
@@ -125,6 +140,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:a7a1c454c9e5"
   },
   {
@@ -146,6 +164,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:b58fe53332da"
   },
   {
@@ -167,6 +188,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:ba1609c38ce8"
   },
   {
@@ -188,6 +212,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:86cf5c6d6e68"
   },
   {
@@ -209,6 +236,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:b13f759f6890"
   },
   {
@@ -230,6 +260,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:0815607fe281"
   },
   {
@@ -251,6 +284,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:6d42366d0df7"
   },
   {
@@ -272,6 +308,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:73ce2e96aadf"
   },
   {
@@ -293,6 +332,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:d173c0eedeca"
   },
   {
@@ -314,6 +356,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:110ab7ece22a"
   },
   {
@@ -335,6 +380,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:6c0dd3dd69e4"
   },
   {
@@ -356,6 +404,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:4eef3f42d693"
   },
   {
@@ -377,6 +428,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:ccd5f2c32057"
   },
   {
@@ -398,6 +452,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:195e5601b1e6"
   },
   {
@@ -419,6 +476,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:c870b4ec154a"
   },
   {
@@ -440,6 +500,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:a4e4a0903201"
   },
   {
@@ -461,6 +524,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:cadf28320eab"
   },
   {
@@ -482,6 +548,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:53526167bb24"
   },
   {
@@ -503,6 +572,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:92e2d7928e69"
   },
   {
@@ -524,6 +596,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:71012704818a"
   },
   {
@@ -545,6 +620,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:92758bd769c5"
   },
   {
@@ -566,6 +644,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:a3b761273ce4"
   },
   {
@@ -587,6 +668,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:0bc369e03d07"
   },
   {
@@ -608,6 +692,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:dea1155836f8"
   },
   {
@@ -629,6 +716,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:d000b4a31b68"
   },
   {
@@ -650,6 +740,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:f347ca90241e"
   },
   {
@@ -671,6 +764,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:68cc293e8da8"
   },
   {
@@ -692,6 +788,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:77fcf1dd5af7"
   },
   {
@@ -713,6 +812,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:b8f17433b895"
   },
   {
@@ -734,6 +836,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:92444b393d6e"
   },
   {
@@ -755,6 +860,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:2aca47ed93ce"
   },
   {
@@ -776,6 +884,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:412819bb4224"
   },
   {
@@ -797,6 +908,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:34abfdbd5e62"
   },
   {
@@ -818,6 +932,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:dd08bb0230e6"
   },
   {
@@ -839,6 +956,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:f2e41f16ca44"
   },
   {
@@ -860,6 +980,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:8d8bc76caac9"
   },
   {
@@ -881,6 +1004,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:100787ab0e53"
   },
   {
@@ -902,6 +1028,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:e1a651e2aa2e"
   },
   {
@@ -923,6 +1052,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:785fdb924026"
   },
   {
@@ -944,6 +1076,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:6ebfab0ba24d"
   },
   {
@@ -965,6 +1100,9 @@
    "sources": [],
    "urls": [],
    "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
    "id": "vrchlabi:2177d56ece22"
   }
  ]

@@ -399,6 +399,14 @@
   "place": "Josefov",
   "ts": "2026-09-12T06:13:23+00:00"
  },
+ "klaster-hostinne:8d4a45a7664a": {
+  "category": "prednaska",
+  "confidence": 0.9,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hostinné",
+  "ts": "2026-09-12T06:44:57+00:00"
+ },
  "kuks-hospital:680acff30dcc": {
   "category": "slavnost",
   "confidence": 0.9,
