@@ -26,7 +26,6 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .hero-locality{grid-column:2;grid-row:2;display:block;color:var(--label3);font-size:12px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hero-meta{min-width:0;color:var(--label3);font-size:11.5px;line-height:1.3;margin:0;text-align:right;display:grid;grid-template-columns:auto auto;align-items:center;justify-content:end;gap:0 10px;white-space:nowrap}
 .hero-update{white-space:nowrap}
-.source-preference-note{grid-column:1 / -1;color:var(--tint);font-size:12px;line-height:1.25}
 .empty-source-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:8px;color:var(--tint);font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .source-link{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;min-height:44px;padding:0 8px;color:var(--label2);font-size:13px;font-weight:650;white-space:nowrap;border-radius:8px}
 .source-link:focus-visible{outline-offset:-3px}
@@ -190,7 +189,7 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
         <h1 class="brand"><span>Mostkultura</span></h1>
         <span class="hero-locality">Kultura okolo Mostku</span>
       </div>
-      <div class="hero-meta"><div class="hero-update">Aktualizováno <span id="gen"></span> · <span id="total"></span></div><a class="source-link" data-source-settings href="zdroje.html" aria-label="Zdroje podle obce. Stav zdrojů: {{ source_ok_count }} z {{ source_total }} zdrojů v pořádku, {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}{% if bad_sources %}. Chybné zdroje: {{ bad_sources|map(attribute='name')|join(', ') }}{% endif %}" title="Stav zdrojů: {{ source_ok_count }} z {{ source_total }} zdrojů v pořádku, {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}{% if bad_sources %}. Chybné zdroje: {{ bad_sources|map(attribute='name')|join(', ') }}{% endif %}"><span id="sourceIcon" aria-hidden="true"></span><span class="source-link-label">Zdroje</span><span class="source-health-badge{% if source_bad_count %} source-health-badge--warning{% endif %}" aria-hidden="true">{{ source_ok_count }}/{{ source_total }}</span></a><div class="source-preference-note" id="sourcePreferenceNote" hidden><a data-source-settings href="zdroje.html">Upravený výběr zdrojů</a></div></div>
+      <div class="hero-meta"><div class="hero-update">Aktualizováno <span id="gen"></span> · <span id="total"></span></div><a class="source-link" data-source-settings href="zdroje.html" aria-label="Zdroje podle obce. Stav zdrojů: {{ source_ok_count }} z {{ source_total }} zdrojů v pořádku, {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}{% if bad_sources %}. Chybné zdroje: {{ bad_sources|map(attribute='name')|join(', ') }}{% endif %}" title="Stav zdrojů: {{ source_ok_count }} z {{ source_total }} zdrojů v pořádku, {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}{% if bad_sources %}. Chybné zdroje: {{ bad_sources|map(attribute='name')|join(', ') }}{% endif %}"><span id="sourceIcon" aria-hidden="true"></span><span class="source-link-label">Zdroje</span><span class="source-health-badge{% if source_bad_count %} source-health-badge--warning{% endif %}" aria-hidden="true">{{ source_ok_count }}/{{ source_total }}</span></a></div>
     </div>
   </header>
 
@@ -460,8 +459,6 @@ function render(){
   document.body.classList.toggle('view-map',st.view==='map');renderPeriods(snapshot.tabCounts);renderCategories(snapshot.categoryCounts,snapshot.categoryTotal);renderActiveFilters();renderList(main,ongoing);
   const search=document.getElementById('search');if(search.value!==st.q)search.value=st.q;document.getElementById('searchClear').hidden=!st.q;
   document.getElementById('resultCount').textContent=akceLabel(count);document.getElementById('rangeLabel').textContent=rangeLabel();
-  const excluded=sourcePrefs.disabledSources.length+sourcePrefs.disabledPlaces.length,sourceNote=document.getElementById('sourcePreferenceNote');
-  sourceNote.hidden=!excluded;
   document.getElementById('viewToggle').innerHTML=`<button type="button" data-view="list" class="seg-btn${st.view==='list'?' on':''}" aria-label="Zobrazit seznam" title="Seznam" aria-pressed="${st.view==='list'}">${ICON.list}</button><button type="button" data-view="map" class="seg-btn${st.view==='map'?' on':''}" aria-label="Zobrazit mapu" title="Mapa" aria-pressed="${st.view==='map'}">${ICON.map}</button>`;
   if(st.view==='map')showMap([...main,...ongoing]);else mapRequest++;
   restoreFocus();
