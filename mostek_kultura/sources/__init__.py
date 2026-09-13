@@ -27,6 +27,7 @@ from .naplavka_program import NaplavkaProgramSource
 from .npu_events import NpuEventsSource
 from .podzimni_sneni import PodzimniSneniSource
 from .public4u import Public4uSource
+from .sd_jilm import SdJilmSource
 from .simcal_calendar import SimcalCalendarSource
 from .uffo import UffoSource
 from .vismo import VismoSource
@@ -53,6 +54,7 @@ REGISTRY: dict[str, type[Source]] = {
     "vismo6": Vismo6Source,
     "kultura_novapaka": KulturaNovaPakaSource,
     "uffo": UffoSource,
+    "sd_jilm": SdJilmSource,
     "manual": ManualSource,
     "menu_music": MenuMusicSource,
     "mojekino": MojekinoSource,

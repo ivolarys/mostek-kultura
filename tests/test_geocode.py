@@ -137,6 +137,10 @@ def test_hradec_query_and_cinestar_inside_extended_bbox(tmp_path, monkeypatch):
     assert (outside.lat, outside.lon) == (50.209, 15.832)
 
 
+def test_jilemnice_uses_plain_query_outside_okres_trutnov():
+    assert _place_query("Jilemnice") == "Jilemnice, Česko"
+
+
 def test_venue_queries_try_institution_before_address_fallbacks():
     assert venue_queries("Divadlo DRAK – Hlavní scéna, ul. Dlouhá", "Hradec Králové") == [
         "Divadlo DRAK – Hlavní scéna, Dlouhá, Hradec Králové, Česko",

@@ -87,7 +87,7 @@ def test_goout_parse(cfg, root):
 @pytest.mark.parametrize("name", ["mostek", "lazne-belohrad", "dvur-kralove", "trutnov", "vrchlabi",
                                   "valdstejnska-lodzie", "kuks-hospital", "zirec-domov", "bila-tremesna",
                                   "bila-tremesna-okoli", "kuks-obec", "dolni-brusnice", "jicin",
-                                  "nova-paka", "kultura-novapaka", "uffo", "biograf-horice",
+                                  "nova-paka", "kultura-novapaka", "uffo", "sd-jilm", "biograf-horice",
                                   "horice-galerie", "horice-koruna", "epo1", "belohradska-sypka",
                                   "pecka", "josefov-kolonie", "klaster-hostinne"])
 def test_fixture_manifest_present(root, name):
@@ -194,6 +194,23 @@ def test_uffo(cfg, root):
     assert kino.url.startswith("https://uffo.cz/")
     assert all(x.url.startswith("https://uffo.cz/") for x in events)
     assert len({x.native_id for x in events}) == len(events)
+
+
+def test_sd_jilm_current_program_is_paginated_and_keeps_showtimes_separate(cfg, root):
+    events = _fetch(cfg, root, "sd-jilm")
+    assert len(events) >= 40
+    e = next(x for x in events if x.title == "Jakub Smolík")
+    assert e.start.strftime("%Y-%m-%d %H:%M") == "2026-09-16 19:00" and not e.all_day
+    assert e.venue == "SD Jilm" and e.native_category == "Koncert" and e.category == "koncert"
+    assert e.url == "https://www.sdjilm.cz/sd-jilm/koncert/jakub-smolik-2026"
+    assert e.image and e.image.startswith("https://www.sdjilm.cz/")
+    kino = next(x for x in events if x.title.startswith("Ádr - místo"))
+    assert kino.venue == "Kino 70" and kino.native_category == "Přednáška" and kino.category == "prednaska"
+    repeats = [x for x in events if x.title == "„Christmas show“"]
+    assert len(repeats) >= 2 and len({x.native_id for x in repeats}) == len(repeats)
+    assert {x.start.strftime("%H:%M") for x in repeats} == {"16:00", "19:30"}
+    assert len({x.native_id for x in events}) == len(events)
+    assert all("/archiv" not in x.url for x in events)
 
 
 def test_kultura_novapaka(cfg, root):

@@ -34,7 +34,7 @@ BBOX = (50.15, 50.9, 15.2, 16.3)    # lat_min, lat_max, lon_min, lon_max (sanity
 # Orlicí that a bare query resolves to instead). These aren't in okres Trutnov though, so a plain
 # "<place>, Česko" is used instead, verified against the result's display_name (Jičín/Hořice/Nová
 # Paka/Lázně Bělohrad/Pecka: okres Jičín; Jaroměř: okres Náchod).
-_PLAIN_QUERY = {"Hradec Králové", "Jičín", "Hořice", "Nová Paka", "Lázně Bělohrad", "Pecka", "Jaroměř"}
+_PLAIN_QUERY = {"Hradec Králové", "Jičín", "Jilemnice", "Hořice", "Nová Paka", "Lázně Bělohrad", "Pecka", "Jaroměř"}
 # Josefov is a village within Jaroměř (okres Náchod); a bare "Josefov, Česko" resolves to an
 # unrelated same-named village in okres Hodonín, so it needs its containing town spelled out.
 _QUERY_OVERRIDE = {"Josefov": "Josefov, Jaroměř, Česko"}

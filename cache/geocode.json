@@ -356,6 +356,13 @@
   "q": "Vančurova 378, Vrchlabí, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
  },
+ "kino 70|jilemnice": {
+  "lat": 50.6044839,
+  "lon": 15.5101429,
+  "precision": "venue",
+  "q": "Kino 70, Jilemnice, Česko",
+  "ts": "2026-09-13T12:35:20+00:00"
+ },
  "kino nova paka|nova paka": {
   "lat": 50.4962597,
   "lon": 15.5137138,
@@ -636,6 +643,13 @@
   "q": "Filharmonie Hradec Králové, Hradec Králové, Česko",
   "ts": "2026-09-12T10:20:25+00:00"
  },
+ "sd jilm|jilemnice": {
+  "lat": 50.6043663,
+  "lon": 15.5101164,
+  "precision": "venue",
+  "q": "Společenský dům Jilm, Roztocká 500, Jilemnice, Česko",
+  "ts": "2026-09-13T12:35:55+00:00"
+ },
  "shantea – cajovna a kavarna zamecka 1456, vrchlabi|vrchlabi": {
   "lat": null,
   "lon": null,
@@ -656,6 +670,13 @@
   "precision": "none",
   "q": "Sokol Lázně Bělohrad, Lázně Bělohrad, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "spolecensky dum jilm, roztocka 500|jilemnice": {
+  "lat": 50.6043663,
+  "lon": 15.5101164,
+  "precision": "venue",
+  "q": "Společenský dům Jilm, Roztocká 500, Jilemnice, Česko",
+  "ts": "2026-09-13T12:35:55+00:00"
  },
  "spolkova mistnost mks (masarykovo nam. 325)|nova paka": {
   "lat": null,
@@ -880,6 +901,13 @@
   "precision": "place",
   "q": "Jičín, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "|jilemnice": {
+  "lat": 50.6091761,
+  "lon": 15.5064747,
+  "precision": "place",
+  "q": "Jilemnice, Česko",
+  "ts": "2026-09-13T12:35:20+00:00"
  },
  "|josefov": {
   "lat": 50.3389353,

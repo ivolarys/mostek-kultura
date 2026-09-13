@@ -52,6 +52,8 @@ places:
     aliases: [Vrchlabí, KD Střelnice]
   - name: Jičín
     aliases: [Jičíně, Jičína, Valdštejnská lodžie, Lodžie, Valdštejnské lodžii, Valdštejnské imaginárium]
+  - name: Jilemnice
+    aliases: [Jilemnici, SD Jilm, Společenský dům Jilm, Kino 70 Jilemnice]
   - name: Hradec Králové
     aliases: [Hradci Králové, Hradce Králové]
 
@@ -269,6 +271,14 @@ sources:
     page: https://uffo.cz/program/
     place: Trutnov
     priority: 9
+  - name: sd-jilm
+    label: Společenský dům Jilm Jilemnice – Program
+    type: sd_jilm
+    url: https://www.sdjilm.cz/sd-jilm/udalosti
+    page: https://www.sdjilm.cz/sd-jilm/udalosti
+    place: Jilemnice
+    priority: 9
+    pages: 5
   - name: biograf-horice
     label: Biograf Na Špici Hořice – Program
     type: mojekino
