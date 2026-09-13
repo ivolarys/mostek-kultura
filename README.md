@@ -15,6 +15,8 @@ Mostkultura je denní přehled kulturních a společenských akcí v okolí obce
 
 Když nějaký zdroj spadne, použijí se jeho data z posledního úspěšného běhu (`cache/last_good/`), stav je vidět v hlavičce stránky a v `status.json`.
 
+Hlavní automatický běh je naplánovaný na 04:30 UTC. Protože GitHub negarantuje přesný čas spuštění plánovaných workflow a může je zpozdit nebo vynechat, následují záložní pokusy v 05:17, 07:17 a 10:17 UTC (v českém letním čase 07:17, 09:17 a 12:17; v zimním 06:17, 08:17 a 11:17). Každý plánovaný pokus nejdřív ověří veřejné `status.json` a přeskočí se pouze tehdy, když už byl publikován úspěšný build od poslední hranice 04:30 UTC. Push a ruční spuštění tuto kontrolu nepoužívají a sestavení provedou vždy.
+
 Na stránce **Zdroje** lze v každém prohlížeči samostatně skrýt celé obce i jednotlivé zdroje. Volba se ukládá jen lokálně do prohlížeče; neovlivní společná data ani Home Assistant.
 
 Základní hradecký výběr tvoří Bio Central, CineStar, Klicperovo divadlo,

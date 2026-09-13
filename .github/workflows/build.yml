@@ -3,6 +3,7 @@ name: Build & deploy
 on:
   schedule:
     - cron: "30 4 * * *"   # 06:30 CEST / 05:30 CET
+    - cron: "17 5,7,10 * * *"   # backup attempts; skipped after a successful daily deploy
   workflow_dispatch:
   push:
     branches: [main]
@@ -17,7 +18,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check-refresh:
+    runs-on: ubuntu-latest
+    outputs:
+      should_build: ${{ steps.status.outputs.should_build }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: status
+        name: Check deployed status
+        run: python scripts/check_refresh.py
+
   build:
+    needs: check-refresh
+    # Missing output or a failed check must refresh; only an explicit fresh result skips it.
+    if: ${{ !cancelled() && (github.event_name != 'schedule' || needs.check-refresh.outputs.should_build != 'false') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -59,6 +74,7 @@ jobs:
 
   deploy:
     needs: build
+    if: ${{ !cancelled() && needs.build.result == 'success' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages

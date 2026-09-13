@@ -4,7 +4,7 @@ Komunikuj česky. Stručnost a přímost, minimum omáčky. Identifikátory v k�
 
 ## Co to je
 
-Denní agregátor kulturních akcí v okolí obce Mostek. GitHub Actions (cron 04:30 UTC) spustí `python -m mostek_kultura build`, výsledek (`site/`) jde na GitHub Pages: https://ivolarys.github.io/mostkultura/. Home Assistant čte `summary.json` (REST senzory) a stránku zobrazuje v iframe (`?embed=1`). Plán: `~/.claude/plans/cht-l-bych-ud-lat-aplikaci-validated-quasar.md`.
+Denní agregátor kulturních akcí v okolí obce Mostek. GitHub Actions (hlavní cron 04:30 UTC, záložní pokusy 05:17, 07:17 a 10:17 UTC) spustí `python -m mostek_kultura build`, výsledek (`site/`) jde na GitHub Pages: https://ivolarys.github.io/mostkultura/. Plánované pokusy kontrolují veřejné `status.json` a přeskočí se jen po publikovaném buildu od poslední hranice 04:30 UTC; při chybě kontroly se build spustí. Push a `workflow_dispatch` běží vždy. Home Assistant čte `summary.json` (REST senzory) a stránku zobrazuje v iframe (`?embed=1`). Plán: `~/.claude/plans/cht-l-bych-ud-lat-aplikaci-validated-quasar.md`.
 
 ## Delegování práce na subagenty (modely)
 
