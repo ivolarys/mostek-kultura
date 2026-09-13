@@ -40,6 +40,8 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
   vpravo nahoře. Nevracej „Kam vyrazíme?“ ani původní slogan. U akcí bez
   barevné svislé čárky; zdroj na desktopu napravo od štítku kategorie.
+- V dialogu Filtry/Místa nezobrazuj města vypnutá na úrovni města; po jejich
+  vypnutí odstraň jejich výběr z aktivních i rozpracovaných filtrů.
 
 ## Sdílení náhledů
 

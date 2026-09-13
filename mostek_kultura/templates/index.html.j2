@@ -330,6 +330,7 @@ const eventPlaces=new Set(EVENTS.map(e=>e.place||'?'));
 const validPlaces=new Set([...D.places,...eventPlaces]);
 const LEGACY_PLACE_MAP={'Valdštejnská lodžie':'Jičín'};
 const st={tab:'today',cat:new Set(),place:new Set(),group:'category',view:'list',q:''};
+const disabledPlaceSet=()=>new Set(sourcePrefs.disabledPlaces);
 
 function parseState(){
   const h=new URLSearchParams(location.hash.replace(/^#/,''));
@@ -337,7 +338,8 @@ function parseState(){
   st.group=VALID.group.has(h.get('group'))?h.get('group'):(VALID.group.has(qs.get('group'))?qs.get('group'):'category');
   st.view=VALID.view.has(h.get('view'))?h.get('view'):(VALID.view.has(qs.get('view'))?qs.get('view'):'list');
   st.cat=new Set((h.get('cat')||'').split(',').filter(x=>VALID.cat.has(x)));
-  st.place=new Set((h.get('place')||'').split(',').map(x=>LEGACY_PLACE_MAP[x]||x).filter(x=>validPlaces.has(x)));
+  const disabledPlaces=disabledPlaceSet();
+  st.place=new Set((h.get('place')||'').split(',').map(x=>LEGACY_PLACE_MAP[x]||x).filter(x=>validPlaces.has(x)&&!disabledPlaces.has(x)));
   st.q=(h.get('q')||'').trim().slice(0,120);
 }
 function stateHash(){
@@ -376,7 +378,7 @@ function eventHtml(e,showDate){
   const cls=`row event-row c-${esc(e.category)}`;
   return e.url?`<a class="${cls}" href="${esc(e.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="${cls}">${inner}</div>`;
 }
-function allPlaces(){return [...new Set([...D.places,...eventPlaces])].sort((a,b)=>collator.compare(a==='?'?'zzzz':a,b==='?'?'zzzz':b))}
+function allPlaces(){const disabledPlaces=disabledPlaceSet();return [...new Set([...D.places,...eventPlaces])].filter(place=>!disabledPlaces.has(place)).sort((a,b)=>collator.compare(a==='?'?'zzzz':a,b==='?'?'zzzz':b))}
 function placeCounts(query=norm(st.q)){
   const out={},range=rangeFor(),noPlaceFilter=new Set();
   EVENTS.forEach(e=>{
@@ -534,15 +536,23 @@ document.getElementById('categories').addEventListener('wheel',e=>{
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.closest('#filterDialog'))return;if(b.dataset.tab)update(()=>st.tab=b.dataset.tab);else if(b.dataset.view)update(()=>st.view=b.dataset.view);else if(b.dataset.cat)update(()=>st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat));else if(b.hasAttribute('data-clear-cats'))update(()=>st.cat.clear());else if(b.hasAttribute('data-clear-q'))update(()=>st.q='');else if(b.dataset.removePlace)update(()=>st.place.delete(b.dataset.removePlace));else if(b.hasAttribute('data-reset'))update(()=>{st.cat.clear();st.place.clear();st.q=''})});
 window.addEventListener('hashchange',()=>{parseState();canonicalize();render()});
 function syncSourcePreferences(){
+  const filters=document.getElementById('filterDialog');
+  const focusedDraftPlace=filters.open&&document.activeElement?.dataset?.draftPlace;
   sourcePrefs=MostkulturaSources.read();
   sourceAllowed=MostkulturaSources.compile(sourcePrefs);
+  const disabledPlaces=disabledPlaceSet();
+  const previousPlaces=[...st.place];
+  st.place=new Set(previousPlaces.filter(place=>!disabledPlaces.has(place)));
+  draftPlaces=new Set([...draftPlaces].filter(place=>!disabledPlaces.has(place)));
+  const placeChanged=st.place.size!==previousPlaces.length;
   updateSourceHealthBadge();
   const dialog=document.getElementById('eventDialog');if(dialog.open)closeDialog(dialog);
   lastMapKey='';
   document.getElementById('total').textContent=akceLabel(EVENTS.filter(sourceAllowed).length);
+  if(placeChanged)canonicalize();
   render();
-  const filters=document.getElementById('filterDialog');
   if(filters.open){const body=document.getElementById('filterBody'),scroll=body.scrollTop;renderFilterDialog();body.scrollTop=scroll;}
+  if(filters.open&&focusedDraftPlace&&disabledPlaces.has(focusedDraftPlace))document.querySelector('#filterBody [data-all-places]')?.focus({preventScroll:true});
 }
 window.addEventListener('storage',e=>{if(e.key===MostkulturaSources.KEY||e.key===null)syncSourcePreferences()});
 window.addEventListener('pageshow',syncSourcePreferences);
