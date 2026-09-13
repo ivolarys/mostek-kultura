@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-13T13:48:00+00:00",
+ "fetched_at": "2026-09-13T13:57:10+00:00",
  "events": [
   {
    "title": "Tlapková patrola: Dinosauří film",
@@ -962,30 +962,6 @@
    "id": "bio-central:9dc49c4e91cf"
   },
   {
-   "title": "Dvacet let Met v kinech: Oslava výročí",
-   "start": "2026-09-19T19:00:00+02:00",
-   "source": "bio-central",
-   "url": "https://biocentral.cz/?projection=50654",
-   "end": "2026-09-19T22:00:00+02:00",
-   "all_day": false,
-   "place": null,
-   "place_raw": "Hradec Králové",
-   "venue": "Bio Central",
-   "category": null,
-   "native_category": "Film",
-   "description": "\"Z&aacute;znam vybran&yacute;ch vystoupen&iacute; opern&iacute;ch s&oacute;listek a s&oacute;listů, předev&scaron;&iacute;m Lise Davidsen, Joyce DiDonato, Elīny Garanči, Dmitrije Hvorostovskyho, Jonase Kaufmanna, Petera Matteie, Sondry Radvanovsky, Nadine Sierry a dal&scaron;&iacute;ch Dvacet let Met v&nbsp;kinech oslavuje dvě des&iacute;tky let toho nejkr&aacute;sněj&scaron;&iacute;ho z&nbsp;Metropolitn&iacute; opery v&nbsp;kinos&aacute;lech po cel&eacute;m světě. Div&aacute;ci se mohou tě&scar",
-   "image": "https://biocentral.cz/uploads/images/movies/2026/05/21/511754d2baaf361031e9417f0604168b.jpg",
-   "native_id": "50654",
-   "ongoing": false,
-   "sources": [],
-   "urls": [],
-   "needs_review": false,
-   "lat": null,
-   "lon": null,
-   "geo": null,
-   "id": "bio-central:ed293d261874"
-  },
-  {
    "title": "Abonmá METinHD | 2026-2027 | Bio Central",
    "start": "2026-09-19T19:00:00+02:00",
    "source": "bio-central",
@@ -1008,6 +984,30 @@
    "lon": null,
    "geo": null,
    "id": "bio-central:25a971baf81f"
+  },
+  {
+   "title": "Dvacet let Met v kinech: Oslava výročí",
+   "start": "2026-09-19T19:00:00+02:00",
+   "source": "bio-central",
+   "url": "https://biocentral.cz/?projection=50654",
+   "end": "2026-09-19T22:00:00+02:00",
+   "all_day": false,
+   "place": null,
+   "place_raw": "Hradec Králové",
+   "venue": "Bio Central",
+   "category": null,
+   "native_category": "Film",
+   "description": "\"Z&aacute;znam vybran&yacute;ch vystoupen&iacute; opern&iacute;ch s&oacute;listek a s&oacute;listů, předev&scaron;&iacute;m Lise Davidsen, Joyce DiDonato, Elīny Garanči, Dmitrije Hvorostovskyho, Jonase Kaufmanna, Petera Matteie, Sondry Radvanovsky, Nadine Sierry a dal&scaron;&iacute;ch Dvacet let Met v&nbsp;kinech oslavuje dvě des&iacute;tky let toho nejkr&aacute;sněj&scaron;&iacute;ho z&nbsp;Metropolitn&iacute; opery v&nbsp;kinos&aacute;lech po cel&eacute;m světě. Div&aacute;ci se mohou tě&scar",
+   "image": "https://biocentral.cz/uploads/images/movies/2026/05/21/511754d2baaf361031e9417f0604168b.jpg",
+   "native_id": "50654",
+   "ongoing": false,
+   "sources": [],
+   "urls": [],
+   "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
+   "id": "bio-central:ed293d261874"
   },
   {
    "title": "Rose",
