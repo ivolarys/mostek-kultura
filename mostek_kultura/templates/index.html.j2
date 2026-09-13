@@ -120,6 +120,7 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .tabbar{position:fixed;left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));max-width:600px;margin-inline:auto;z-index:25;display:flex;height:64px;padding:5px;background:#f46b45;border:1px solid rgba(120,40,20,.22);border-radius:21px;box-shadow:0 12px 35px rgba(157,57,28,.24)}
 .tab-btn{flex:1;min-width:0;min-height:52px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#241420}
 .tab-btn.on{color:#a93620;background:#fff;box-shadow:0 2px 8px rgba(157,57,28,.2)}
+.tab-btn:not(.on) .icon{color:#fff}
 .tab-btn:focus-visible{outline:3px solid #241420;outline-offset:0}
 .tab-btn .icon{width:21px;height:21px}
 .tab-label{font-size:10px;font-weight:650;line-height:1.1;white-space:nowrap}
