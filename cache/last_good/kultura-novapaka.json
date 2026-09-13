@@ -1,30 +1,6 @@
 {
- "fetched_at": "2026-09-12T20:03:46+00:00",
+ "fetched_at": "2026-09-13T09:39:37+00:00",
  "events": [
-  {
-   "title": "Pivovarská diskotéka",
-   "start": "2026-09-12T19:00:00+02:00",
-   "source": "kultura-novapaka",
-   "url": "http://www.kultura-novapaka.cz/index.php?detail=pivovarska-diskoteka",
-   "end": "2026-09-13T01:00:00+02:00",
-   "all_day": false,
-   "place": null,
-   "place_raw": null,
-   "venue": "Pivovar Nová Paka a.s.",
-   "category": null,
-   "native_category": "tanec",
-   "description": "PIVOVARSKÁ DISKOTÉKA JE TADY! Přijďte si užít večer plný hudby, tance, zábavy a pořádně vychlazeného Novopackého piva! Hraje DJ Jirka Ježek 12. 9. 2026 od 19:00 Areál Novopackého pivovaru Navíc bez vstupného! Vezměte partu, dobrou náladu a přijďte to s námi pořádně rozjet! Těšíme se na vás!",
-   "image": "http://www.kultura-novapaka.cz/akce-thumbs/pivovarska-diskoteka.jpg",
-   "native_id": "http://www.kultura-novapaka.cz/index.php?detail=pivovarska-diskoteka",
-   "ongoing": false,
-   "sources": [],
-   "urls": [],
-   "needs_review": false,
-   "lat": null,
-   "lon": null,
-   "geo": null,
-   "id": "kultura-novapaka:591619418a7d"
-  },
   {
    "title": "Jan Pokorný",
    "start": "2026-09-15T18:00:00+02:00",

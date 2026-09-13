@@ -1,30 +1,6 @@
 {
- "fetched_at": "2026-09-12T20:03:41+00:00",
+ "fetched_at": "2026-09-13T09:39:33+00:00",
  "events": [
-  {
-   "title": "První třemešenská burza v parku",
-   "start": "2026-09-12T07:00:00+02:00",
-   "source": "bila-tremesna",
-   "url": "https://www.bilatremesna.cz/volny-cas/kalendar-akci-v-bile-tremesne/prvni-tremesenska-burza-v-parku-1922_1222cs.html",
-   "end": null,
-   "all_day": false,
-   "place": null,
-   "place_raw": null,
-   "venue": null,
-   "category": null,
-   "native_category": null,
-   "description": "Přijďte na první třemešenskou burzu, která se uskuteční, pokud počasí dovolí. Akce je naplánována na sobotu 12. září 2026 od 7 h.",
-   "image": "https://www.bilatremesna.cz/evt_image.php?img=3235&width=300",
-   "native_id": "event-1922",
-   "ongoing": false,
-   "sources": [],
-   "urls": [],
-   "needs_review": false,
-   "lat": null,
-   "lon": null,
-   "geo": null,
-   "id": "bila-tremesna:84fc89659970"
-  },
   {
    "title": "2. ročník meziobecního klání",
    "start": "2026-09-19T13:00:00+02:00",

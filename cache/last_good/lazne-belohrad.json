@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-12T20:01:36+00:00",
+ "fetched_at": "2026-09-13T09:37:26+00:00",
  "events": [
   {
    "title": "Stand-up show Undeground Comedy Club",
@@ -72,30 +72,6 @@
    "lon": null,
    "geo": null,
    "id": "lazne-belohrad:d89913f09fa5"
-  },
-  {
-   "title": "Beat Brtewski v Pekařství u Rýdlů",
-   "start": "2026-09-12T08:00:00+02:00",
-   "source": "lazne-belohrad",
-   "url": "https://www.lazne-belohrad.cz/kalendar-akci/beat-brtewski-v-pekarstvi-u-rydl",
-   "end": null,
-   "all_day": false,
-   "place": null,
-   "place_raw": null,
-   "venue": "Beat Brtewski",
-   "category": null,
-   "native_category": "Koncert",
-   "description": "Přijďte si užít sobotní ráno trochu jinak. Pekařství u Rýdlů rozezní 12. září autorská hudba kapely Beat Brtewski.",
-   "image": "https://www.lazne-belohrad.cz/image.php?nid=21730&oid=13831599",
-   "native_id": "https://www.lazne-belohrad.cz/kalendar-akci/beat-brtewski-v-pekarstvi-u-rydl",
-   "ongoing": false,
-   "sources": [],
-   "urls": [],
-   "needs_review": false,
-   "lat": null,
-   "lon": null,
-   "geo": null,
-   "id": "lazne-belohrad:d51465c4f902"
   },
   {
    "title": "POCTA PÍSNIČCE - Koncert Miroslava Palečka",
