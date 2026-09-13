@@ -415,6 +415,14 @@
   "place": "Hradec Králové",
   "ts": "2026-09-12T11:02:41+00:00"
  },
+ "hradec-vyber:118fa1361e46": {
+  "category": "prednaska",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-13T12:45:17+00:00"
+ },
  "hradec-vyber:158398340543": {
   "category": "prednaska",
   "confidence": 1.0,
@@ -422,6 +430,14 @@
   "needs_review": false,
   "place": "Hradec Králové",
   "ts": "2026-09-12T20:09:05+00:00"
+ },
+ "hradec-vyber:167cb703f632": {
+  "category": "vystava",
+  "confidence": 0.85,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-13T12:45:17+00:00"
  },
  "hradec-vyber:1b22bc528de5": {
   "category": "vystava",
@@ -478,6 +494,14 @@
   "needs_review": false,
   "place": "Hradec Králové",
   "ts": "2026-09-13T09:44:55+00:00"
+ },
+ "hradec-vyber:2a0480337b74": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-13T12:45:17+00:00"
  },
  "hradec-vyber:2b41cc3f21b3": {
   "category": "prednaska",
@@ -719,6 +743,14 @@
   "place": "Hradec Králové",
   "ts": "2026-09-12T14:53:43+00:00"
  },
+ "hradec-vyber:d63736bf8671": {
+  "category": "koncert",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-13T12:45:17+00:00"
+ },
  "hradec-vyber:d7a74c2ebba0": {
   "category": "divadlo",
   "confidence": 0.95,
@@ -766,6 +798,14 @@
   "needs_review": false,
   "place": "Hradec Králové",
   "ts": "2026-09-12T18:14:17+00:00"
+ },
+ "hradec-vyber:f918a726f598": {
+  "category": "divadlo",
+  "confidence": 0.95,
+  "model": "gpt-5-mini",
+  "needs_review": false,
+  "place": "Hradec Králové",
+  "ts": "2026-09-13T12:45:17+00:00"
  },
  "josefov-kolonie:54d7d1bf8a41": {
   "category": "vystava",
