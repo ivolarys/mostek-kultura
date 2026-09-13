@@ -29,7 +29,7 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
   až v oddělené, výchozím způsobem rozbalené podsekci.
 - Odkaz „Zdroje“ patří do hlavičky.
 - Kategorie se posouvají vodorovně a vybraná kategorie zůstává přímo v liště.
-- V hlavičce jsou metadata a odkaz „Zdroje“ vedle sebe.
+- V hlavičce jsou značka a odkaz „Zdroje“ na jednom horním řádku; metadata jsou jako menší druhý řádek pod nimi.
 - Respektuj safe area nahoře i po stranách; sticky prvky musí zohlednit horní inset.
 - Oddělení několikadenních akcí používá tenký cikcak se středovým textem a kompaktní mezery.
 - Souhrn období zobrazuje datum před počtem; přepínač seznam/mapa používá pouze ikony.
@@ -37,8 +37,9 @@ následující volba modelů má přednost před jeho staršími pokyny k model�
 - Výchozí období filtrů je „Dnes“ a výchozí kategorie „Vše“.
 - Období Dnes/Zítra/Víkend/Týden/Vše zůstává jako spodní ikonová lišta na všech běžných šířkách s výrazným oranžovým pozadím.
 - Značka je výraznější; aktualizace a počet akcí se v hlavičce nikdy nezalamují.
-- Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“, aktualizace
-  vpravo nahoře. Nevracej „Kam vyrazíme?“ ani původní slogan. U akcí bez
+- Hlavička má být kompaktní: Mostkultura a „Kultura okolo Mostku“ vlevo,
+  „Zdroje“ vpravo na horním řádku a „Aktualizováno“ s počtem na druhém řádku.
+  Nevracej „Kam vyrazíme?“ ani původní slogan. U akcí bez
   barevné svislé čárky; zdroj na desktopu napravo od štítku kategorie.
 - V dialogu Filtry/Místa nezobrazuj města vypnutá na úrovni města; po jejich
   vypnutí odstraň jejich výběr z aktivních i rozpracovaných filtrů.
