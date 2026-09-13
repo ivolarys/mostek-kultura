@@ -52,5 +52,22 @@
   function eventAllowed(event, prefs) {
     return compile(prefs)(event);
   }
-  global.MostkulturaSources = { KEY, normalize, defaults, read, save, compile, eventAllowed };
+  function summarizeSources(catalog, prefs) {
+    const current = normalize(prefs);
+    const disabledSources = new Set(current.disabledSources);
+    const disabledPlaces = new Set(current.disabledPlaces);
+    const sources = Array.isArray(catalog) ? catalog.filter(source => source && source.enabled !== false) : [];
+    const selected = sources.filter(source => !disabledSources.has(source.name)
+      && !(source.place && disabledPlaces.has(source.place)));
+    const healthy = selected.filter(source => source.status === 'ok');
+    const issues = selected.filter(source => source.status === 'fallback' || source.status === 'error');
+    return {
+      available: sources.length,
+      selected: selected.length,
+      healthy: healthy.length,
+      issues: issues.length,
+      issueLabels: issues.map(source => source.label || source.name),
+    };
+  }
+  global.MostkulturaSources = { KEY, normalize, defaults, read, save, compile, eventAllowed, summarizeSources };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -177,10 +177,6 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
 </head>
 <body>
 <div class="wrap">
-  {% set source_ok_count = status.sources|selectattr('status','equalto','ok')|list|length %}
-  {% set bad_sources = status.sources|rejectattr('status','equalto','ok')|list %}
-  {% set source_bad_count = bad_sources|length %}
-  {% set source_total = source_ok_count + source_bad_count %}
   <header class="hero">
     <div class="hero-grid">
       <div class="hero-identity">
@@ -188,7 +184,7 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
         <h1 class="brand"><span>Mostkultura</span></h1>
         <span class="hero-locality">Kultura okolo Mostku</span>
       </div>
-      <div class="hero-meta"><div class="hero-update">Aktualizováno <span id="gen"></span> · <span id="total"></span></div><a class="source-link" data-source-settings href="zdroje.html" aria-label="Zdroje podle obce. Stav zdrojů: {{ source_ok_count }} z {{ source_total }} zdrojů v pořádku, {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}{% if bad_sources %}. Chybné zdroje: {{ bad_sources|map(attribute='name')|join(', ') }}{% endif %}" title="Stav zdrojů: {{ source_ok_count }} z {{ source_total }} zdrojů v pořádku, {{ source_bad_count }} {% if source_bad_count == 1 %}chyba{% elif source_bad_count in [2, 3, 4] %}chyby{% else %}chyb{% endif %}{% if bad_sources %}. Chybné zdroje: {{ bad_sources|map(attribute='name')|join(', ') }}{% endif %}"><span id="sourceIcon" aria-hidden="true"></span><span class="source-link-label">Zdroje</span><span class="source-health-badge{% if source_bad_count %} source-health-badge--warning{% endif %}" aria-hidden="true">{{ source_ok_count }}/{{ source_total }}</span></a></div>
+      <div class="hero-meta"><div class="hero-update">Aktualizováno <span id="gen"></span> · <span id="total"></span></div><a class="source-link" data-source-settings href="zdroje.html" aria-label="Zdroje podle obce" title="Zdroje podle obce"><span id="sourceIcon" aria-hidden="true"></span><span class="source-link-label">Zdroje</span><span id="sourceHealthBadge" class="source-health-badge" aria-hidden="true" hidden></span></a></div>
     </div>
   </header>
 
@@ -260,13 +256,24 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
 </dialog>
 
 <script type="application/json" id="data">{{ data_json|safe }}</script>
-<script src="source-preferences.js?v=mostkultura-3"></script>
+<script src="source-preferences.js?v=mostkultura-4"></script>
 <script>
 (function(){
 'use strict';
 const D=JSON.parse(document.getElementById('data').textContent);
 let sourcePrefs=MostkulturaSources.read();
 let sourceAllowed=MostkulturaSources.compile(sourcePrefs);
+function updateSourceHealthBadge(){
+  const summary=MostkulturaSources.summarizeSources(D.source_catalog,sourcePrefs);
+  const health=`${summary.healthy} z ${summary.selected} vybraných zdrojů v pořádku`;
+  const issues=summary.issues ? `. Problémové zdroje: ${summary.issueLabels.join(', ')}` : '';
+  const label=`Vybrané zdroje: ${summary.selected} z ${summary.available} dostupných. Stav vybraných zdrojů: ${health}${issues}`;
+  const link=document.querySelector('[data-source-settings]'),badge=document.getElementById('sourceHealthBadge');
+  link.setAttribute('aria-label',label);link.title=label;
+  badge.textContent=`${summary.selected}/${summary.available}`;
+  badge.classList.toggle('source-health-badge--warning',summary.issues>0);
+  badge.hidden=false;
+}
 const TZ=D.tz||'Europe/Prague';
 const qs=new URLSearchParams(location.search);
 const embed=qs.get('embed')==='1'||new URLSearchParams(location.hash.slice(1)).has('embed');
@@ -500,6 +507,7 @@ function openEventDialog(title,events){const dialog=document.getElementById('eve
 document.getElementById('searchIcon').innerHTML=ICON.search;document.getElementById('searchClear').innerHTML=ICON.close;document.getElementById('filterIcon').innerHTML=ICON.filter;document.getElementById('filterClose').innerHTML=ICON.close;document.getElementById('eventClose').innerHTML=ICON.close;document.getElementById('sourceIcon').innerHTML=ICON.source;
 document.getElementById('gen').textContent=generatedFormatter.format(new Date(D.generated_at));
 document.getElementById('total').textContent=akceLabel(EVENTS.filter(sourceAllowed).length);
+updateSourceHealthBadge();
 document.getElementById('search').addEventListener('input',e=>update(()=>st.q=e.target.value.trimStart().slice(0,120),true));
 document.getElementById('search').addEventListener('change',()=>canonicalize());
 document.getElementById('searchClear').addEventListener('click',()=>update(()=>st.q=''));
@@ -528,6 +536,7 @@ window.addEventListener('hashchange',()=>{parseState();canonicalize();render()})
 function syncSourcePreferences(){
   sourcePrefs=MostkulturaSources.read();
   sourceAllowed=MostkulturaSources.compile(sourcePrefs);
+  updateSourceHealthBadge();
   const dialog=document.getElementById('eventDialog');if(dialog.open)closeDialog(dialog);
   lastMapKey='';
   document.getElementById('total').textContent=akceLabel(EVENTS.filter(sourceAllowed).length);

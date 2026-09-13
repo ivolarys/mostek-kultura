@@ -53,6 +53,28 @@ const compiled = prefs.compile(selected);
 assert.equal(compiled(direct), false);
 assert.equal(compiled(shared), true);
 
+const catalog = [
+  {name:'mostek', label:'Mostek', place:'Mostek', status:'ok'},
+  {name:'hk-ok', label:'Hradec OK', place:'Hradec Králové', status:'ok'},
+  {name:'hk-fallback', label:'Hradec záloha', place:'Hradec Králové', status:'fallback'},
+  {name:'regional', label:'Regionální', place:null, status:'error'},
+  {name:'zero-events', label:'Bez akcí', place:'Trutnov', status:'ok'},
+];
+assert.deepEqual(plain(prefs.summarizeSources(catalog, defaults)),
+  {available:5, selected:3, healthy:2, issues:1, issueLabels:['Regionální']});
+assert.deepEqual(plain(prefs.summarizeSources(catalog, all)),
+  {available:5, selected:5, healthy:3, issues:2, issueLabels:['Hradec záloha','Regionální']});
+assert.deepEqual(plain(prefs.summarizeSources(catalog, {disabledSources:['mostek','unknown'], disabledPlaces:['Trutnov']})),
+  {available:5, selected:3, healthy:1, issues:2, issueLabels:['Hradec záloha','Regionální']});
+assert.deepEqual(plain(prefs.summarizeSources(catalog, {disabledSources:['hk-fallback'], disabledPlaces:['Hradec Králové']})),
+  {available:5, selected:3, healthy:2, issues:1, issueLabels:['Regionální']});
+assert.deepEqual(plain(prefs.summarizeSources(catalog, {disabledSources:['mostek','hk-ok'], disabledPlaces:['Hradec Králové','Trutnov']})),
+  {available:5, selected:1, healthy:0, issues:1, issueLabels:['Regionální']});
+assert.deepEqual(plain(prefs.summarizeSources(catalog, {disabledSources:catalog.map(source=>source.name), disabledPlaces:[]})),
+  {available:5, selected:0, healthy:0, issues:0, issueLabels:[]});
+assert.deepEqual(plain(prefs.summarizeSources([], all)),
+  {available:0, selected:0, healthy:0, issues:0, issueLabels:[]});
+
 values.set('unrelated-setting', 'preserve');
 assert.equal(prefs.save(selected), true);
 assert.deepEqual(plain(prefs.read()), selected);

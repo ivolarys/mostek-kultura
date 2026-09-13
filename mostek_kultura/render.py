@@ -174,8 +174,17 @@ def render_site(events: list[Event], cfg: Config, statuses: list[SourceStatus], 
     env = Environment(loader=FileSystemLoader(TEMPLATES), autoescape=select_autoescape(["html", "j2"]))
     env.filters["akce"] = plural_akce
     tpl = env.get_template("index.html.j2")
+    status_by_name = {source.name: source.status for source in statuses}
+    # The homepage needs the complete configured catalog, rather than only
+    # sources represented by currently visible events, to honor local prefs.
+    html_payload = {**payload, "source_catalog": [{
+        "name": source.name,
+        "label": source.title,
+        "place": source.place,
+        "status": status_by_name.get(source.name, "error"),
+    } for source in cfg.sources if source.enabled]}
     html = tpl.render(
-        data_json=json.dumps(payload, ensure_ascii=False).replace("</", "<\\/"),
+        data_json=json.dumps(html_payload, ensure_ascii=False).replace("</", "<\\/"),
         status=status, generated_at=payload["generated_at"], count=len(events),
     )
     (out_dir / "index.html").write_text(html, encoding="utf-8")

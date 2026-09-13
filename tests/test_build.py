@@ -1,4 +1,5 @@
 import json
+import re
 
 from mostek_kultura.build import build
 
@@ -10,12 +11,18 @@ def test_offline_build(root, tmp_path):
     assert events["events"] and all(e["place"] or e["venue"] for e in events["events"])
     assert all(e["category"] for e in events["events"])
     assert all(e["source_labels"] for e in events["events"])
+    html = (tmp_path / "index.html").read_text(encoding="utf-8")
+    homepage_data = json.loads(re.search(r'<script type="application/json" id="data">(.*?)</script>', html).group(1))
+    assert "source_catalog" not in events
+    catalog = {source["name"]: source for source in homepage_data["source_catalog"]}
+    assert {"name", "label", "place", "status"} <= set(catalog["mostek"])
+    assert catalog["mostek"]["place"] == "Mostek"
+    assert catalog["goout"]["place"] is None
     summary = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))
     for key in ("today", "tomorrow", "weekend", "week"):
         assert {"count", "ongoing_count", "events"} <= set(summary[key])
         assert len(summary[key]["events"]) <= 10
     assert (tmp_path / "summary.json").stat().st_size < 16_000
-    html = (tmp_path / "index.html").read_text(encoding="utf-8")
     assert 'id="data"' in html and "Mostkultura · Kultura okolo Mostku" in html
     assert "Malý Mostek. Velký dění." not in html
     assert "color-mix" not in html
