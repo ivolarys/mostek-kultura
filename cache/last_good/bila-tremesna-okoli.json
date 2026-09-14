@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-13T13:56:28+00:00",
+ "fetched_at": "2026-09-14T07:27:06+00:00",
  "events": [
   {
    "title": "Hravé dopoledne s knihou",
@@ -48,30 +48,6 @@
    "lon": null,
    "geo": null,
    "id": "bila-tremesna-okoli:fabf0bd169c9"
-  },
-  {
-   "title": "Víkend ve fotbalu",
-   "start": "2026-09-11T00:00:00+02:00",
-   "source": "bila-tremesna-okoli",
-   "url": "https://www.bilatremesna.cz/volny-cas/kalendar-akci-v-okoli/vikend-ve-fotbalu-1925_1225cs.html",
-   "end": "2026-09-13T23:59:00+02:00",
-   "all_day": true,
-   "place": null,
-   "place_raw": null,
-   "venue": null,
-   "category": null,
-   "native_category": null,
-   "description": "Přijďte si užít víkend plný fotbalu na stadion pod Hankovým domem ve Dvoře Králové nad Labem od 11. do 13. září 2026.",
-   "image": "https://www.bilatremesna.cz/evt_image.php?img=3238&width=300",
-   "native_id": "event-1925",
-   "ongoing": false,
-   "sources": [],
-   "urls": [],
-   "needs_review": false,
-   "lat": null,
-   "lon": null,
-   "geo": null,
-   "id": "bila-tremesna-okoli:8b497648af13"
   },
   {
    "title": "Zahajovací koncert 59. sezony",

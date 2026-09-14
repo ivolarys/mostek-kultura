@@ -41,6 +41,13 @@
   "q": "Bělohradská sýpka, Lázně Bělohrad, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
  },
+ "bezecky areal vejsplachy, vrchlabi|vrchlabi": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "běžecký areál Vejsplachy, Vrchlabí, Česko",
+  "ts": "2026-09-14T07:29:42+00:00"
+ },
  "bila tremesna|bila tremesna": {
   "lat": 50.4519102,
   "lon": 15.7330781,
@@ -314,6 +321,13 @@
   "q": "Hradecká sýpka, Hradec Králové, Česko",
   "ts": "2026-09-12T15:02:36+00:00"
  },
+ "hribojedy|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Hřibojedy, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-14T07:29:42+00:00"
+ },
  "hudebni divadlo karlin|nova paka": {
   "lat": null,
   "lon": null,
@@ -383,6 +397,13 @@
   "precision": "venue",
   "q": "Kino Vesmír, Trutnov, Česko",
   "ts": "2026-09-12T06:19:21+00:00"
+ },
+ "klasterni schody v nove pace|nova paka": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "klášterní schody v Nové Pace, Nová Paka, Česko",
+  "ts": "2026-09-14T07:29:42+00:00"
  },
  "klenotnice muzea nova paka|nova paka": {
   "lat": 50.4955243,
@@ -628,6 +649,13 @@
   "precision": "venue",
   "q": "Komenského 1248, Vrchlabí, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "safari park dvur kralove|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Safari Park Dvůr Králové, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-14T07:29:42+00:00"
  },
  "sal hasicske zbrojnice v pecce|pecka": {
   "lat": null,
