@@ -63,6 +63,7 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .result-summary{min-width:0;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
 .result-count{font-size:12px;font-weight:500;color:var(--label3)}
 .range-label{font-size:16px;font-weight:750;color:var(--label);white-space:nowrap}
+.result-summary.custom-date{flex-wrap:wrap;row-gap:0;white-space:normal}.result-summary.custom-date .range-label{min-width:0;white-space:normal}
 .view-toggle{flex:0 0 auto}
 .view-toggle .seg-btn{width:44px;height:44px;min-width:44px;padding:0;font-size:13px}
 .view-toggle .seg-btn .icon{width:20px;height:20px}
@@ -133,6 +134,8 @@ body{padding-bottom:calc(82px + env(safe-area-inset-bottom));overflow-x:hidden}
 .tab-label{font-size:10px;font-weight:650;line-height:1.1;white-space:nowrap}
 .tab-label .n{display:none}
 
+.date-sheet .sheet-body{padding:8px 16px 18px}.date-shortcuts{display:flex;gap:8px;margin:2px 0 12px}.date-shortcuts .chip{flex:1;min-width:0;padding:0 8px;font-size:13px}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:4px}.calendar-title{font-size:16px;font-weight:750;text-align:center}.calendar-nav{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}.calendar-nav .icon{width:21px;height:21px}.calendar-weekdays,.calendar-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center}.calendar-weekdays{padding:7px 0 3px;color:var(--label3);font-size:12px;font-weight:650}.calendar-day{position:relative;min-width:0;height:44px;border-radius:12px;font-size:15px}.calendar-day[aria-pressed="true"]{background:var(--active);color:var(--tint);box-shadow:inset 0 0 0 2px var(--accent);font-weight:750}.calendar-day[aria-current="date"]{font-weight:800;color:var(--tint)}.calendar-day[aria-current="date"]::after{content:"";position:absolute;bottom:5px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:currentColor}.calendar-day[aria-current="date"][aria-pressed="true"]::after{background:currentColor}.calendar-blank{height:44px}@media (max-width:359px){.date-sheet .sheet-body{padding-left:6px;padding-right:6px}.date-sheet .sheet-footer{padding-left:10px;padding-right:10px}.date-shortcuts{gap:5px}.date-shortcuts .chip{font-size:12px;padding:0 4px}}
+
 .view-map #list,.view-map .site-footer{display:none}
 .map-wrap{display:none;position:relative;margin:6px -20px 0;background:var(--fill);min-height:300px}
 .view-map .map-wrap{display:block}
@@ -173,6 +176,7 @@ body.dialog-open{overflow:hidden}
 @media (min-width:700px){
   .wrap{padding:0 28px 38px}.hero{min-height:92px;padding-top:14px}.brand{font-size:34px}.brand-logo{width:56px;height:50px;flex-basis:56px}.hero-locality{font-size:13px}.hero-meta{max-width:none;white-space:nowrap}
   .filters{position:relative;top:0;margin:0;padding:12px 0;background:transparent!important;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}.category-row{padding-bottom:2px}.list-head{padding-top:17px}.content-list{padding-top:3px}.row{padding:14px 16px}.event-row .chev,.srcline{display:block}.map-wrap{margin:8px 0 0;border-radius:18px;overflow:hidden;border:1px solid var(--sep);box-shadow:var(--shadow)}#map{height:68vh;min-height:480px}.sheet{margin:auto;border-radius:22px}.sheet-layout{max-height:min(82vh,760px)}
+  .date-sheet{width:min(440px,calc(100% - 32px));margin:auto;border-radius:22px}.date-sheet .sheet-layout{max-height:min(720px,82vh)}
 }
 body.embed{font-size:15px;padding-bottom:0}
 body.embed .wrap{padding:8px;max-width:none}
@@ -264,6 +268,15 @@ body.embed .period-desktop{display:flex;margin-top:8px}body.embed .period-deskto
   </div>
 </dialog>
 
+<dialog class="sheet date-sheet" id="dateDialog" aria-labelledby="dateTitle">
+  <div class="sheet-layout">
+    <div class="sheet-grabber" aria-hidden="true"></div>
+    <header class="sheet-header"><div class="sheet-title" id="dateTitle">Vybrat datum</div><button class="sheet-close" id="dateClose" type="button" aria-label="Zavřít bez použití změn"></button></header>
+    <div class="sheet-body"><div class="date-shortcuts"><button class="chip" id="dateWeek" type="button">Příštích 7 dní</button><button class="chip" id="dateAll" type="button">Všechny termíny</button></div><div class="calendar-head"><button class="calendar-nav" id="calendarPrev" type="button" aria-label="Předchozí měsíc"></button><div class="calendar-title" id="calendarTitle" aria-live="polite"></div><button class="calendar-nav" id="calendarNext" type="button" aria-label="Další měsíc"></button></div><div class="calendar-weekdays" aria-hidden="true"><span>Po</span><span>Út</span><span>St</span><span>Čt</span><span>Pá</span><span>So</span><span>Ne</span></div><div class="calendar-days" id="calendarDays" role="group" aria-label="Kalendář"></div></div>
+    <footer class="sheet-footer"><button class="apply-btn" id="dateApply" type="button"></button></footer>
+  </div>
+</dialog>
+
 <script type="application/json" id="data">{{ data_json|safe }}</script>
 <script src="source-preferences.js?v=mostkultura-4"></script>
 <script>
@@ -301,6 +314,9 @@ const ICON={
   today:svg('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/>'),
   tomorrow:svg('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18M9 15h6m0 0-2-2m2 2-2 2"/>'),
   weekend:svg('<circle cx="12" cy="12" r="4.5"/><path d="M12 2.5V5M12 19v2.5M4.2 4.2 6 6M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"/>'),
+  date:svg('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18M9 14h6M12 11v6"/>'),
+  prev:svg('<path d="m15 18-6-6 6-6"/>'),
+  next:svg('<path d="m9 18 6-6-6-6"/>'),
   week:svg('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 9h18M8 13h2M12 13h2M16 13h1M8 17h2M12 17h2"/>'),
   all:svg('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>'),
   concert:svg('<path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/>'),
@@ -320,6 +336,7 @@ const catIcon=slug=>ICON[CAT_ICON[slug]||'other'];
 const dateFormatter=new Intl.DateTimeFormat('sv-SE',{timeZone:TZ});
 const timeFormatter=new Intl.DateTimeFormat('cs-CZ',{timeZone:TZ,hour:'2-digit',minute:'2-digit'});
 const dayFormatter=new Intl.DateTimeFormat('cs-CZ',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'});
+const fullDateFormatter=new Intl.DateTimeFormat('cs-CZ',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
 const generatedFormatter=new Intl.DateTimeFormat('cs-CZ',{timeZone:TZ,day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'});
 const fmtDate=d=>dateFormatter.format(d);
 const today=fmtDate(new Date());
@@ -327,6 +344,7 @@ const addDays=(iso,n)=>{const d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTC
 const dow=iso=>(new Date(iso+'T12:00:00Z').getUTCDay()+6)%7;
 const weekendStart=addDays(today,5-dow(today));
 const TABS=[['today','Dnes',[today,today]],['tomorrow','Zítra',[addDays(today,1),addDays(today,1)]],['weekend','Víkend',[weekendStart,addDays(weekendStart,1)]],['week','Týden',[today,addDays(today,6)]],['all','Vše',[today,'9999-12-31']]];
+const BAR_TABS=['today','tomorrow','weekend','date'];
 const CAT=Object.fromEntries(D.categories.map(c=>[c.slug,{label:c.label}]));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs-CZ').trim();
@@ -334,16 +352,19 @@ const collator=new Intl.Collator('cs',{sensitivity:'base'});
 
 D.events.forEach(e=>{e.sd=fmtDate(new Date(e.start));e.ed=e.end?fmtDate(new Date(e.end)):e.sd;e.time=e.all_day?null:timeFormatter.format(new Date(e.start));e.search=norm([e.title,e.place,e.venue].filter(Boolean).join(' '))});
 const EVENTS=D.events.filter(e=>!e.ongoing||e.ed>=today);
-const VALID={tab:new Set(TABS.map(t=>t[0])),cat:new Set(D.categories.map(c=>c.slug)),group:new Set(['day','category']),view:new Set(['list','map'])};
+const VALID={tab:new Set([...TABS.map(t=>t[0]),'date']),cat:new Set(D.categories.map(c=>c.slug)),group:new Set(['day','category']),view:new Set(['list','map'])};
 const eventPlaces=new Set(EVENTS.map(e=>e.place||'?'));
 const validPlaces=new Set([...D.places,...eventPlaces]);
 const LEGACY_PLACE_MAP={'Valdštejnská lodžie':'Jičín'};
-const st={tab:'today',cat:new Set(),place:new Set(),group:'category',view:'list',q:''};
+const st={tab:'today',date:today,cat:new Set(),place:new Set(),group:'category',view:'list',q:''};
 const disabledPlaceSet=()=>new Set(sourcePrefs.disabledPlaces);
+const validISODate=iso=>{if(!/^(?!0000)\d{4}-\d{2}-\d{2}$/.test(iso||''))return false;const d=new Date(iso+'T12:00:00Z');return !Number.isNaN(d.getTime())&&d.toISOString().slice(0,10)===iso};
 
 function parseState(){
   const h=new URLSearchParams(location.hash.replace(/^#/,''));
   st.tab=VALID.tab.has(h.get('tab'))?h.get('tab'):(VALID.tab.has(qs.get('tab'))?qs.get('tab'):'today');
+  const rawDate=h.get('date')||qs.get('date');st.date=validISODate(rawDate)?rawDate:today;
+  if(st.tab==='date'&&!validISODate(rawDate))st.tab='today';
   st.group=VALID.group.has(h.get('group'))?h.get('group'):(VALID.group.has(qs.get('group'))?qs.get('group'):'category');
   st.view=VALID.view.has(h.get('view'))?h.get('view'):(VALID.view.has(qs.get('view'))?qs.get('view'):'list');
   st.cat=new Set((h.get('cat')||'').split(',').filter(x=>VALID.cat.has(x)));
@@ -353,6 +374,7 @@ function parseState(){
 }
 function stateHash(){
   const h=new URLSearchParams();h.set('tab',st.tab);h.set('group',st.group);h.set('view',st.view);
+  if(st.tab==='date')h.set('date',st.date);
   if(st.cat.size)h.set('cat',[...st.cat].sort().join(','));if(st.place.size)h.set('place',[...st.place].sort(collator.compare).join(','));if(st.q)h.set('q',st.q);if(embed)h.set('embed','1');
   return h.toString();
 }
@@ -360,9 +382,9 @@ function canonicalize(){const hash=stateHash();if(location.hash.slice(1)!==hash)
 let pendingFocus='';
 function focusKey(el){if(!el||el===document.body)return '';const parent=el.closest('[id]');if(el.dataset.tab)return `#${parent.id} [data-tab="${el.dataset.tab}"]`;if(el.dataset.view)return `#viewToggle [data-view="${el.dataset.view}"]`;if(el.dataset.cat)return `#categories [data-cat="${el.dataset.cat}"]`;if(el.hasAttribute('data-clear-cats'))return '#categories [data-clear-cats]';if(el.id==='searchClear'||el.hasAttribute('data-clear-q'))return '#search';if(el.matches('[data-remove-place],[data-reset]'))return '#filterBtn';return ''}
 function restoreFocus(){if(!pendingFocus)return;const target=document.querySelector(pendingFocus)||document.getElementById('search');pendingFocus='';if(target)target.focus({preventScroll:true})}
-function update(mutator,replace){pendingFocus=focusKey(document.activeElement);mutator();const hash=stateHash();if(location.hash.slice(1)===hash){render();return}if(replace)history.replaceState(null,'','#'+hash),render();else location.hash=hash}
+function update(mutator,replace,focusSelector){pendingFocus=focusSelector??focusKey(document.activeElement);mutator();const hash=stateHash();if(location.hash.slice(1)===hash){render();return}if(replace)history.replaceState(null,'','#'+hash),render();else location.hash=hash}
 
-function rangeFor(tab=st.tab){return TABS.find(t=>t[0]===tab)[2]}
+function rangeFor(tab=st.tab){return tab==='date'?[st.date,st.date]:TABS.find(t=>t[0]===tab)[2]}
 function relevant(e,range=rangeFor()){return e.ongoing?(e.sd<=range[1]&&e.ed>=range[0]):(e.sd>=range[0]&&e.sd<=range[1])}
 function matches(e,places=st.place,query=norm(st.q)){return sourceAllowed(e)&&(!st.cat.size||st.cat.has(e.category))&&(!places.size||places.has(e.place||'?'))&&(!query||e.search.includes(query))}
 function visibleEvents(places=st.place,query=norm(st.q)){
@@ -376,7 +398,7 @@ function visibleEvents(places=st.place,query=norm(st.q)){
 const akceLabel=n=>n===1?n+' akce':n>=2&&n<=4?n+' akce':n+' akcí';
 const shortDate=iso=>{const [y,m,d]=iso.split('-');return `${Number(d)}. ${Number(m)}.`};
 const dayLabel=iso=>{const d=new Date(iso+'T12:00:00Z');const s=dayFormatter.format(d);return iso===today?'Dnes · '+s:iso===addDays(today,1)?'Zítra · '+s:s};
-function rangeLabel(){const t=TABS.find(x=>x[0]===st.tab);if(st.tab==='all')return 'Od dneška dál';if(st.tab==='today'||st.tab==='tomorrow')return `${t[1]} · ${shortDate(t[2][0])}`;if(t[2][0]===t[2][1])return dayLabel(t[2][0]);return `${shortDate(t[2][0])}–${shortDate(t[2][1])}`}
+function rangeLabel(){const t=TABS.find(x=>x[0]===st.tab);if(st.tab==='date')return fullDateFormatter.format(new Date(st.date+'T12:00:00Z'));if(st.tab==='all')return 'Od dneška dál';if(st.tab==='today'||st.tab==='tomorrow')return `${t[1]} · ${shortDate(t[2][0])}`;if(t[2][0]===t[2][1])return dayLabel(t[2][0]);return `${shortDate(t[2][0])}–${shortDate(t[2][1])}`}
 
 function eventHtml(e,showDate){
   const current=e.ongoing&&e.sd<today;
@@ -397,13 +419,14 @@ function placeCounts(query=norm(st.q)){
   return out;
 }
 function computeRenderSnapshot(){
-  const query=norm(st.q),range=rangeFor(),tabCounts=Object.fromEntries(TABS.map(t=>[t[0],0]));
+  const query=norm(st.q),range=rangeFor(),tabCounts=Object.fromEntries([...TABS.map(t=>[t[0],0]),['date',0]]);
   const categoryCounts={},visible={main:[],ongoing:[]};
   let categoryTotal=0;
   EVENTS.forEach(e=>{
     const selected=matches(e,st.place,query);
     if(selected){
       TABS.forEach(t=>{if(relevant(e,t[2]))tabCounts[t[0]]++});
+      if(relevant(e,[st.date,st.date]))tabCounts.date++;
     }
     if(!relevant(e,range))return;
     if(sourceAllowed(e)&&(!st.place.size||st.place.has(e.place||'?'))&&(!query||e.search.includes(query))){
@@ -418,9 +441,10 @@ function computeRenderSnapshot(){
 }
 
 function renderPeriods(tabCounts){
-  const html=TABS.map(t=>{const n=tabCounts[t[0]];return `<button type="button" data-tab="${t[0]}" class="seg-btn${t[0]===st.tab?' on':''}" aria-pressed="${t[0]===st.tab}">${t[1]} <span class="n">${n}</span></button>`}).join('');
+  const desktopTabs=[...TABS,['date','Datum',[st.date,st.date]]];
+  const html=desktopTabs.map(t=>{const n=t[0]==='date'?(tabCounts.date??0):tabCounts[t[0]];const label=t[0]==='date'&&st.tab==='date'?shortDate(st.date):t[1];return `<button type="button" data-tab="${t[0]}" class="seg-btn${t[0]===st.tab?' on':''}" aria-pressed="${t[0]===st.tab}">${label} <span class="n">${n}</span></button>`}).join('');
   document.getElementById('periodDesktop').innerHTML=html;
-  document.getElementById('tabbar').innerHTML=TABS.map(t=>{const n=tabCounts[t[0]];return `<button type="button" data-tab="${t[0]}" class="tab-btn${t[0]===st.tab?' on':''}" aria-pressed="${t[0]===st.tab}" aria-label="${t[1]}, ${akceLabel(n)}">${ICON[t[0]]}<span class="tab-label">${t[1]}<span class="n"> ${n}</span></span></button>`}).join('');
+  document.getElementById('tabbar').innerHTML=BAR_TABS.map(tab=>{const dateActive=!BAR_TABS.slice(0,3).includes(st.tab);const label=tab==='date'?(st.tab==='date'?shortDate(st.date):st.tab==='week'?'Týden':st.tab==='all'?'Vše':'Datum'):(TABS.find(x=>x[0]===tab)[1]);const active=tab==='date'?dateActive:tab===st.tab;const n=tab==='date'?(st.tab==='date'?(tabCounts.date??0):(tabCounts[st.tab]??0)):tabCounts[tab];return `<button type="button" data-tab="${tab}" class="tab-btn${active?' on':''}" aria-pressed="${active}" aria-haspopup="${tab==='date'?'dialog':'false'}" aria-label="${label}, ${akceLabel(n)}">${ICON[tab]}<span class="tab-label">${label}<span class="n"> ${n}</span></span></button>`}).join('');
 }
 function renderCategories(categoryCounts,categoryTotal){
   const el=document.getElementById('categories');
@@ -475,7 +499,7 @@ function render(){
   const snapshot=computeRenderSnapshot(),{main,ongoing}=snapshot.visible,count=main.length+ongoing.length;
   document.body.classList.toggle('view-map',st.view==='map');renderPeriods(snapshot.tabCounts);renderCategories(snapshot.categoryCounts,snapshot.categoryTotal);renderActiveFilters();renderList(main,ongoing);
   const search=document.getElementById('search');if(search.value!==st.q)search.value=st.q;document.getElementById('searchClear').hidden=!st.q;
-  document.getElementById('resultCount').textContent=akceLabel(count);document.getElementById('rangeLabel').textContent=rangeLabel();
+  document.getElementById('resultCount').textContent=akceLabel(count);document.getElementById('rangeLabel').textContent=rangeLabel();document.querySelector('.result-summary').classList.toggle('custom-date',st.tab==='date');
   document.getElementById('viewToggle').innerHTML=`<button type="button" data-view="list" class="seg-btn${st.view==='list'?' on':''}" aria-label="Zobrazit seznam" title="Seznam" aria-pressed="${st.view==='list'}">${ICON.list}</button><button type="button" data-view="map" class="seg-btn${st.view==='map'?' on':''}" aria-label="Zobrazit mapu" title="Mapa" aria-pressed="${st.view==='map'}">${ICON.map}</button>`;
   if(st.view==='map')showMap([...main,...ongoing]);else mapRequest++;
   restoreFocus();
@@ -492,6 +516,29 @@ function openFilterDialog(){filterInvoker=document.activeElement;draftPlaces=new
 function openDialog(dialog){document.body.classList.add('dialog-open');dialog.showModal()}
 function closeDialog(dialog){dialog.close();document.body.classList.remove('dialog-open')}
 function cancelFilter(){closeDialog(document.getElementById('filterDialog'));if(filterInvoker)filterInvoker.focus()}
+
+let dateInvoker='',dateInvokerRoot='#tabbar',draftDate=today,calendarYear=Number(today.slice(0,4)),calendarMonth=Number(today.slice(5,7))-1;
+const monthFormatter=new Intl.DateTimeFormat('cs-CZ',{month:'long',year:'numeric',timeZone:'UTC'});
+const dayButtonLabel=iso=>fullDateFormatter.format(new Date(iso+'T12:00:00Z'));
+function monthISO(year,month,day){return `${String(year).padStart(4,'0')}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`}
+function renderCalendar(focusISO=''){
+  const title=document.getElementById('calendarTitle'),days=document.getElementById('calendarDays');
+  title.textContent=monthFormatter.format(new Date(monthISO(calendarYear,calendarMonth,1)+'T12:00:00Z'));
+  document.getElementById('calendarPrev').disabled=calendarYear===1&&calendarMonth===0;
+  document.getElementById('calendarNext').disabled=calendarYear===9999&&calendarMonth===11;
+  const first=new Date(monthISO(calendarYear,calendarMonth,1)+'T12:00:00Z');
+  const offset=(first.getUTCDay()+6)%7,total=[31,(calendarYear%4===0&&(calendarYear%100!==0||calendarYear%400===0))?29:28,31,30,31,30,31,31,30,31,30,31][calendarMonth];
+  let html='';for(let i=0;i<offset;i++)html+='<span class="calendar-blank" aria-hidden="true"></span>';
+  for(let day=1;day<=total;day++){const iso=monthISO(calendarYear,calendarMonth,day),selected=iso===draftDate,current=iso===today;html+=`<button type="button" class="calendar-day" data-calendar-date="${iso}" aria-label="${esc(dayButtonLabel(iso))}" aria-pressed="${selected}"${current?' aria-current="date"':''}>${day}</button>`}
+  days.innerHTML=html;
+  document.getElementById('dateApply').textContent=`Zobrazit ${shortDate(draftDate)}`;
+  if(focusISO)days.querySelector(`[data-calendar-date="${focusISO}"]`)?.focus({preventScroll:true});
+}
+function setCalendarMonth(delta){let y=calendarYear,m=calendarMonth+delta;if(m<0){y--;m=11}if(m>11){y++;m=0}if(y<1||y>9999)return;calendarYear=y;calendarMonth=m;renderCalendar()}
+function openDateDialog(invoker){dateInvoker=focusKey(invoker)||'#tabbar [data-tab="date"]';dateInvokerRoot=dateInvoker.startsWith('#periodDesktop')?'#periodDesktop':'#tabbar';draftDate=rangeFor()[0];calendarYear=Number(draftDate.slice(0,4));calendarMonth=Number(draftDate.slice(5,7))-1;renderCalendar();openDialog(document.getElementById('dateDialog'));document.getElementById('dateClose').focus({preventScroll:true})}
+function cancelDate(){closeDialog(document.getElementById('dateDialog'));if(dateInvoker)document.querySelector(dateInvoker)?.focus({preventScroll:true})}
+function applyDate(iso){const tab=iso===today?'today':iso===addDays(today,1)?'tomorrow':'date';closeDialog(document.getElementById('dateDialog'));update(()=>{st.tab=tab;st.date=iso},false,`${dateInvokerRoot} [data-tab="${tab}"]`)}
+function applyDateShortcut(tab){closeDialog(document.getElementById('dateDialog'));update(()=>st.tab=tab,false,`${dateInvokerRoot} [data-tab="date"]`)}
 
 let leafletReady=null,map=null,markersLayer=null,mapRequest=0,lastMapKey='';
 function loadLeaflet(){
@@ -515,7 +562,7 @@ function showMap(events){
 }
 function openEventDialog(title,events){const dialog=document.getElementById('eventDialog');if(dialog.open)return;document.getElementById('eventTitle').innerHTML=`${esc(title)}<div class="sheet-subtitle">${akceLabel(events.length)}</div>`;document.getElementById('eventBody').innerHTML=`<div class="list-card">${events.slice().sort((a,b)=>a.start.localeCompare(b.start)).map(e=>eventHtml(e,true)).join('')}</div>`;openDialog(dialog)}
 
-document.getElementById('searchIcon').innerHTML=ICON.search;document.getElementById('searchClear').innerHTML=ICON.close;document.getElementById('filterIcon').innerHTML=ICON.filter;document.getElementById('filterClose').innerHTML=ICON.close;document.getElementById('eventClose').innerHTML=ICON.close;document.getElementById('sourceIcon').innerHTML=ICON.source;
+document.getElementById('searchIcon').innerHTML=ICON.search;document.getElementById('searchClear').innerHTML=ICON.close;document.getElementById('filterIcon').innerHTML=ICON.filter;document.getElementById('filterClose').innerHTML=ICON.close;document.getElementById('eventClose').innerHTML=ICON.close;document.getElementById('dateClose').innerHTML=ICON.close;document.getElementById('calendarPrev').innerHTML=ICON.prev;document.getElementById('calendarNext').innerHTML=ICON.next;document.getElementById('sourceIcon').innerHTML=ICON.source;
 document.getElementById('gen').textContent=generatedFormatter.format(new Date(D.generated_at));
 document.getElementById('total').textContent=akceLabel(EVENTS.filter(sourceAllowed).length);
 updateSourceHealthBadge();
@@ -526,12 +573,21 @@ document.getElementById('filterBtn').addEventListener('click',openFilterDialog);
 document.getElementById('filterClose').addEventListener('click',cancelFilter);
 document.getElementById('filterApply').addEventListener('click',()=>{st.place=new Set(draftPlaces);st.group=draftGroup;closeDialog(document.getElementById('filterDialog'));update(()=>{});if(filterInvoker)filterInvoker.focus()});
 document.getElementById('eventClose').addEventListener('click',()=>closeDialog(document.getElementById('eventDialog')));
+document.getElementById('dateClose').addEventListener('click',cancelDate);
+document.getElementById('dateWeek').addEventListener('click',()=>applyDateShortcut('week'));
+document.getElementById('dateAll').addEventListener('click',()=>applyDateShortcut('all'));
+document.getElementById('calendarPrev').addEventListener('click',()=>setCalendarMonth(-1));
+document.getElementById('calendarNext').addEventListener('click',()=>setCalendarMonth(1));
+document.getElementById('calendarDays').addEventListener('click',e=>{const b=e.target.closest('[data-calendar-date]');if(!b)return;draftDate=b.dataset.calendarDate;renderCalendar(draftDate)});
+document.getElementById('calendarDays').addEventListener('keydown',e=>{const b=e.target.closest('[data-calendar-date]');if(!b)return;const steps={ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7};if(!(e.key in steps))return;e.preventDefault();const next=addDays(b.dataset.calendarDate,steps[e.key]);if(!validISODate(next))return;draftDate=next;calendarYear=Number(next.slice(0,4));calendarMonth=Number(next.slice(5,7))-1;renderCalendar(next)});
+document.getElementById('dateApply').addEventListener('click',()=>applyDate(draftDate));
 document.getElementById('mapRetry').addEventListener('click',()=>{const visible=visibleEvents();showMap([...visible.main,...visible.ongoing])});
 document.addEventListener('click',e=>{if(!e.target.closest('[data-source-settings]'))return;try{sessionStorage.setItem('mostkultura.sourceReturnHash',location.hash)}catch(_){}});
 document.getElementById('filterDialog').addEventListener('cancel',e=>{e.preventDefault();cancelFilter()});
+document.getElementById('dateDialog').addEventListener('cancel',e=>{e.preventDefault();cancelDate()});
 document.getElementById('eventDialog').addEventListener('close',()=>document.body.classList.remove('dialog-open'));
-[document.getElementById('filterDialog'),document.getElementById('eventDialog')].forEach(d=>d.addEventListener('click',e=>{if(e.target===d){if(d.id==='filterDialog')cancelFilter();else closeDialog(d)}}));
-[document.getElementById('filterDialog'),document.getElementById('eventDialog')].forEach(d=>d.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...d.querySelectorAll('button:not([disabled]),a[href],input:not([disabled])')].filter(x=>x.offsetParent!==null);if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}));
+[document.getElementById('filterDialog'),document.getElementById('eventDialog'),document.getElementById('dateDialog')].forEach(d=>d.addEventListener('click',e=>{if(e.target===d){if(d.id==='filterDialog')cancelFilter();else if(d.id==='dateDialog')cancelDate();else closeDialog(d)}}));
+[document.getElementById('filterDialog'),document.getElementById('eventDialog'),document.getElementById('dateDialog')].forEach(d=>d.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...d.querySelectorAll('button:not([disabled]),a[href],input:not([disabled])')].filter(x=>x.offsetParent!==null);if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}));
 document.getElementById('filterBody').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const body=document.getElementById('filterBody'),scroll=body.scrollTop;let selector='';if(b.hasAttribute('data-all-places')){draftPlaces.clear();selector='[data-all-places]'}else if(b.dataset.draftPlace){const p=b.dataset.draftPlace;draftPlaces.has(p)?draftPlaces.delete(p):draftPlaces.add(p);selector=`[data-draft-place="${CSS.escape(p)}"]`}else if(b.dataset.draftGroup){draftGroup=b.dataset.draftGroup;selector=`[data-draft-group="${b.dataset.draftGroup}"]`}else return;renderFilterDialog();body.scrollTop=scroll;const next=body.querySelector(selector);if(next)next.focus({preventScroll:true})});
 document.getElementById('categories').addEventListener('wheel',e=>{
   if(e.ctrlKey||Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
@@ -542,7 +598,7 @@ document.getElementById('categories').addEventListener('wheel',e=>{
   el.scrollLeft=next;
   if(el.scrollLeft!==before)e.preventDefault();
 },{passive:false});
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.closest('#filterDialog'))return;if(b.dataset.tab)update(()=>st.tab=b.dataset.tab);else if(b.dataset.view)update(()=>st.view=b.dataset.view);else if(b.dataset.cat)update(()=>st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat));else if(b.hasAttribute('data-clear-cats'))update(()=>st.cat.clear());else if(b.hasAttribute('data-clear-q'))update(()=>st.q='');else if(b.dataset.removePlace)update(()=>st.place.delete(b.dataset.removePlace));else if(b.hasAttribute('data-reset'))update(()=>{st.cat.clear();st.place.clear();st.q=''})});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.closest('#filterDialog')||b.closest('#dateDialog'))return;if(b.dataset.tab==='date')openDateDialog(b);else if(b.dataset.tab)update(()=>st.tab=b.dataset.tab);else if(b.dataset.view)update(()=>st.view=b.dataset.view);else if(b.dataset.cat)update(()=>st.cat.has(b.dataset.cat)?st.cat.delete(b.dataset.cat):st.cat.add(b.dataset.cat));else if(b.hasAttribute('data-clear-cats'))update(()=>st.cat.clear());else if(b.hasAttribute('data-clear-q'))update(()=>st.q='');else if(b.dataset.removePlace)update(()=>st.place.delete(b.dataset.removePlace));else if(b.hasAttribute('data-reset'))update(()=>{st.cat.clear();st.place.clear();st.q=''})});
 window.addEventListener('hashchange',()=>{parseState();canonicalize();render()});
 function syncSourcePreferences(){
   const filters=document.getElementById('filterDialog');
