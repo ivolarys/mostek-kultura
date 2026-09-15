@@ -20,6 +20,13 @@
   "q": "Areál autokempu, Mostek, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
  },
+ "aula spos|dvur kralove nad labem": {
+  "lat": null,
+  "lon": null,
+  "precision": "none",
+  "q": "Aula SPOŠ, Dvůr Králové nad Labem, Česko",
+  "ts": "2026-09-15T04:52:40+00:00"
+ },
  "bajkazyl hradec kralove|hradec kralove": {
   "lat": 50.212324,
   "lon": 15.8335962,
@@ -215,6 +222,13 @@
   "precision": "venue",
   "q": "z. s., Trutnov, Česko",
   "ts": "2026-09-12T06:34:41+00:00"
+ },
+ "farma nova amerika|kuks": {
+  "lat": 50.3802408,
+  "lon": 15.8596891,
+  "precision": "venue",
+  "q": "Farma Nová Amerika, Kuks, Česko",
+  "ts": "2026-09-15T04:52:40+00:00"
  },
  "filharmonie hradec kralove , hradec kralove|hradec kralove": {
   "lat": 50.2138168,

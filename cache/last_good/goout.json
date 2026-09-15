@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-14T07:27:51+00:00",
+ "fetched_at": "2026-09-15T04:50:00+00:00",
  "events": [
   {
    "title": "Bez řečí: Monika Absolonová & Ondřej Hájek",
@@ -72,6 +72,30 @@
    "lon": null,
    "geo": null,
    "id": "goout:5a11a563ea47"
+  },
+  {
+   "title": "Rock in Jaroměř 2027",
+   "start": "2027-05-29T14:00:00+02:00",
+   "source": "goout",
+   "url": "https://goout.net/cs/rock-in-jaromer-2027/szvcrmy/",
+   "end": "2027-05-29T23:59:59+02:00",
+   "all_day": false,
+   "place": null,
+   "place_raw": "Jaroměř",
+   "venue": "Pevnost Josefov",
+   "category": null,
+   "native_category": "festivals, concerts, festivals",
+   "description": "*To nejlepší z domácí rockové scény v jeden den na jednom pódiu.*\n\nFestival *Rock in Jaroměř 2027* se koná 29. května 2027.",
+   "image": null,
+   "native_id": "schedule:9573196",
+   "ongoing": false,
+   "sources": [],
+   "urls": [],
+   "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
+   "id": "goout:8a87880ffd4f"
   },
   {
    "title": "Tady Vary 2026/27 – filmová sezóna s předplatným",

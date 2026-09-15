@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-14T07:27:29+00:00",
+ "fetched_at": "2026-09-15T04:49:27+00:00",
  "events": [
   {
    "title": "AFTERWORK on tour",
@@ -48,6 +48,54 @@
    "lon": null,
    "geo": null,
    "id": "naplavka-hk:4618f2912ffa"
+  },
+  {
+   "title": "HITY NA PŘÁNÍ",
+   "start": "2026-10-02T21:00:00+02:00",
+   "source": "naplavka-hk",
+   "url": "https://naplavkahk.cz/udalost/2026-10-02-hity-na-prani",
+   "end": null,
+   "all_day": false,
+   "place": null,
+   "place_raw": "Hradec Králové",
+   "venue": "Náplavka kulturní klub",
+   "category": null,
+   "native_category": "Párty",
+   "description": "",
+   "image": "https://naplavkahk.cz/media/3136/medialibraryiPJQsg",
+   "native_id": "https://naplavkahk.cz/udalost/2026-10-02-hity-na-prani",
+   "ongoing": false,
+   "sources": [],
+   "urls": [],
+   "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
+   "id": "naplavka-hk:9b9b7092e0b3"
+  },
+  {
+   "title": "SPEE CI LEZE VIDEO D.I.S.C.O.",
+   "start": "2026-10-16T21:00:00+02:00",
+   "source": "naplavka-hk",
+   "url": "https://naplavkahk.cz/udalost/2026-10-16-spee-ci-leze-video-d-i-s-c-o",
+   "end": null,
+   "all_day": false,
+   "place": null,
+   "place_raw": "Hradec Králové",
+   "venue": "Náplavka kulturní klub",
+   "category": null,
+   "native_category": "Párty",
+   "description": "",
+   "image": "https://naplavkahk.cz/media/3138/medialibrary9knMn4",
+   "native_id": "https://naplavkahk.cz/udalost/2026-10-16-spee-ci-leze-video-d-i-s-c-o",
+   "ongoing": false,
+   "sources": [],
+   "urls": [],
+   "needs_review": false,
+   "lat": null,
+   "lon": null,
+   "geo": null,
+   "id": "naplavka-hk:6a50773eeb9d"
   }
  ]
 }
